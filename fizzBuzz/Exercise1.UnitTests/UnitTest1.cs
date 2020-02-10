@@ -19,7 +19,7 @@ namespace Exercise1.UnitTests
             var result = fizz.FizzBuzz(3);
 
             //Assert
-            StringAssert.AreEqualIgnoringCase("Fizz", result);
+            Assert.AreEqual("Fizz", result);
         }
         
         [Test]
@@ -32,7 +32,7 @@ namespace Exercise1.UnitTests
             var result = fizz.FizzBuzz(5);
 
             //Assert
-            StringAssert.AreEqualIgnoringCase("Buzz", result);
+            Assert.AreEqual("Buzz", result);
         }
         
         [Test]
@@ -45,7 +45,7 @@ namespace Exercise1.UnitTests
             var result = fizz.FizzBuzz(15);
 
             //Assert
-            StringAssert.AreEqualIgnoringCase("FizzBuzz", result);
+            Assert.AreEqual("FizzBuzz", result);
         }
 
         [Test]
@@ -58,7 +58,7 @@ namespace Exercise1.UnitTests
             var result = fizz.FizzBuzz(1);
             
             //Assert 
-            StringAssert.AreEqualIgnoringCase("1", result);
+            Assert.AreEqual("1", result);
         }
     }
 }
@@ -75,3 +75,5 @@ namespace Exercise1.UnitTests
 //Fizz
 //7
 //etc.
+
+// go back to throw error if input is not a number

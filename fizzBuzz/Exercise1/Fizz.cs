@@ -8,7 +8,7 @@ namespace Exercise1
     {
         public string FizzBuzz(int number)
         {   
-            var stringBuilder = new StringBuilder();
+            var stringBuilder = new StringBuilder(); // should I not start with stringbuilder based on tests? 
             
 
             if (number % 3 == 0)
@@ -27,7 +27,7 @@ namespace Exercise1
         {
             for (int i = 1; i < 100; i++)
             {
-                Console.WriteLine(FizzBuzz(i));
+                Console.WriteLine(FizzBuzz(i));  // do I need to test this? // How?
             }
         }
     }
