@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicYearCalculator", "MagicYearCalculator\MagicYearCalculator.csproj", "{7CB98436-637F-4435-ABC3-8191AE59C978}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicYearCalculator.UnitTests", "MagicYearCalculator.UnitTests\MagicYearCalculator.UnitTests.csproj", "{2E5F21B2-8E0B-4BF9-ABB0-8C0D4056CE86}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7CB98436-637F-4435-ABC3-8191AE59C978}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CB98436-637F-4435-ABC3-8191AE59C978}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CB98436-637F-4435-ABC3-8191AE59C978}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CB98436-637F-4435-ABC3-8191AE59C978}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E5F21B2-8E0B-4BF9-ABB0-8C0D4056CE86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E5F21B2-8E0B-4BF9-ABB0-8C0D4056CE86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E5F21B2-8E0B-4BF9-ABB0-8C0D4056CE86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E5F21B2-8E0B-4BF9-ABB0-8C0D4056CE86}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
