@@ -4,7 +4,7 @@ namespace MagicYearCalculator
 {
     public class MagicCalculator
     {
-        // should I use short instead?
+        // should I use short instead? It's okay to 
         public int MagicYear(int workStartYear)
         {
             return workStartYear + 65;
@@ -29,11 +29,14 @@ namespace MagicYearCalculator
             Console.WriteLine("Welcome to the magic year! ");
             Console.Write("\n Please input your name: ");
             var firstName = Console.ReadLine();
+            
             Console.Write("\n Please enter your surname: ");
             var lastName = Console.ReadLine();
+            
             Console.Write("\n Please enter your annual salary: ");
             int annualSalary;
             var validAnnualSalary = Int32.TryParse(Console.ReadLine(), out annualSalary );
+            
             Console.Write("\n Please enter your work start year: ");
             int startYear;
             var validStartYear =  Int32.TryParse(Console.ReadLine(), out startYear );
