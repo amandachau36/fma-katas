@@ -5,15 +5,15 @@ namespace Exercise1.UnitTests
     public class FizzTests
     {
         [SetUp]
-        public void Setup()
+        public void Setup() //class - fields 
         {
         }
 
         [Test]
-        public void FizzBuzz_NumberIs3_ReturnsFizz()
+        public void FizzBuzz_NumberIs3_ReturnsFizz() // it should done this when _____ // look up naming conventions
         {
             //Arrange
-            var fizz = new Fizz();
+            var fizz = new Fizz(); // this is alright
             
             //Act
             var result = fizz.FizzBuzz(3);

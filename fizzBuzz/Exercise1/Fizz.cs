@@ -7,27 +7,25 @@ namespace Exercise1
     public class Fizz
     {
         public string FizzBuzz(int number)
-        {   
-            var stringBuilder = new StringBuilder(); // should I not start with stringbuilder based on tests? 
+        {
+            if (number % 5 == 0 && number % 3 == 0) // refactored for readability (removed stringbuilder)
+                return "FizzBuzz";
             
-
             if (number % 3 == 0)
-                stringBuilder.Append("Fizz");
+                return "Fizz";
 
             if (number % 5 == 0)
-                stringBuilder.Append("Buzz");
+                return "Buzz";
 
-            if (stringBuilder.Length == 0)
-                stringBuilder.Append(number);
-            
-            return stringBuilder.ToString();
+            return number.ToString();
+    
         }
 
         public void PrintFizzBuzz()
         {
             for (int i = 1; i < 100; i++)
             {
-                Console.WriteLine(FizzBuzz(i));  // do I need to test this? // How?
+                Console.WriteLine(FizzBuzz(i));  // A side effect - should test but it's difficult
             }
         }
     }
