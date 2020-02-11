@@ -7,7 +7,7 @@ namespace MagicYearCalculator
         static void Main(string[] args)
         {
             var magicCalc = new MagicCalculator();
-            magicCalc.runMagicCalc();
+            magicCalc.RunMagicCalc();
         }
     }
 }

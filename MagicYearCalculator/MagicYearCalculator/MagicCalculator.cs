@@ -4,26 +4,36 @@ namespace MagicYearCalculator
 {
     public class MagicCalculator
     {
-        // should I use short instead? It's okay to 
+        // should I use short instead? It's okay to use int because memory is not that expensive these days
         public int MagicYear(int workStartYear)
         {
             return workStartYear + 65;
         }
 
-        public int MonthlySalary(int annualSalary)
+        public decimal MonthlySalary(decimal annualSalary)
         {
             // float, double, decimal
+            // always use decimals with $$$$
+            // leave decimal until point before presentation
+            // use cast sparingly 
+            // just use decimals for this one
             //https://stackoverflow.com/questions/618535/difference-between-decimal-float-and-double-in-net
-            return (int) Math.Round((decimal)annualSalary / 12);
+            return annualSalary / 12;
         }
 
+        public decimal RoundedMonthlySalary(decimal monthlySalary)
+        {
+            
+            return Math.Round(monthlySalary);
+        }
+        
         public string FullName(string firstName, string lastName)
         {
             
             return firstName + " " + lastName;
         }
 
-        public void runMagicCalc()
+        public void RunMagicCalc()
         {
 
             Console.WriteLine("Welcome to the magic year! ");
@@ -45,7 +55,7 @@ namespace MagicYearCalculator
                 Console.WriteLine(@"Your magic age details are
 Name: {0}
 Monthly Salary: {1}
-Magic Year: {2}", FullName(firstName, lastName), MonthlySalary(annualSalary), MagicYear(startYear) );
+Magic Year: {2}", FullName(firstName, lastName), RoundedMonthlySalary(MonthlySalary(annualSalary)), MagicYear(startYear) );
             else
                 Console.WriteLine("Either annual salary or start year are invalid");
 

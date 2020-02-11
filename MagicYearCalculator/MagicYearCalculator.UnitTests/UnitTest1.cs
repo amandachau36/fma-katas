@@ -9,8 +9,8 @@ namespace MagicYearCalculator.UnitTests
         {
         }
 
-        //// what do I do with input data?
-        /// also what can I put in set up 
+   
+      
         [Test]
         public void MagicYear_StartYearIs1980_Returns2045()
         {
@@ -37,7 +37,9 @@ namespace MagicYearCalculator.UnitTests
             
             //Act
             // should I be making 60050 as a variable
-            var result = magicCalculator.MonthlySalary(60050);
+            var monthlySalary = magicCalculator.MonthlySalary(60050);
+            var result = magicCalculator.RoundedMonthlySalary(monthlySalary);
+            
             
             //Assert 
             Assert.AreEqual( 5004, result);
@@ -52,7 +54,8 @@ namespace MagicYearCalculator.UnitTests
             
             //Act
             
-            var result = magicCalculator.MonthlySalary(60055);
+            var monthlySalary = magicCalculator.MonthlySalary(60055);
+            var result = magicCalculator.RoundedMonthlySalary(monthlySalary);
             
             //Assert 
             Assert.AreEqual( 5005, result);
