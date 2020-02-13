@@ -1,36 +1,33 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Threading.Channels;
+
 
 
 namespace Blackjack
 {
-
     public class Game
     {
         
-        public bool IsUsersTurn { get; set; }
-        public bool IsGameOver { get; set; }
+        private bool IsUsersTurn { get; set; }
         
-        public int UserScore { get; set; }
-        public int DealerScore { get; set; }
-
-        public bool IsUserBust { get; set; }
-        public bool IsTied { get; set; }
+        private bool IsGameOver { get; set; }
         
-        public bool IsDealerWinner { get; set; }
+        private int UserScore { get; set; }
+        private int DealerScore { get; set; }
 
-        public bool IsUserWinner { get; set; } 
+        private bool IsUserBust { get; set; }
+        private bool IsTied { get; set; }
+        
+        private bool IsDealerWinner { get; set; }
+
+        private bool IsUserWinner { get; set; } 
         
 
-
-
-        public Game()
+        public Game()   // is the constructor always public ? 
         {
             IsUsersTurn = true;
-            IsGameOver = false;
+            IsGameOver = false;  // do I need to set these or default values
             UserScore = 0;
             DealerScore = 0;
             IsTied = false;
@@ -39,7 +36,7 @@ namespace Blackjack
             
         }
 
-        public List<Tuple<string, string>> GenerateDeck()
+        private List<Tuple<string, string>> GenerateDeck()
         {
             var numbers = new List<string>
                 {"ACE", "2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING"};
@@ -57,7 +54,7 @@ namespace Blackjack
 
         }
 
-        public List<Tuple<string, string>> Shuffle(List<Tuple<string, string>>  deck)
+        private List<Tuple<string, string>> Shuffle(List<Tuple<string, string>>  deck)
         {
             
             var shuffledDeck = new List<Tuple<string, string>>();
@@ -73,7 +70,7 @@ namespace Blackjack
             return shuffledDeck;
         }
 
-        public List<Tuple<string, string>> Deal(int numOfCards, List<Tuple<string, string>>  shuffledDeck)
+        private List<Tuple<string, string>> Deal(int numOfCards, List<Tuple<string, string>>  shuffledDeck)
         {
             var cardsDealt = new List<Tuple<string, string>>();
 
@@ -89,7 +86,7 @@ namespace Blackjack
         }
 
 
-        public List<Tuple<string, string>> AddCardToHand(List<Tuple<string, string>> cardsDealt,
+        private List<Tuple<string, string>> AddCardToHand(List<Tuple<string, string>> cardsDealt,
             List<Tuple<string, string>> cardsInHand)
         {
             cardsInHand.AddRange(cardsDealt);
@@ -98,7 +95,7 @@ namespace Blackjack
             
         }
 
-        public int CalculateScore(List<Tuple<string, string>> currentHand)
+        private int CalculateScore(List<Tuple<string, string>> currentHand)
         {
             var score = 0;
             foreach (var card in currentHand)
@@ -126,7 +123,7 @@ namespace Blackjack
             return score;
         }
         
-        public string IsDealerGoingToHit(int score)
+        private string IsDealerGoingToHit(int score)
         {
             if (score >= 17)
                 return "0";
@@ -135,7 +132,7 @@ namespace Blackjack
 
         }
         
-        public void UpdateScore(int currentScore)
+        private void UpdateScore(int currentScore)
         {
             if (IsUsersTurn)
                 UserScore = currentScore;
@@ -144,7 +141,7 @@ namespace Blackjack
         }
         
        
-        public void GameStatus ()
+        private void GameStatus ()
         {
             if (UserScore > 21)
             {
@@ -242,8 +239,6 @@ namespace Blackjack
                         
                     
                     IsUsersTurn = false;
-                    
-                    
                     break;
                 }
                     
@@ -268,24 +263,7 @@ namespace Blackjack
                 Console.WriteLine("It's a tie!");
             
 
-
-
         }
-            
-            
-
-        
-        
-        
-      
-        
-        
-      
-        
-     
-
-        
-        
     }
 }
 
