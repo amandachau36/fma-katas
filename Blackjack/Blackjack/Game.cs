@@ -36,7 +36,7 @@ namespace Blackjack
             
         }
 
-        private List<Tuple<string, string>> GenerateDeck()
+        private List<Tuple<string, string>> GenerateDeck() //
         {
             var numbers = new List<string>
                 {"ACE", "2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING"};
@@ -86,16 +86,14 @@ namespace Blackjack
         }
 
 
-        private List<Tuple<string, string>> AddCardToHand(List<Tuple<string, string>> cardsDealt,
+        private void AddCardToHand(List<Tuple<string, string>> cardsDealt,
             List<Tuple<string, string>> cardsInHand)
         {
             cardsInHand.AddRange(cardsDealt);
-         
-            return cardsInHand; // even if I don't return this , shouldn't cardsInHand automatically change because of the reference point 
-            
+
         }
 
-        private int CalculateScore(List<Tuple<string, string>> currentHand)
+        public int CalculateScore(List<Tuple<string, string>> currentHand)
         {
             var score = 0;
             foreach (var card in currentHand)
@@ -105,7 +103,7 @@ namespace Blackjack
                 if (isNum)
                 {
                     score += num;
-                    continue;
+                    continue; // skips code below
                 }
                 
                 if (card.Item1 == "ACE")
@@ -115,12 +113,24 @@ namespace Blackjack
                   
             }
 
-            var handContainsAce = currentHand.Any(card => card.Item1 == "ACE");
+            foreach (var card in currentHand)
+            {
+                if (score > 21 && card.Item1 == "ACE") // change value of ACE from 11 to 1 
+                    score -= 10;
+                
+                if (score <= 21)  // ignore all subsequent aces and exit function
+                    return score;
+                
+            }
 
-            if (score > 21 && handContainsAce)
-                score -= 10;
-            
             return score;
+
+            // var handContainsAce = currentHand.Any(card => card.Item1 == "ACE"); // what about if it contains 2 ACEs? 
+            //
+            // if (score > 21 && handContainsAce)
+            //     score -= 10;
+            //
+            // return score;
         }
         
         private string IsDealerGoingToHit(int score)
@@ -178,9 +188,7 @@ namespace Blackjack
             }
             
         }
-
-     
-
+        
         
 
         public void PlayBlackJack()
@@ -244,8 +252,12 @@ namespace Blackjack
                     
 
                 var dealAgain = Deal(1, deck);
+                
+                
+                AddCardToHand(dealAgain, currentHand);
 
-                currentHand = AddCardToHand(dealAgain, currentHand);
+                
+                
 
                 displayTurn = IsUsersTurn ? "You draw" : "Dealer draws";
                 
