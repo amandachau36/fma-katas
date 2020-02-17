@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace Blackjack
 {
@@ -11,9 +12,45 @@ namespace Blackjack
             // game.PlayBlackJack();
             // game.PlayBlackJack();
 
-            Console.WriteLine(Game.Suit.CLUB);
+            // Console.WriteLine(Suit.CLUB);
+
+          
+            
+            // var testCard = new Card(Rank.ACE, Suit.CLUB);
+            // Console.WriteLine(testCard.rank);
 
             var deck = game.GenerateDeck();
+            var shuffledDeck = game.Shuffle(deck);
+            
+            foreach (var card in shuffledDeck)
+            {
+                Console.WriteLine(card.rank + " " + card.suit);
+            }
+
+            Console.WriteLine("total cards: " + shuffledDeck.Count  );
+
+            var cardsDealt = game.Deal(2, shuffledDeck);
+            
+            Console.WriteLine("cards dealt: ");
+            foreach (var card in cardsDealt)
+            {
+                Console.WriteLine(card.rank + " " + card.suit);
+            }
+            Console.WriteLine("total cards: " + shuffledDeck.Count  );
+            
+            
+            var cardsDealt2 = game.Deal(1, shuffledDeck);
+
+            game.AddCardToHand(cardsDealt2, cardsDealt);
+
+            Console.WriteLine("new hand:");
+            foreach (var card in cardsDealt)
+            {
+                Console.WriteLine(card.rank + " " + card.suit);
+            }
+            
+            
+            
 
         }
     }

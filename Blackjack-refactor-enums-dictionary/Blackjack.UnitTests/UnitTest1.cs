@@ -10,9 +10,11 @@ namespace Blackjack.UnitTests
         public void Setup()
         {
         }
+        
+        // write tests for card class 
+        // write tests for generate deck 
 
-        [Theory]
-      
+        [Test]
         public void CalculateScore_HandIsAceAceTwoKing_Returns14()
         {
             var game = new Game();

@@ -35,67 +35,34 @@ namespace Blackjack
             IsUserWinner = false;
             
         }
-
-        public enum Suit
-        {
-            CLUB,
-            DIAMOND,
-            HEARTS,
-            SPADE
-        }
-
-
-        public enum Rank
-        {
-            ACE,
-            TWO,
-            THREE,
-            FOUR,
-            FIVE,
-            SIX,
-            SEVEN,
-            EIGHT,
-            NINE,
-            TEN,
-            JACK,  
-            QUEEN,
-            KING 
-        }
         
-
+        
+        public List<Card> GenerateDeck() //
+        {
     
-        
-        public List<Tuple<string, string>> GenerateDeck() //
-        {
-            // var numbers = new List<string>
-            //     {"ACE", "2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING"};
-            // var suit = new List<string> {"CLUB", "DIAMOND", "HEARTS", "SPADE"};
+            var deck = new List<Card>();
 
-            var deck = new List<Tuple<Suit, Rank>>();
+            var suits = Enum.GetValues(typeof(Suit));
+            var ranks = Enum.GetValues(typeof(Rank));
 
-            foreach (var suit in Enum.GetValues(typeof(Suit)))
+
+            foreach (Suit suit in suits) // cannot use var here because it defaults to an object
             {
-                foreach (var rank in Enum.GetValues(typeof(Rank)))
+                foreach (Rank rank in ranks)
                 {
-                    deck.Add(new Tuple<Suit, Rank>(suit, rank));
+                    deck.Add(new Card(rank, suit));
                 }
+                
             }
             
-            // for (int i = 0; i < suits.Count; i++)
-            // {
-            //     for (var j = 0; j < numbers.Count; j++)
-            //     {
-            //         deck.Add(new Tuple<string, string>(numbers[j], suits[i]));
-            //     }
-            // }
             return deck;
-
+        
         }
 
-        private List<Tuple<string, string>> Shuffle(List<Tuple<string, string>>  deck)
+        public List<Card> Shuffle(List<Card>  deck)
         {
             
-            var shuffledDeck = new List<Tuple<string, string>>();
+            var shuffledDeck = new List<Card>(); // consider NOT creating a new list and returning original deck BUT shuffled 
             var rand = new Random();
             int randomIndex; 
             
@@ -105,12 +72,12 @@ namespace Blackjack
                 shuffledDeck.Add(deck[randomIndex]); 
                 deck.RemoveAt(randomIndex); 
             }
-            return shuffledDeck;
+            return shuffledDeck; 
         }
 
-        private List<Tuple<string, string>> Deal(int numOfCards, List<Tuple<string, string>>  shuffledDeck)
+        public List<Card> Deal(int numOfCards, List<Card>  shuffledDeck)
         {
-            var cardsDealt = new List<Tuple<string, string>>();
+            var cardsDealt = new List<Card>();
 
             for (int i = 0; i < numOfCards; i++)
             {
@@ -122,10 +89,12 @@ namespace Blackjack
             return cardsDealt;
             
         }
+        
+        // consider makingCardsInHand a property 
 
 
-        private void AddCardToHand(List<Tuple<string, string>> cardsDealt,
-            List<Tuple<string, string>> cardsInHand)
+        public void AddCardToHand(List<Card> cardsDealt,
+            List<Card> cardsInHand)
         {
             cardsInHand.AddRange(cardsDealt);
 
@@ -229,91 +198,91 @@ namespace Blackjack
         
         
 
-        public void PlayBlackJack()
-        {
-
-            if (IsGameOver)
-                return;
-            
-            var deck = Shuffle(GenerateDeck());
-            var currentHand = Deal(2, deck);
-            
-            
-            while (true)
-            {
-
-                var currentScore = CalculateScore(currentHand);
-                
-                UpdateScore(currentScore);
-                
-                GameStatus();
-
-                if (IsDealerWinner || IsUserWinner || IsTied )
-                    break;
-
-                var displayScore = IsUserBust ? "Bust!" : currentScore.ToString();
-
-                var displayTurn = IsUsersTurn ? "You are at currently" : "Dealer is";
-                
-                Console.WriteLine("\n" + displayTurn + " at " + displayScore);
-
-                Console.WriteLine("with the hand [" + string.Join(", ", currentHand) + "]");
-
-                if (IsUserBust)
-                {
-                    break;
-                }
-                
-                
-                Console.Write("\nHit or stay? (Hit = 1, Stay = 0): ");
-
-                var hitOrStay = IsUsersTurn ? Console.ReadLine() : IsDealerGoingToHit(currentScore);
-
-                if(!IsUsersTurn)
-                    Console.WriteLine(hitOrStay);
-                
-
-                if (hitOrStay == "0")
-                {
-
-
-                    if (!IsUsersTurn)
-                    {
-                        IsGameOver = true;
-                        GameStatus();
-                    }
-                        
-                    
-                    IsUsersTurn = false;
-                    break;
-                }
-                    
-
-                var dealAgain = Deal(1, deck);
-                
-                
-                AddCardToHand(dealAgain, currentHand);
-
-                
-                
-
-                displayTurn = IsUsersTurn ? "You draw" : "Dealer draws";
-                
-                Console.WriteLine(displayTurn + " " + String.Join(' ',dealAgain));
-                
-            }
-            
-            
-            if(IsUserWinner)
-                Console.WriteLine("You beat the dealer");
-            else if (IsDealerWinner)
-                Console.WriteLine("Dealer Wins");
-            
-            if(IsTied)
-                Console.WriteLine("It's a tie!");
-            
-
-        }
+        // public void PlayBlackJack()
+        // {
+        //
+        //     if (IsGameOver)
+        //         return;
+        //     
+        //     var deck = Shuffle(GenerateDeck());
+        //     var currentHand = Deal(2, deck);
+        //     
+        //     
+        //     while (true)
+        //     {
+        //
+        //         var currentScore = CalculateScore(currentHand);
+        //         
+        //         UpdateScore(currentScore);
+        //         
+        //         GameStatus();
+        //
+        //         if (IsDealerWinner || IsUserWinner || IsTied )
+        //             break;
+        //
+        //         var displayScore = IsUserBust ? "Bust!" : currentScore.ToString();
+        //
+        //         var displayTurn = IsUsersTurn ? "You are at currently" : "Dealer is";
+        //         
+        //         Console.WriteLine("\n" + displayTurn + " at " + displayScore);
+        //
+        //         Console.WriteLine("with the hand [" + string.Join(", ", currentHand) + "]");
+        //
+        //         if (IsUserBust)
+        //         {
+        //             break;
+        //         }
+        //         
+        //         
+        //         Console.Write("\nHit or stay? (Hit = 1, Stay = 0): ");
+        //
+        //         var hitOrStay = IsUsersTurn ? Console.ReadLine() : IsDealerGoingToHit(currentScore);
+        //
+        //         if(!IsUsersTurn)
+        //             Console.WriteLine(hitOrStay);
+        //         
+        //
+        //         if (hitOrStay == "0")
+        //         {
+        //
+        //
+        //             if (!IsUsersTurn)
+        //             {
+        //                 IsGameOver = true;
+        //                 GameStatus();
+        //             }
+        //                 
+        //             
+        //             IsUsersTurn = false;
+        //             break;
+        //         }
+        //             
+        //
+        //         var dealAgain = Deal(1, deck);
+        //         
+        //         
+        //         AddCardToHand(dealAgain, currentHand);
+        //
+        //         
+        //         
+        //
+        //         displayTurn = IsUsersTurn ? "You draw" : "Dealer draws";
+        //         
+        //         Console.WriteLine(displayTurn + " " + String.Join(' ',dealAgain));
+        //         
+        //     }
+        //     
+        //     
+        //     if(IsUserWinner)
+        //         Console.WriteLine("You beat the dealer");
+        //     else if (IsDealerWinner)
+        //         Console.WriteLine("Dealer Wins");
+        //     
+        //     if(IsTied)
+        //         Console.WriteLine("It's a tie!");
+        //     
+        //
+        // }
     }
 }
 
