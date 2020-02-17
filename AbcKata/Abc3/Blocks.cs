@@ -67,7 +67,7 @@ namespace Abc3
             
         }
         
-        public void runABC()
+        public void RunABC()
         {
             Console.WriteLine("Enter your word: ");
             var input = Console.ReadLine();
@@ -78,11 +78,8 @@ namespace Abc3
 
         }
         
-        
-
-
-
-
 
     }
 }
+
+//There's a chance for an overshoot - so could you say usedBlocks.Count > word.Length, return false
