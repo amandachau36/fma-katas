@@ -23,6 +23,11 @@ namespace Blackjack
 
         private bool IsUserWinner { get; set; } 
         
+        private static readonly Dictionary<string, int> = new Dictionary<string, int>
+        {
+            {"Ace"}
+        }
+
 
         public Game()   // is the constructor always public ? 
         {

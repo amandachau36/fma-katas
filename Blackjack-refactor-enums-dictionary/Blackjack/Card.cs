@@ -3,28 +3,28 @@ namespace Blackjack
     
     public enum Suit // this is automatically public even without the public modifer 
     {
-        CLUB,
-        DIAMOND,
-        HEARTS,
-        SPADE
+        Club,
+        Diamond,
+        Hearts,
+        Spade
     }
 
 
     public enum Rank
     {
-        ACE,
-        TWO,
-        THREE,
-        FOUR,
-        FIVE,
-        SIX,
-        SEVEN,
-        EIGHT,
-        NINE,
-        TEN,
-        JACK,  
-        QUEEN,
-        KING 
+        Ace,  //  this is the convention for C#
+        Two,
+        Three,
+        Four,
+        Five,
+        Six,
+        Seven,
+        Eight,
+        Nine,
+        Ten,
+        Jack,  
+        Queen,
+        King 
     }
 
     
@@ -34,10 +34,10 @@ namespace Blackjack
         public Suit suit;
 
 
-        public Card(Rank _rank, Suit _suit)
+        public Card(Rank rank, Suit suit) // constructor 
         {
-            rank = _rank;  //does this need to be underscored
-            suit = _suit;
+            this.rank = rank;  //does this need to be underscored
+            this.suit = suit;
         }
         
 

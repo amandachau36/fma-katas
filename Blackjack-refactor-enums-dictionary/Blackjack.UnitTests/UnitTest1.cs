@@ -14,6 +14,9 @@ namespace Blackjack.UnitTests
         // write tests for card class 
         // write tests for generate deck 
 
+        
+        
+        
         [Test]
         public void CalculateScore_HandIsAceAceTwoKing_Returns14()
         {
@@ -65,5 +68,7 @@ namespace Blackjack.UnitTests
             Assert.AreEqual(21, result );
 
         }
+        
+        
     }
 }
