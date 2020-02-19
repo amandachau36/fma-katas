@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Runtime.CompilerServices;
 
 
 namespace Blackjack
@@ -9,9 +9,9 @@ namespace Blackjack
     public class Game
     {
         
-        private bool IsUsersTurn { get; set; }   // should this be underscored? 
+        private bool IsUsersTurn { get; set; }   // this is a property  and not underscored 
         
-        private bool IsGameOver { get; set; }
+        private bool IsGameOver { get; set; } 
         
         private int UserScore { get; set; }
         private int DealerScore { get; set; }
@@ -131,13 +131,13 @@ namespace Blackjack
             var score = 0;
             foreach (var card in currentHand)
             {
-                score += ConvertPoints[card.rank];
+                score += ConvertPoints[card.Rank];
                 
             }
             
             foreach (var card in currentHand)
             {
-                if (score > WinningScore && card.rank == Rank.Ace) // change value of ACE from 11 to 1 
+                if (score > WinningScore && card.Rank == Rank.Ace) // change value of ACE from 11 to 1 
                      score -= 10;
                  
                 if (score <= WinningScore)  // ignore all subsequent aces and exit function
@@ -201,9 +201,26 @@ namespace Blackjack
             }
             
         }
-        
-        
 
+
+        public NextMove GetUsersMove()
+        {
+            while (true)
+            {
+                Console.Write("\nHit or stay? (Hit = 1, Stay = 0): ");
+                var input = Console.ReadLine();
+                if (input == "1")
+                    return NextMove.Hit;
+                if (input == "0")
+                    return NextMove.Stay; 
+                Console.WriteLine("We don't understand you");
+            }
+            
+        }
+
+        
+        
+        
         public void PlayBlackJack()
         {
         
@@ -231,21 +248,16 @@ namespace Blackjack
                 var displayTurn = IsUsersTurn ? "You are at currently" : "Dealer is";
                 
                 Console.WriteLine("\n" + displayTurn + " at " + displayScore);
-        
-                Console.WriteLine("with the hand [" + string.Join(", ", currentHand) + "]");
+                
+                Console.WriteLine("with the hand [" + string.Join(", ", Card.ToListOfStrings(currentHand)) + "]");
         
                 if (IsUserBust)
                 {
                     break;
                 }
                 
-                
-                Console.Write("\nHit or stay? (Hit = 1, Stay = 0): ");
         
-                var hitOrStay = IsUsersTurn ? (NextMove)Int32.Parse(Console.ReadLine()) : DealersNextMove(currentScore);
-        
-                if(!IsUsersTurn)
-                    Console.WriteLine((int)hitOrStay);
+                var hitOrStay = IsUsersTurn ? GetUsersMove() : DealersNextMove(currentScore);
                 
         
                 if (hitOrStay == NextMove.Stay)
@@ -268,13 +280,11 @@ namespace Blackjack
                 
                 
                 AddCardToHand(dealAgain, currentHand);
-        
-                
-                
-        
+
+
                 displayTurn = IsUsersTurn ? "You draw" : "Dealer draws";
                 
-                Console.WriteLine(displayTurn + " " + String.Join(' ',dealAgain));
+                Console.WriteLine(displayTurn + " " + String.Join(' ', Card.ToListOfStrings(dealAgain)));
                 
             }
             
@@ -293,7 +303,8 @@ namespace Blackjack
 }
 
 
-
+// if(!IsUsersTurn)
+//     Console.WriteLine((int)hitOrStay);
 
 
 // public class TupleList<T1, T2> : List<Tuple<T1, T2>>
