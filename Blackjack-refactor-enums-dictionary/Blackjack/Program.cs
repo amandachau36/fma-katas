@@ -9,8 +9,8 @@ namespace Blackjack
         static void Main(string[] args)
         {
             var game = new Game();
-            // game.PlayBlackJack();
-            // game.PlayBlackJack();
+            game.PlayBlackJack();
+            game.PlayBlackJack();
 
             // Console.WriteLine(Suit.CLUB);
 
@@ -19,38 +19,62 @@ namespace Blackjack
             // var testCard = new Card(Rank.ACE, Suit.CLUB);
             // Console.WriteLine(testCard.rank);
 
-            var deck = game.GenerateDeck();
-            var shuffledDeck = game.Shuffle(deck);
-            
-            foreach (var card in shuffledDeck)
-            {
-                Console.WriteLine(card.rank + " " + card.suit);
-            }
-
-            Console.WriteLine("total cards: " + shuffledDeck.Count  );
-
-            var cardsDealt = game.Deal(2, shuffledDeck);
-            
-            Console.WriteLine("cards dealt: ");
-            foreach (var card in cardsDealt)
-            {
-                Console.WriteLine(card.rank + " " + card.suit);
-            }
-            Console.WriteLine("total cards: " + shuffledDeck.Count  );
-            
-            
-            var cardsDealt2 = game.Deal(1, shuffledDeck);
-
-            game.AddCardToHand(cardsDealt2, cardsDealt);
-
-            Console.WriteLine("new hand:");
-            foreach (var card in cardsDealt)
-            {
-                Console.WriteLine(card.rank + " " + card.suit);
-            }
-            
-            
-            
+            // var deck = game.GenerateDeck();
+            // var shuffledDeck = game.Shuffle(deck);
+            //
+            // foreach (var card in shuffledDeck)
+            // {
+            //     Console.WriteLine(card.rank + " " + card.suit);
+            // }
+            //
+            // Console.WriteLine("total cards: " + shuffledDeck.Count  );
+            //
+            // var cardsDealt = game.Deal(2, shuffledDeck);
+            //
+            // Console.WriteLine("cards dealt: ");
+            // foreach (var card in cardsDealt)
+            // {
+            //     Console.WriteLine(card.rank + " " + card.suit);
+            // }
+            // Console.WriteLine("total cards: " + shuffledDeck.Count  );
+            //
+            //
+            // var cardsDealt2 = game.Deal(1, shuffledDeck);
+            //
+            // game.AddCardToHand(cardsDealt2, cardsDealt);
+            //
+            // Console.WriteLine("new hand:");
+            // foreach (var card in cardsDealt)
+            // {
+            //     Console.WriteLine(card.rank + " " + card.suit);
+            // }
+            //
+            // var convertPoints = game.ConvertPoints;
+            //
+            // foreach ( KeyValuePair<Rank, int> kvp in convertPoints)
+            // {
+            //     Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value );
+            // }
+            //
+            // var a = Rank.Ace;
+            //
+            // Console.WriteLine("The value of Ace is " + convertPoints[a]);
+            //
+            // var hand = new List<Card>();
+            // hand.Add(new Card(Rank.Two, Suit.Club));  // 14, 24, 34 
+            // hand.Add(new Card(Rank.King, Suit.Diamond ));
+            // hand.Add(new Card(Rank.Ace, Suit.Club));
+            // hand.Add(new Card(Rank.Ace, Suit.Hearts));
+            //
+            // var score = game.CalculateScore(hand);
+            //
+            // Console.WriteLine("score: " + score);
+            //
+            // var playAgain = game.IsDealerGoingToHit(12);
+            // Console.WriteLine(playAgain);
+            //
+            // var stopPlaying = game.IsDealerGoingToHit(19);
+            // Console.WriteLine(stopPlaying);
 
         }
     }

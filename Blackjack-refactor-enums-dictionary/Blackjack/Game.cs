@@ -9,7 +9,7 @@ namespace Blackjack
     public class Game
     {
         
-        private bool IsUsersTurn { get; set; }
+        private bool IsUsersTurn { get; set; }   // should this be underscored? 
         
         private bool IsGameOver { get; set; }
         
@@ -21,12 +21,33 @@ namespace Blackjack
         
         private bool IsDealerWinner { get; set; }
 
-        private bool IsUserWinner { get; set; } 
-        
-        private static readonly Dictionary<string, int> = new Dictionary<string, int>
+        private bool IsUserWinner { get; set; }
+
+        private const int WinningScore = 21;
+
+        public enum NextMove
         {
-            {"Ace"}
+               Stay = 0,
+               Hit = 1
         }
+        
+        public Dictionary<Rank, int> ConvertPoints = new Dictionary<Rank, int>
+        {
+            {Rank.Ace, 11},
+            {Rank.Two, 2},
+            {Rank.Three, 3},
+            {Rank.Four, 4},
+            {Rank.Five, 5},
+            {Rank.Six, 6},
+            {Rank.Seven, 7},
+            {Rank.Eight, 8},
+            {Rank.Nine, 9},
+            {Rank.Ten, 10},
+            {Rank.Jack, 10},
+            {Rank.Queen, 10},
+            {Rank.King, 10}
+            
+        };
 
 
         public Game()   // is the constructor always public ? 
@@ -42,7 +63,7 @@ namespace Blackjack
         }
         
         
-        public List<Card> GenerateDeck() //
+        public List<Card> GenerateDeck() 
         {
     
             var deck = new List<Card>();
@@ -105,54 +126,34 @@ namespace Blackjack
 
         }
 
-        public int CalculateScore(List<Tuple<string, string>> currentHand)
+        public int CalculateScore(List<Card> currentHand)
         {
             var score = 0;
             foreach (var card in currentHand)
             {
-                int num;
-                var isNum = Int32.TryParse(card.Item1, out num);
-                if (isNum)
-                {
-                    score += num;
-                    continue; // skips code below
-                }
+                score += ConvertPoints[card.rank];
                 
-                if (card.Item1 == "ACE")
-                    score += 11;
-                else 
-                    score += 10; //jack, queen, king
-                  
             }
-
+            
             foreach (var card in currentHand)
             {
-                if (score > 21 && card.Item1 == "ACE") // change value of ACE from 11 to 1 
-                    score -= 10;
-                
-                if (score <= 21)  // ignore all subsequent aces and exit function
-                    return score;
-                
+                if (score > WinningScore && card.rank == Rank.Ace) // change value of ACE from 11 to 1 
+                     score -= 10;
+                 
+                if (score <= WinningScore)  // ignore all subsequent aces and exit function
+                     return score;   
             }
 
             return score;
 
-            // var handContainsAce = currentHand.Any(card => card.Item1 == "ACE"); // what about if it contains 2 ACEs? 
-            //
-            // if (score > 21 && handContainsAce)
-            //     score -= 10;
-            //
-            // return score;
+        }
+        public NextMove DealersNextMove(int score)
+        {
+            return (score < 17) ? NextMove.Hit : NextMove.Stay;
         }
         
-        private string IsDealerGoingToHit(int score)
-        {
-            if (score >= 17)
-                return "0";
-
-            return "1";
-
-        }
+        
+    
         
         private void UpdateScore(int currentScore)
         {
@@ -165,14 +166,14 @@ namespace Blackjack
        
         private void GameStatus ()
         {
-            if (UserScore > 21)
+            if (UserScore > WinningScore)
             {
                 IsGameOver = true;
                 IsUserBust = true;
                 return;
             }
 
-            if (DealerScore > 21 && UserScore <= 21 )
+            if (DealerScore > WinningScore && UserScore <= WinningScore )
             {
                 IsGameOver = true;
                 IsUserWinner = true;
@@ -203,91 +204,91 @@ namespace Blackjack
         
         
 
-        // public void PlayBlackJack()
-        // {
-        //
-        //     if (IsGameOver)
-        //         return;
-        //     
-        //     var deck = Shuffle(GenerateDeck());
-        //     var currentHand = Deal(2, deck);
-        //     
-        //     
-        //     while (true)
-        //     {
-        //
-        //         var currentScore = CalculateScore(currentHand);
-        //         
-        //         UpdateScore(currentScore);
-        //         
-        //         GameStatus();
-        //
-        //         if (IsDealerWinner || IsUserWinner || IsTied )
-        //             break;
-        //
-        //         var displayScore = IsUserBust ? "Bust!" : currentScore.ToString();
-        //
-        //         var displayTurn = IsUsersTurn ? "You are at currently" : "Dealer is";
-        //         
-        //         Console.WriteLine("\n" + displayTurn + " at " + displayScore);
-        //
-        //         Console.WriteLine("with the hand [" + string.Join(", ", currentHand) + "]");
-        //
-        //         if (IsUserBust)
-        //         {
-        //             break;
-        //         }
-        //         
-        //         
-        //         Console.Write("\nHit or stay? (Hit = 1, Stay = 0): ");
-        //
-        //         var hitOrStay = IsUsersTurn ? Console.ReadLine() : IsDealerGoingToHit(currentScore);
-        //
-        //         if(!IsUsersTurn)
-        //             Console.WriteLine(hitOrStay);
-        //         
-        //
-        //         if (hitOrStay == "0")
-        //         {
-        //
-        //
-        //             if (!IsUsersTurn)
-        //             {
-        //                 IsGameOver = true;
-        //                 GameStatus();
-        //             }
-        //                 
-        //             
-        //             IsUsersTurn = false;
-        //             break;
-        //         }
-        //             
-        //
-        //         var dealAgain = Deal(1, deck);
-        //         
-        //         
-        //         AddCardToHand(dealAgain, currentHand);
-        //
-        //         
-        //         
-        //
-        //         displayTurn = IsUsersTurn ? "You draw" : "Dealer draws";
-        //         
-        //         Console.WriteLine(displayTurn + " " + String.Join(' ',dealAgain));
-        //         
-        //     }
-        //     
-        //     
-        //     if(IsUserWinner)
-        //         Console.WriteLine("You beat the dealer");
-        //     else if (IsDealerWinner)
-        //         Console.WriteLine("Dealer Wins");
-        //     
-        //     if(IsTied)
-        //         Console.WriteLine("It's a tie!");
-        //     
-        //
-        // }
+        public void PlayBlackJack()
+        {
+        
+            if (IsGameOver)
+                return;
+            
+            var deck = Shuffle(GenerateDeck());
+            var currentHand = Deal(2, deck);
+            
+            
+            while (true)
+            {
+        
+                var currentScore = CalculateScore(currentHand);
+                
+                UpdateScore(currentScore);
+                
+                GameStatus();
+        
+                if (IsDealerWinner || IsUserWinner || IsTied )
+                    break;
+        
+                var displayScore = IsUserBust ? "Bust!" : currentScore.ToString();
+        
+                var displayTurn = IsUsersTurn ? "You are at currently" : "Dealer is";
+                
+                Console.WriteLine("\n" + displayTurn + " at " + displayScore);
+        
+                Console.WriteLine("with the hand [" + string.Join(", ", currentHand) + "]");
+        
+                if (IsUserBust)
+                {
+                    break;
+                }
+                
+                
+                Console.Write("\nHit or stay? (Hit = 1, Stay = 0): ");
+        
+                var hitOrStay = IsUsersTurn ? (NextMove)Int32.Parse(Console.ReadLine()) : DealersNextMove(currentScore);
+        
+                if(!IsUsersTurn)
+                    Console.WriteLine((int)hitOrStay);
+                
+        
+                if (hitOrStay == NextMove.Stay)
+                {
+        
+        
+                    if (!IsUsersTurn)
+                    {
+                        IsGameOver = true;
+                        GameStatus();
+                    }
+                        
+                    
+                    IsUsersTurn = false;
+                    break;
+                }
+                    
+        
+                var dealAgain = Deal(1, deck);
+                
+                
+                AddCardToHand(dealAgain, currentHand);
+        
+                
+                
+        
+                displayTurn = IsUsersTurn ? "You draw" : "Dealer draws";
+                
+                Console.WriteLine(displayTurn + " " + String.Join(' ',dealAgain));
+                
+            }
+            
+            
+            if(IsUserWinner)
+                Console.WriteLine("You beat the dealer");
+            else if (IsDealerWinner)
+                Console.WriteLine("Dealer Wins");
+            
+            if(IsTied)
+                Console.WriteLine("It's a tie!");
+            
+        
+        }
     }
 }
 
@@ -311,3 +312,21 @@ namespace Blackjack
 // };
 //
 // return tupleList;
+
+
+// var handContainsAce = currentHand.Any(card => card.Item1 == "ACE"); // what about if it contains 2 ACEs? 
+//
+// if (score > 21 && handContainsAce)
+//     score -= 10;
+//
+// return score;
+
+
+// private string IsDealerGoingToHit(int score)
+// {
+//     if (score >= 17)
+//         return "0";
+//
+//     return "1";
+//
+// }

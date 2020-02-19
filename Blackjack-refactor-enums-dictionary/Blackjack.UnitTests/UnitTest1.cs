@@ -13,6 +13,7 @@ namespace Blackjack.UnitTests
         
         // write tests for card class 
         // write tests for generate deck 
+        // rewrite unit cl
 
         
         

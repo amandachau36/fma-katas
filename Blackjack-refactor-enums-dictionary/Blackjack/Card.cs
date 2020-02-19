@@ -40,6 +40,13 @@ namespace Blackjack
             this.suit = suit;
         }
         
+        public override string ToString()
+        {
+            return $"{rank} of {suit}";
+        }
+        
+        
+        
 
     }
 }
