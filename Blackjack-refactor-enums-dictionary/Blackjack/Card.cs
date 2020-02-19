@@ -5,7 +5,7 @@ namespace Blackjack
     {
         Club,
         Diamond,
-        Hearts,
+        Heart,
         Spade
     }
 
