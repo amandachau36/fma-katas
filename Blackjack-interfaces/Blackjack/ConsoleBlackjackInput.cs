@@ -4,9 +4,17 @@ namespace Blackjack
 {
     public class ConsoleBlackjackInput : IInput
     {
-        public string GetInput()
+       
+
+        public Game.NextMove GetPlayerMove()
         {
-            return Console.ReadLine();
+            var input = Console.ReadLine();
+            if (input == "1")
+                return Game.NextMove.Hit;
+            if (input == "0")
+                return Game.NextMove.Stay;
+
+            return Game.NextMove.None;
         }
     }
 }

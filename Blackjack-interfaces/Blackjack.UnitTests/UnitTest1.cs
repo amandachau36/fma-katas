@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace Blackjack.UnitTests
 {
-    public class Tests
+    public class GameTests
     {
         [SetUp]
         public void Setup()
@@ -20,7 +20,9 @@ namespace Blackjack.UnitTests
         [Test]
         public void GenerateDeck_ByDefault_Returns52Cards()
         {
-            var game = new Game();
+            var consoleBlackjackDisplay = new ConsoleBlackjackDisplay();
+            var consoleBlackjackInput = new ConsoleBlackjackInput(); 
+            var game = new Game(consoleBlackjackDisplay, consoleBlackjackInput);
 
             var deck = game.GenerateDeck();
 
@@ -32,27 +34,26 @@ namespace Blackjack.UnitTests
         [Test]
         public void GenerateDeck_ByDefault_ReturnsAceOfClubAsFirstCard()
         {
-            var game = new Game();
+            var consoleBlackjackDisplay = new ConsoleBlackjackDisplay();
+            var consoleBlackjackInput = new ConsoleBlackjackInput(); 
+            var game = new Game(consoleBlackjackDisplay, consoleBlackjackInput);
 
             var deck = game.GenerateDeck();
 
-            var result = deck[0].ToString();
+            var result = deck[0].ToOtherString();
             
             Assert.AreEqual("Ace of Club", result );
         }
         
-        
-        
-
-
-
 
 
 
         [Test]
         public void CalculateScore_HandIsAceAceTwoKing_Returns14()
         {
-            var game = new Game();
+            var consoleBlackjackDisplay = new ConsoleBlackjackDisplay();
+            var consoleBlackjackInput = new ConsoleBlackjackInput(); 
+            var game = new Game(consoleBlackjackDisplay, consoleBlackjackInput);
 
             var hand = new List<Card>();
             hand.Add(new Card(Rank.Two, Suit.Club));  // 14, 24, 34 
@@ -70,7 +71,9 @@ namespace Blackjack.UnitTests
         [Test]
         public void CalculateScore_HandIsAceAceAce_Returns13()
         {
-            var game = new Game();
+            var consoleBlackjackDisplay = new ConsoleBlackjackDisplay();
+            var consoleBlackjackInput = new ConsoleBlackjackInput(); 
+            var game = new Game(consoleBlackjackDisplay, consoleBlackjackInput);
             
             var hand = new List<Card>();
             hand.Add(new Card(Rank.Ace, Suit.Diamond)); //3, 13, 23, 33
@@ -88,7 +91,9 @@ namespace Blackjack.UnitTests
         [Test]
         public void CalculateScore_HandIsAceKing_Returns21()
         {
-            var game = new Game();
+            var consoleBlackjackDisplay = new ConsoleBlackjackDisplay();
+            var consoleBlackjackInput = new ConsoleBlackjackInput(); 
+            var game = new Game(consoleBlackjackDisplay, consoleBlackjackInput);
             
             var hand = new List<Card>();
             hand.Add(new Card(Rank.King, Suit.Diamond)); // 11, 21 

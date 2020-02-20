@@ -5,9 +5,7 @@ namespace Blackjack
 {
     public class ConsoleBlackjackDisplay : IDisplay
     {
-   
-
-     
+        
         public void DisplayHitOrStayPrompt()
         {
             Console.Write("\nHit or stay? (Hit = 1, Stay = 0): ");

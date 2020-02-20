@@ -28,11 +28,12 @@ namespace Blackjack
         public enum NextMove
         {
                Stay = 0,
-               Hit = 1
+               Hit = 1,
+               None = 2
         }
 
 
-        private readonly IDisplay _blackjackDisplay;
+        private readonly IDisplay _blackjackDisplay; // field
 
         private readonly IInput _blackjackInput;
         
@@ -214,14 +215,11 @@ namespace Blackjack
             while (true)
             {
                 _blackjackDisplay.DisplayHitOrStayPrompt();
-                var input = _blackjackInput.GetInput();
-                if (input == "1")
-                    return NextMove.Hit;
-                if (input == "0")
-                    return NextMove.Stay; 
+                var nextMove = _blackjackInput.GetPlayerMove();
+                if (nextMove != NextMove.None)
+                    return nextMove;
                 _blackjackDisplay.DisplayInputErrorMessage();
             }
-            
         }
 
         

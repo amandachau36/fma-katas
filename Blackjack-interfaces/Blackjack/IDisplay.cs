@@ -17,9 +17,9 @@ namespace Blackjack
         
         void DisplayHand(List<Card> currentHand);
 
-        public void DisplayCardsDrawn(List<Card> cards);
+        void DisplayCardsDrawn(List<Card> cards);
 
-        public void DisplayWhoDraws(bool isUserTurn);
+        void DisplayWhoDraws(bool isUserTurn);
         
 
         void DisplayUserWins();
