@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blackjack", "Blackjack\Blackjack.csproj", "{35D46B5E-640C-4982-B414-FCE50E8A488E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blackjack.UnitTests", "Blackjack.UnitTests\Blackjack.UnitTests.csproj", "{708C9C37-7BC5-4EAB-9404-48B0F978EA6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{35D46B5E-640C-4982-B414-FCE50E8A488E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35D46B5E-640C-4982-B414-FCE50E8A488E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35D46B5E-640C-4982-B414-FCE50E8A488E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35D46B5E-640C-4982-B414-FCE50E8A488E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{708C9C37-7BC5-4EAB-9404-48B0F978EA6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{708C9C37-7BC5-4EAB-9404-48B0F978EA6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{708C9C37-7BC5-4EAB-9404-48B0F978EA6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{708C9C37-7BC5-4EAB-9404-48B0F978EA6B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
