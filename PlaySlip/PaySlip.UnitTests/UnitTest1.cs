@@ -1,10 +1,12 @@
+using System;
 using NUnit.Framework;
 using PlaySlip;
 
 namespace PaySlip.UnitTests
 {
   
-    public class EmployeeTests  // rename this  // difference files for tests from different classes 
+    public class EmployeeTests  // rename this  // difference files for tests from different classes
+                                // do I need to test properties? 
     {
         [SetUp]
         public void Setup()
@@ -17,7 +19,8 @@ namespace PaySlip.UnitTests
             //Arrange
             var firstName = "John";
             var surName = "Doe";
-            var employee = new Employee(firstName, surName);
+            var annualSalary = 60050;
+            var employee = new Employee(firstName, surName, annualSalary);
             
             //Act
             var result = employee.GenerateFullName();
@@ -26,9 +29,10 @@ namespace PaySlip.UnitTests
             Assert.AreEqual("John Doe", result);
 
         }
+        
     }
     
-    public class IncomeCalculatorTests  // rename this  // difference files for tests from different classes 
+    public class PaySlipTests  
     {
         [SetUp]
         public void Setup()
@@ -36,21 +40,81 @@ namespace PaySlip.UnitTests
         }
 
         [Test]
-        public void GenerateFullName_FirstAndLastName_ReturnsBothNames()
+        public void SetPaymentStartDate_ValidDateString_ReturnsDateTime()
         {
             //Arrange
-            var firstName = "John";
-            var surName = "Doe";
-            var employee = new Employee(firstName, surName);
+            var createPayslip = new CreatePaySlip();
             
             //Act
-            var result = employee.GenerateFullName();
+            var inputDate = "Mar 1, 2017";
+            createPayslip.SetPaymentStartDate(inputDate);
+            var result = createPayslip.PaymentStartDate; 
+            
                 
             //Assert
-            Assert.AreEqual("John Doe", result);
+            var date = new DateTime(2017, 3, 1);
+            
+            Assert.AreEqual(date, result);
 
         }
+        
+        
+        
+        [Test]
+        public void PayPeriodInDays_ValidStartAndEndDate_ReturnsCorrectPayPeriod()
+        {
+            //Arrange
+            var createPayslip = new CreatePaySlip();
+            
+            //Act
+            var startDate = "Mar 1, 2017";
+            var endDate = "Mar 31, 2017";
+            createPayslip.SetPaymentStartDate(startDate);
+            createPayslip.SetPaymentEndDate(endDate);
+            createPayslip.CalculatePayPeriod(); 
+            var result = createPayslip.PayPeriod; 
+            
+                
+            //Assert
+            var payPeriod = TimeSpan.FromDays(31);
+            Assert.AreEqual(payPeriod, result);
+
+        }
+        
+        // Need test for if startDate < EndDate or if either dates are not valid
+
+
+        [Test]
+        public void GrossIncomePerPayPeriod_ValidAnnualSalary_ReturnsCorrectGrossIncome()
+        {
+            //Arrange 
+            var createPaySlip = new CreatePaySlip();
+        
+            //Act
+            var startDate = "Mar 1, 2017";
+            var endDate = "Mar 31, 2017";
+            createPaySlip.SetPaymentStartDate(startDate);
+            createPaySlip.SetPaymentEndDate(endDate);
+            decimal annualSalary = 60050m;  //is writing m necessary when I already have d
+            createPaySlip.CalculateGrossIncome(annualSalary);
+            var result = createPaySlip.GrossIncome; 
+            
+            // Assert
+            decimal grossIncome = 31m * (60050m / 365m);
+            Assert.AreEqual(grossIncome, result);
+            
+        }
+        
+        
+        
+        
+        
+        
+    
     }
+    
+    
+
 }
 
 
