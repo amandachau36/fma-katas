@@ -14,11 +14,15 @@ namespace PlaySlip
 
         public decimal IncomeTax { get; private set; }
         
+        public decimal NetIncome { get; private set; }
+        
+        public decimal Super { get; private set; }
+        
         // should I be setting all these values in the constructor . . . 
 
         public void SetPaymentStartDate(string date) // make this into an interface but can't pass in the string?  
         {
-            PaymentStartDate = DateTime.Parse(date);
+            PaymentStartDate = DateTime.Parse(date);  // should probably put this into the constructor
         }
         
         public void SetPaymentEndDate(string date) // not DRY 
@@ -47,7 +51,7 @@ namespace PlaySlip
             return Decimal.Round(amount);  //  how can I make it amount.RoundToDollar()
         }
 
-        public void CalculateIncomeTax(decimal annualSalary)
+        public void CalculateIncomeTax(decimal annualSalary)  // perhaps I should just chuck annual salary in the constructor as welllll but then I can't use it for the different ppl 
         {
             decimal incomeTaxPerYear = 0;
             if (annualSalary <= 18200m)
@@ -63,8 +67,20 @@ namespace PlaySlip
 
             decimal payPeriodInDays = Convert.ToDecimal(PayPeriod.TotalDays);
             IncomeTax = incomeTaxPerYear * (payPeriodInDays/ 365m);
+        }
+
+        public void CalculateNetIncome()
+        {
+            NetIncome = GrossIncome - IncomeTax;
+        }
+
+        public void CalculateSuper(decimal superRate)
+        {
+            Super = GrossIncome * superRate / 100m;
 
         }
+        
+        
 
 
     }

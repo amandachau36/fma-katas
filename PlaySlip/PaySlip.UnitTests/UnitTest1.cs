@@ -132,6 +132,62 @@ namespace PaySlip.UnitTests
 
         
        
+                
+        [Test]
+        public void CalculateNetIncome_ReturnsCorrectNetIncome() // not sure what the situation is here 
+        {
+            //Arrange 
+            var createPaySlip = new CreatePaySlip();
+        
+            //Act
+            var startDate = "Mar 1, 2017";
+            var endDate = "Mar 31, 2017";
+            createPaySlip.SetPaymentStartDate(startDate);
+            createPaySlip.SetPaymentEndDate(endDate);
+       
+            decimal annualSalary = 60050m;
+            createPaySlip.CalculateGrossIncome(annualSalary);  
+            createPaySlip.CalculateIncomeTax(annualSalary);
+            
+            createPaySlip.CalculateNetIncome();
+            
+            var result = createPaySlip.NetIncome;
+            
+        
+            // Assert
+            decimal netIncome = (annualSalary - (3572m + (60050m - 37000m) * 0.325m)) * (31m/365m);
+            Assert.AreEqual(CreatePaySlip.RoundToDollar(netIncome), CreatePaySlip.RoundToDollar(result) );
+            
+        }
+
+        
+                        
+        [Test]
+        public void CalculateSuper_ValidSuperRate_ReturnsCorrectSuper() // not sure what the situation is here 
+        {
+            //Arrange 
+            var createPaySlip = new CreatePaySlip();
+        
+            //Act
+            var startDate = "Mar 1, 2017";
+            var endDate = "Mar 31, 2017";
+            createPaySlip.SetPaymentStartDate(startDate);
+            createPaySlip.SetPaymentEndDate(endDate);
+       
+            var annualSalary = 60050m;
+            var superRate = 9m;
+            
+            createPaySlip.CalculateGrossIncome(annualSalary);
+            createPaySlip.CalculateSuper(superRate);
+            
+            var result = createPaySlip.Super;
+            
+        
+            // Assert
+            decimal super = 31m * (60050m / 365m) * superRate / 100m;
+            Assert.AreEqual(CreatePaySlip.RoundToDollar(super), CreatePaySlip.RoundToDollar(result) );
+            
+        }
         
         
 
