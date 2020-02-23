@@ -17,18 +17,15 @@ namespace PlaySlip
         public decimal NetIncome { get; private set; }
         
         public decimal Super { get; private set; }
-        
-        // should I be setting all these values in the constructor . . . 
 
-        public void SetPaymentStartDate(string date) // make this into an interface but can't pass in the string?  
+
+        public CreatePaySlip(string paymentStartDate, string paymentEndDate)
         {
-            PaymentStartDate = DateTime.Parse(date);  // should probably put this into the constructor
+            PaymentStartDate = DateTime.Parse(paymentStartDate);
+            PaymentEndDate = DateTime.Parse(paymentEndDate);
+            CalculatePayPeriod();
         }
         
-        public void SetPaymentEndDate(string date) // not DRY 
-        {
-            PaymentEndDate = DateTime.Parse(date);
-        }
 
         public void CalculatePayPeriod()
         {
@@ -39,7 +36,6 @@ namespace PlaySlip
         public void CalculateGrossIncome(decimal annualSalary)
         {    
             
-            CalculatePayPeriod();
             // doesn't take into account leap years or that the proportion of work days/weekend  may vary between pay periods 
             decimal payPeriodInDays = Convert.ToDecimal(PayPeriod.TotalDays); // convert to double then decimal
             decimal daysInYear = 365m;   
@@ -81,7 +77,8 @@ namespace PlaySlip
         }
         
         
-
+        
+        
 
     }
 }

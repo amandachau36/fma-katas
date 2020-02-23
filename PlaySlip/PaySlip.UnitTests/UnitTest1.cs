@@ -43,12 +43,12 @@ namespace PaySlip.UnitTests
         public void SetPaymentStartDate_ValidDateString_ReturnsDateTime()
         {
             //Arrange
-            var createPayslip = new CreatePaySlip();
+            var startDate = "Mar 1, 2017";
+            var endDate = "Mar 31, 2017";
+            var createPaySlip = new CreatePaySlip(startDate, endDate);
             
             //Act
-            var inputDate = "Mar 1, 2017";
-            createPayslip.SetPaymentStartDate(inputDate);
-            var result = createPayslip.PaymentStartDate; 
+            var result = createPaySlip.PaymentStartDate; 
             
                 
             //Assert
@@ -64,15 +64,12 @@ namespace PaySlip.UnitTests
         public void CalculatePayPeriod_ValidStartAndEndDate_ReturnsCorrectPayPeriod()
         {
             //Arrange
-            var createPayslip = new CreatePaySlip();
-            
-            //Act
             var startDate = "Mar 1, 2017";
             var endDate = "Mar 31, 2017";
-            createPayslip.SetPaymentStartDate(startDate);
-            createPayslip.SetPaymentEndDate(endDate);
-            createPayslip.CalculatePayPeriod(); 
-            var result = createPayslip.PayPeriod; 
+            var createPaySlip = new CreatePaySlip(startDate, endDate);
+            
+            //Act
+            var result = createPaySlip.PayPeriod; 
             
                 
             //Assert
@@ -88,13 +85,11 @@ namespace PaySlip.UnitTests
         public void CalculateGrossIncome_ValidAnnualSalary_ReturnsCorrectGrossIncome()
         {
             //Arrange 
-            var createPaySlip = new CreatePaySlip();
-        
-            //Act
             var startDate = "Mar 1, 2017";
             var endDate = "Mar 31, 2017";
-            createPaySlip.SetPaymentStartDate(startDate);
-            createPaySlip.SetPaymentEndDate(endDate);
+            var createPaySlip = new CreatePaySlip(startDate, endDate);
+        
+            //Act
             decimal annualSalary = 60050m;  //is writing m necessary when I already have d
             createPaySlip.CalculateGrossIncome(annualSalary);
             var result = createPaySlip.GrossIncome; 
@@ -110,15 +105,13 @@ namespace PaySlip.UnitTests
         public void CalculateIncomeTax_ValidAnnualSalary_ReturnsCorrectIncomeTax()
         {
             //Arrange 
-            var createPaySlip = new CreatePaySlip();
-        
-            //Act
             var startDate = "Mar 1, 2017";
             var endDate = "Mar 31, 2017";
-            createPaySlip.SetPaymentStartDate(startDate);
-            createPaySlip.SetPaymentEndDate(endDate);
-            createPaySlip.CalculatePayPeriod(); 
-            decimal annualSalary = 60050m;
+            var createPaySlip = new CreatePaySlip(startDate, endDate);
+        
+            //Act
+            
+            var annualSalary = 60050m;
             createPaySlip.CalculateIncomeTax(annualSalary);
             
           
@@ -137,18 +130,14 @@ namespace PaySlip.UnitTests
         public void CalculateNetIncome_ReturnsCorrectNetIncome() // not sure what the situation is here 
         {
             //Arrange 
-            var createPaySlip = new CreatePaySlip();
-        
-            //Act
             var startDate = "Mar 1, 2017";
             var endDate = "Mar 31, 2017";
-            createPaySlip.SetPaymentStartDate(startDate);
-            createPaySlip.SetPaymentEndDate(endDate);
-       
+            var createPaySlip = new CreatePaySlip(startDate, endDate);
+        
+            //Act
             decimal annualSalary = 60050m;
             createPaySlip.CalculateGrossIncome(annualSalary);  
             createPaySlip.CalculateIncomeTax(annualSalary);
-            
             createPaySlip.CalculateNetIncome();
             
             var result = createPaySlip.NetIncome;
@@ -166,14 +155,12 @@ namespace PaySlip.UnitTests
         public void CalculateSuper_ValidSuperRate_ReturnsCorrectSuper() // not sure what the situation is here 
         {
             //Arrange 
-            var createPaySlip = new CreatePaySlip();
-        
-            //Act
             var startDate = "Mar 1, 2017";
             var endDate = "Mar 31, 2017";
-            createPaySlip.SetPaymentStartDate(startDate);
-            createPaySlip.SetPaymentEndDate(endDate);
-       
+            var createPaySlip = new CreatePaySlip(startDate, endDate);
+        
+            //Act
+            
             var annualSalary = 60050m;
             var superRate = 9m;
             
