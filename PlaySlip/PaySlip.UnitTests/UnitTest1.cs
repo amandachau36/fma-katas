@@ -61,7 +61,7 @@ namespace PaySlip.UnitTests
         
         
         [Test]
-        public void PayPeriodInDays_ValidStartAndEndDate_ReturnsCorrectPayPeriod()
+        public void CalculatePayPeriod_ValidStartAndEndDate_ReturnsCorrectPayPeriod()
         {
             //Arrange
             var createPayslip = new CreatePaySlip();
@@ -85,7 +85,7 @@ namespace PaySlip.UnitTests
 
 
         [Test]
-        public void GrossIncomePerPayPeriod_ValidAnnualSalary_ReturnsCorrectGrossIncome()
+        public void CalculateGrossIncome_ValidAnnualSalary_ReturnsCorrectGrossIncome()
         {
             //Arrange 
             var createPaySlip = new CreatePaySlip();
@@ -104,13 +104,42 @@ namespace PaySlip.UnitTests
             Assert.AreEqual(grossIncome, result);
             
         }
+
+        
+        [Test]
+        public void CalculateIncomeTax_ValidAnnualSalary_ReturnsCorrectIncomeTax()
+        {
+            //Arrange 
+            var createPaySlip = new CreatePaySlip();
+        
+            //Act
+            var startDate = "Mar 1, 2017";
+            var endDate = "Mar 31, 2017";
+            createPaySlip.SetPaymentStartDate(startDate);
+            createPaySlip.SetPaymentEndDate(endDate);
+            createPaySlip.CalculatePayPeriod(); 
+            decimal annualSalary = 60050m;
+            createPaySlip.CalculateIncomeTax(annualSalary);
+            
+          
+            var result = createPaySlip.IncomeTax; 
+            
+            // Assert
+            decimal incomeTax = (3572m + (60050m - 37000m) * 0.325m) * (31m/ 365m);
+            Assert.AreEqual(incomeTax, result);
+            
+        }
+
+        
+       
         
         
-        
-        
-        
-        
-    
+
+
+
+
+
+
     }
     
     

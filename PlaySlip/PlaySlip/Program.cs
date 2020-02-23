@@ -17,7 +17,16 @@ namespace PlaySlip
             createPayslip.CalculatePayPeriod();
             createPayslip.CalculateGrossIncome(employeeJohn.AnnualSalary);
             Console.WriteLine("gross salary: " + createPayslip.GrossIncome);
+
+            var x = 100.23m;
+            Console.WriteLine(CreatePaySlip.RoundToDollar(x));
+            var y = 100.56m;
+            Console.WriteLine(CreatePaySlip.RoundToDollar(y));
             
+            createPayslip.CalculateIncomeTax(employeeJohn.AnnualSalary);
+            
+            
+        
             
         }
     }
