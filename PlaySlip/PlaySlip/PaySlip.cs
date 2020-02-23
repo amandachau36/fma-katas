@@ -63,6 +63,7 @@ namespace PlaySlip
 
             decimal payPeriodInDays = Convert.ToDecimal(PayPeriod.TotalDays);
             IncomeTax = incomeTaxPerYear * (payPeriodInDays/ 365m);
+            
         }
 
         public void CalculateNetIncome()
