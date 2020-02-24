@@ -32,12 +32,24 @@ namespace PlaySlip
                 _paySlipDisplay.DisplayAnnualSalaryPrompt();
                 var input = Console.ReadLine();
                 decimal annualSalary;
-                if (Decimal.TryParse(input, out annualSalary) && annualSalary > 0) // should this logic be here . . . 
+                if (Decimal.TryParse(input, out annualSalary) && annualSalary >  0) // should this logic be here . . . 
                     return annualSalary;
                 _paySlipDisplay.DisplayAnnualSalaryErrorMessage();
             }
         }
         
+        
+        public static bool ValidateSuperRate(decimal superRate)
+        {
+            var maxSuper = 50;
+            var minSuper = 0;
+
+            if (superRate > minSuper && superRate < maxSuper)
+                return true;
+
+            return false;
+        }
+
         
         public decimal GetSuperRate()
         {
@@ -45,11 +57,10 @@ namespace PlaySlip
             {
                 _paySlipDisplay.DisplaySuperRatePrompt();
                 var input = Console.ReadLine();
-                decimal super;
-                var maxSuper = 50;
-                var minSuper = 0;
-                if (Decimal.TryParse(input, out super) && super > minSuper && super < maxSuper) // should this logic be here . . . Should also put it in the backend 
-                    return super;
+                decimal superRate;
+               
+                if (Decimal.TryParse(input, out superRate) && ValidateSuperRate(superRate)) // should this logic be here . . . 
+                    return superRate;
                 _paySlipDisplay.DisplaySuperRateErrorMessage();
             }
         }
@@ -75,10 +86,7 @@ namespace PlaySlip
         }
 
 
-        public string ToFormattedDate(DateTime date)
-        {
-            return date.ToString("MMMM dd, yyyy");
-        }
+   
 
 
         public void Print()
@@ -100,6 +108,13 @@ namespace PlaySlip
             var paymentStartDate = GetDate(_paySlipDisplay.DisplayPaymentStartDatePrompt);
 
             var paymentEndDate = GetDate(_paySlipDisplay.DisplayPaymentEndDatePrompt);
+
+            if (paymentEndDate < paymentStartDate)
+            {    
+                _paySlipDisplay.DisplayDateErrorMessage();
+                paymentEndDate = GetDate(_paySlipDisplay.DisplayPaymentEndDatePrompt);
+            }
+                
             
             
             var createPaySlip = new CreatePaySlip(paymentStartDate, paymentEndDate);  

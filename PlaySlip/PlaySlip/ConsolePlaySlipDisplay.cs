@@ -60,13 +60,19 @@ namespace PlaySlip
             Console.WriteLine("Date must be entered in the following format Mar 1, 2017. Payment end date must occur AFTER payment start date. Try again. ");
         }
 
+        public string ToFormattedDate(DateTime date) //  how can I make it date.toFormattedDate()
+        {
+            return date.ToString("MMMM dd, yyyy");
+        }
+        
+        
         public void DisplayGeneratedPayslip(string fullName, string startDate, string endDate, decimal grossIncome, decimal incomeTax, decimal netIncome, decimal super)
         {
             string[] lines =
             {
                 "\nYour payslip has been generated: \n",
                 $"Name: {fullName}",
-                $"Pay Period: {startDate} – {endDate}",
+                $"Pay Period: {ToFormattedDate(startDate)} – {ToFormattedDate(endDate)}",
                 $"Gross Income: {grossIncome}",
                 $"Income Tax: {incomeTax}",
                 $"Net Income: {netIncome}",
@@ -81,5 +87,8 @@ namespace PlaySlip
             }
    
         }
+        
+        
+        
     }
 }

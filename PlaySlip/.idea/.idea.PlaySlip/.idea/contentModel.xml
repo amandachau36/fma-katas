@@ -27,6 +27,7 @@
         <e p="ConsolePlaySlipDisplay.cs" t="Include" />
         <e p="Employee.cs" t="Include" />
         <e p="IDisplay.cs" t="Include" />
+        <e p="IInput.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">

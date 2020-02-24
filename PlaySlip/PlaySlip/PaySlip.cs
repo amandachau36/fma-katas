@@ -22,13 +22,11 @@ namespace PlaySlip
         
 
 
-        public CreatePaySlip(DateTime paymentStartDate, DateTime paymentEndDate) 
+        public CreatePaySlip(DateTime paymentStartDate, DateTime paymentEndDate) // should I pass an instance of Employee into the constructor? 
         {
             PaymentStartDate = paymentStartDate;
             PaymentEndDate = paymentEndDate;
             CalculatePayPeriod();
-   
-
         }
         
 
@@ -50,7 +48,7 @@ namespace PlaySlip
 
         
 
-        public void CalculateIncomeTax(decimal annualSalary)  // perhaps I should just chuck annual salary in the constructor as well but then I can't use it for the different ppl 
+        public void CalculateIncomeTax(decimal annualSalary)   
         {
             decimal incomeTaxPerYear = 0;
             if (annualSalary <= 18200m)
@@ -80,11 +78,7 @@ namespace PlaySlip
         public void CalculateSuper(decimal superRate)
         {
             Super = GrossIncome * superRate / 100m;
-
         }
-        
-
-       
         
 
     }
