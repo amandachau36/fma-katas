@@ -45,10 +45,10 @@ namespace PaySlip.UnitTests
         public void SetPaymentStartDate_ValidDateString_ReturnsDateTime()
         {
             //Arrange
-            var startDate = "Mar 1, 2017";
-            var endDate = "Mar 31, 2017";
-            var consolePaySlipDisplay = new ConsolePlaySlipDisplay();
-            var createPaySlip = new CreatePaySlip(startDate, endDate, consolePaySlipDisplay);
+            var startDate = new DateTime(2017, 3, 1);
+            var endDate = new DateTime(2017, 3, 31);
+         
+            var createPaySlip = new CreatePaySlip(startDate, endDate);
             
             //Act
             var result = createPaySlip.PaymentStartDate; 
@@ -67,10 +67,9 @@ namespace PaySlip.UnitTests
         public void CalculatePayPeriod_ValidStartAndEndDate_ReturnsCorrectPayPeriod()
         {
             //Arrange
-            var startDate = "Mar 1, 2017";
-            var endDate = "Mar 31, 2017";
-            var consolePaySlipDisplay = new ConsolePlaySlipDisplay();
-            var createPaySlip = new CreatePaySlip(startDate, endDate, consolePaySlipDisplay);
+            var startDate = new DateTime(2017, 3, 1);
+            var endDate = new DateTime(2017, 3, 31);
+            var createPaySlip = new CreatePaySlip(startDate, endDate);
             
             //Act
             var result = createPaySlip.PayPeriod; 
@@ -89,10 +88,9 @@ namespace PaySlip.UnitTests
         public void CalculateGrossIncome_ValidAnnualSalary_ReturnsCorrectGrossIncome()
         {
             //Arrange 
-            var startDate = "Mar 1, 2017";
-            var endDate = "Mar 31, 2017";
-            var consolePaySlipDisplay = new ConsolePlaySlipDisplay();
-            var createPaySlip = new CreatePaySlip(startDate, endDate, consolePaySlipDisplay);
+            var startDate = new DateTime(2017, 3, 1);
+            var endDate = new DateTime(2017, 3, 31);
+            var createPaySlip = new CreatePaySlip(startDate, endDate);
         
             //Act
             decimal annualSalary = 60050m;  //is writing m necessary when I already have d
@@ -110,10 +108,10 @@ namespace PaySlip.UnitTests
         public void CalculateIncomeTax_ValidAnnualSalary_ReturnsCorrectIncomeTax()
         {
             //Arrange 
-            var startDate = "Mar 1, 2017";
-            var endDate = "Mar 31, 2017";
-            var consolePaySlipDisplay = new ConsolePlaySlipDisplay();
-            var createPaySlip = new CreatePaySlip(startDate, endDate, consolePaySlipDisplay);
+            var startDate = new DateTime(2017, 3, 1);
+            var endDate = new DateTime(2017, 3, 31);
+         
+            var createPaySlip = new CreatePaySlip(startDate, endDate);
         
             //Act
             
@@ -136,23 +134,22 @@ namespace PaySlip.UnitTests
         public void CalculateNetIncome_ReturnsCorrectNetIncome() // not sure what the situation is here 
         {
             //Arrange 
-            var startDate = "Mar 1, 2017";
-            var endDate = "Mar 31, 2017";
-            var consolePaySlipDisplay = new ConsolePlaySlipDisplay();
-            var createPaySlip = new CreatePaySlip(startDate, endDate, consolePaySlipDisplay);
+            var startDate = new DateTime(2017, 3, 1);
+            var endDate = new DateTime(2017, 3, 31);
+         
+            var createPaySlip = new CreatePaySlip(startDate, endDate);
         
             //Act
             decimal annualSalary = 60050m;
-            createPaySlip.CalculateGrossIncome(annualSalary);  
-            createPaySlip.CalculateIncomeTax(annualSalary);
-            createPaySlip.CalculateNetIncome();
+           
+            createPaySlip.CalculateNetIncome(annualSalary);
             
             var result = createPaySlip.NetIncome;
             
         
             // Assert
             decimal netIncome = (annualSalary - (3572m + (60050m - 37000m) * 0.325m)) * (31m/365m);
-            Assert.AreEqual(CreatePaySlip.RoundToDollar(netIncome), CreatePaySlip.RoundToDollar(result) );
+            Assert.AreEqual(Decimal.Round(netIncome), Decimal.Round(result) );
             
         }
 
@@ -162,10 +159,10 @@ namespace PaySlip.UnitTests
         public void CalculateSuper_ValidSuperRate_ReturnsCorrectSuper() // not sure what the situation is here 
         {
             //Arrange 
-            var startDate = "Mar 1, 2017";
-            var endDate = "Mar 31, 2017";
-            var consolePaySlipDisplay = new ConsolePlaySlipDisplay();
-            var createPaySlip = new CreatePaySlip(startDate, endDate, consolePaySlipDisplay);
+            var startDate = new DateTime(2017, 3, 1);
+            var endDate = new DateTime(2017, 3, 31);
+         
+            var createPaySlip = new CreatePaySlip(startDate, endDate);
         
             //Act
             
@@ -180,7 +177,7 @@ namespace PaySlip.UnitTests
         
             // Assert
             decimal super = 31m * (60050m / 365m) * superRate / 100m;
-            Assert.AreEqual(CreatePaySlip.RoundToDollar(super), CreatePaySlip.RoundToDollar(result) );
+            Assert.AreEqual(Decimal.Round(super), Decimal.Round(result) );
             
         }
         

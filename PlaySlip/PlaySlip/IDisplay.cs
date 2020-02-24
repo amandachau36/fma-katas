@@ -24,10 +24,9 @@ namespace PlaySlip
         void DisplayPaymentEndDatePrompt();
 
         void DisplayDateErrorMessage();
-        
-        public void DisplayGeneratedPayslip(string fullName, string startDate, string endDate, decimal grossIncome, decimal incomeTax, decimal netIncome, decimal super)
-        {
-            
-        }
+
+        public void DisplayGeneratedPayslip(string fullName, string startDate, string endDate, decimal grossIncome,
+            decimal incomeTax, decimal netIncome, decimal super);
+
     }
 }

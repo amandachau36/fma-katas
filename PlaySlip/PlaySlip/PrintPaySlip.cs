@@ -20,7 +20,7 @@ namespace PlaySlip
                 var input = Console.ReadLine();
                 if (!string.IsNullOrWhiteSpace(input))
                     return input;
-                _paySlipDisplay.DisplayGeneralError();  // why can't this just be a part of the class but not interface 
+                _paySlipDisplay.DisplayGeneralError();  // why can't this just be a part of the class but not in the interface 
 
             }
         }
