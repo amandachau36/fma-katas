@@ -1,12 +1,13 @@
 using System;
+using System.Text;
 
 namespace PlaySlip
 {
     public class CreatePaySlip
     {
-        public DateTime PaymentStartDate { get; private set;  } 
+        public DateTime PaymentStartDate { get; } 
         
-        public DateTime PaymentEndDate { get; private set;  }
+        public DateTime PaymentEndDate { get; }
         
         public TimeSpan PayPeriod { get; private set; }
 
@@ -18,12 +19,16 @@ namespace PlaySlip
         
         public decimal Super { get; private set; }
 
+        
 
-        public CreatePaySlip(string paymentStartDate, string paymentEndDate)
+
+        public CreatePaySlip(DateTime paymentStartDate, DateTime paymentEndDate) 
         {
-            PaymentStartDate = DateTime.Parse(paymentStartDate);
-            PaymentEndDate = DateTime.Parse(paymentEndDate);
+            PaymentStartDate = paymentStartDate;
+            PaymentEndDate = paymentEndDate;
             CalculatePayPeriod();
+   
+
         }
         
 
@@ -40,14 +45,12 @@ namespace PlaySlip
             decimal payPeriodInDays = Convert.ToDecimal(PayPeriod.TotalDays); // convert to double then decimal
             decimal daysInYear = 365m;   
             GrossIncome = payPeriodInDays * (annualSalary / daysInYear);
+            
         }
 
-        public static decimal RoundToDollar(decimal amount)
-        {
-            return Decimal.Round(amount);  //  how can I make it amount.RoundToDollar()
-        }
+        
 
-        public void CalculateIncomeTax(decimal annualSalary)  // perhaps I should just chuck annual salary in the constructor as welllll but then I can't use it for the different ppl 
+        public void CalculateIncomeTax(decimal annualSalary)  // perhaps I should just chuck annual salary in the constructor as well but then I can't use it for the different ppl 
         {
             decimal incomeTaxPerYear = 0;
             if (annualSalary <= 18200m)
@@ -66,8 +69,11 @@ namespace PlaySlip
             
         }
 
-        public void CalculateNetIncome()
-        {
+        public void CalculateNetIncome(decimal annualSalary)
+        {   
+            CalculateGrossIncome(annualSalary);
+            CalculateIncomeTax(annualSalary);
+            
             NetIncome = GrossIncome - IncomeTax;
         }
 
@@ -77,8 +83,8 @@ namespace PlaySlip
 
         }
         
-        
-        
+
+       
         
 
     }

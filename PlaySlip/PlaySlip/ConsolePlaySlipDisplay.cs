@@ -4,54 +4,82 @@ namespace PlaySlip
 {
     public class ConsolePlaySlipDisplay : IDisplay
     {
+        public void DisplayWelcomeMessage()
+        {
+            Console.WriteLine("Welcome to the payslip generator");
+        }
+
         public void DisplayFirstNamePrompt()
         {
-            Console.WriteLine();
+            Console.Write("\nPlease input your first name: ");
+        }
+
+        public void DisplayGeneralError()
+        {
+            Console.WriteLine("There was an error. Please try again.");
         }
 
         public void DisplayLastNamePrompt()
         {
-            throw new System.NotImplementedException();
+            Console.Write("\nPlease input your last name: ");
         }
 
         public void DisplayAnnualSalaryPrompt()
         {
-            throw new System.NotImplementedException();
+            Console.Write("\nPlease enter your annual salary: ");
         }
 
         public void DisplayAnnualSalaryErrorMessage()
         {
-            throw new System.NotImplementedException();
+            Console.WriteLine("Annual salary must be a positive number. Try again.");
         }
 
         public void DisplaySuperRatePrompt()
         {
-            throw new System.NotImplementedException();
+            Console.Write("\nPlease enter your super rate: ");
         }
 
         public void DisplaySuperRateErrorMessage()
         {
-            throw new System.NotImplementedException();
+            Console.WriteLine("Super rate must be between 0% - 50%. Try again.");
+            
         }
 
         public void DisplayPaymentStartDatePrompt()
         {
-            throw new System.NotImplementedException();
+            Console.Write("\nPlease enter your payment start date (ex. Mar 1, 2017): ");
         }
 
         public void DisplayPaymentEndDatePrompt()
         {
-            throw new System.NotImplementedException();
+            Console.Write("\nPlease enter your payment end date (ex. Mar 31, 2017): ");
         }
 
         public void DisplayDateErrorMessage()
         {
-            throw new System.NotImplementedException();
+            Console.WriteLine("Date must be entered in the following format Mar 1, 2017. Payment end date must occur AFTER payment start date. Try again. ");
         }
 
-        public void DisplayGeneratedPayslip()
+        public void DisplayGeneratedPayslip(string fullName, string startDate, string endDate, decimal grossIncome, decimal incomeTax, decimal netIncome, decimal super)
         {
-            throw new System.NotImplementedException();
+            string[] lines =
+            {
+                "\nYour payslip has been generated: \n",
+                $"Name: {fullName}",
+                $"Pay Period: {startDate} – {endDate}",
+                $"Gross Income: {grossIncome}",
+                $"Income Tax: {incomeTax}",
+                $"Net Income: {netIncome}",
+                $"Super: {super}"
+            };
+
+           
+            foreach (var line in lines)
+            {
+                Console.WriteLine(line);
+
+            }
+   
         }
     }
 }

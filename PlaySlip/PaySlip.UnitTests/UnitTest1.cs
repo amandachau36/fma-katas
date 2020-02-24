@@ -5,7 +5,8 @@ using PlaySlip;
 namespace PaySlip.UnitTests
 {
   
-    public class EmployeeTests  // rename this  // difference files for tests from different classes
+    public class EmployeeTests  // rename this
+                                //  difference files for tests from different classes
                                 // do I need to test properties? 
     {
         [SetUp]
@@ -20,7 +21,8 @@ namespace PaySlip.UnitTests
             var firstName = "John";
             var surName = "Doe";
             var annualSalary = 60050;
-            var employee = new Employee(firstName, surName, annualSalary);
+            var superRate = 9;
+            var employee = new Employee(firstName, surName, annualSalary, superRate);
             
             //Act
             var result = employee.GenerateFullName();
@@ -45,7 +47,8 @@ namespace PaySlip.UnitTests
             //Arrange
             var startDate = "Mar 1, 2017";
             var endDate = "Mar 31, 2017";
-            var createPaySlip = new CreatePaySlip(startDate, endDate);
+            var consolePaySlipDisplay = new ConsolePlaySlipDisplay();
+            var createPaySlip = new CreatePaySlip(startDate, endDate, consolePaySlipDisplay);
             
             //Act
             var result = createPaySlip.PaymentStartDate; 
@@ -66,7 +69,8 @@ namespace PaySlip.UnitTests
             //Arrange
             var startDate = "Mar 1, 2017";
             var endDate = "Mar 31, 2017";
-            var createPaySlip = new CreatePaySlip(startDate, endDate);
+            var consolePaySlipDisplay = new ConsolePlaySlipDisplay();
+            var createPaySlip = new CreatePaySlip(startDate, endDate, consolePaySlipDisplay);
             
             //Act
             var result = createPaySlip.PayPeriod; 
@@ -87,7 +91,8 @@ namespace PaySlip.UnitTests
             //Arrange 
             var startDate = "Mar 1, 2017";
             var endDate = "Mar 31, 2017";
-            var createPaySlip = new CreatePaySlip(startDate, endDate);
+            var consolePaySlipDisplay = new ConsolePlaySlipDisplay();
+            var createPaySlip = new CreatePaySlip(startDate, endDate, consolePaySlipDisplay);
         
             //Act
             decimal annualSalary = 60050m;  //is writing m necessary when I already have d
@@ -107,7 +112,8 @@ namespace PaySlip.UnitTests
             //Arrange 
             var startDate = "Mar 1, 2017";
             var endDate = "Mar 31, 2017";
-            var createPaySlip = new CreatePaySlip(startDate, endDate);
+            var consolePaySlipDisplay = new ConsolePlaySlipDisplay();
+            var createPaySlip = new CreatePaySlip(startDate, endDate, consolePaySlipDisplay);
         
             //Act
             
@@ -132,7 +138,8 @@ namespace PaySlip.UnitTests
             //Arrange 
             var startDate = "Mar 1, 2017";
             var endDate = "Mar 31, 2017";
-            var createPaySlip = new CreatePaySlip(startDate, endDate);
+            var consolePaySlipDisplay = new ConsolePlaySlipDisplay();
+            var createPaySlip = new CreatePaySlip(startDate, endDate, consolePaySlipDisplay);
         
             //Act
             decimal annualSalary = 60050m;
@@ -157,7 +164,8 @@ namespace PaySlip.UnitTests
             //Arrange 
             var startDate = "Mar 1, 2017";
             var endDate = "Mar 31, 2017";
-            var createPaySlip = new CreatePaySlip(startDate, endDate);
+            var consolePaySlipDisplay = new ConsolePlaySlipDisplay();
+            var createPaySlip = new CreatePaySlip(startDate, endDate, consolePaySlipDisplay);
         
             //Act
             

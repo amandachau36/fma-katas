@@ -1,8 +1,13 @@
+using System;
+
 namespace PlaySlip
 {
     public interface IDisplay
     {
+        void DisplayWelcomeMessage();
         void DisplayFirstNamePrompt();
+
+        void DisplayGeneralError();
 
         void DisplayLastNamePrompt();
 
@@ -20,6 +25,9 @@ namespace PlaySlip
 
         void DisplayDateErrorMessage();
         
-        void DisplayGeneratedPayslip(); 
+        public void DisplayGeneratedPayslip(string fullName, string startDate, string endDate, decimal grossIncome, decimal incomeTax, decimal netIncome, decimal super)
+        {
+            
+        }
     }
 }
