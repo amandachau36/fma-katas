@@ -46,17 +46,6 @@ namespace Blackjack
             Suit = suit;
         }
 
-        // public Rank Something // properties   
-        // {
-        //     get { return _rank;  }
-        //     set
-        //     {
-        //         if (value == Rank.Joker)
-        //             _suit = Suit.Power;
-        //         _rank = value;
-        //     }  // value is a special parameter - visual basic .net syntax 
-        //     
-        // }
         
         
         public string ToOtherString()    // member method
@@ -86,6 +75,19 @@ namespace Blackjack
     
 }
 
+
+
+// public Rank Something // properties   
+// {
+//     get { return _rank;  }
+//     set
+//     {
+//         if (value == Rank.Joker)
+//             _suit = Suit.Power;
+//         _rank = value;
+//     }  // value is a special parameter - visual basic .net syntax 
+//     
+// }
 
 // public override string ToString()
 // {
