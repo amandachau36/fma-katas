@@ -40,8 +40,8 @@ namespace PlaySlip
         {    
             
             // doesn't take into account leap years or that the proportion of work days/weekend  may vary between pay periods 
-            decimal payPeriodInDays = Convert.ToDecimal(PayPeriod.TotalDays); // convert to double then decimal
-            decimal daysInYear = 365m;   
+            var payPeriodInDays = Convert.ToDecimal(PayPeriod.TotalDays); // convert to double then decimal
+            var daysInYear = 365m;   
             GrossIncome = payPeriodInDays * (annualSalary / daysInYear);
             
         }

@@ -6,11 +6,7 @@ namespace PlaySlip
     {
         static void Main(string[] args)
         { 
-            // var startDate = new DateTime(2017, 3, 1);
-            // var endDate = new DateTime(2017, 3, 31);
-            // var consolePaySlipDisplay = new ConsolePlaySlipDisplay();
-            // var createPaySlip = new CreatePaySlip(startDate, endDate, consolePaySlipDisplay);
-
+     
             var consolePaySlipDisplay = new ConsolePlaySlipDisplay();
             var printPaySlip = new PrintPaySlip(consolePaySlipDisplay);
 
@@ -53,3 +49,8 @@ namespace PlaySlip
 // Console.WriteLine(CreatePaySlip.RoundToDollar(y));
 //
 // createPayslip.CalculateIncomeTax(employeeJohn.AnnualSalary);
+
+// var startDate = new DateTime(2017, 3, 1);
+// var endDate = new DateTime(2017, 3, 31);
+// var consolePaySlipDisplay = new ConsolePlaySlipDisplay();
+// var createPaySlip = new CreatePaySlip(startDate, endDate, consolePaySlipDisplay);

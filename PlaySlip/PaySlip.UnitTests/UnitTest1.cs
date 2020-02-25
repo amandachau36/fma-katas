@@ -156,7 +156,7 @@ namespace PaySlip.UnitTests
         
                         
         [Test]
-        public void CalculateSuper_ValidSuperRate_ReturnsCorrectSuper() // not sure what the situation is here 
+        public void CalculateSuper_ValidSuperRate_ReturnsCorrectSuper()  
         {
             //Arrange 
             var startDate = new DateTime(2017, 3, 1);

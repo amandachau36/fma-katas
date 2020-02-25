@@ -7,20 +7,19 @@ namespace PlaySlip
         private readonly IDisplay _paySlipDisplay;
 
 
-        public PrintPaySlip(IDisplay playSlipDisplay) 
+        public PrintPaySlip(IDisplay playSlipDisplay)  // only interface methods are available 
         {
-            _paySlipDisplay = playSlipDisplay; 
-
+            _paySlipDisplay = playSlipDisplay; // composition
         }
-         public string GetName(Action firstOrLastNamePrompt) 
+         public string GetName(string firstOrLastNamePrompt) 
         {
-            while (true)
+            while (true) // inputIsNotValid
             {
-                firstOrLastNamePrompt();
+                _paySlipDisplay.Display(firstOrLastNamePrompt);
                 var input = Console.ReadLine();
                 if (!string.IsNullOrWhiteSpace(input))
                     return input;
-                _paySlipDisplay.DisplayGeneralError();  // why can't this just be a part of the class but not in the interface 
+                _paySlipDisplay.Display(Constants.GeneralError);  
 
             }
         }
@@ -29,25 +28,19 @@ namespace PlaySlip
         {
             while (true)
             {
-                _paySlipDisplay.DisplayAnnualSalaryPrompt();
+                _paySlipDisplay.Display(Constants.AnnualSalaryPrompt); // not necessary for CSV 
                 var input = Console.ReadLine();
                 decimal annualSalary;
                 if (Decimal.TryParse(input, out annualSalary) && annualSalary >  0) // should this logic be here . . . 
                     return annualSalary;
-                _paySlipDisplay.DisplayAnnualSalaryErrorMessage();
+                _paySlipDisplay.Display(Constants.AnnualSalaryErrorMessage);
             }
         }
         
         
-        public static bool ValidateSuperRate(decimal superRate)
+        public bool ValidateSuperRate(decimal superRate)
         {
-            var maxSuper = 50;
-            var minSuper = 0;
-
-            if (superRate > minSuper && superRate < maxSuper)
-                return true;
-
-            return false;
+            return IsSuperInValidRange(superRate);
         }
 
         
@@ -55,32 +48,28 @@ namespace PlaySlip
         {
             while (true)
             {
-                _paySlipDisplay.DisplaySuperRatePrompt();
+                _paySlipDisplay.Display(Constants.SuperPrompt);
                 var input = Console.ReadLine();
                 decimal superRate;
                
                 if (Decimal.TryParse(input, out superRate) && ValidateSuperRate(superRate)) // should this logic be here . . . 
                     return superRate;
-                _paySlipDisplay.DisplaySuperRateErrorMessage();
+                _paySlipDisplay.Display( Constants.SuperRateErrorMessage );
             }
         }
         
-        public static decimal RoundToDollar(decimal amount)
-        {
-            return Decimal.Round(amount);  //  how can I make it amount.RoundToDollar()
-        }
+  
 
-
-        public DateTime GetDate(Action datePrompt)
+        public DateTime GetDate(string datePrompt)
         {
             while (true)
             {
-                datePrompt();
+                _paySlipDisplay.Display(datePrompt);
                 var input = Console.ReadLine();
                 DateTime date;
                 if (DateTime.TryParse(input, out date))
                     return date;
-                _paySlipDisplay.DisplayDateErrorMessage();
+                _paySlipDisplay.Display(Constants.DateErrorMessage);
 
             }
         }
@@ -91,11 +80,13 @@ namespace PlaySlip
 
         public void Print()
         {
-            _paySlipDisplay.DisplayWelcomeMessage();
-
-            var firstName = GetName(_paySlipDisplay.DisplayFirstNamePrompt);
+            _paySlipDisplay.Display(Constants.WelcomeMessage);
             
-            var lastName = GetName(_paySlipDisplay.DisplayLastNamePrompt);
+            
+            var firstName = GetName(Constants.FirstNamePrompt);
+            
+            
+            var lastName = GetName(Constants.LastNamePrompt);
             
             var annualSalary = GetAnnualSalary();
             
@@ -105,14 +96,14 @@ namespace PlaySlip
 
             var fullName = employee.GenerateFullName();
 
-            var paymentStartDate = GetDate(_paySlipDisplay.DisplayPaymentStartDatePrompt);
+            var paymentStartDate = GetDate(Constants.PaymentStartDatePrompt);
 
-            var paymentEndDate = GetDate(_paySlipDisplay.DisplayPaymentEndDatePrompt);
+            var paymentEndDate = GetDate(Constants.PaymentEndDatePrompt);
 
             if (paymentEndDate < paymentStartDate)
             {    
-                _paySlipDisplay.DisplayDateErrorMessage();
-                paymentEndDate = GetDate(_paySlipDisplay.DisplayPaymentEndDatePrompt);
+                _paySlipDisplay.Display(Constants.DateErrorMessage);
+                paymentEndDate = GetDate(Constants.DateErrorMessage);
             }
                 
             
@@ -125,11 +116,24 @@ namespace PlaySlip
             createPaySlip.CalculateNetIncome( employee.AnnualSalary);
             createPaySlip.CalculateSuper( employee.SuperRate);
 
-            _paySlipDisplay.DisplayGeneratedPayslip(fullName, ToFormattedDate(createPaySlip.PaymentStartDate), ToFormattedDate(createPaySlip.PaymentEndDate), RoundToDollar(createPaySlip.GrossIncome), RoundToDollar(createPaySlip.IncomeTax), RoundToDollar(createPaySlip.NetIncome), RoundToDollar(createPaySlip.Super) );
+            _paySlipDisplay.DisplayGeneratedPayslip(fullName, createPaySlip.PaymentStartDate, createPaySlip.PaymentEndDate, createPaySlip.GrossIncome, createPaySlip.IncomeTax, createPaySlip.NetIncome, createPaySlip.Super);
             
             
             
         }
         
+        
+        private bool IsSuperInValidRange(decimal superRate)
+        {
+            var maxSuper = 50;
+            var minSuper = 0;
+
+            return superRate > minSuper && superRate < maxSuper;
+        }
+
+        
     }
 }
+
+
+// static  x interface doesn't work 

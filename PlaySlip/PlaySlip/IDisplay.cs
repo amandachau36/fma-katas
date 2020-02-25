@@ -1,31 +1,19 @@
 using System;
+using System.Collections.Generic;
 
 namespace PlaySlip
 {
-    public interface IDisplay
-    {
-        void DisplayWelcomeMessage();
-        void DisplayFirstNamePrompt();
+    public interface IDisplay // output display and another IinputProcessor display
+    {                         // string Input()
+        
+                            // Output display
+                            //InputDisplay
+                                
 
-        void DisplayGeneralError();
+        void Display(string message);
+        void Display(List<string> messages);
 
-        void DisplayLastNamePrompt();
-
-        void DisplayAnnualSalaryPrompt();
-
-        void DisplayAnnualSalaryErrorMessage();
-
-        void DisplaySuperRatePrompt();
-
-        void DisplaySuperRateErrorMessage();
-
-        void DisplayPaymentStartDatePrompt();
-
-        void DisplayPaymentEndDatePrompt();
-
-        void DisplayDateErrorMessage();
-
-        public void DisplayGeneratedPayslip(string fullName, string startDate, string endDate, decimal grossIncome,
+        public void DisplayGeneratedPayslip(string fullName, DateTime startDate, DateTime endDate, decimal grossIncome,
             decimal incomeTax, decimal netIncome, decimal super);
 
     }
