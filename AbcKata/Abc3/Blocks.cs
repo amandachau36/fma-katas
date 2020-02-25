@@ -58,13 +58,14 @@ namespace Abc3
 
                 }
 
-                if (usedBlocks.Count == word.Length)
-                    return true;
+                
+                if (usedBlocks.Count >= word.Length) // takes more situations into consideration
+                    return true;  
 
             }
             
             return false;
-            
+                
         }
         
         public void RunABC()
@@ -78,7 +79,6 @@ namespace Abc3
 
         }
         
-
     }
 }
 
