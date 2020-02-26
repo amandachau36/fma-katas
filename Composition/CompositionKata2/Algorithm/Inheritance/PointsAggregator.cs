@@ -10,11 +10,11 @@ namespace Algorithm.Inheritance
             Measurements = measurements;
         }
 
-        public virtual Measurement Aggregate()  // virtual method allows it to be overriden in a derived class 
+        public virtual Measurement Aggregate()  // virtual method allows it to be overriden in a derived class. however none of the derived classes overide it  her 
         {
             var measurements = Measurements;
-            measurements = FilterMeasurements(measurements);
-            return AggregateMeasurements(measurements);
+            measurements = FilterMeasurements(measurements);  // run filter method then run aggregate method 
+            return AggregateMeasurements(measurements);       
         }
 
         protected abstract IEnumerable<Measurement> FilterMeasurements(IEnumerable<Measurement> measurements); // an abstract method is implicitly a virtual method - only has declarations, no body

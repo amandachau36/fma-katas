@@ -9,9 +9,10 @@ namespace Algorithm.Inheritance
         {
         }
 
-        protected override IEnumerable<Measurement> FilterMeasurements(IEnumerable<Measurement> measurements)
+        protected override IEnumerable<Measurement> FilterMeasurements(IEnumerable<Measurement> measurements) // is private/no accessible an instance of the class 
         {
-            return measurements.Where(m => m.X < 100 && m.Y < 100);
+            return measurements.Where(m => m.X < 100 && m.Y < 100);  
         }
+        
     }
 }

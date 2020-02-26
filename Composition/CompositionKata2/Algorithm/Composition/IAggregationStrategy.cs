@@ -4,6 +4,6 @@ namespace Algorithm.Composition
 {
     public interface IAggregationStrategy
     {
-        Measurement Aggregate(IEnumerable<Measurement> measurements);
+        Measurement Aggregate(IEnumerable<Measurement> measurements);  // declaration
     }
 }

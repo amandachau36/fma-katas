@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Algorithm.Composition
 {
-    public class SummingStrategy : IAggregationStrategy
+    public class SummingStrategy : IAggregationStrategy  // implements interface 
     {
         public Measurement Aggregate(IEnumerable<Measurement> measurements)
         {
