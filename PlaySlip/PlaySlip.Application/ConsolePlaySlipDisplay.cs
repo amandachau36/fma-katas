@@ -10,8 +10,7 @@ namespace PlaySlip
             Console.WriteLine(message);
         }
         
-      
-
+        
         public void Display(List<string> messages)
         {
             foreach (var message in messages)
@@ -19,9 +18,8 @@ namespace PlaySlip
                 Console.WriteLine(message);
             }
         }
-
-
-        public string ToFormattedDate(DateTime date) //  how can I make it date.toFormattedDate()
+        
+        public string ToFormattedDate(DateTime date) //  how can I make it date.toFormattedDate() and should this be in IDisplay ? 
         {
             return date.ToString("MMMM dd, yyyy");
         }

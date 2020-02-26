@@ -1,17 +1,17 @@
 // using System;
 //
-// namespace PlaySlip
+// namespace PlaySlip.Application
 // {
 //     public interface IInputValidator
 //     {
 //         bool isValid(InputTypes inputType, string input);
 //     }
 //
-//     public class InputValidator : IInputValidator
+//     public class ConsoleInputValidator : IInputValidator
 //     {
 //         private readonly IDisplay _display;
 //
-//         public InputValidator(IDisplay display)
+//         public ConsoleInputValidator(IDisplay display)
 //         {
 //             _display = display;
 //         }
@@ -48,6 +48,13 @@
 //
 //     public enum InputTypes
 //     {
-//         Super
+//         Super,
+//         Name,
+//         AnnualSalary,
+//         Date,
+//         EndDate, 
+//         
+//         
+//         
 //     }
-// }
+}
