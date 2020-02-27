@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace PlaySlip
+namespace PlaySlip.Application
 {
     public class ConsolePlaySlipDisplay : IDisplay
     {

@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaySlip", "PlaySlip\PlaySlip.csproj", "{CDBC899D-A53A-4886-A5C4-94B2C67EEAE4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaySlip.Application", "PlaySlip.Application\PlaySlip.Application.csproj", "{CDBC899D-A53A-4886-A5C4-94B2C67EEAE4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaySlip.UnitTests", "PaySlip.UnitTests\PaySlip.UnitTests.csproj", "{CF0075FC-54F6-4230-AF28-5636BF729F9C}"
 EndProject

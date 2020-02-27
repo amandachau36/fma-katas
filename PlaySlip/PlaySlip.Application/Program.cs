@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PlaySlip
+namespace PlaySlip.Application
 {
     class Program
     {
@@ -8,7 +8,8 @@ namespace PlaySlip
         { 
      
             var consolePaySlipDisplay = new ConsolePlaySlipDisplay();
-            var printPaySlip = new PrintPaySlip(consolePaySlipDisplay);
+            var consoleInputValidator = new ConsoleInputValidator();
+            var printPaySlip = new PrintPaySlip(consolePaySlipDisplay, consoleInputValidator);
 
             printPaySlip.Print();
 

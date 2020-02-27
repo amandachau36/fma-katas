@@ -1,9 +1,9 @@
 using System;
 using System.Text;
 
-namespace PlaySlip
+namespace PlaySlip.Application
 {
-    public class CreatePaySlip
+    public class PaySlip
     {
         public DateTime PaymentStartDate { get; } 
         
@@ -22,7 +22,7 @@ namespace PlaySlip
         
 
 
-        public CreatePaySlip(DateTime paymentStartDate, DateTime paymentEndDate) // should I pass an instance of Employee into the constructor? 
+        public PaySlip(DateTime paymentStartDate, DateTime paymentEndDate) // should I pass an instance of Employee into the constructor? NO
         {
             PaymentStartDate = paymentStartDate;
             PaymentEndDate = paymentEndDate;

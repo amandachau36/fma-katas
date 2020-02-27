@@ -1,137 +1,141 @@
 using System;
 
-namespace PlaySlip
+namespace PlaySlip.Application
 {
     public class PrintPaySlip
     {
+        private readonly IInputValidator _inputValidator;
         private readonly IDisplay _paySlipDisplay;
 
 
-        public PrintPaySlip(IDisplay playSlipDisplay)  // only interface methods are available 
+        public PrintPaySlip(IDisplay paySlipDisplay,
+            IInputValidator inputValidator) // only interface methods are available 
         {
-            _paySlipDisplay = playSlipDisplay; // composition
-        }
-         public string GetName(string firstOrLastNamePrompt) 
-        {
-            while (true) // inputIsNotValid
-            {
-                _paySlipDisplay.Display(firstOrLastNamePrompt);
-                var input = Console.ReadLine();
-                if (!string.IsNullOrWhiteSpace(input))
-                    return input;
-                _paySlipDisplay.Display(Constants.GeneralError);  
-
-            }
+            _paySlipDisplay = paySlipDisplay; // composition
+            _inputValidator = inputValidator;
         }
 
-        public decimal GetAnnualSalary()
+        public string GetName(string firstOrLastNamePrompt)
         {
-            while (true)
-            {
-                _paySlipDisplay.Display(Constants.AnnualSalaryPrompt); // not necessary for CSV 
-                var input = Console.ReadLine();
-                decimal annualSalary;
-                if (Decimal.TryParse(input, out annualSalary) && annualSalary >  0) // should this logic be here . . . 
-                    return annualSalary;
-                _paySlipDisplay.Display(Constants.AnnualSalaryErrorMessage);
-            }
+            _paySlipDisplay.Display(firstOrLastNamePrompt);
+            return Console.ReadLine();
+            
+            _paySlipDisplay.Display(Constants.GeneralError);
+            
+        }
+
+        public string GetAnnualSalary()
+        {
+            _paySlipDisplay.Display(Constants.AnnualSalaryPrompt); // not necessary for CSV 
+            return Console.ReadLine();
+            
         }
         
-        
-        public bool ValidateSuperRate(decimal superRate)
+        public string GetSuperRate()
         {
-            return IsSuperInValidRange(superRate);
-        }
-
-        
-        public decimal GetSuperRate()
-        {
-            while (true)
-            {
-                _paySlipDisplay.Display(Constants.SuperPrompt);
-                var input = Console.ReadLine();
-                decimal superRate;
-               
-                if (Decimal.TryParse(input, out superRate) && ValidateSuperRate(superRate)) // should this logic be here . . . 
-                    return superRate;
-                _paySlipDisplay.Display( Constants.SuperRateErrorMessage );
-            }
-        }
-        
-  
-
-        public DateTime GetDate(string datePrompt)
-        {
-            while (true)
-            {
-                _paySlipDisplay.Display(datePrompt);
-                var input = Console.ReadLine();
-                DateTime date;
-                if (DateTime.TryParse(input, out date))
-                    return date;
-                _paySlipDisplay.Display(Constants.DateErrorMessage);
-
-            }
+            _paySlipDisplay.Display(Constants.SuperPrompt);
+            return Console.ReadLine();
         }
 
 
-   
+        public string GetDate(string StartOrEndDatePrompt)
+        {
+            _paySlipDisplay.Display(StartOrEndDatePrompt);
+            return Console.ReadLine();
+            
+        }
 
 
         public void Print()
         {
             _paySlipDisplay.Display(Constants.WelcomeMessage);
-            
-            
+
             var firstName = GetName(Constants.FirstNamePrompt);
-            
-            
-            var lastName = GetName(Constants.LastNamePrompt);
-            
-            var annualSalary = GetAnnualSalary();
-            
-            var superRate = GetSuperRate();
-            
-            var employee = new Employee(firstName, lastName, annualSalary, superRate);
-
-            var fullName = employee.GenerateFullName();
-
-            var paymentStartDate = GetDate(Constants.PaymentStartDatePrompt);
-
-            var paymentEndDate = GetDate(Constants.PaymentEndDatePrompt);
-
-            if (paymentEndDate < paymentStartDate)
-            {    
-                _paySlipDisplay.Display(Constants.DateErrorMessage);
-                paymentEndDate = GetDate(Constants.DateErrorMessage);
+            if (!_inputValidator.isValid(InputTypes.Name, firstName))
+            {
+                _paySlipDisplay.Display(Constants.GeneralError);
+                firstName = GetName(Constants.FirstNamePrompt);
             }
                 
+            var lastName = GetName(Constants.LastNamePrompt);
+            if (!_inputValidator.isValid(InputTypes.Name, lastName))
+            {
+                _paySlipDisplay.Display(Constants.GeneralError);
+                lastName = GetName(Constants.LastNamePrompt);
+            }
+
+            
+            var annualSalary = GetAnnualSalary();
+            decimal decimalAnnualSalary = 0m;
+            if (_inputValidator.isValid(InputTypes.AnnualSalary, annualSalary))
+                decimalAnnualSalary = decimal.Parse(annualSalary);
+            else
+            {
+                _paySlipDisplay.Display(Constants.AnnualSalaryErrorMessage);
+                annualSalary = GetAnnualSalary();
+            }
+            
+
+            var superRate = GetSuperRate();
+            var decimalSuperRate = 0m;
+            if (_inputValidator.isValid(InputTypes.Super, superRate))
+                decimalSuperRate = decimal.Parse(superRate);
+            else
+            {
+                _paySlipDisplay.Display(Constants.SuperRateErrorMessage);
+                superRate = GetSuperRate();
+            }
             
             
-            var createPaySlip = new CreatePaySlip(paymentStartDate, paymentEndDate);  
+            var employee = new Employee(firstName, lastName, decimalAnnualSalary, decimalSuperRate);
+            var fullName = employee.GenerateFullName();
             
+            var startDate = GetDate(Constants.PaymentStartDatePrompt);
+            DateTime paymentStartDate = new DateTime();
+            if (_inputValidator.isValid(InputTypes.Date, startDate))
+            {
+                paymentStartDate = DateTime.Parse(startDate);
+            }
+            else
+            {
+                _paySlipDisplay.Display(Constants.DateErrorMessage);
+                startDate = GetDate(Constants.PaymentStartDatePrompt);
+            }
             
+         
+
+            var endDate = GetDate(Constants.PaymentEndDatePrompt);
+            DateTime paymentEndDate = new DateTime();
+            if (_inputValidator.isValid(InputTypes.Date, endDate))
+            {
+                paymentEndDate = DateTime.Parse(endDate);
+            }
+            else
+            {
+                _paySlipDisplay.Display(Constants.DateErrorMessage);
+                endDate = GetDate(Constants.PaymentStartDatePrompt);
+            }
+            
+
+            if (paymentEndDate < paymentStartDate)
+            {
+                _paySlipDisplay.Display(Constants.DateErrorMessage);
+                endDate = GetDate(Constants.PaymentEndDatePrompt);
+            }
+
+
+            var createPaySlip = new PaySlip(paymentStartDate, paymentEndDate);
+
+
             createPaySlip.CalculateGrossIncome(employee.AnnualSalary);
-            
-            createPaySlip.CalculateNetIncome( employee.AnnualSalary);
-            createPaySlip.CalculateSuper( employee.SuperRate);
 
-            _paySlipDisplay.DisplayGeneratedPayslip(fullName, createPaySlip.PaymentStartDate, createPaySlip.PaymentEndDate, createPaySlip.GrossIncome, createPaySlip.IncomeTax, createPaySlip.NetIncome, createPaySlip.Super);
-            
-            
-            
+            createPaySlip.CalculateNetIncome(employee.AnnualSalary);
+            createPaySlip.CalculateSuper(employee.SuperRate);
+
+            _paySlipDisplay.DisplayGeneratedPayslip(fullName, createPaySlip.PaymentStartDate,
+                createPaySlip.PaymentEndDate, createPaySlip.GrossIncome, createPaySlip.IncomeTax,
+                createPaySlip.NetIncome, createPaySlip.Super);
         }
-        
-        
-        private bool IsSuperInValidRange(decimal superRate)
-        {
-            var maxSuper = 50;
-            var minSuper = 0;
-
-            return superRate > minSuper && superRate < maxSuper;
-        }
-
-        
     }
 }
 

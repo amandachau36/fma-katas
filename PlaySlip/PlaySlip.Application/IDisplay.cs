@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace PlaySlip
+namespace PlaySlip.Application
 {
     public interface IDisplay // output display and another IinputProcessor display
     {                         // string Input()
@@ -11,7 +11,7 @@ namespace PlaySlip
                                 
 
         void Display(string message);
-        void Display(List<string> messages);
+        //void Display(List<string> messages);
 
         public void DisplayGeneratedPayslip(string fullName, DateTime startDate, DateTime endDate, decimal grossIncome,
             decimal incomeTax, decimal netIncome, decimal super);

@@ -13,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\PlaySlip\PlaySlip.csproj" />
+      <ProjectReference Include="..\PlaySlip.Application\PlaySlip.Application.csproj" />
     </ItemGroup>
 
 </Project>

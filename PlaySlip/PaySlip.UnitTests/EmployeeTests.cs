@@ -1,6 +1,5 @@
-using System;
 using NUnit.Framework;
-using PlaySlip;
+using PlaySlip.Application;
 
 namespace PaySlip.UnitTests
 {

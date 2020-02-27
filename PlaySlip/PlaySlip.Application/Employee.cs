@@ -1,4 +1,4 @@
-namespace PlaySlip
+namespace PlaySlip.Application
 {
     public class Employee
     {
