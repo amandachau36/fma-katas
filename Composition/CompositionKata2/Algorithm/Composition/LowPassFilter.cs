@@ -7,7 +7,7 @@ namespace Algorithm.Composition
     {
         public IEnumerable<Measurement> Filter(IEnumerable<Measurement> measurements)
         {
-            return measurements.Where(m => m.X < 100 & m.Y < 100);
+            return measurements.Where(m => m.X < 100 & m.Y < 100);  // why is this a single &
         }
     }
 }

@@ -56,6 +56,7 @@
             <e p="AveragingStrategy.cs" t="Include" />
             <e p="EmptyFilter.cs" t="Include" />
             <e p="HighPassFilter.cs" t="Include" />
+            <e p="HighPassSummingAggregator.cs" t="Include" />
             <e p="IAggregationStrategy.cs" t="Include" />
             <e p="IMeasurementFilter.cs" t="Include" />
             <e p="LowPassFilter.cs" t="Include" />

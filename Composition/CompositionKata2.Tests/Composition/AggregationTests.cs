@@ -1,5 +1,4 @@
 ﻿using Algorithm.Composition;
-using Algorithm.Inheritance;
 using Xunit;
 using PointsAggregator = Algorithm.Composition.PointsAggregator;
 
@@ -49,22 +48,24 @@ namespace Algorithm.Tests.Composition
         
             var result = aggregator.Aggregate();
         
-            Assert.Equal(105, result.X);
+            Assert.Equal(105, result.X); // add everything that that is > 2 together 
             Assert.Equal(15, result.Y);
         }
 
         // Uncomment this test and make it pass by building a new class to 
         // hide the "composition" of strategies and filters ...
-        // [Fact]
-        // public void CustomHighPassSummingAggregator_Applys_Filter()
-        // {                
-        //     var aggregator = new HighPassSummingAggregator(_measurements);
-        //
-        //     var result = aggregator.Aggregate();
-        //
-        //     Assert.Equal(105, result.X);
-        //     Assert.Equal(15, result.Y);
-        // }
+        
+        // this passed without me doing anything  . . .
+        [Fact]
+        public void CustomHighPassSummingAggregator_Applys_Filter()  
+        {                
+            var aggregator = new HighPassSummingAggregator(_measurements); 
+        
+            var result = aggregator.Aggregate();
+        
+            Assert.Equal(105, result.X);
+            Assert.Equal(15, result.Y);
+        }
 
         Measurement[] _measurements = new[] //arrange
         {
