@@ -3,7 +3,6 @@ using PlaySlip.Application;
 
 namespace PaySlip.UnitTests
 {
-  
     public class EmployeeTests  // rename this 
                                 //  difference files for tests from different classes 
                                 // do I need to test properties? 
@@ -33,10 +32,6 @@ namespace PaySlip.UnitTests
         
     }
     
-   
-    
-    
-
 }
 
 

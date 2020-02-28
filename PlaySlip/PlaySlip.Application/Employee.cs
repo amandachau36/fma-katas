@@ -10,8 +10,11 @@ namespace PlaySlip.Application
         public Employee(string firstName, string lastName, decimal annualSalary, decimal superRate) //constructor
         {
             FirstName = firstName;    // only test constructor if it has logic
+            
             LastName = lastName;
-            AnnualSalary = annualSalary; // only set if positive integer
+            
+            AnnualSalary = annualSalary; 
+            
             SuperRate = superRate;
 
         }

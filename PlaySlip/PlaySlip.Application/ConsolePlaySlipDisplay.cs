@@ -7,7 +7,7 @@ namespace PlaySlip.Application
     {
         public void Display(string message)
         {
-            Console.WriteLine(message);
+            Console.Write(message);
         }
         
         
@@ -15,7 +15,7 @@ namespace PlaySlip.Application
         {
             foreach (var message in messages)
             {
-                Console.WriteLine(message);
+                Console.Write(message);
             }
         }
         

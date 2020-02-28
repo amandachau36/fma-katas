@@ -24,13 +24,15 @@
         <e p="PaySlipTests.cs" t="Include" />
       </e>
       <e p="PlaySlip.Application" t="IncludeRecursive">
+        <e p="AnnualSalaryValidator.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
-        <e p="ConsoleInputValidator.cs" t="Include" />
         <e p="ConsolePlaySlipDisplay.cs" t="Include" />
         <e p="Constants.cs" t="Include" />
+        <e p="DateValidator.cs" t="Include" />
         <e p="Employee.cs" t="Include" />
         <e p="IDisplay.cs" t="Include" />
-        <e p="IInputValidator.cs" t="Include" />
+        <e p="IValidator.cs" t="Include" />
+        <e p="NameValidator.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
@@ -42,6 +44,7 @@
         <e p="PaySlipManager.cs" t="Include" />
         <e p="PlaySlip.Application.csproj" t="IncludeRecursive" />
         <e p="Program.cs" t="Include" />
+        <e p="SuperValidator.cs" t="Include" />
       </e>
       <e p="PlaySlip.sln" t="IncludeFlat" />
     </e>

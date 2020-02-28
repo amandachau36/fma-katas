@@ -4,15 +4,10 @@ namespace PlaySlip.Application
 {
     public class PaySlipManager
     {
-        private readonly IInputValidator _inputValidator;
         private readonly IDisplay _paySlipDisplay;
-        
-        
-        public PaySlipManager(IDisplay paySlipDisplay,
-            IInputValidator inputValidator) // only interface methods are available 
+        public PaySlipManager(IDisplay paySlipDisplay) // only interface methods are available 
         {
             _paySlipDisplay = paySlipDisplay; // composition
-            _inputValidator = inputValidator;
         }
         
         
@@ -20,21 +15,21 @@ namespace PlaySlip.Application
         {
             _paySlipDisplay.Display(Constants.WelcomeMessage);
 
-            var firstName = ReadAndValidate(InputTypes.Name, Constants.FirstNamePrompt, Constants.GeneralError);
+            var firstName = ReadAndValidate(Constants.FirstNamePrompt, Constants.GeneralError, new NameValidator());
 
-            var lastName = ReadAndValidate(InputTypes.Name, Constants.LastNamePrompt, Constants.GeneralError);
+            var lastName = ReadAndValidate(Constants.LastNamePrompt, Constants.GeneralError, new NameValidator());
             
-            var annualSalary = ReadAndValidate(InputTypes.AnnualSalary, Constants.AnnualSalaryPrompt, Constants.AnnualSalaryErrorMessage);
+            var annualSalary = ReadAndValidate(Constants.AnnualSalaryPrompt, Constants.AnnualSalaryErrorMessage, new AnnualSalaryValidator());
 
-            var superRate = ReadAndValidate(InputTypes.Super, Constants.SuperPrompt, Constants.SuperRateErrorMessage);
+            var superRate = ReadAndValidate(Constants.SuperPrompt, Constants.SuperRateErrorMessage, new SuperValidator());
             
             var employee = new Employee(firstName, lastName, decimal.Parse(annualSalary), decimal.Parse(superRate));
             
             var fullName = employee.GenerateFullName();
 
-            var startDate = ReadAndValidate(InputTypes.Date, Constants.PaymentStartDatePrompt, Constants.DateErrorMessage);
+            var startDate = ReadAndValidate(Constants.PaymentStartDatePrompt, Constants.DateErrorMessage, new DateValidator() );
 
-            var endDate = ReadAndValidate(InputTypes.Date, Constants.PaymentEndDatePrompt, Constants.DateErrorMessage);
+            var endDate = ReadAndValidate(Constants.PaymentEndDatePrompt, Constants.DateErrorMessage, new DateValidator());
 
             var createPaySlip = new PaySlip(DateTime.Parse(startDate), DateTime.Parse(endDate));
             
@@ -49,17 +44,19 @@ namespace PlaySlip.Application
                 createPaySlip.NetIncome, createPaySlip.Super);
         }
 
-        private string ReadAndValidate(InputTypes inputTypes, string prompt, string error)
+        private string ReadAndValidate(string prompt, string error, IValidator iValidator)
         {
             string input;
-            bool isValid = false;
+            
+            bool isValid;
+            
             do
             {
                 _paySlipDisplay.Display(prompt);
                 
                 input = Console.ReadLine();
                 
-                isValid = _inputValidator.IsValid(inputTypes, input);
+                isValid = iValidator.IsValid(input);
 
                 if (!isValid)
                 {
