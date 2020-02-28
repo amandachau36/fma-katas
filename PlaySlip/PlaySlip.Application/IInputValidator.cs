@@ -4,7 +4,7 @@
  {
      public interface IInputValidator
      {
-         bool isValid(InputTypes inputType, string input);  // are there situations where the input is not a string? 
+         bool IsValid(InputTypes inputType, string input);  // are there situations where the input is not a string? 
      }
   
 

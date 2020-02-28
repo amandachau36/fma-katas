@@ -9,7 +9,7 @@ namespace PlaySlip.Application
 
         public const string FirstNamePrompt = "\nPlease input your first name: ";
 
-        public const string LastNamePrompt = "\nPlease input your first name: ";
+        public const string LastNamePrompt = "\nPlease input your last name: ";
         
         public const string GeneralError = "There was an error. Please try again.";
 

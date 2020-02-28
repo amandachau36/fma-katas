@@ -5,19 +5,15 @@ namespace PlaySlip.Application
     class Program
     {
         static void Main(string[] args)
-        { 
-     
+        {
             var consolePaySlipDisplay = new ConsolePlaySlipDisplay();
+            
             var consoleInputValidator = new ConsoleInputValidator();
-            var printPaySlip = new PrintPaySlip(consolePaySlipDisplay, consoleInputValidator);
+            
+            var printPaySlip = new PaySlipManager(consolePaySlipDisplay, consoleInputValidator);
 
-            printPaySlip.Print();
-
-
-
-
-
-
+            printPaySlip.Process();
+            
         }
     }
 }

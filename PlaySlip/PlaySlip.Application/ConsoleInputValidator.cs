@@ -2,15 +2,14 @@ using System;
 
 namespace PlaySlip.Application
 {
-    public class ConsoleInputValidator : IInputValidator
+    public class ConsoleInputValidator : IInputValidator  // do this without interface for business logic 
+                                                // 
+    
+                                                // Interface isValid  and classes that implement - input string, number, date validator  
     {
-        // private readonly IDisplay _display;
+        
 
-        // public ConsoleInputValidator()
-        // {
-        //     _display = display;
-        // }
-        public bool isValid(InputTypes inputType, string input1)  
+        public bool IsValid(InputTypes inputType, string input1)  
         {
             switch (inputType)
             {
