@@ -10,13 +10,12 @@ namespace PlaySlip.Application
             _paySlipDisplay = paySlipDisplay; // composition
         }
         
-        
         public void Process()
         {
             _paySlipDisplay.Display(Constants.WelcomeMessage);
-
+            
             var firstName = ReadAndValidate(Constants.FirstNamePrompt, Constants.GeneralError, new NameValidator()); // should I just create one new instance of NameValidator()
-
+            
             var lastName = ReadAndValidate(Constants.LastNamePrompt, Constants.GeneralError, new NameValidator());
             
             var annualSalary = ReadAndValidate(Constants.AnnualSalaryPrompt, Constants.AnnualSalaryErrorMessage, new AnnualSalaryValidator());
@@ -27,23 +26,19 @@ namespace PlaySlip.Application
             
             var fullName = employee.GenerateFullName();
 
-            var dateValidator = new DateValidator();
+            var dateValidator = new DateValidator();    
             
             var startDate = ReadAndValidate(Constants.PaymentStartDatePrompt, Constants.DateErrorMessage, dateValidator );
             
             var endDate = ReadAndValidate(Constants.PaymentEndDatePrompt, Constants.DateErrorMessage, dateValidator, startDate );
 
-            var createPaySlip = new PaySlip(DateTime.Parse(startDate), DateTime.Parse(endDate));
+            var paySlip = new PaySlip(DateTime.Parse(startDate), DateTime.Parse(endDate));
             
-            createPaySlip.CalculateGrossIncome(employee.AnnualSalary);
+            paySlip.AllPaySlipCalculations(employee.AnnualSalary, employee.SuperRate);
 
-            createPaySlip.CalculateNetIncome(employee.AnnualSalary);
-
-            createPaySlip.CalculateSuper(employee.SuperRate);
-
-            _paySlipDisplay.DisplayGeneratedPayslip(fullName, createPaySlip.PaymentStartDate,
-                createPaySlip.PaymentEndDate, createPaySlip.GrossIncome, createPaySlip.IncomeTax,
-                createPaySlip.NetIncome, createPaySlip.Super);
+            _paySlipDisplay.DisplayGeneratedPayslip(fullName, paySlip.PaymentStartDate,
+                paySlip.PaymentEndDate, paySlip.GrossIncome, paySlip.IncomeTax,
+                paySlip.NetIncome, paySlip.Super);
         }
 
        
@@ -59,7 +54,7 @@ namespace PlaySlip.Application
                 
                 input = Console.ReadLine();
                 
-                isValid = iValidator.IsValid(input, optionalArg);  // how does this work 
+                isValid = iValidator.IsValid(input, optionalArg);  
 
                 if (!isValid)
                 {

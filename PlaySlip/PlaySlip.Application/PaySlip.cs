@@ -72,18 +72,22 @@ namespace PlaySlip.Application
             IncomeTax = incomeTaxPerYear * (payPeriodInDays/ 365m);
         }
 
-        public void CalculateNetIncome(decimal annualSalary)
-        {   
-            CalculateGrossIncome(annualSalary);
-            
-            CalculateIncomeTax(annualSalary);
-            
+        public void CalculateNetIncome()
+        {
             NetIncome = GrossIncome - IncomeTax;
         }
 
         public void CalculateSuper(decimal superRate)
         {
             Super = GrossIncome * superRate / 100m;
+        }
+
+        public void AllPaySlipCalculations(decimal annualSalary, decimal superRate)
+        {
+            CalculateGrossIncome(annualSalary);
+            CalculateIncomeTax(annualSalary);
+            CalculateNetIncome();
+            CalculateSuper(superRate);
         }
         
 
