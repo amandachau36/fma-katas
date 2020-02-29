@@ -4,19 +4,18 @@ namespace PlaySlip.Application
 {
     public class AnnualSalaryValidator : IValidator
     {
-        public bool IsValid(string input)
+        public bool IsValid(params string[] input)
         {
             decimal annualSalary;
-            
-            if (!Decimal.TryParse(input, out annualSalary)) return false;
+
+            if (!Decimal.TryParse(input[0], out annualSalary)) return false;
 
             if (annualSalary > 0)
             {
                 return true;
             }
-            
+
             return false;
-            
         }
     }
 }

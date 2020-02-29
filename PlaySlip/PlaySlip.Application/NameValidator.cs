@@ -2,9 +2,9 @@ namespace PlaySlip.Application
 {
     public class NameValidator : IValidator
     {
-        public bool IsValid(string input)
+        public bool IsValid(params string[] input)
         {
-            return !string.IsNullOrWhiteSpace(input);
+            return !string.IsNullOrWhiteSpace(input[0]);
         }
     }
 }

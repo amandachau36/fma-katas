@@ -19,12 +19,12 @@ namespace PlaySlip.Application
             }
         }
         
-        public string ToFormattedDate(DateTime date) //  how can I make it date.toFormattedDate() and should this be in IDisplay ? 
+        private string ToFormattedDate(DateTime date) //  how can I make it date.toFormattedDate() and should this be in IDisplay ? 
         {
             return date.ToString("MMMM dd, yyyy");
         }
-        
-        public decimal RoundToDollar(decimal amount)
+
+        private decimal ToRoundedDollar(decimal amount)
         {
             return Decimal.Round(amount);  //  how can I make it amount.RoundToDollar()
         }
@@ -37,10 +37,10 @@ namespace PlaySlip.Application
                 "\nYour payslip has been generated: \n",
                 $"Name: {fullName}",
                 $"Pay Period: {ToFormattedDate(startDate)} – {ToFormattedDate(endDate)}",
-                $"Gross Income: {RoundToDollar(grossIncome)}",
-                $"Income Tax: {RoundToDollar(incomeTax)}",
-                $"Net Income: {RoundToDollar(netIncome)}",
-                $"Super: {RoundToDollar(super)}"
+                $"Gross Income: {ToRoundedDollar(grossIncome)}",
+                $"Income Tax: {ToRoundedDollar(incomeTax)}",
+                $"Net Income: {ToRoundedDollar(netIncome)}",
+                $"Super: {ToRoundedDollar(super)}"
             };
 
            

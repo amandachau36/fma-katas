@@ -15,7 +15,7 @@ namespace PlaySlip.Application
         {
             _paySlipDisplay.Display(Constants.WelcomeMessage);
 
-            var firstName = ReadAndValidate(Constants.FirstNamePrompt, Constants.GeneralError, new NameValidator());
+            var firstName = ReadAndValidate(Constants.FirstNamePrompt, Constants.GeneralError, new NameValidator()); // should I just create one new instance of NameValidator()
 
             var lastName = ReadAndValidate(Constants.LastNamePrompt, Constants.GeneralError, new NameValidator());
             
@@ -27,9 +27,11 @@ namespace PlaySlip.Application
             
             var fullName = employee.GenerateFullName();
 
-            var startDate = ReadAndValidate(Constants.PaymentStartDatePrompt, Constants.DateErrorMessage, new DateValidator() );
-
-            var endDate = ReadAndValidate(Constants.PaymentEndDatePrompt, Constants.DateErrorMessage, new DateValidator());
+            var dateValidator = new DateValidator();
+            
+            var startDate = ReadAndValidate(Constants.PaymentStartDatePrompt, Constants.DateErrorMessage, dateValidator );
+            
+            var endDate = ReadAndValidate(Constants.PaymentEndDatePrompt, Constants.DateErrorMessage, dateValidator, startDate );
 
             var createPaySlip = new PaySlip(DateTime.Parse(startDate), DateTime.Parse(endDate));
             
@@ -44,7 +46,8 @@ namespace PlaySlip.Application
                 createPaySlip.NetIncome, createPaySlip.Super);
         }
 
-        private string ReadAndValidate(string prompt, string error, IValidator iValidator)
+       
+        private string ReadAndValidate(string prompt, string error, IValidator iValidator, string optionalArg = null) // is there a better way to do this? 
         {
             string input;
             
@@ -56,7 +59,7 @@ namespace PlaySlip.Application
                 
                 input = Console.ReadLine();
                 
-                isValid = iValidator.IsValid(input);
+                isValid = iValidator.IsValid(input, optionalArg);  // how does this work 
 
                 if (!isValid)
                 {
