@@ -30,11 +30,13 @@
       <e p="PlaySlip.Application" t="IncludeRecursive">
         <e p="AnnualSalaryValidator.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
-        <e p="ConsolePlaySlipDisplay.cs" t="Include" />
+        <e p="ConsolePaySlipDisplay.cs" t="Include" />
+        <e p="ConsolePaySlipInputCollector.cs" t="Include" />
         <e p="Constants.cs" t="Include" />
         <e p="DateValidator.cs" t="Include" />
         <e p="Employee.cs" t="Include" />
         <e p="IDisplay.cs" t="Include" />
+        <e p="IInputCollector.cs" t="Include" />
         <e p="IValidator.cs" t="Include" />
         <e p="NameValidator.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">

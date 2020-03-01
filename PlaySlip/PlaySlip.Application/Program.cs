@@ -7,8 +7,10 @@ namespace PlaySlip.Application
         static void Main(string[] args)
         {
             var consolePaySlipDisplay = new ConsolePlaySlipDisplay();
+            
+            var consolePaySlipInputCollector = new ConsolePaySlipInputCollector();
 
-            var printPaySlip = new PaySlipManager(consolePaySlipDisplay);
+            var printPaySlip = new PaySlipManager(consolePaySlipDisplay, consolePaySlipInputCollector);
 
             printPaySlip.Process();
             

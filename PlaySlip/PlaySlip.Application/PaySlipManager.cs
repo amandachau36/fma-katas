@@ -3,13 +3,15 @@ using System.Collections.Generic;
 
 namespace PlaySlip.Application
 {
-    public class PaySlipManager
+    public class PaySlipManager // should this implement an interface?  
     {
         private readonly IDisplay _paySlipDisplay;
+        private readonly IInputCollector _paySlipInputCollector;
 
-        public PaySlipManager(IDisplay paySlipDisplay) // only interface methods are available 
+        public PaySlipManager(IDisplay paySlipDisplay, IInputCollector paySlipInputCollector) // only interface methods are available 
         {
             _paySlipDisplay = paySlipDisplay; // composition
+            _paySlipInputCollector = paySlipInputCollector;
         }
 
         public void Process()
@@ -63,7 +65,7 @@ namespace PlaySlip.Application
             {
                 _paySlipDisplay.Display(prompt);
 
-                input = Console.ReadLine();
+                input = _paySlipInputCollector.CollectInput();
 
                 isValid = iValidator.IsValid(input, optionalArg);
 
@@ -86,8 +88,7 @@ namespace PlaySlip.Application
         {
             return Decimal.Round(amount); //  how can I make it amount.RoundToDollar()
         }
-
-
+        
         private List<string> PaySlipOutput(string fullName, DateTime startDate, DateTime endDate, 
             decimal grossIncome, decimal incomeTax, decimal netIncome, decimal super)  // not sure if this is the right place to put this 
         {
