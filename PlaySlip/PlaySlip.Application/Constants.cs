@@ -24,6 +24,8 @@ namespace PlaySlip.Application
         public const string PaymentStartDatePrompt = "\nPlease enter your payment start date (ex. Mar 1, 2017): ";
 
         public const string PaymentEndDatePrompt = "\nPlease enter your payment end date (ex. Mar 31, 2017): "; 
+        
+    
 
     }
     
