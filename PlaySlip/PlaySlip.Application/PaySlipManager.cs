@@ -52,8 +52,7 @@ namespace PlaySlip.Application
         }
 
 
-        private string
-            ReadAndValidate(string prompt, string error, IValidator iValidator,
+        private string ReadAndValidate(string prompt, string error, IValidator iValidator,
                 string optionalArg = null) // is there a better way to do this? 
         {
             string input;

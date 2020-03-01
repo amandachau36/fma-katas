@@ -13,7 +13,7 @@ namespace PlaySlip.Application
 
             if (!Decimal.TryParse(input[0], out superRate)) return false;
 
-            if (superRate > minSuper && superRate < maxSuper) return true;
+            if (superRate >= minSuper && superRate <= maxSuper) return true;
             
             return false;
         }

@@ -17,9 +17,13 @@ namespace PaySlip.UnitTests
         {
             //Arrange
             var firstName = "John";
+            
             var surName = "Doe";
+            
             var annualSalary = 60050;
+            
             var superRate = 9;
+            
             var employee = new Employee(firstName, surName, annualSalary, superRate);
             
             //Act

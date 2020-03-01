@@ -20,6 +20,8 @@ namespace PlaySlip.Application
             
             DateTime endDate;
             
+            
+            
             var isEndDateValid = DateTime.TryParse(input[0], out endDate);
             
             if (isEndDateValid && endDate > startDate)

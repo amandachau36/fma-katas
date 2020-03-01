@@ -1,6 +1,6 @@
 using System;
 using NUnit.Framework;
-using PlaySlip.Application;
+
 
 namespace PaySlip.UnitTests
 {
@@ -11,45 +11,49 @@ namespace PaySlip.UnitTests
         public void Setup()
         {
         }
-        
-        
+
         [Test]
         public void CalculatePayPeriod_ValidStartAndEndDate_ReturnsCorrectPayPeriod()
         {
             //Arrange
             var startDate = new DateTime(2017, 3, 1);
+            
             var endDate = new DateTime(2017, 3, 31);
-            var createPaySlip = new PlaySlip.Application.PaySlip(startDate, endDate);
+            
+            var paySlip = new PlaySlip.Application.PaySlip(startDate, endDate);
             
             //Act
-            var result = createPaySlip.PayPeriod; 
+            var result = paySlip.PayPeriod; 
             
                 
             //Assert
             var payPeriod = TimeSpan.FromDays(31);
+            
             Assert.AreEqual(payPeriod, result);
-
         }
         
-        // Need test for if startDate < EndDate or if either dates are not valid
         
         [Test]
         public void CalculateGrossIncome_ValidAnnualSalary_ReturnsCorrectGrossIncome()
         {
             //Arrange 
             var startDate = new DateTime(2017, 3, 1);
+            
             var endDate = new DateTime(2017, 3, 31);
-            var createPaySlip = new PlaySlip.Application.PaySlip(startDate, endDate);
+            
+            var paySlip = new PlaySlip.Application.PaySlip(startDate, endDate);
         
             //Act
             decimal annualSalary = 60050m;  //is writing m necessary when I already have d
-            createPaySlip.CalculateGrossIncome(annualSalary);
-            var result = createPaySlip.GrossIncome; 
+            
+            paySlip.CalculateGrossIncome(annualSalary);
+            
+            var result = paySlip.GrossIncome; 
             
             // Assert
             decimal grossIncome = 31m * (60050m / 365m);
-            Assert.AreEqual(grossIncome, result);
             
+            Assert.AreEqual(grossIncome, result);
         }
 
         
@@ -58,22 +62,22 @@ namespace PaySlip.UnitTests
         {
             //Arrange 
             var startDate = new DateTime(2017, 3, 1);
+           
             var endDate = new DateTime(2017, 3, 31);
          
-            var createPaySlip = new PlaySlip.Application.PaySlip(startDate, endDate);
+            var paySlip = new PlaySlip.Application.PaySlip(startDate, endDate);
         
             //Act
-            
             var annualSalary = 60050m;
-            createPaySlip.CalculateIncomeTax(annualSalary);
             
-          
-            var result = createPaySlip.IncomeTax; 
+            paySlip.CalculateIncomeTax(annualSalary);
+            
+            var result = paySlip.IncomeTax; 
             
             // Assert
             decimal incomeTax = (3572m + (60050m - 37000m) * 0.325m) * (31m/ 365m);
-            Assert.AreEqual(incomeTax, result);
             
+            Assert.AreEqual(incomeTax, result);
         }
 
         
@@ -84,22 +88,26 @@ namespace PaySlip.UnitTests
         {
             //Arrange 
             var startDate = new DateTime(2017, 3, 1);
+            
             var endDate = new DateTime(2017, 3, 31);
          
-            var createPaySlip = new PlaySlip.Application.PaySlip(startDate, endDate);
+            var paySlip = new PlaySlip.Application.PaySlip(startDate, endDate);
         
             //Act
             decimal annualSalary = 60050m;
+            
+            paySlip.CalculateGrossIncome(annualSalary);
+            
+            paySlip.CalculateIncomeTax(annualSalary);
            
-            createPaySlip.CalculateNetIncome(annualSalary);
+            paySlip.CalculateNetIncome();
             
-            var result = createPaySlip.NetIncome;
+            var result = paySlip.NetIncome;
             
-        
             // Assert
-            decimal netIncome = (annualSalary - (3572m + (60050m - 37000m) * 0.325m)) * (31m/365m);
-            Assert.AreEqual(Decimal.Round(netIncome), Decimal.Round(result) );
+            var netIncome = (annualSalary - (3572m + (60050m - 37000m) * 0.325m)) * (31m/365m);
             
+            Assert.AreEqual(Decimal.Round(netIncome), Decimal.Round(result) );
         }
 
         
@@ -109,46 +117,29 @@ namespace PaySlip.UnitTests
         {
             //Arrange 
             var startDate = new DateTime(2017, 3, 1);
+            
             var endDate = new DateTime(2017, 3, 31);
          
-            var createPaySlip = new PlaySlip.Application.PaySlip(startDate, endDate);
+            var paySlip = new PlaySlip.Application.PaySlip(startDate, endDate);
         
             //Act
-            
             var annualSalary = 60050m;
+            
             var superRate = 9m;
             
-            createPaySlip.CalculateGrossIncome(annualSalary);
-            createPaySlip.CalculateSuper(superRate);
+            paySlip.CalculateGrossIncome(annualSalary);
             
-            var result = createPaySlip.Super;
+            paySlip.CalculateSuper(superRate);
             
-        
+            var result = paySlip.Super;
+            
             // Assert
-            decimal super = 31m * (60050m / 365m) * superRate / 100m;
-            Assert.AreEqual(Decimal.Round(super), Decimal.Round(result) );
+            var super = 31m * (60050m / 365m) * superRate / 100m;
             
+            Assert.AreEqual(Decimal.Round(super), Decimal.Round(result) );
         }
         
         
     }
 }
 
-// [Test]
-// public void SetPaymentStartDate_ValidDate_ReturnsDateTime()
-// {
-// //Arrange
-// var startDate = new DateTime(2017, 3, 1);
-// var endDate = new DateTime(2017, 3, 31);
-//          
-// var createPaySlip = new CreatePaySlip(startDate, endDate);
-//             
-// //Act
-// var result = createPaySlip.PaymentStartDate; 
-//             
-//                 
-// //Assert
-// var date = new DateTime(2017, 3, 1);
-//             
-// Assert.AreEqual(date, result);
-//}

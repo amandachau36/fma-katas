@@ -11,8 +11,11 @@
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
       <e p="PaySlip.UnitTests" t="IncludeRecursive">
+        <e p="AnnualSalaryTests.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="DateValidatorTests.cs" t="Include" />
         <e p="EmployeeTests.cs" t="Include" />
+        <e p="NameValidatorTests.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
@@ -22,6 +25,7 @@
         </e>
         <e p="PaySlip.UnitTests.csproj" t="IncludeRecursive" />
         <e p="PaySlipTests.cs" t="Include" />
+        <e p="SuperValidatorTests.cs" t="Include" />
       </e>
       <e p="PlaySlip.Application" t="IncludeRecursive">
         <e p="AnnualSalaryValidator.cs" t="Include" />
