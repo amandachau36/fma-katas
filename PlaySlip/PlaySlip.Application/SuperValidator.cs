@@ -1,11 +1,11 @@
 using System;
+using System.Collections.Generic;
 
 namespace PlaySlip.Application
 {
     public class SuperValidator : IValidator
     {
-        
-        public bool IsValid(params string[] input)
+        public bool IsValid(List<string> input)
         {
             decimal superRate;
             var maxSuper = 50;

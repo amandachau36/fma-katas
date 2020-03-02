@@ -17,66 +17,72 @@ namespace PlaySlip.Application
         public void Process()
         {
             _paySlipDisplay.Display(Constants.WelcomeMessage);
+            
+            var firstNameInput = new Input(new List<string>() { Constants.FirstNamePrompt }, new NameValidator(), Constants.GeneralError);
+            
+            var firstName = ReadAndValidate(firstNameInput); 
 
-            var firstName =
-                ReadAndValidate(Constants.FirstNamePrompt, Constants.GeneralError,
-                    new NameValidator()); // should I just create one new instance of NameValidator()
+            var lastNameInput = new Input(new List<string>() { Constants.LastNamePrompt }, new NameValidator(), Constants.GeneralError);
+            
+            var lastName = ReadAndValidate(lastNameInput); 
+            
+            var annualSalaryInput = new Input(new List<string>() { Constants.AnnualSalaryPrompt }, new AnnualSalaryValidator(), Constants.AnnualSalaryErrorMessage);
 
-            var lastName = ReadAndValidate(Constants.LastNamePrompt, Constants.GeneralError, new NameValidator());
+            var annualSalary = ReadAndValidate(annualSalaryInput);
 
-            var annualSalary = ReadAndValidate(Constants.AnnualSalaryPrompt, Constants.AnnualSalaryErrorMessage,
-                new AnnualSalaryValidator());
+            var superRateInput = new Input(new List<string>() {Constants.SuperPrompt}, new SuperValidator(),
+                Constants.SuperRateErrorMessage);
 
-            var superRate = ReadAndValidate(Constants.SuperPrompt, Constants.SuperRateErrorMessage,
-                new SuperValidator());
-
-            var employee = new Employee(firstName, lastName, decimal.Parse(annualSalary), decimal.Parse(superRate));
-
+            var superRate = ReadAndValidate(superRateInput);
+            
+            var employee = new Employee(firstName[0], lastName[0], decimal.Parse(annualSalary[0]), decimal.Parse(superRate[0]));
+            
             var fullName = employee.GenerateFullName();
+            
+            var startAndEndDateInput = new Input(new List<string>() {Constants.PaymentStartDatePrompt, Constants.PaymentEndDatePrompt}, new DateValidator(), 
+                Constants.DateErrorMessage);
 
-            var dateValidator = new DateValidator();
-
-            var startDate =
-                ReadAndValidate(Constants.PaymentStartDatePrompt, Constants.DateErrorMessage, dateValidator);
-
-            var endDate = ReadAndValidate(Constants.PaymentEndDatePrompt, Constants.DateErrorMessage, dateValidator,
-                startDate);
-
-            var paySlip = new PaySlip(DateTime.Parse(startDate), DateTime.Parse(endDate));
-
+            var startAndEndDates = ReadAndValidate(startAndEndDateInput);
+            
+            var paySlip = new PaySlip(DateTime.Parse(startAndEndDates[0]), DateTime.Parse(startAndEndDates[1]));
+            
             paySlip.AllPaySlipCalculations(employee.AnnualSalary, employee.SuperRate);
-
+            
             var paySlipOutput = PaySlipOutput(fullName, paySlip.PaymentStartDate,
                 paySlip.PaymentEndDate, paySlip.GrossIncome, paySlip.IncomeTax,
                 paySlip.NetIncome, paySlip.Super);
-
+            
             _paySlipDisplay.Display(paySlipOutput);
         }
 
 
-        private string ReadAndValidate(string prompt, string error, IValidator iValidator,
-                string optionalArg = null) // is there a better way to do this? 
+        private List<string> ReadAndValidate(Input input) // is there a better way to do this? 
         {
-            string input;
+            var output = new List<string>();
 
             bool isValid;
 
             do
             {
-                _paySlipDisplay.Display(prompt);
+                foreach (var prompt in input.Prompts)
+                {
+                    _paySlipDisplay.Display(prompt);
 
-                input = _paySlipInputCollector.CollectInput();
-
-                isValid = iValidator.IsValid(input, optionalArg);
+                    output.Add(_paySlipInputCollector.CollectInput());    
+                }
+                
+                isValid = input.Validator.IsValid(output);
 
                 if (!isValid)
                 {
-                    _paySlipDisplay.Display(error);
+                    _paySlipDisplay.Display(input.Error);
+                    
+                    output.Clear();
                 }
 
             } while (!isValid);
 
-            return input;
+            return output;
         }
 
         private string ToFormattedDate(DateTime date) //  how can I make it date.toFormattedDate() and should this be in IDisplay ? 

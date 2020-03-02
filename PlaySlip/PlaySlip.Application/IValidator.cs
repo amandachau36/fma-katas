@@ -1,8 +1,10 @@
+using System.Collections.Generic;
+
 namespace PlaySlip.Application
  { 
      public interface IValidator
      {
-         bool IsValid( params string[] input);
+         bool IsValid( List<string> input);
         
      }
  }

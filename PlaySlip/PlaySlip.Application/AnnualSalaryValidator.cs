@@ -1,10 +1,11 @@
 using System;
+using System.Collections.Generic;
 
 namespace PlaySlip.Application
 {
     public class AnnualSalaryValidator : IValidator
     {
-        public bool IsValid(params string[] input)
+        public bool IsValid(List<string> input)
         {
             decimal annualSalary;
 
