@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using NUnit.Framework;
 using PlaySlip.Application;
 
@@ -16,7 +17,7 @@ namespace PaySlip.UnitTests
         {
             var superValidator = new SuperValidator();
 
-            var superRate = "88";
+            var superRate = new List<string>() {"88"};
 
             var result = superValidator.IsValid(superRate);
             
@@ -28,7 +29,7 @@ namespace PaySlip.UnitTests
         {
             var superValidator = new SuperValidator();
 
-            var superRate = "-4";
+            var superRate = new List<string>() {"-4"};
 
             var result = superValidator.IsValid(superRate);
             
@@ -40,7 +41,7 @@ namespace PaySlip.UnitTests
         {
             var superValidator = new SuperValidator();
 
-            var superRate = "9";
+            var superRate = new List<string>() {"9"};
 
             var result = superValidator.IsValid(superRate);
             
@@ -52,7 +53,7 @@ namespace PaySlip.UnitTests
         {
             var superValidator = new SuperValidator();
 
-            var superRate = "cat";
+            var superRate = new List<string>() {"cat"};
 
             var result = superValidator.IsValid(superRate);
             

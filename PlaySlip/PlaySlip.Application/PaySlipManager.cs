@@ -5,12 +5,10 @@ namespace PlaySlip.Application
 {
     public class PaySlipManager // should this implement an interface?  
     {
-        private readonly IDisplay _paySlipDisplay;
-        private readonly IInputCollector _paySlipInputCollector;
-
         public PaySlipManager(IDisplay paySlipDisplay, IInputCollector paySlipInputCollector) // only interface methods are available 
         {
             _paySlipDisplay = paySlipDisplay; // composition
+            
             _paySlipInputCollector = paySlipInputCollector;
         }
 
@@ -56,7 +54,7 @@ namespace PlaySlip.Application
         }
 
 
-        private List<string> ReadAndValidate(Input input) // is there a better way to do this? 
+        private List<string> ReadAndValidate(Input input) 
         {
             var output = new List<string>();
 
@@ -111,6 +109,10 @@ namespace PlaySlip.Application
 
             return lines;
         }
+        
+        private readonly IDisplay _paySlipDisplay;
+        
+        private readonly IInputCollector _paySlipInputCollector;
     }
 }
 

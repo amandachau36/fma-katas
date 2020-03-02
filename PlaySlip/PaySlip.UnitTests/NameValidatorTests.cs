@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using NUnit.Framework;
 using PlaySlip.Application;
 
@@ -11,7 +12,7 @@ namespace PaySlip.UnitTests
         {
             var nameValidator = new NameValidator();
         
-            var name = "";
+            var name = new List<string>() {""};
         
             var result = nameValidator.IsValid(name);
             
@@ -22,8 +23,8 @@ namespace PaySlip.UnitTests
         public void IsValid_ValidName_ReturnsTrue()
         {
             var nameValidator = new NameValidator();
-        
-            var name = "John";
+
+            var name = new List<string>() {"John"};
         
             var result = nameValidator.IsValid(name);
             

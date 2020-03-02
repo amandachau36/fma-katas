@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using NUnit.Framework;
 using PlaySlip.Application;
 
@@ -15,9 +16,9 @@ namespace PaySlip.UnitTests
         public void IsValid_InvalidAnnualSalary_ReturnsFalse()
         {
             var annualSalaryValidator = new AnnualSalaryValidator();
-        
-            var annualSalary = "-100";
-        
+            
+            var annualSalary = new List<string>() {"-100"};
+            
             var result = annualSalaryValidator.IsValid(annualSalary);
             
             Assert.AreEqual( false, result);
@@ -28,8 +29,8 @@ namespace PaySlip.UnitTests
         {
             var annualSalaryValidator = new AnnualSalaryValidator();
         
-            var annualSalary = "60000";
-        
+            var annualSalary = new List<string>() {"60000"};
+
             var result = annualSalaryValidator.IsValid(annualSalary);
             
             Assert.AreEqual( true, result);

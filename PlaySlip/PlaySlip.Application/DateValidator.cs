@@ -21,7 +21,7 @@ namespace PlaySlip.Application
                 return false;
             }
             
-            return endDate > startDate;
+            return endDate > startDate && endDate <= DateTime.Now;
         }
 
        
