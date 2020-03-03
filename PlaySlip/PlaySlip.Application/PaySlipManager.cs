@@ -17,8 +17,7 @@ namespace PlaySlip.Application
             _paySlipDisplay.Display(Constants.WelcomeMessage);
             
            // composition and loosely coupled because you can pass in any validator with IValidator interface 
-            
-            var firstName = ReadAndValidate( new Input(new List<string>()
+           var firstName = ReadAndValidate( new Input(new List<string>()
                                                                                             { Constants.FirstNamePrompt }, 
                                                                                             new NameValidator(), 
                                                                                             Constants.GeneralError));
@@ -83,16 +82,7 @@ namespace PlaySlip.Application
 
             return output;
         }
-
-        private string ToFormattedDate(DateTime date) //  how can I make it date.toFormattedDate() and should this be in IDisplay ? 
-        {
-            return date.ToString("MMMM dd, yyyy");  //Date helper public sealed class with static method
-        }
-
-        private decimal ToRoundedDollar(decimal amount)
-        {
-            return Decimal.Round(amount); //  how can I make it amount.RoundToDollar()
-        }
+        
         
         // not sure if this is the right place to put this - this is an appropriate place for this  
         private List<string> PaySlipOutput(Employee employee, PaySlip paySlip)    // pass in object instead
@@ -103,11 +93,11 @@ namespace PlaySlip.Application
             {
                 "\nYour payslip has been generated: \n",
                 $"Name: {employee.GenerateFullName()}",
-                $"Pay Period: {ToFormattedDate(paySlip.PaymentStartDate)} – {ToFormattedDate(paySlip.PaymentEndDate)}",
-                $"Gross Income: {ToRoundedDollar(paySlip.GrossIncome)}",
-                $"Income Tax: {ToRoundedDollar(paySlip.IncomeTax)}",
-                $"Net Income: {ToRoundedDollar(paySlip.NetIncome)}",
-                $"Super: {ToRoundedDollar(paySlip.Super)}"
+                $"Pay Period: {DateHelper.ToFormattedDate(paySlip.PaymentStartDate)} – {DateHelper.ToFormattedDate(paySlip.PaymentEndDate)}",
+                $"Gross Income: {CurrencyHelper.ToRoundedDollar(paySlip.GrossIncome)}",
+                $"Income Tax: {CurrencyHelper.ToRoundedDollar(paySlip.IncomeTax)}",
+                $"Net Income: {CurrencyHelper.ToRoundedDollar(paySlip.NetIncome)}",
+                $"Super: {CurrencyHelper.ToRoundedDollar(paySlip.Super)}"
             };
 
             return lines;

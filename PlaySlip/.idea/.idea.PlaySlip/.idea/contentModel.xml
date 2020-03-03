@@ -33,6 +33,8 @@
         <e p="ConsolePaySlipDisplay.cs" t="Include" />
         <e p="ConsolePaySlipInputCollector.cs" t="Include" />
         <e p="Constants.cs" t="Include" />
+        <e p="CurrencyHelper.cs" t="Include" />
+        <e p="DateHelper.cs" t="Include" />
         <e p="DateValidator.cs" t="Include" />
         <e p="Employee.cs" t="Include" />
         <e p="IDisplay.cs" t="Include" />

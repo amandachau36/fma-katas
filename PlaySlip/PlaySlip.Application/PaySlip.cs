@@ -36,10 +36,8 @@ namespace PlaySlip.Application
         public void CalculateGrossIncome(decimal annualSalary) // doesn't take into account leap years or that the proportion of work days/weekend  may vary between pay periods 
         {
             var payPeriodInDays = Convert.ToDecimal(PayPeriod.TotalDays); // convert to double then decimal
-            
-            var daysInYear = 365m;   
-            
-            GrossIncome = payPeriodInDays * (annualSalary / daysInYear);
+
+            GrossIncome = payPeriodInDays * (annualSalary / _numberOfDaysInYear);
         }
         
         public void CalculateIncomeTax(decimal annualSalary)   
@@ -69,7 +67,7 @@ namespace PlaySlip.Application
             
             decimal payPeriodInDays = Convert.ToDecimal(PayPeriod.TotalDays);
             
-            IncomeTax = incomeTaxPerYear * (payPeriodInDays/ 365m);
+            IncomeTax = incomeTaxPerYear * (payPeriodInDays/ _numberOfDaysInYear);
         }
 
         public void CalculateNetIncome()
@@ -89,7 +87,8 @@ namespace PlaySlip.Application
             CalculateNetIncome();
             CalculateSuper(superRate);
         }
-        
+
+        private decimal _numberOfDaysInYear = 365;
 
     }
 }
