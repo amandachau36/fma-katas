@@ -9,9 +9,8 @@ namespace PlaySlip.Application
         {
             Console.Write(message);
         }
-        
-        
-        public void Display(IEnumerable<string> messages)
+
+        public void Display(List<string> messages)
         {
             foreach (var message in messages)
             {
