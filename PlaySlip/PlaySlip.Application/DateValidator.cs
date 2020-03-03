@@ -10,7 +10,7 @@ namespace PlaySlip.Application
             
             DateTime startDate;
             
-            var isStartDateValid = DateTime.TryParse(input[0], out startDate);
+            var isStartDateValid = DateTime.TryParse(input[0], out startDate); //this not the best way to do things
             
             DateTime endDate;
 
