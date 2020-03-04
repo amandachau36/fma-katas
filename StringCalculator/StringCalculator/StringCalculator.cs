@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 
 namespace Calculator
 {
@@ -6,7 +7,19 @@ namespace Calculator
     {
         public int Add(string stringNumbers )
         {
-            var numbers = stringNumbers.Split(new string[] {","}, StringSplitOptions.None);
+            var regex = new Regex(@"^//(.)\n");
+            
+            var match = regex.Match(stringNumbers);
+
+            var separator = new string[] {"\n", ","};
+            
+            if (match.Success)
+            {
+                separator = new string[] {match.Groups[1].Value};
+                stringNumbers = stringNumbers.Remove(0, 4);
+            }
+            
+            var numbers = stringNumbers.Split(separator, StringSplitOptions.None);
 
             var totalSum = 0;
             

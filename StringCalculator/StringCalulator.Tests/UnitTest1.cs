@@ -30,7 +30,7 @@ namespace Calculator.Tests
         }
 
         [Fact]
-        public void Should_ReturnSumOfTheNumbers_When_InputIsTwoNumbers()
+        public void Should_ReturnSumOfNumbers_When_TwoNumbersAreSeparatedByAComma()
         {
             var stringCalculator = new StringCalculator();
             
@@ -40,7 +40,7 @@ namespace Calculator.Tests
         }
 
         [Fact]
-        public void Should_ReturnSumOfTheNumbers_When_InputIsMultipleNumbers()
+        public void Should_ReturnSumOfNumbers_When_MultipleNumbersAreSeparatedByCommas()
         {
             
             var stringCalculator = new StringCalculator();
@@ -50,9 +50,30 @@ namespace Calculator.Tests
             Assert.Equal(20, result);
         }
         
-        
-        
-        
-        
+        [Fact]
+        public void Should_ReturnSumOfNumbers_When_NumbersAreSeparatedByNewLineBreaksOrCommas()
+        {
+            
+            var stringCalculator = new StringCalculator();
+
+            var result = stringCalculator.Add("1,2\n3");
+            
+            Assert.Equal(6, result);
+        }
+
+
+        [Fact]
+        public void Should_ReturnSumOfNumbers_When_DifferentDelimitersAreUsed()
+        {
+            var stringCalculator = new StringCalculator();
+
+            var result = stringCalculator.Add("//;\n1;2");
+            
+            Assert.Equal(3, result);
+        }
+
+
+
+
     }
 }
