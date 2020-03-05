@@ -93,9 +93,21 @@ namespace Calculator.Tests
             
             Assert.Equal(6, result);
         }
-        
-        
-        
+
+        [Fact]
+        public void Should_ReturnSumOfNumbers_When_MultipleDelimitersAreUsed()
+        {
+            var stringCalculator = new StringCalculator();
+
+            var result = stringCalculator.Add("//[*][%]\n1*2%3");
+            
+            Assert.Equal(6, result);
+        }
+
+
+
+
+
 
 
 

@@ -11,11 +11,6 @@ namespace Calculator
        
         public int Add(string stringNumbers )
         {
-    
-            
-            //var regex1 = new Regex(@"^//(.)\n");
-            
-            //var regex2 = new Regex(@"^//\[(.*)\]\n");
             
            
             var calculatorInput = InputProcessor1(stringNumbers);
@@ -52,31 +47,38 @@ namespace Calculator
             var regex1 = new Regex(@"^//(.*)\n");
             
             var match1 = regex1.Match(stringNumbers);
-            
+
             var separators = new string[] {"\n", ","}; // default
             
             if (match1.Success)   // check to see if there 
             {
                 var stringMatch1 = match1.Groups[1].Value;
                 
-                var regex2 = new Regex(@"\[(.*)\]");
+                var regex2 = new Regex(@"\[(.*?)\]");
 
-                var match2 = regex2.Match(stringMatch1);
+                var match2 = regex2.Matches(stringMatch1);
                 
-                if (match2.Success)
+                if (match2.Count > 0)
                 {
-                    separators = new string[] {match2.Groups[1].Value}; // single delimiter
+                    var numberOfDelimiters = match2.Count;
                     
-                    stringNumbers = stringNumbers.Remove(0, 6 + separators[0].Length-1);
+                    separators = new string[numberOfDelimiters];
+
+                    for (int i = 0; i < numberOfDelimiters; i++)
+                    {
+                        separators[i] = match2[i].Groups[1].Value;
+                    }
+                    stringNumbers = regex1.Replace(stringNumbers, "");
+                    
                 
                 }
                 else   //deals with different but single characters delimiters 
                 {
-                    separators = new string[] {stringMatch1};  
-                    stringNumbers = stringNumbers.Remove(0, 4);
+                    separators = new string[] {stringMatch1}; 
+                    stringNumbers = regex1.Replace(stringNumbers, "");
+                
                 }
-                
-                
+
             } 
             
             // if match1 is not a success then use default separators  
