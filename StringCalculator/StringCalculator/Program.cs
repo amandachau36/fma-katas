@@ -8,6 +8,11 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
+            var stringCalculator = new StringCalculator();
+
+            var result = stringCalculator.Add("//[**1][%]\n1*1*2%3");
+
+            Console.WriteLine(result);
             
         }
     }

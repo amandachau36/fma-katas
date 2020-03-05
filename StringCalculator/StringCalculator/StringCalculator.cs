@@ -52,19 +52,28 @@ namespace Calculator
             {
                 var stringMatch1 = match1.Groups[1].Value;
                 
-                var regex2 = new Regex(@"\[(.*?)\]");
+                var regex2 = new Regex(@"\[(.*?)\]"); // ? required to make it non-greedy
 
                 var match2 = regex2.Matches(stringMatch1);
                 
                 if (match2.Count > 0)
                 {
                     var numberOfDelimiters = match2.Count;
-                    
+
                     separators = new string[numberOfDelimiters];
 
                     for (int i = 0; i < numberOfDelimiters; i++)
                     {
-                        separators[i] = match2[i].Groups[1].Value;
+                        var currentSeparator = match2[i].Groups[1].Value;
+
+                        if (Regex.IsMatch(currentSeparator, @"^\d+") || Regex.IsMatch(currentSeparator, @"\d+$"))
+                        {
+                            Console.WriteLine("Delimiter has a number on the edge, need to throw error");
+                        }
+
+                        separators[i] = currentSeparator;
+
+
                     }
                     stringNumbers = regex1.Replace(stringNumbers, "");
                     

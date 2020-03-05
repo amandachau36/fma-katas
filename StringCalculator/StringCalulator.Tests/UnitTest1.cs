@@ -115,6 +115,15 @@ namespace Calculator.Tests
             Assert.Equal(10, result);
         }
 
+        [Fact] public void Should_ReturnSumOfNumbers_When_DelimitersIncludeNumbersButNotAtEdges()
+        {
+            var stringCalculator = new StringCalculator();
+
+            var result = stringCalculator.Add("//[*1*][%]\n1*1*2%3");
+            
+            Assert.Equal(6, result);
+        }
+
 
 
 
