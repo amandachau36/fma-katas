@@ -105,6 +105,17 @@ namespace Calculator.Tests
         }
 
 
+        [Fact]
+        public void Should_ReturnSumOfNumbers_When_MultipleDelimitersOfDifferentLengthsAreUsed()
+        {
+            var stringCalculator = new StringCalculator();
+
+            var result = stringCalculator.Add("//[***][#][%]\n1***2#3%4");
+            
+            Assert.Equal(10, result);
+        }
+
+
 
 
 

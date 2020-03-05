@@ -12,10 +12,8 @@ namespace Calculator
         public int Add(string stringNumbers )
         {
             
-           
             var calculatorInput = InputProcessor1(stringNumbers);
-
-
+            
             var numbers = calculatorInput.StringNumbers.Split(calculatorInput.Separators, StringSplitOptions.None);
             
                 
@@ -50,7 +48,7 @@ namespace Calculator
 
             var separators = new string[] {"\n", ","}; // default
             
-            if (match1.Success)   // check to see if there 
+            if (match1.Success)   // check for custom Delimiters 
             {
                 var stringMatch1 = match1.Groups[1].Value;
                 
@@ -87,24 +85,7 @@ namespace Calculator
         }
         
         
-        // private CalculatorInput InputProcessor2(string stringNumbers)
-        // {
-        //     var regex = new Regex(@"^//\[(.*)\]\n");
-        //     
-        //     var match = regex.Match(stringNumbers);
-        //
-        //     var separators = new string[] {"\n", ","};
-        //     
-        //     if (match.Success)
-        //     {
-        //         separators = new string[] {match.Groups[1].Value};
-        //         stringNumbers = stringNumbers.Remove(0, 6 + separators[0].Length-1);
-        //         
-        //     }
-        //     
-        //     return new CalculatorInput(separators, stringNumbers);
-        //     
-        // }
+  
         
         private CalculatorInput InputProcessorDefault(string stringNumbers)
         {
