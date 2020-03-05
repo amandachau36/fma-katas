@@ -72,9 +72,37 @@ namespace Calculator.Tests
             Assert.Equal("Negatives not allowed: -1, -3", exception.Message);
             
         }
+
+        [Fact]
+        public void Should_ReturnSumThatIgnoresNumber_When_NumberIsGreaterOrEqualTo1000()
+        {
+            var stringCalculator = new StringCalculator();
+
+            var result = stringCalculator.Add("1000,1001,2");
+            
+            Assert.Equal(2, result);
+        }
+
+
+        [Fact]
+        public void Should_ReturnSumOfNumbers_When_DelimitersAreOfAnyLength()
+        {
+            var stringCalculator = new StringCalculator();
+
+            var result = stringCalculator.Add("//[***]\n1***2***3");
+            
+            Assert.Equal(6, result);
+        }
         
         
         
+
+
+
+
+
+
+
 
 
 

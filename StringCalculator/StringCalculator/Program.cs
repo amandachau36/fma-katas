@@ -15,22 +15,23 @@ namespace Calculator
             
             //"1,\n" ????
             //"1,2\n3"
-            var numbers = "-1,2\n3".Split(',', '\n');
-
-            foreach (var n in numbers)
-            {
-                Console.WriteLine("N" + n);
-            }
+            // var numbers = "-1,2\n3".Split(',', '\n');
             //
-            // var regex = new Regex(@"^//(.)\n");
+            // foreach (var n in numbers)
+            // {
+            //     Console.WriteLine("N" + n);
+            // }
             //
-            // var match = regex.Match("//;\n1;2");
+            // var regex = new Regex(@"^//\[(.*)\]\n");
             //
-            // if (match.Success)
+            // var match = regex.Match("//[***]\n1***2***3");
             // {
             //     Console.WriteLine("Match value: " + match.Groups[1]);
             // }
-            //
+
+            var a = stringCalculator.Add("1,2");
+            //var c = stringCalculator.Add("//[***]\n1***2***3");
+
             // var newString = "//;\n1;2".Remove(0, 4);
             //
             // Console.WriteLine(newString);
@@ -48,10 +49,10 @@ namespace Calculator
             //     throw new NegativesNotAllowedException(new CalculatorInput());
             // }
             //
-            
-           // var result = stringCalculator.Add("-1,2,-3");
 
-            
+            // var result = stringCalculator.Add("-1,2,-3");
+
+
 
 
         }
