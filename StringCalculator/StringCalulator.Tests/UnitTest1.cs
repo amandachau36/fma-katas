@@ -7,18 +7,6 @@ namespace Calculator.Tests
     {
         // where do I put the add method? 
         
-        // this one fails when I write second test
-        // [Fact]   
-        // public void Should_ReturnANumber_When_InputIsAString()
-        // {
-        //     var stringCalculator = new StringCalculator();
-        //
-        //     var result = stringCalculator.Add("");
-        //     
-        //     Assert.Equal(0, result);  
-        // }
-        
-        
         [Fact]
         public void Should_ReturnSameNumber_When_InputIsASingleNumber()
         {
@@ -71,9 +59,38 @@ namespace Calculator.Tests
             
             Assert.Equal(3, result);
         }
+        
+  
+
+        [Fact]
+        public void Should_ThrowExceptionNegativesNotAllowed_When_NumberIsNegative()
+        {
+            var stringCalculator = new StringCalculator();
+
+            var exception = Assert.Throws<NegativesNotAllowedException>(() => stringCalculator.Add("-1,2,-3"));
+            
+            Assert.Equal("Negatives not allowed: -1, -3", exception.Message);
+            
+        }
+        
+        
+        
 
 
 
 
     }
 }
+
+
+// this one fails when I write second test
+// [Fact]   
+// public void Should_ReturnANumber_When_InputIsAString()
+// {
+//     var stringCalculator = new StringCalculator();
+//
+//     var result = stringCalculator.Add("");
+//     
+//     Assert.Equal(0, result);  
+// }
+
