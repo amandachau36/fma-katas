@@ -12,11 +12,10 @@ namespace Calculator
         public int Add(string stringNumbers )
         {
             
-            var calculatorInput = InputProcessor1(stringNumbers);
+            var calculatorInput = InputProcessor(stringNumbers);
             
             var numbers = calculatorInput.StringNumbers.Split(calculatorInput.Separators, StringSplitOptions.None);
-            
-                
+
             var totalSum = 0;
         
             for (int i = 0; i < numbers.Count(); i++)
@@ -40,7 +39,7 @@ namespace Calculator
             
         }
         
-        private CalculatorInput InputProcessor1(string stringNumbers)
+        private CalculatorInput InputProcessor(string stringNumbers)
         {
             var regex1 = new Regex(@"^//(.*)\n");
             
@@ -70,45 +69,22 @@ namespace Calculator
                         {
                             Console.WriteLine("Delimiter has a number on the edge, need to throw error");
                         }
-
+                        
                         separators[i] = currentSeparator;
-
-
                     }
-                    stringNumbers = regex1.Replace(stringNumbers, "");
-                    
-                
                 }
                 else   //deals with different but single characters delimiters 
                 {
                     separators = new string[] {stringMatch1}; 
-                    stringNumbers = regex1.Replace(stringNumbers, "");
-                
+                    
                 }
-
+                
+                stringNumbers = regex1.Replace(stringNumbers, "");
             } 
             
             // if match1 is not a success then use default separators  
-
             return new CalculatorInput(separators, stringNumbers);
         }
-        
-        
-  
-        
-        private CalculatorInput InputProcessorDefault(string stringNumbers)
-        {
-            
-            var separators = new string[] {"\n", ","};
 
-            return new CalculatorInput(separators, stringNumbers);
-            
-        }
-        
-        
-        
-        // private bool IsNumberNegative() 
-        
-        
     }
 }

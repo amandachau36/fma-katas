@@ -125,20 +125,6 @@ namespace Calculator.Tests
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
 
