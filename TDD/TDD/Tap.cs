@@ -2,13 +2,13 @@ using System;
 
 namespace TDD
 {
-    public class TapOn
+    public class Tap
     {
         public readonly DateTime Time;
 
         public readonly Guid MachineId;
 
-        public TapOn(Guid machineId,  DateTime time )
+        public Tap(Guid machineId,  DateTime time )
         {
             Time = time;
 

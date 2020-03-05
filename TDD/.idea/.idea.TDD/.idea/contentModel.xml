@@ -20,7 +20,7 @@
           </e>
         </e>
         <e p="Program.cs" t="Include" />
-        <e p="TapOn.cs" t="Include" />
+        <e p="Tap.cs" t="Include" />
         <e p="TDD.csproj" t="IncludeRecursive" />
       </e>
       <e p="TDD.sln" t="IncludeFlat" />
