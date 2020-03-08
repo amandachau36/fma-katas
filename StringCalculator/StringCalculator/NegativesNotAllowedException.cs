@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using System.Net;
+
 
 namespace Calculator
 {
@@ -12,8 +12,7 @@ namespace Calculator
 
         private static string FormatMessage(CalculatorInput calculatorInput)
         {
-            var numbers = calculatorInput.StringNumbers.Split(calculatorInput.Separators, StringSplitOptions.None);
-            var negativeNumbers = numbers.Where(num => Convert.ToInt32(num) < 0).ToArray();
+            var negativeNumbers = calculatorInput.ProcessedNumbers.Where(num => num < 0).ToArray();
             return "Negatives not allowed: " + string.Join(", ", negativeNumbers);
         }
     }

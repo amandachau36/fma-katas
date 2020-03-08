@@ -22,3 +22,4 @@ namespace Calculator
 //TODO: refactor so that stringNumber does not need to be processed multiple times, calculatorInput should probably return this 
 //TODO:  look for patterns in InputProcessor
 //TODO: think about interfaces 
+//TODO: another throw exception 

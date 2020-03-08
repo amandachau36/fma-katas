@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.PortableExecutable;
 using System.Text.RegularExpressions;
 
 namespace Calculator
@@ -13,29 +11,26 @@ namespace Calculator
         {
             
             var calculatorInput = InputProcessor(stringNumbers);
-            
-            var numbers = calculatorInput.StringNumbers.Split(calculatorInput.Separators, StringSplitOptions.None);
+
+            var numbers = calculatorInput.ProcessedNumbers;
 
             var totalSum = 0;
         
             for (int i = 0; i < numbers.Count(); i++)
             {
-                var currentNumber = Convert.ToInt32(numbers[i]);
-
-                if (currentNumber < 0)
+                if (numbers[i] < 0)
                 {
                     throw new NegativesNotAllowedException(calculatorInput);
                 }
 
-                if (currentNumber < 1000)
+                if (numbers[i] < 1000)
                 {
-                    totalSum += currentNumber;
+                    totalSum += numbers[i];
                 }
 
             }
 
             return totalSum;
-
             
         }
         
@@ -61,7 +56,7 @@ namespace Calculator
 
                     separators = new string[numberOfDelimiters];
 
-                    for (int i = 0; i < numberOfDelimiters; i++)
+                    for (var i = 0; i < numberOfDelimiters; i++)
                     {
                         var currentSeparator = match2[i].Groups[1].Value;
 
@@ -79,11 +74,14 @@ namespace Calculator
                     
                 }
                 
-                stringNumbers = regex1.Replace(stringNumbers, "");
+                stringNumbers = regex1.Replace(stringNumbers, "");  //if there are delimiters remove from the numbers
+               
             } 
             
+            var processedNumbers = stringNumbers.Split(separators, StringSplitOptions.None).Select(Int32.Parse).ToArray();
+            
             // if match1 is not a success then use default separators  
-            return new CalculatorInput(separators, stringNumbers);
+            return new CalculatorInput(separators, stringNumbers, processedNumbers);
         }
 
     }

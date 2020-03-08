@@ -5,8 +5,7 @@ namespace Calculator.Tests
 {
     public class StringCalculatorTests
     {
-        // where do I put the add method? 
-        
+
         [Fact]
         public void Should_ReturnSameNumber_When_InputIsASingleNumber()
         {
@@ -128,15 +127,4 @@ namespace Calculator.Tests
     }
 }
 
-
-// this one fails when I write second test
-// [Fact]   
-// public void Should_ReturnANumber_When_InputIsAString()
-// {
-//     var stringCalculator = new StringCalculator();
-//
-//     var result = stringCalculator.Add("");
-//     
-//     Assert.Equal(0, result);  
-// }
 
