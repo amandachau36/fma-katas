@@ -8,18 +8,30 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
-            var stringCalculator = new StringCalculator();
+            try
+            {
+                var stringCalculator = new StringCalculator();
+            
+                var result = stringCalculator.Add("//[**1]\n1**12*3");
+                
+                Console.WriteLine(result);
 
-            var result = stringCalculator.Add("//[**1][%]\n1*1*2%3");
-
-            Console.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Catch in main :" + e.Message);
+                
+            }
+           
+            
+            
+           
             
         }
     }
 }
 
 
-//TODO: refactor so that stringNumber does not need to be processed multiple times, calculatorInput should probably return this 
 //TODO:  look for patterns in InputProcessor
 //TODO: think about interfaces 
-//TODO: another throw exception 
+
