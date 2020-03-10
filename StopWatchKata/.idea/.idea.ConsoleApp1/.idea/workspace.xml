@@ -2,22 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="121ff2b9-95e8-4009-9e02-948c88cd0820" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Watch.UnitTests/Watch.UnitTests.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Watch/InvalidOperationException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Watch/RealDateTimeProvider.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Watch/Stopwatch.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Watch/Watch.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../TDD/TDD/Trip.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ConsoleApp1/.idea/.idea.ConsoleApp1/.idea/contentModel.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ConsoleApp1/.idea/.idea.ConsoleApp1/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Watch/InvalidStopWatchOperationException.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Blackjack-interfaces/Blackjack/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Blackjack-interfaces/Blackjack/Game.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Blackjack-refactor-enums-dictionary/Blackjack/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Blackjack-refactor-enums-dictionary/Blackjack/Game.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Collections/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Composition/CompositionKata2.Tests/Composition/AggregationTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Composition/CompositionKata2.Tests/Composition/AggregationTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Composition/CompositionKata2/Algorithm/Composition/HighPassSummingAggregator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Composition/CompositionKata2/Algorithm/Composition/HighPassSummingAggregator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Composition/CompositionKata2/Algorithm/Composition/PointsAggregator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Composition/CompositionKata2/Algorithm/Composition/PointsAggregator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TDD/TDD.tests/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../TDD/TDD.tests/UnitTest1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TDD/TDD/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../TDD/TDD/Card.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TDD/TDD/FareCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../TDD/TDD/FareCalculator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ConsoleApp1/Watch.UnitTests/Watch.UnitTests.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ConsoleApp1/Watch/InvalidOperationException.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ConsoleApp1/Watch/RealDateTimeProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ConsoleApp1/Watch/Stopwatch.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ConsoleApp1/Watch/Watch.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsoleApp1/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsoleApp1/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsoleApp1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsoleApp1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Watch.UnitTests/StopwatchTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Watch.UnitTests/StopwatchTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Watch/InvalidOperationException.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Watch/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Watch/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Watch/Stopwatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Watch/Stopwatch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StringCalculator/.idea/.idea.StringCalculator/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../StringCalculator/.idea/.idea.StringCalculator/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StringCalculator/StringCalculator/CalculatorInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../StringCalculator/StringCalculator/CalculatorInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StringCalculator/StringCalculator/NegativesNotAllowedException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../StringCalculator/StringCalculator/NegativesNotAllowedException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StringCalculator/StringCalculator/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../StringCalculator/StringCalculator/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StringCalculator/StringCalculator/StringCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../StringCalculator/StringCalculator/StringCalculator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StringCalculator/StringCalulator.Tests/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../StringCalculator/StringCalulator.Tests/StringCalculatorTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,13 +38,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Watch/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Watch.UnitTests/StopwatchTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Watch/InvalidOperationException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Watch/InvalidStopWatchOperationException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Watch/RealDateTimeProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Watch/MockDateTimeProvider.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Watch/IDateTimeProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Watch/Stopwatch.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Watch/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Watch/IDateTimeProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/231CAC4C-D307-4AEA-83F1-76589F64BFB3/53/ArgumentNullException.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -45,9 +56,10 @@
         <option value="$PROJECT_DIR$/Watch/MockDateTimeProvider.cs" />
         <option value="$PROJECT_DIR$/Watch/RealDateTimeProvider.cs" />
         <option value="$PROJECT_DIR$/Watch/Program.cs" />
+        <option value="$PROJECT_DIR$/Watch/InvalidOperationException.cs" />
         <option value="$PROJECT_DIR$/Watch.UnitTests/StopwatchTests.cs" />
         <option value="$PROJECT_DIR$/Watch/Stopwatch.cs" />
-        <option value="$PROJECT_DIR$/Watch/InvalidOperationException.cs" />
+        <option value="$PROJECT_DIR$/Watch/InvalidStopWatchOperationException.cs" />
       </list>
     </option>
   </component>
@@ -107,49 +119,60 @@
       <option name="presentableId" value="Default" />
       <updated>1583730653387</updated>
       <workItem from="1583730654808" duration="10413000" />
+      <workItem from="1583807993478" duration="5269000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1678" height="90" key="GridCell.Tab.0.bottom" timestamp="1583797781131">
-      <screen x="0" y="23" width="1920" height="994" />
+    <state width="3398" height="546" key="GridCell.Tab.0.bottom" timestamp="1583818285390">
+      <screen x="-690" y="-1417" width="3440" height="1417" />
     </state>
-    <state width="1678" height="382" key="GridCell.Tab.0.bottom/-690.-1417.3440.1417/0.23.1792.1033@-690.-1417.3440.1417" timestamp="1583793371338" />
+    <state width="3398" height="546" key="GridCell.Tab.0.bottom/-690.-1417.3440.1417/0.23.1792.1031@-690.-1417.3440.1417" timestamp="1583818285390" />
+    <state width="3398" height="546" key="GridCell.Tab.0.bottom/-690.-1417.3440.1417/0.23.1792.1033@-690.-1417.3440.1417" timestamp="1583810514516" />
     <state width="1678" height="382" key="GridCell.Tab.0.bottom/-690.-1417.3440.1417/0.23.1792.1034@-690.-1417.3440.1417" timestamp="1583794201838" />
+    <state width="2501" height="546" key="GridCell.Tab.0.bottom/-690.-1417.3440.1417/0.23.1792.1036@-690.-1417.3440.1417" timestamp="1583809778656" />
     <state width="1678" height="90" key="GridCell.Tab.0.bottom/0.23.1920.994@0.23.1920.994" timestamp="1583797781131" />
-    <state width="1678" height="90" key="GridCell.Tab.0.center" timestamp="1583797781131">
-      <screen x="0" y="23" width="1920" height="994" />
+    <state width="3398" height="546" key="GridCell.Tab.0.center" timestamp="1583818285389">
+      <screen x="-690" y="-1417" width="3440" height="1417" />
     </state>
-    <state width="1678" height="382" key="GridCell.Tab.0.center/-690.-1417.3440.1417/0.23.1792.1033@-690.-1417.3440.1417" timestamp="1583793371337" />
+    <state width="3398" height="546" key="GridCell.Tab.0.center/-690.-1417.3440.1417/0.23.1792.1031@-690.-1417.3440.1417" timestamp="1583818285389" />
+    <state width="3398" height="546" key="GridCell.Tab.0.center/-690.-1417.3440.1417/0.23.1792.1033@-690.-1417.3440.1417" timestamp="1583810514515" />
     <state width="1678" height="382" key="GridCell.Tab.0.center/-690.-1417.3440.1417/0.23.1792.1034@-690.-1417.3440.1417" timestamp="1583794201837" />
+    <state width="2501" height="546" key="GridCell.Tab.0.center/-690.-1417.3440.1417/0.23.1792.1036@-690.-1417.3440.1417" timestamp="1583809778655" />
     <state width="1678" height="90" key="GridCell.Tab.0.center/0.23.1920.994@0.23.1920.994" timestamp="1583797781131" />
-    <state width="1678" height="90" key="GridCell.Tab.0.left" timestamp="1583797781130">
-      <screen x="0" y="23" width="1920" height="994" />
+    <state width="3398" height="546" key="GridCell.Tab.0.left" timestamp="1583818285388">
+      <screen x="-690" y="-1417" width="3440" height="1417" />
     </state>
-    <state width="1678" height="382" key="GridCell.Tab.0.left/-690.-1417.3440.1417/0.23.1792.1033@-690.-1417.3440.1417" timestamp="1583793371336" />
+    <state width="3398" height="546" key="GridCell.Tab.0.left/-690.-1417.3440.1417/0.23.1792.1031@-690.-1417.3440.1417" timestamp="1583818285388" />
+    <state width="3398" height="546" key="GridCell.Tab.0.left/-690.-1417.3440.1417/0.23.1792.1033@-690.-1417.3440.1417" timestamp="1583810514515" />
     <state width="1678" height="382" key="GridCell.Tab.0.left/-690.-1417.3440.1417/0.23.1792.1034@-690.-1417.3440.1417" timestamp="1583794201836" />
+    <state width="2501" height="546" key="GridCell.Tab.0.left/-690.-1417.3440.1417/0.23.1792.1036@-690.-1417.3440.1417" timestamp="1583809778655" />
     <state width="1678" height="90" key="GridCell.Tab.0.left/0.23.1920.994@0.23.1920.994" timestamp="1583797781130" />
-    <state width="1678" height="90" key="GridCell.Tab.0.right" timestamp="1583797781131">
-      <screen x="0" y="23" width="1920" height="994" />
+    <state width="3398" height="546" key="GridCell.Tab.0.right" timestamp="1583818285389">
+      <screen x="-690" y="-1417" width="3440" height="1417" />
     </state>
-    <state width="1678" height="382" key="GridCell.Tab.0.right/-690.-1417.3440.1417/0.23.1792.1033@-690.-1417.3440.1417" timestamp="1583793371337" />
+    <state width="3398" height="546" key="GridCell.Tab.0.right/-690.-1417.3440.1417/0.23.1792.1031@-690.-1417.3440.1417" timestamp="1583818285389" />
+    <state width="3398" height="546" key="GridCell.Tab.0.right/-690.-1417.3440.1417/0.23.1792.1033@-690.-1417.3440.1417" timestamp="1583810514516" />
     <state width="1678" height="382" key="GridCell.Tab.0.right/-690.-1417.3440.1417/0.23.1792.1034@-690.-1417.3440.1417" timestamp="1583794201837" />
+    <state width="2501" height="546" key="GridCell.Tab.0.right/-690.-1417.3440.1417/0.23.1792.1036@-690.-1417.3440.1417" timestamp="1583809778655" />
     <state width="1678" height="90" key="GridCell.Tab.0.right/0.23.1920.994@0.23.1920.994" timestamp="1583797781131" />
     <state x="1490" y="-970" key="Rider.ProjectTemplateDialog.Size" timestamp="1583730710041">
       <screen x="-690" y="-1417" width="3440" height="1417" />

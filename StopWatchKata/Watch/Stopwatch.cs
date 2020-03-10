@@ -5,10 +5,9 @@ namespace Watch
     public class Stopwatch
     {
         private readonly IDateTimeProvider _dateTimeProvider;
-        
-        //TODO: I think this should be a private field but then I can't test it 
-        public DateTime StartTime { get; private set; } 
-        
+        public DateTime StartTime { get; private set; }                            // not a big deal that it's public
+
+        private bool _isTimerRunning;
         public Stopwatch(IDateTimeProvider dateTimeProvider)
         {
             _dateTimeProvider = dateTimeProvider;
@@ -16,11 +15,19 @@ namespace Watch
         
         public void Start()
         {
+            if (_isTimerRunning)
+                throw new InvalidStopWatchOperationException("Cannot start stopwatch twice in a row");
+                                                                                // System vs custom - custom gives you more info in the try/catch block without depending on message
+
             StartTime = _dateTimeProvider.Now();
+            
+            _isTimerRunning = true;
         }
 
         public TimeSpan Stop()
         {
+            _isTimerRunning = false;
+            
             return _dateTimeProvider.Now() - StartTime;
         }
         

@@ -13,7 +13,7 @@
       <e p="Watch" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="IDateTimeProvider.cs" t="Include" />
-        <e p="InvalidOperationException.cs" t="Include" />
+        <e p="InvalidStopWatchOperationException.cs" t="Include" />
         <e p="MockDateTimeProvider.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -41,6 +41,6 @@
       </e>
     </e>
     <e p="$USER_HOME$/Library/Caches/Rider2019.3/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_ConsoleApp1.-882060098.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_ConsoleApp1.-1639803257.00" t="ExcludeRecursive" />
   </component>
 </project>

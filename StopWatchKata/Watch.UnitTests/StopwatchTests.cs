@@ -9,12 +9,13 @@ namespace Watch.UnitTests
         public void Start_MockDateTimeProvider_MockDateTimeNow()
         {
             //Arrange
-            var stopWatch = new Stopwatch(new MockDateTimeProvider());
+            var stopWatch = new Stopwatch(new MockDateTimeProvider());  // JJ - do we need to check if the mock data is right? i.e. is this test even useful? maybe not 
             //Act
             stopWatch.Start();
+            var time = new DateTime(2020, 02, 02, 10, 0, 0);
             
             //Assert
-            Assert.Equal(new DateTime(2020,02,02, 10, 0,0 ), stopWatch.StartTime);
+            Assert.Equal(time, stopWatch.StartTime);
         }
 
         [Fact]
@@ -22,7 +23,6 @@ namespace Watch.UnitTests
         {
             //Arrange 
             var stopwatch = new Stopwatch(new MockDateTimeProvider());
-            
             stopwatch.Start();
 
             //Act
@@ -42,28 +42,14 @@ namespace Watch.UnitTests
             stopwatch.Start();
             
             //Act
-            var exception = Assert.Throws<InvalidOperationException>(() => stopwatch.Start());
-            
+            var exception = Assert.Throws<InvalidStopWatchOperationException>(() => stopwatch.Start());
+
             //Assert
             Assert.Equal("Cannot start stopwatch twice in a row", exception.Message);
         }
 
     }
 }
-
-
-// [Fact]
-// public void Stop_MockDateProvider_MockDateTimeNow()
-// {
-//     //Arrange
-//     var stopWatch = new Stopwatch(new MockDateTimeProvider());
-//     
-//     //Act
-//     stopWatch.Stop();
-//     
-//     //Assert
-//     Assert.Equal(new DateTime(2020,02,02, 10, 0,0 ), stopWatch.StopTime);
-// }
 
 
 // Exercise 1: Design a StopwatchDesign a class called Stopwatch. The job of this class is to simulate a stopwatch.
