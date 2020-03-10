@@ -8,28 +8,27 @@ namespace Calculator
     {
         private CalculatorInput _calculatorInput;
         
-        public int Add(string stringNumbers )  //// return an object like Calculation result regardless of whether it's successful or not
+        public int Add(string stringNumbers )  //// option: return an object like Calculation result regardless of whether it's successful or not
         {
             InputProcessor(stringNumbers);
 
-                var numbers = _calculatorInput.ProcessedNumbers;
+            var numbers = _calculatorInput.ProcessedNumbers;
 
-                var totalSum = 0;
-        
-                for (int i = 0; i < numbers.Count(); i++)
+            var totalSum = 0;
+    
+            for (int i = 0; i < numbers.Count(); i++)
+            {
+                if (numbers[i] < 1000)
                 {
-
-                    if (numbers[i] < 1000)
-                    {
-                        totalSum += numbers[i];
-                    }
+                    totalSum += numbers[i];
                 }
+            }
 
-                return totalSum;
+            return totalSum;
                                                     //TODO: throw is required otherwise, it complains that not all paths return a value
-                                                    //However this is throwing it to main? and crashes the system
-                                                    //or should I make VOID and totalSum a property? ordd V throw another try block into Main  
-        }
+                                                    //However this is throwing it to main and crashes the system
+                                                    //or should I make VOID and totalSum a property? ordd V throw another try block into Main
+    }
         
         private void InputProcessor(string stringNumbers)
         {
@@ -46,7 +45,7 @@ namespace Calculator
                 
                 var stringMatch1 = match1.Groups[1].Value;
                 
-                var regex2 = new Regex(@"\[(.*?)\]");   // ? required to make it non-greedy
+                var regex2 = new Regex(@"\[(.*?)\]");   // ? is required to make it non-greedy
 
                 var match2 = regex2.Matches(match1.Groups[1].Value);
                 
@@ -58,9 +57,8 @@ namespace Calculator
 
                     for (var i = 0; i < numberOfDelimiters; i++)
                     {
-                        var currentSeparator = match2[i].Groups[1].Value;
 
-                        separators[i] = currentSeparator;
+                        separators[i] = match2[i].Groups[1].Value;
                     }
                 }
                 else                                           //deals with different but single characters delimiters 
@@ -76,15 +74,21 @@ namespace Calculator
 
             _calculatorInput = new CalculatorInput(separators, stringNumbers, processedNumbers);
             
+            ValidateProcessedInput();
+         
+        }
+
+        private void ValidateProcessedInput()
+        {
+               
             if(_calculatorInput.NegativeNumbers.Length > 0)
                 throw new NegativesNotAllowedException(_calculatorInput);
             
             if(_calculatorInput.InvalidSeparators.Length > 0)
                 throw new DelimiterCannotHaveNumberOnTheEdgeException(_calculatorInput);
-            
         }
-
     }
+    
 }
 
 // if (Regex.IsMatch(currentSeparator, @"^\d+") || Regex.IsMatch(currentSeparator, @"\d+$"))
