@@ -2,14 +2,11 @@ namespace TDD
 {
     public class FareCalculator
     {
-        public decimal CalculateFare(Tap tapOn) // overloading
-        {
-            return CalculateFare();
-        }
-
-        private decimal CalculateFare()
+        public decimal CalculateFare(Tap tapOn, Tap tapOff)
         {
             return 3;
         }
+        
+        // number stops and fare bracket
     }
 }
