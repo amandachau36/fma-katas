@@ -12,9 +12,7 @@ namespace Calculator
 
         private static string FormatMessage(CalculatorInput calculatorInput)
         {
-            var negativeNumbers = calculatorInput.ProcessedNumbers.Where(num => num < 0).ToArray();
-            
-            return "Negatives not allowed: " + string.Join(", ", negativeNumbers);
+            return "Negatives not allowed: " + string.Join(", ", calculatorInput.NegativeNumbers);
         }
     }
 }

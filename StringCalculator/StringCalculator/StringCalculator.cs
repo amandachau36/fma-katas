@@ -6,23 +6,18 @@ namespace Calculator
 {
     public class StringCalculator
     {
-       
-        public int Add(string stringNumbers )
+        private CalculatorInput _calculatorInput;
+        
+        public int Add(string stringNumbers )  //// return an object like Calculation result regardless of whether it's successful or not
         {
-            try
-            {
-                var calculatorInput = InputProcessor(stringNumbers);
+            InputProcessor(stringNumbers);
 
-                var numbers = calculatorInput.ProcessedNumbers;
+                var numbers = _calculatorInput.ProcessedNumbers;
 
                 var totalSum = 0;
         
                 for (int i = 0; i < numbers.Count(); i++)
                 {
-                    if (numbers[i] < 0)
-                    {
-                        throw new NegativesNotAllowedException(calculatorInput);
-                    }
 
                     if (numbers[i] < 1000)
                     {
@@ -31,18 +26,12 @@ namespace Calculator
                 }
 
                 return totalSum;
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Catch in Add: " + e.Message);
-                throw;                                     //throw is required otherwise, it complains that not all paths return a value
-                                                            // However this is throwing it to main? and crashes the system
-            }                                              //or should I make add VOID and totalSum a property? or throw another try block into Main  
-
+                                                    //TODO: throw is required otherwise, it complains that not all paths return a value
+                                                    //However this is throwing it to main? and crashes the system
+                                                    //or should I make VOID and totalSum a property? ordd V throw another try block into Main  
         }
         
-        private CalculatorInput InputProcessor(string stringNumbers)
+        private void InputProcessor(string stringNumbers)
         {
             var regex1 = new Regex(@"^//(.*)\n");
             
@@ -70,12 +59,7 @@ namespace Calculator
                     for (var i = 0; i < numberOfDelimiters; i++)
                     {
                         var currentSeparator = match2[i].Groups[1].Value;
-                        
-                        if (Regex.IsMatch(currentSeparator, @"^\d+") || Regex.IsMatch(currentSeparator, @"\d+$"))
-                        {
-                            throw new DelimiterCannotHaveNumberOnTheEdgeException(currentSeparator);
-                        } 
-                        
+
                         separators[i] = currentSeparator;
                     }
                 }
@@ -89,9 +73,21 @@ namespace Calculator
             
             // if match1 is not a success then use default separators  
             var processedNumbers = stringNumbers.Split(separators, StringSplitOptions.None).Select(Int32.Parse).ToArray();
+
+            _calculatorInput = new CalculatorInput(separators, stringNumbers, processedNumbers);
             
-            return new CalculatorInput(separators, stringNumbers, processedNumbers);
+            if(_calculatorInput.NegativeNumbers.Length > 0)
+                throw new NegativesNotAllowedException(_calculatorInput);
+            
+            if(_calculatorInput.InvalidSeparators.Length > 0)
+                throw new DelimiterCannotHaveNumberOnTheEdgeException(_calculatorInput);
+            
         }
 
     }
 }
+
+// if (Regex.IsMatch(currentSeparator, @"^\d+") || Regex.IsMatch(currentSeparator, @"\d+$"))
+// {
+//     throw new DelimiterCannotHaveNumberOnTheEdgeException(currentSeparator);
+// } 

@@ -5,9 +5,10 @@ namespace Calculator.Tests
 {
     public class StringCalculatorTests
     {
-
+        
+        
         [Fact]
-        public void Should_ReturnSameNumber_When_InputIsASingleNumber()
+        public void Add_Should_ReturnSameNumber_When_InputIsASingleNumber() //one naming convention - but possible code smell  
         {
             var stringCalculator = new StringCalculator();
 
@@ -17,7 +18,7 @@ namespace Calculator.Tests
         }
 
         [Fact]
-        public void Should_ReturnSumOfNumbers_When_TwoNumbersAreSeparatedByAComma()
+        public void Should_ReturnSumOfNumbers_When_TwoNumbersAreSeparatedByAComma() //Sometimes you don't care what the method is 
         {
             var stringCalculator = new StringCalculator();
             
