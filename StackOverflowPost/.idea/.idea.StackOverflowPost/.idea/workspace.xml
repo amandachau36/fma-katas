@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="15ec267c-1d65-4cb4-895d-ff6f32640ee8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/StackOverflowPost/Post.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StackOverflowPostTests/StackOverflowPostTests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blackjack-interfaces/Blackjack/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Blackjack-interfaces/Blackjack/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blackjack-refactor-enums-dictionary/Blackjack/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Blackjack-refactor-enums-dictionary/Blackjack/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Collections/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Composition/CompositionKata2.Tests/Composition/AggregationTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Composition/CompositionKata2.Tests/Composition/AggregationTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Composition/CompositionKata2/Algorithm/Composition/HighPassSummingAggregator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Composition/CompositionKata2/Algorithm/Composition/HighPassSummingAggregator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Composition/CompositionKata2/Algorithm/Composition/PointsAggregator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Composition/CompositionKata2/Algorithm/Composition/PointsAggregator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ConsoleApp1/Watch.UnitTests/Watch.UnitTests.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ConsoleApp1/Watch/InvalidOperationException.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ConsoleApp1/Watch/RealDateTimeProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ConsoleApp1/Watch/Stopwatch.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ConsoleApp1/Watch/Watch.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StopWatchKata/.idea/.idea.ConsoleApp1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../StopWatchKata/.idea/.idea.ConsoleApp1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StringCalculator/StringCalculator/StringCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../StringCalculator/StringCalculator/StringCalculator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/.idea/projectSettingsUpdater.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/riderModule.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/TDD.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/TDD.tests/CardTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/TDD.tests/FareCalculatorTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/TDD.tests/TDD.tests.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/TDD/Card.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/TDD/FareCalculator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/TDD/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/TDD/TDD.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/TDD/Tap.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/TDD/Trip.cs" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/StackOverflowPost/Post.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/StackOverflowPost/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/StackOverflowPostTests/PostTest1.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/PostTests/UnitTest1.cs" />
+        <option value="$PROJECT_DIR$/StackOverflowPostTests/UnitTest1.cs" />
+        <option value="$PROJECT_DIR$/StackOverflowPost/Post.cs" />
+        <option value="$PROJECT_DIR$/StackOverflowPostTests/PostTest1.cs" />
+        <option value="$PROJECT_DIR$/StackOverflowPost/Program.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1YxnWqhXjeDeLMNpuRnPbeHWyo2" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TWShift.4" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunManager" selected=".NET Project.StackOverflowPost">
+    <configuration name="StackOverflowPost" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/StackOverflowPost/StackOverflowPost.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="15ec267c-1d65-4cb4-895d-ff6f32640ee8" name="Default Changelist" comment="" />
+      <created>1583893147777</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583893147777</updated>
+      <workItem from="1583893149154" duration="3726000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1490" y="-1005" key="Rider.ProjectTemplateDialog.Size" timestamp="1583893177054">
+      <screen x="-690" y="-1417" width="3440" height="1417" />
+    </state>
+    <state x="1490" y="-1005" key="Rider.ProjectTemplateDialog.Size/-690.-1417.3440.1417/0.23.1792.1030@-690.-1417.3440.1417" timestamp="1583893177054" />
+    <state x="1554" y="-393" key="run.anything.popup" timestamp="1583893159349">
+      <screen x="-690" y="-1417" width="3440" height="1417" />
+    </state>
+    <state x="1554" y="-393" key="run.anything.popup/-690.-1417.3440.1417/0.23.1792.1030@-690.-1417.3440.1417" timestamp="1583893159349" />
+  </component>
+</project>
