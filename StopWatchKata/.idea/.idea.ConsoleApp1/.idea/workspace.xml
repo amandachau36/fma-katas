@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="121ff2b9-95e8-4009-9e02-948c88cd0820" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../ConsoleApp1/.idea/.idea.ConsoleApp1/.idea/contentModel.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ConsoleApp1/.idea/.idea.ConsoleApp1/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Watch/InvalidStopWatchOperationException.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Blackjack-interfaces/Blackjack/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Blackjack-interfaces/Blackjack/Game.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Blackjack-refactor-enums-dictionary/Blackjack/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Blackjack-refactor-enums-dictionary/Blackjack/Game.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Collections/.idea/.gitignore" beforeDir="false" />
@@ -16,18 +13,27 @@
       <change beforePath="$PROJECT_DIR$/../ConsoleApp1/Watch/RealDateTimeProvider.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ConsoleApp1/Watch/Stopwatch.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ConsoleApp1/Watch/Watch.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsoleApp1/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsoleApp1/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsoleApp1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsoleApp1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Watch.UnitTests/StopwatchTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Watch.UnitTests/StopwatchTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Watch/InvalidOperationException.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Watch/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Watch/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Watch/Stopwatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Watch/Stopwatch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StringCalculator/.idea/.idea.StringCalculator/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../StringCalculator/.idea/.idea.StringCalculator/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StringCalculator/StringCalculator/CalculatorInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../StringCalculator/StringCalculator/CalculatorInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StringCalculator/StringCalculator/NegativesNotAllowedException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../StringCalculator/StringCalculator/NegativesNotAllowedException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StringCalculator/StringCalculator/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../StringCalculator/StringCalculator/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../StringCalculator/StringCalculator/StringCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../StringCalculator/StringCalculator/StringCalculator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StringCalculator/StringCalulator.Tests/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../StringCalculator/StringCalulator.Tests/StringCalculatorTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/.idea/projectSettingsUpdater.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/riderModule.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/TDD.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/TDD.tests/CardTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/TDD.tests/FareCalculatorTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/TDD.tests/TDD.tests.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/TDD/Card.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/TDD/FareCalculator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/TDD/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/TDD/TDD.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/TDD/Tap.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TDD/TDD/Trip.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,11 +61,11 @@
         <option value="$PROJECT_DIR$/Watch/IDateTimeProvider.cs" />
         <option value="$PROJECT_DIR$/Watch/MockDateTimeProvider.cs" />
         <option value="$PROJECT_DIR$/Watch/RealDateTimeProvider.cs" />
-        <option value="$PROJECT_DIR$/Watch/Program.cs" />
         <option value="$PROJECT_DIR$/Watch/InvalidOperationException.cs" />
         <option value="$PROJECT_DIR$/Watch.UnitTests/StopwatchTests.cs" />
-        <option value="$PROJECT_DIR$/Watch/Stopwatch.cs" />
         <option value="$PROJECT_DIR$/Watch/InvalidStopWatchOperationException.cs" />
+        <option value="$PROJECT_DIR$/Watch/Stopwatch.cs" />
+        <option value="$PROJECT_DIR$/Watch/Program.cs" />
       </list>
     </option>
   </component>
@@ -76,7 +82,7 @@
     <property name="TWShift.4" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
-  <component name="RunManager" selected=".NET Project.ConsoleApp1">
+  <component name="RunManager">
     <configuration name="ConsoleApp1" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -120,6 +126,7 @@
       <updated>1583730653387</updated>
       <workItem from="1583730654808" duration="10413000" />
       <workItem from="1583807993478" duration="5269000" />
+      <workItem from="1583884056296" duration="780000" />
     </task>
     <servers />
   </component>
@@ -142,35 +149,35 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="3398" height="546" key="GridCell.Tab.0.bottom" timestamp="1583818285390">
+    <state width="1678" height="546" key="GridCell.Tab.0.bottom" timestamp="1583884856624">
       <screen x="-690" y="-1417" width="3440" height="1417" />
     </state>
     <state width="3398" height="546" key="GridCell.Tab.0.bottom/-690.-1417.3440.1417/0.23.1792.1031@-690.-1417.3440.1417" timestamp="1583818285390" />
-    <state width="3398" height="546" key="GridCell.Tab.0.bottom/-690.-1417.3440.1417/0.23.1792.1033@-690.-1417.3440.1417" timestamp="1583810514516" />
+    <state width="1678" height="546" key="GridCell.Tab.0.bottom/-690.-1417.3440.1417/0.23.1792.1033@-690.-1417.3440.1417" timestamp="1583884856624" />
     <state width="1678" height="382" key="GridCell.Tab.0.bottom/-690.-1417.3440.1417/0.23.1792.1034@-690.-1417.3440.1417" timestamp="1583794201838" />
     <state width="2501" height="546" key="GridCell.Tab.0.bottom/-690.-1417.3440.1417/0.23.1792.1036@-690.-1417.3440.1417" timestamp="1583809778656" />
     <state width="1678" height="90" key="GridCell.Tab.0.bottom/0.23.1920.994@0.23.1920.994" timestamp="1583797781131" />
-    <state width="3398" height="546" key="GridCell.Tab.0.center" timestamp="1583818285389">
+    <state width="1678" height="546" key="GridCell.Tab.0.center" timestamp="1583884856623">
       <screen x="-690" y="-1417" width="3440" height="1417" />
     </state>
     <state width="3398" height="546" key="GridCell.Tab.0.center/-690.-1417.3440.1417/0.23.1792.1031@-690.-1417.3440.1417" timestamp="1583818285389" />
-    <state width="3398" height="546" key="GridCell.Tab.0.center/-690.-1417.3440.1417/0.23.1792.1033@-690.-1417.3440.1417" timestamp="1583810514515" />
+    <state width="1678" height="546" key="GridCell.Tab.0.center/-690.-1417.3440.1417/0.23.1792.1033@-690.-1417.3440.1417" timestamp="1583884856623" />
     <state width="1678" height="382" key="GridCell.Tab.0.center/-690.-1417.3440.1417/0.23.1792.1034@-690.-1417.3440.1417" timestamp="1583794201837" />
     <state width="2501" height="546" key="GridCell.Tab.0.center/-690.-1417.3440.1417/0.23.1792.1036@-690.-1417.3440.1417" timestamp="1583809778655" />
     <state width="1678" height="90" key="GridCell.Tab.0.center/0.23.1920.994@0.23.1920.994" timestamp="1583797781131" />
-    <state width="3398" height="546" key="GridCell.Tab.0.left" timestamp="1583818285388">
+    <state width="1678" height="546" key="GridCell.Tab.0.left" timestamp="1583884856622">
       <screen x="-690" y="-1417" width="3440" height="1417" />
     </state>
     <state width="3398" height="546" key="GridCell.Tab.0.left/-690.-1417.3440.1417/0.23.1792.1031@-690.-1417.3440.1417" timestamp="1583818285388" />
-    <state width="3398" height="546" key="GridCell.Tab.0.left/-690.-1417.3440.1417/0.23.1792.1033@-690.-1417.3440.1417" timestamp="1583810514515" />
+    <state width="1678" height="546" key="GridCell.Tab.0.left/-690.-1417.3440.1417/0.23.1792.1033@-690.-1417.3440.1417" timestamp="1583884856622" />
     <state width="1678" height="382" key="GridCell.Tab.0.left/-690.-1417.3440.1417/0.23.1792.1034@-690.-1417.3440.1417" timestamp="1583794201836" />
     <state width="2501" height="546" key="GridCell.Tab.0.left/-690.-1417.3440.1417/0.23.1792.1036@-690.-1417.3440.1417" timestamp="1583809778655" />
     <state width="1678" height="90" key="GridCell.Tab.0.left/0.23.1920.994@0.23.1920.994" timestamp="1583797781130" />
-    <state width="3398" height="546" key="GridCell.Tab.0.right" timestamp="1583818285389">
+    <state width="1678" height="546" key="GridCell.Tab.0.right" timestamp="1583884856624">
       <screen x="-690" y="-1417" width="3440" height="1417" />
     </state>
     <state width="3398" height="546" key="GridCell.Tab.0.right/-690.-1417.3440.1417/0.23.1792.1031@-690.-1417.3440.1417" timestamp="1583818285389" />
-    <state width="3398" height="546" key="GridCell.Tab.0.right/-690.-1417.3440.1417/0.23.1792.1033@-690.-1417.3440.1417" timestamp="1583810514516" />
+    <state width="1678" height="546" key="GridCell.Tab.0.right/-690.-1417.3440.1417/0.23.1792.1033@-690.-1417.3440.1417" timestamp="1583884856624" />
     <state width="1678" height="382" key="GridCell.Tab.0.right/-690.-1417.3440.1417/0.23.1792.1034@-690.-1417.3440.1417" timestamp="1583794201837" />
     <state width="2501" height="546" key="GridCell.Tab.0.right/-690.-1417.3440.1417/0.23.1792.1036@-690.-1417.3440.1417" timestamp="1583809778655" />
     <state width="1678" height="90" key="GridCell.Tab.0.right/0.23.1920.994@0.23.1920.994" timestamp="1583797781131" />

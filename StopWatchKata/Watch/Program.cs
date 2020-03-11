@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Watch
 {
@@ -8,19 +9,17 @@ namespace Watch
         {
             try
             {
-                var stopWatch = new Stopwatch(new RealDateTimeProvider());
+                for (int i = 0; i < 2; i++)
+                {
+                    var stopWatch = new Stopwatch(new RealDateTimeProvider());
 
-                Console.WriteLine("start");
-                stopWatch.Start();
-                stopWatch.Start();
-                System.Threading.Thread.Sleep(2000);
-                Console.WriteLine(stopWatch.Stop());
-            
-            
-                Console.WriteLine("start2");
-                stopWatch.Start();
-                System.Threading.Thread.Sleep(3000);
-                Console.WriteLine(stopWatch.Stop());
+                    Console.WriteLine("start" + i );
+                    stopWatch.Start();
+                    stopWatch.Start();
+                    Thread.Sleep(2000);
+                    Console.WriteLine(stopWatch.Stop());
+                }
+                
             }
             catch (Exception e)
             {
