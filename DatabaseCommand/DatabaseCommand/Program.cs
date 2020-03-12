@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TDD
+namespace DatabaseCommand
 {
     class Program
     {

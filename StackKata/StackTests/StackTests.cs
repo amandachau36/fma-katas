@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using Microsoft.VisualBasic.CompilerServices;
 using StackKata;
 using Xunit;
 

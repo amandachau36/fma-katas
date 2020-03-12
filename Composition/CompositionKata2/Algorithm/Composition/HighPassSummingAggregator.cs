@@ -11,7 +11,7 @@ namespace Algorithm.Composition
         }
         public Measurement Aggregate()
         {
-            var aggregator = new PointsAggregator( _measurements, new HighPassFilter(), new SummingStrategy() );  // this but it seems not that great of an idea to create a new instance every time you want to use the HighPassSummingAggregator 
+            var aggregator = new PointsAggregator( _measurements, new HighPassFilter(), new SummingStrategy() );  
             return aggregator.Aggregate();
         }
     }

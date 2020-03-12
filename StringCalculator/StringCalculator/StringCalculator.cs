@@ -74,11 +74,11 @@ namespace Calculator
 
             _calculatorInput = new CalculatorInput(separators, stringNumbers, processedNumbers);
             
-            ValidateProcessedInput();
+            ValidateCalculatorInput();
          
         }
 
-        private void ValidateProcessedInput()
+        private void ValidateCalculatorInput()
         {
                
             if(_calculatorInput.NegativeNumbers.Length > 0)

@@ -37,7 +37,7 @@ namespace Blackjack
 
         private readonly IInput _blackjackInput;
         
-        public Dictionary<Rank, int> ConvertPoints = new Dictionary<Rank, int>
+        private Dictionary<Rank, int> ConvertPoints = new Dictionary<Rank, int>
         {
             {Rank.Ace, 11},
             {Rank.Two, 2},

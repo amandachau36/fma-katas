@@ -9,7 +9,7 @@ namespace Blackjack
     public class Game
     {
         
-        private bool IsUsersTurn { get; set; }   // this is a property  and not underscored 
+        private bool IsUsersTurn { get; set; }   // this is a property  and not _underscored 
         
         private bool IsGameOver { get; set; } 
         

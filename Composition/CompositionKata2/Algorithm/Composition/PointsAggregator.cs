@@ -5,7 +5,7 @@ namespace Algorithm.Composition
     public class PointsAggregator
     {
         public PointsAggregator(     // why do we want to take in measurements here? why not just pass in measurements for Aggregate?>
-            IEnumerable<Measurement> measurements, 
+            IEnumerable<Measurement> measurements, // pass in everything "Has a relationship"  
             IMeasurementFilter filter, 
             IAggregationStrategy aggregator)
         {

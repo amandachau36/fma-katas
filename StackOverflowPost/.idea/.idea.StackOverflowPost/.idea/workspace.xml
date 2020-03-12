@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15ec267c-1d65-4cb4-895d-ff6f32640ee8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/StackOverflowPost/Post.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/StackOverflowPostTests/StackOverflowPostTests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AbstractClasses/AbstractClasses/Circle.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Blackjack-interfaces/Blackjack/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Blackjack-interfaces/Blackjack/Game.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Blackjack-refactor-enums-dictionary/Blackjack/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Blackjack-refactor-enums-dictionary/Blackjack/Game.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Collections/.idea/.gitignore" beforeDir="false" />
@@ -15,6 +14,11 @@
       <change beforePath="$PROJECT_DIR$/../ConsoleApp1/Watch/RealDateTimeProvider.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ConsoleApp1/Watch/Stopwatch.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ConsoleApp1/Watch/Watch.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MethodOverriding/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MethodOverriding/ConsoleApp1/Circle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MethodOverriding/ConsoleApp1/Position.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MethodOverriding/ConsoleApp1/Shape.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MethodOverriding/ConsoleApp1/ShapeType.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../StopWatchKata/.idea/.idea.ConsoleApp1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../StopWatchKata/.idea/.idea.ConsoleApp1/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../StringCalculator/StringCalculator/StringCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../StringCalculator/StringCalculator/StringCalculator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TDD/.idea/.idea.TDD/.idea/contentModel.xml" afterDir="false" />
@@ -53,9 +57,9 @@
       <list>
         <option value="$PROJECT_DIR$/PostTests/UnitTest1.cs" />
         <option value="$PROJECT_DIR$/StackOverflowPostTests/UnitTest1.cs" />
-        <option value="$PROJECT_DIR$/StackOverflowPost/Post.cs" />
         <option value="$PROJECT_DIR$/StackOverflowPostTests/PostTest1.cs" />
         <option value="$PROJECT_DIR$/StackOverflowPost/Program.cs" />
+        <option value="$PROJECT_DIR$/StackOverflowPost/Post.cs" />
       </list>
     </option>
   </component>
@@ -114,7 +118,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1583893147777</updated>
-      <workItem from="1583893149154" duration="3726000" />
+      <workItem from="1583893149154" duration="3939000" />
     </task>
     <servers />
   </component>
@@ -135,6 +139,22 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state width="1750" height="281" key="GridCell.Tab.0.bottom" timestamp="1583913144973">
+      <screen x="0" y="23" width="1792" height="1030" />
+    </state>
+    <state width="1750" height="281" key="GridCell.Tab.0.bottom/0.23.1792.1030@0.23.1792.1030" timestamp="1583913144973" />
+    <state width="1750" height="281" key="GridCell.Tab.0.center" timestamp="1583913144973">
+      <screen x="0" y="23" width="1792" height="1030" />
+    </state>
+    <state width="1750" height="281" key="GridCell.Tab.0.center/0.23.1792.1030@0.23.1792.1030" timestamp="1583913144973" />
+    <state width="1750" height="281" key="GridCell.Tab.0.left" timestamp="1583913144973">
+      <screen x="0" y="23" width="1792" height="1030" />
+    </state>
+    <state width="1750" height="281" key="GridCell.Tab.0.left/0.23.1792.1030@0.23.1792.1030" timestamp="1583913144973" />
+    <state width="1750" height="281" key="GridCell.Tab.0.right" timestamp="1583913144973">
+      <screen x="0" y="23" width="1792" height="1030" />
+    </state>
+    <state width="1750" height="281" key="GridCell.Tab.0.right/0.23.1792.1030@0.23.1792.1030" timestamp="1583913144973" />
     <state x="1490" y="-1005" key="Rider.ProjectTemplateDialog.Size" timestamp="1583893177054">
       <screen x="-690" y="-1417" width="3440" height="1417" />
     </state>
