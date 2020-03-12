@@ -69,29 +69,24 @@ namespace Calculator
 
             }
             
-            // if match1 is not a success then use default separators  
-            var processedNumbers = stringNumbers.Split(separators, StringSplitOptions.None).Select(Int32.Parse).ToArray();
-
-            _calculatorInput = new CalculatorInput(separators, stringNumbers, processedNumbers);
+            _calculatorInput = new CalculatorInput(separators, stringNumbers);  
             
-            ValidateCalculatorInput();
-         
-        }
-
-        private void ValidateCalculatorInput()
-        {
-               
-            if(_calculatorInput.NegativeNumbers.Length > 0)
-                throw new NegativesNotAllowedException(_calculatorInput);
-            
+            // validate separators before splitting 
             if(_calculatorInput.InvalidSeparators.Length > 0)
                 throw new DelimiterCannotHaveNumberOnTheEdgeException(_calculatorInput);
+            
+            
+            // if match1 is not a success then use default separators  
+            var processedNumbers = stringNumbers.Split(separators, StringSplitOptions.None).Select(Int32.Parse).ToArray();
+            
+            _calculatorInput.SetProcessedNumbers(processedNumbers);
+            
+            if(_calculatorInput.NegativeNumbers.Length > 0)
+                throw new NegativesNotAllowedException(_calculatorInput);
+                
         }
+        
     }
     
 }
 
-// if (Regex.IsMatch(currentSeparator, @"^\d+") || Regex.IsMatch(currentSeparator, @"\d+$"))
-// {
-//     throw new DelimiterCannotHaveNumberOnTheEdgeException(currentSeparator);
-// } 

@@ -5,9 +5,10 @@ namespace Calculator
 {
     public class CalculatorInput
     {
+        
         public string[] Separators { get; }
         public string StringNumbers { get; }
-        public int[] ProcessedNumbers { get; }
+        public int[] ProcessedNumbers { get; private set; } = new int[0];
         
         public int[] NegativeNumbers {
             get { return ProcessedNumbers.Where(num => num < 0).ToArray(); }
@@ -22,14 +23,20 @@ namespace Calculator
             }
         }
 
-        public CalculatorInput(string[] separators, string stringNumbers, int[] processedNumbers)
+        public CalculatorInput(string[] separators, string stringNumbers)
         {
             Separators = separators;
             
             StringNumbers = stringNumbers;
+            
+        }
 
+        public void SetProcessedNumbers(int[] processedNumbers)
+        {
             ProcessedNumbers = processedNumbers;
         }
+        
+        
         
     }
 }
