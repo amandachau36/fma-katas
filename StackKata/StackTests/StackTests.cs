@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Microsoft.VisualBasic.CompilerServices;
 using StackKata;
 using Xunit;
 
@@ -104,6 +105,16 @@ namespace StackTests
             
             //assert
             Assert.Empty(stack.Stack);
+        }
+        
+        [Fact]
+        public void Test_Equal_StrictlyEqual()
+        {
+            decimal oneD = 1;
+            int oneI = 1;
+            //assert
+            Assert.Equal(oneD, oneI);
+            Assert.StrictEqual(oneD, oneI);    
         }
         
     }
