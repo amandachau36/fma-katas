@@ -1,4 +1,5 @@
 using System;
+using DatabaseCommand;
 using Xunit;
 
 namespace Tests
@@ -6,9 +7,21 @@ namespace Tests
     public class DbConnection
     {
         [Fact]
-        public void Test1()
+        public void Should_Throw_ArgumentNullException_When_ConnectionStringIsNull()
         {
+            Action actual = () => new MyDbConnection(null);
             
+            Assert.Throws<ArgumentNullException>(actual);
+        }
+        
+        [Fact]
+        public void Should_Throw_ArgumentException_When_ConnectionStringIsEmpty()
+        {
+            Action actual = () => new MyDbConnection("");
+            
+            var exception = Assert.Throws<ArgumentException>(actual);
+            
+            Assert.Equal("Argument must not be an empty string", exception.Message);
         }
     }
 }
