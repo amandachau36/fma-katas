@@ -11,7 +11,9 @@
       <e p="DatabaseCommand" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="DatabaseCommand.csproj" t="IncludeRecursive" />
-        <e p="DbConnection.cs" t="Include" />
+        <e p="GitTest.cs" t="Include" />
+        <e p="MyDbCommand.cs" t="Include" />
+        <e p="MyDbConnection.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
@@ -19,7 +21,9 @@
             </e>
           </e>
         </e>
+        <e p="OracleConnection.cs" t="Include" />
         <e p="Program.cs" t="Include" />
+        <e p="SqlConnection.cs" t="Include" />
       </e>
       <e p="DatabaseCommand.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />

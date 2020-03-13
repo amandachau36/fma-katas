@@ -6,7 +6,9 @@ namespace DatabaseCommand
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // new MyDbConnection(null);
+            
+            // make change for git
         }
     }
 }
