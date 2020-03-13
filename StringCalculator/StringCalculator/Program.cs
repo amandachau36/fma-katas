@@ -22,7 +22,7 @@ namespace Calculator
                 Console.WriteLine("Catch in main :" + e.Message);
                 
             }
-           
+            
             
         }
     }
