@@ -7,6 +7,8 @@ namespace DatabaseCommand
         static void Main(string[] args)
         {
             // new MyDbConnection(null);
+            
+            // make change for git
         }
     }
 }
