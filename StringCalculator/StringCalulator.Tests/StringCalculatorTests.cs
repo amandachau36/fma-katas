@@ -124,7 +124,16 @@ namespace Calculator.Tests
             Assert.Equal(6, result);
         }
 
-        // write test when the delimiters will fail
+        [Fact]
+        public void Should_Throw_DelimiterCannotHaveNumberOnTheEdgeException_When_NumberIsOnEdge()
+        {
+            var stringCalculator = new StringCalculator();
+
+            var exception = Assert.Throws<DelimiterCannotHaveNumberOnTheEdgeException>(() => stringCalculator.Add("//[**1]\n1**12*3"));
+            
+            Assert.Equal("Delimiter cannot have a number on the edge: **1", exception.Message);
+            
+        }
     }
 }
 
