@@ -10,8 +10,6 @@ namespace TDD
         public Card(FareCalculator fareCalculator)
         {
             _fareCalculator = fareCalculator;
-            
-            //Trips = new List<Trip>(); // makes it not null 
         }
         
         public decimal Total { get; private set; }
@@ -20,7 +18,7 @@ namespace TDD
 
         public Tap TappedOff { get; private set; }
         
-        public List<Trip> Trips { get; private set; } = new List<Trip>(); //TODO look into how to instantiate with shortcut notation
+        public List<Trip> Trips { get; private set; } = new List<Trip>(); 
         
         public void TopUp(decimal amount)
         {
