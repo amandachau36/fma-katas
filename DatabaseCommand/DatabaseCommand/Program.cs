@@ -6,10 +6,24 @@ namespace DatabaseCommand
     {
         static void Main(string[] args)
         {
-            // new MyDbConnection(null);
+            try
+            {
+                var sqlConnection = new SqlConnection("sqlsqlsql");
             
-            // make change for git
-            // sdfsdfsdf
+                var oracleConnection = new OracleConnection("ORACLEEE");
+            
+                var dbCommand = new MyDbCommand(oracleConnection,  "hello world");
+
+                dbCommand.Execute();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+           
+            }
+      ;
+
+
         }
     }
 }

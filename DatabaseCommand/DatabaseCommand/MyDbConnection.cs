@@ -11,7 +11,7 @@ namespace DatabaseCommand
         public MyDbConnection(string connectionString)
         {
             if (connectionString == null)
-                throw new ArgumentNullException(connectionString);
+                throw new ArgumentNullException();
             
             if (connectionString == "")
                 throw new ArgumentException("Argument must not be an empty string", connectionString);

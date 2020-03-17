@@ -6,27 +6,26 @@ namespace Tests
 {
     public class DbConnection
     {
-        [Fact]
-        public void Should_Throw_ArgumentNullException_When_ConnectionStringIsNull()
-        {
-            Action actual = () => new MyDbConnection(null);
-            
-            Assert.Throws<ArgumentNullException>(actual);
-        }
-        
-        [Fact]
-        public void Should_Throw_ArgumentException_When_ConnectionStringIsEmpty()
-        {
-            Action actual = () => new MyDbConnection("");
-            
-            var exception = Assert.Throws<ArgumentException>(actual);
-            
-            Assert.Equal("Argument must not be an empty string", exception.Message);
-        }
+    //     [Fact]
+    //     public void Should_Throw_ArgumentNullException_When_ConnectionStringIsNull()
+    //     {
+    //         Action actual = () => new MyDbConnection(null);
+    //         
+    //         Assert.Throws<ArgumentNullException>(actual);
+    //     }
+    //     
+    //     [Fact]
+    //     public void Should_Throw_ArgumentException_When_ConnectionStringIsEmpty()
+    //     {
+    //         Action actual = () => new MyDbConnection("");
+    //         
+    //         var exception = Assert.Throws<ArgumentException>(actual);
+    //         
+    //         Assert.Equal("Argument must not be an empty string", exception.Message);
+    //     }
     }
 }
 
-//helloooo
 
 // Exercise 1: Design a database connectionTo access a database, we need to open a connection to it first and close it once
 // our job is done. Connecting to a database depends on the type of the target database and the database management system 

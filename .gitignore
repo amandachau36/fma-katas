@@ -516,3 +516,8 @@ fabric.properties
 .idea/**/markdown-navigator/
 
 # End of https://www.gitignore.io/api/jetbrains
+
+# IDEA config files # idea files above weren't being ignored
+.idea/
+*/.idea/*
+TrainTicket/.idea/.idea.TDD/.idea/contentModel.xml
