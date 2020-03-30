@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDoubles", "TestDoubles\TestDoubles.csproj", "{96978138-5708-40FC-92D4-0CE06E3F7571}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FareCalculator.UnitTests", "FareCalculator.UnitTests\FareCalculator.UnitTests.csproj", "{F1961C2E-90FF-452F-A3D3-4C6E8CD21D9B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96978138-5708-40FC-92D4-0CE06E3F7571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96978138-5708-40FC-92D4-0CE06E3F7571}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96978138-5708-40FC-92D4-0CE06E3F7571}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96978138-5708-40FC-92D4-0CE06E3F7571}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1961C2E-90FF-452F-A3D3-4C6E8CD21D9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1961C2E-90FF-452F-A3D3-4C6E8CD21D9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1961C2E-90FF-452F-A3D3-4C6E8CD21D9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1961C2E-90FF-452F-A3D3-4C6E8CD21D9B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

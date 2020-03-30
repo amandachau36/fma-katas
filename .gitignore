@@ -520,4 +520,4 @@ fabric.properties
 # IDEA config files # idea files above weren't being ignored
 .idea/
 */.idea/*
-TrainTicket/.idea/.idea.TDD/.idea/contentModel.xml
+.DS_Store
