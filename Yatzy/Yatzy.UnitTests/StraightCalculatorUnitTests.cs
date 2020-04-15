@@ -2,8 +2,9 @@ using System.Collections.Generic;
 using Moq;
 using Xunit;
 using Yatzy.Application.Dice.Models;
-using Yatzy.Application.Turn.Models;
-using Yatzy.Application.Turn.Services.CategoryCalculator;
+using Yatzy.Application.Score;
+using Yatzy.Application.Score.Services.CategoryCalculator;
+using Yatzy.Application.Score.Models;
 
 namespace Yatzy.UnitTests
 {
@@ -38,11 +39,10 @@ namespace Yatzy.UnitTests
             };
             
             var turn = new Turn(fiveMockDice);
-            turn.Roll();
-            turn.Hold(new List<int>{0, 1, 2, 3, 4});
-            
+            turn.RollDice();
+
             //Act
-            var smallStraightsCalculator = CategoryCalculatorFactory.BuildSmallStraights(turn.DiceHeld);
+            var smallStraightsCalculator = CategoryCalculatorFactory.CreateCalculator(ScoreCategory.SmallStraights, turn.Dice);
 
             //Assert
             Assert.Equal(15, smallStraightsCalculator.Calculate());
@@ -78,11 +78,10 @@ namespace Yatzy.UnitTests
             };
             
             var turn = new Turn(fiveMockDice);
-            turn.Roll();
-            turn.Hold(new List<int>{0, 1, 2, 3, 4});
-            
+            turn.RollDice();
+
             //Act
-            var largeStraightsCalculator = CategoryCalculatorFactory.BuildLargeStraights(turn.DiceHeld);
+            var largeStraightsCalculator = CategoryCalculatorFactory.CreateCalculator(ScoreCategory.LargeStraights, turn.Dice);
 
             //Assert
             Assert.Equal(20, largeStraightsCalculator.Calculate());
@@ -105,7 +104,7 @@ namespace Yatzy.UnitTests
             mockRoller4.Setup(x => x.Roll()).Returns(4);
             
             var mockRoller5 = new Mock<IRoller>();
-            mockRoller5.Setup(x => x.Roll()).Returns(6);
+            mockRoller5.Setup(x => x.Roll()).Returns(5);
             
             var fiveMockDice = new List<Die>
             {
@@ -117,11 +116,10 @@ namespace Yatzy.UnitTests
             };
             
             var turn = new Turn(fiveMockDice);
-            turn.Roll();
-            turn.Hold(new List<int>{0, 1, 2, 3, 4});
-            
+            turn.RollDice();
+
             //Act
-            var largeStraightsCalculator = CategoryCalculatorFactory.BuildLargeStraights(turn.DiceHeld);
+            var largeStraightsCalculator = CategoryCalculatorFactory.CreateCalculator(ScoreCategory.LargeStraights, turn.Dice);
 
             //Assert
             Assert.Equal(0, largeStraightsCalculator.Calculate());

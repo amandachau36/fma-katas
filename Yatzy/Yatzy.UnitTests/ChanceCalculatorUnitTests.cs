@@ -1,16 +1,14 @@
 using System.Collections.Generic;
 using Xunit;
 using Moq;
-using Yatzy.Application;
 using Yatzy.Application.Dice.Models;
-using Yatzy.Application.Roller;
-using Yatzy.Application.Turn.Models;
-using Yatzy.Application.Turn.Services;
-using Yatzy.Application.Turn.Services.CategoryCalculator;
+using Yatzy.Application.Score;
+using Yatzy.Application.Score.Services.CategoryCalculator;
+using Yatzy.Application.Score.Models;
 
 namespace Yatzy.UnitTests
 {
-    public class ChanceCalculatorUnitTests //TODO: is it okay that the tests for calculators are in separate classes even though the calculators are all in the same class? 
+    public class ChanceCalculatorUnitTests 
     {
         [Fact]
         public void It_Should_ReturnSumOfAllDice_When_GivenFiveDice()
@@ -42,11 +40,10 @@ namespace Yatzy.UnitTests
             };
             
             var turn = new Turn(fiveMockDice);
-            turn.Roll();
-            turn.Hold(new List<int>{0, 1, 2, 3, 4});
-            
+            turn.RollDice();
+
             //Act
-            var calculateChance = CategoryCalculatorFactory.BuildChance(turn.DiceHeld);
+            var calculateChance = CategoryCalculatorFactory.CreateCalculator(ScoreCategory.Chance, turn.Dice);
 
             //Assert
             Assert.Equal(14, calculateChance.Calculate());
@@ -55,3 +52,5 @@ namespace Yatzy.UnitTests
         
     }
 }
+
+//Is it okay that the tests for calculators are in separate classes even though the calculators are all in the same class? yes different scenarios 

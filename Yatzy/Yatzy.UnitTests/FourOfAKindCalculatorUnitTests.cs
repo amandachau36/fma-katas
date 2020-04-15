@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using Moq;
 using Xunit;
-using Yatzy.Application;
 using Yatzy.Application.Dice.Models;
-using Yatzy.Application.Turn.Models;
-using Yatzy.Application.Turn.Services;
-using Yatzy.Application.Turn.Services.CategoryCalculator;
+using Yatzy.Application.Score;
+using Yatzy.Application.Score.Services.CategoryCalculator;
+using Yatzy.Application.Score.Models;
 
 namespace Yatzy.UnitTests
 {
@@ -40,14 +39,13 @@ namespace Yatzy.UnitTests
             };
             
             var turn = new Turn(fiveMockDice);
-            turn.Roll();
-            turn.Hold(new List<int>{0, 1, 2, 3, 4});
-            
+            turn.RollDice();
+
             //Act
-            var fourOfAKindCalulator = CategoryCalculatorFactory.BuildFourOfKind(turn.DiceHeld);
+            var fourOfAKindCalculator = CategoryCalculatorFactory.CreateCalculator(ScoreCategory.FourOfAKind, turn.Dice);
 
             //Assert
-            Assert.Equal(8, fourOfAKindCalulator.Calculate());
+            Assert.Equal(8, fourOfAKindCalculator.Calculate());
         }
         
         [Fact]
@@ -79,11 +77,10 @@ namespace Yatzy.UnitTests
             };
             
             var turn = new Turn(fiveMockDice);
-            turn.Roll();
-            turn.Hold(new List<int>{0, 1, 2, 3, 4});
-            
+            turn.RollDice();
+
             //Act
-            var fourOfAKindCalculator = CategoryCalculatorFactory.BuildFourOfKind(turn.DiceHeld);
+            var fourOfAKindCalculator = CategoryCalculatorFactory.CreateCalculator(ScoreCategory.FourOfAKind, turn.Dice);
 
             //Assert
             Assert.Equal(8, fourOfAKindCalculator.Calculate());
@@ -118,11 +115,10 @@ namespace Yatzy.UnitTests
             };
             
             var turn = new Turn(fiveMockDice);
-            turn.Roll();
-            turn.Hold(new List<int>{0, 1, 2, 3, 4});
-            
+            turn.RollDice();
+
             //Act
-            var fourOfAKindCalculator = CategoryCalculatorFactory.BuildFourOfKind(turn.DiceHeld);
+            var fourOfAKindCalculator = CategoryCalculatorFactory.CreateCalculator(ScoreCategory.FourOfAKind, turn.Dice);
 
             //Assert
             Assert.Equal(0, fourOfAKindCalculator.Calculate());

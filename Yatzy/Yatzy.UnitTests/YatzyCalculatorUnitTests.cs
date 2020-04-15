@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using Xunit;
 using Moq;
-using Yatzy.Application;
 using Yatzy.Application.Dice.Models;
-using Yatzy.Application.Turn.Models;
-using Yatzy.Application.Turn.Services;
-using Yatzy.Application.Turn.Services.CategoryCalculator;
+using Yatzy.Application.Score;
+using Yatzy.Application.Score.Services.CategoryCalculator;
+
+using Yatzy.Application.Score.Models;
 
 namespace Yatzy.UnitTests
 {
@@ -41,14 +41,14 @@ namespace Yatzy.UnitTests
             };
             
             var turn = new Turn(fiveMockDice);
-            turn.Roll();
-            turn.Hold(new List<int>{0, 1, 2, 3, 4});
-            
+            turn.RollDice();
+
             //Act
-            var calculateChance = CategoryCalculatorFactory.BuildYatzy(turn.DiceHeld);
+            
+            var yatzyCalculator = CategoryCalculatorFactory.CreateCalculator(ScoreCategory.Yatzy, turn.Dice);
 
             //Assert
-            Assert.Equal(50, calculateChance.Calculate());
+            Assert.Equal(50, yatzyCalculator.Calculate());
         }
         
         [Fact]
@@ -81,14 +81,13 @@ namespace Yatzy.UnitTests
             };
             
             var turn = new Turn(fiveMockDice);
-            turn.Roll();
-            turn.Hold(new List<int>{0, 1, 2, 3, 4});
-            
+            turn.RollDice();
+
             //Act
-            var calculateChance = CategoryCalculatorFactory.BuildYatzy(turn.DiceHeld);
+            var yatzyCalculator = CategoryCalculatorFactory.CreateCalculator(ScoreCategory.Yatzy, turn.Dice);
 
             //Assert
-            Assert.Equal(0, calculateChance.Calculate());
+            Assert.Equal(0, yatzyCalculator.Calculate());
 
         }
     }

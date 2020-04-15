@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceTrack", "ConferenceTrack\ConferenceTrack.csproj", "{7610B2C8-2293-4596-8573-43380BBCD9A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceTrack.UnitTests", "ConferenceTrack.UnitTests\ConferenceTrack.UnitTests.csproj", "{6B35A93E-BB8F-41F7-910A-2A0E4CA68450}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7610B2C8-2293-4596-8573-43380BBCD9A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7610B2C8-2293-4596-8573-43380BBCD9A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7610B2C8-2293-4596-8573-43380BBCD9A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7610B2C8-2293-4596-8573-43380BBCD9A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B35A93E-BB8F-41F7-910A-2A0E4CA68450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B35A93E-BB8F-41F7-910A-2A0E4CA68450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B35A93E-BB8F-41F7-910A-2A0E4CA68450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B35A93E-BB8F-41F7-910A-2A0E4CA68450}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

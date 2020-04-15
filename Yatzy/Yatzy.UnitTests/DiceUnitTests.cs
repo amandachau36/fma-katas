@@ -3,24 +3,10 @@ using Xunit;
 using Yatzy.Application;
 using Yatzy.Application.Dice.Models;
 
-namespace Yatzy.UnitTests
+namespace Yatzy.UnitTests  //TODO: put into directories (can mirror) 
 {
     public class DiceUnitTests
     {
-        [Fact]
-        public void It_Should_Not_ReturnNull_When_Rolled()
-        {
-            //arrange
-            var mockRoller = new MockRoller();
-            mockRoller.Value = 2;
-            var dice = new Die(mockRoller);
-            
-            //act
-            dice.Roll();
-
-            //assert
-            Assert.NotNull(dice.Value);
-        }
         
         [Fact]
         public void It_Should_ReturnANumber_When_Rolled()

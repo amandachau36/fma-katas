@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using Yatzy.Application;
 using Yatzy.Application.Dice.Models;
 using Yatzy.Application.Roller;
-using Yatzy.Application.Turn.Models;
+using Yatzy.Application.Score;
+using Yatzy.Application.Score.Models;
+using Yatzy.Application;
+using Yatzy.Client;
+using Yatzy.Client.Display;
+using Yatzy.Client.InputCollector;
+using Yatzy.Client.InputProcessor;
+using Yatzy.Client.InputValidators;
+using Constants = Yatzy.Client.Constants;
 
 namespace Yatzy
 {
@@ -13,55 +19,37 @@ namespace Yatzy
         static void Main(string[] args)
         {
         
+            var randomRoller = new RandomRoller();
 
-            try
+            var fiveDice = new List<Die>
             {
-                var randomRoller = new RandomRoller();
-                var fiveMockDice = new List<Die>
-                {
-                    new Die(randomRoller),
-                    new Die(randomRoller),
-                    new Die(randomRoller),
-                    new Die(randomRoller),
-                    new Die(randomRoller),
-                };
-                
-                var turn = new Turn(fiveMockDice);
-                
-                turn.Roll();
-                
-                turn.Hold(new List<int>{0, 1, 2, 3, 4});
+                new Die(randomRoller),
+                new Die(randomRoller),
+                new Die(randomRoller),
+                new Die(randomRoller),
+                new Die(randomRoller)
+            };
+        
+            var turn = new Turn(fiveDice);
+            var player = new Player(turn, new ScoreCard());
 
-                foreach (var dice in turn.DiceHeld)
-                {
-                    Console.WriteLine(dice.Value);
-                }
-
-              
-
-
-            }
-            catch (Exception e)
+            var inputValidators = new Dictionary<Validators, IInputValidator>
             {
-                Console.WriteLine(e);
-             
-            }
+                {Validators.DiceValues, new DiceValuesToHoldValidator()},
+                {Validators.ScoreCategory, new ScoreCategoryInputValidator()}
+
+            };
+            
+            var game = new Game( player, new ConsoleDisplay(), new ConsoleInputCollector(), new ConsoleInputProcessor(), inputValidators);
+            
+            game.Play();
             
         }
-    }
+    } 
 }
 
 
 
-//var dice = new Dice(new RandomRoller());
-// Console.WriteLine(dice.Roll());
-// Console.WriteLine(dice.Roll());
-            
-//
-// var turn = new Turn(dice);
-// turn.Roll();
-//
-// foreach (var value in turn.CurrentRolledValues)
-// {
-//     Console.WriteLine(value);
-// }
+
+
+
