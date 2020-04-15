@@ -138,31 +138,22 @@ namespace Yatzy.UnitTests
             //Act
             scoreCard.PreviewScoreCard(turn.Dice);
             
-            //Assert 
-            var testScoreCategories  =
-                new Dictionary<ScoreCategory, int>
-                {
-                    {ScoreCategory.Yatzy, 50},
-                    {ScoreCategory.FourOfAKind, 4},
-                    {ScoreCategory.ThreeOfAKind, 6},
-                    {ScoreCategory.Pairs, 4},
-                    {ScoreCategory.TwoPairs, 0},
-                    {ScoreCategory.Ones, 0},
-                    {ScoreCategory.Twos, 10},
-                    {ScoreCategory.Threes, 0},
-                    {ScoreCategory.Fours, 0},
-                    {ScoreCategory.Fives, 0},
-                    {ScoreCategory.Sixes, 0},
-                    {ScoreCategory.Chance, 10},
-                    {ScoreCategory.LargeStraights, 0},
-                    {ScoreCategory.SmallStraights, 0}, 
-                    {ScoreCategory.FullHouse, 0},
-                };
-
-            foreach (var (key, value) in testScoreCategories )
-            {
-                Assert.Equal(value, scoreCard.ScoreCategories[key].Score);
-            }
+            //Assert
+            Assert.Equal(50, scoreCard.ScoreCategories[ScoreCategory.Yatzy].Score);
+            Assert.Equal(4, scoreCard.ScoreCategories[ScoreCategory.FourOfAKind].Score);
+            Assert.Equal(6, scoreCard.ScoreCategories[ScoreCategory.ThreeOfAKind].Score);
+            Assert.Equal(4, scoreCard.ScoreCategories[ScoreCategory.Pairs].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.TwoPairs].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.Ones].Score);
+            Assert.Equal(10, scoreCard.ScoreCategories[ScoreCategory.Twos].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.Threes].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.Fours].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.Fives].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.Sixes].Score);
+            Assert.Equal(10, scoreCard.ScoreCategories[ScoreCategory.Chance].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.SmallStraights].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.LargeStraights].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.FullHouse].Score);
             
         }
         
@@ -191,37 +182,27 @@ namespace Yatzy.UnitTests
             mockRoller.Setup(x => x.Roll()).Returns(2);
             turn.RollDice();
             scoreCard.PreviewScoreCard(turn.Dice);
+
+            //Act
             scoreCard.UpdateScoreCard(ScoreCategory.Yatzy, turn.Dice); 
             
-            //Act
-            
-            
             //Assert 
-            var testScoreCategories  =
-                new Dictionary<ScoreCategory, int>
-                {
-                    {ScoreCategory.Yatzy, 50},
-                    {ScoreCategory.FourOfAKind, 4},
-                    {ScoreCategory.ThreeOfAKind, 0},
-                    {ScoreCategory.Pairs, 0},
-                    {ScoreCategory.TwoPairs, 0},
-                    {ScoreCategory.Ones, 0},
-                    {ScoreCategory.Twos, 0},
-                    {ScoreCategory.Threes, 0},
-                    {ScoreCategory.Fours, 0},
-                    {ScoreCategory.Fives, 0},
-                    {ScoreCategory.Sixes, 0},
-                    {ScoreCategory.Chance, 0},
-                    {ScoreCategory.LargeStraights, 0},
-                    {ScoreCategory.SmallStraights, 0}, 
-                    {ScoreCategory.FullHouse, 0},
-                };
+            Assert.Equal(50, scoreCard.ScoreCategories[ScoreCategory.Yatzy].Score);
+            Assert.Equal(4, scoreCard.ScoreCategories[ScoreCategory.FourOfAKind].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.ThreeOfAKind].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.Pairs].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.TwoPairs].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.Ones].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.Twos].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.Threes].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.Fours].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.Fives].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.Sixes].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.Chance].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.SmallStraights].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.LargeStraights].Score);
+            Assert.Equal(0, scoreCard.ScoreCategories[ScoreCategory.FullHouse].Score);
 
-            foreach (var (key, value) in testScoreCategories )
-            {
-                Assert.Equal(value, scoreCard.ScoreCategories[key].Score);
-            }
-            
         }
     }
 }
