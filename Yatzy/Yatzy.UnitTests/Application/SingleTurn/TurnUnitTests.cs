@@ -187,12 +187,10 @@ namespace Yatzy.UnitTests.Application.SingleTurn
             //assert 
             var expectedIsHeld = new List<bool>{true, false, false, true, false};
 
-            for (var i = 0; i < turn.Dice.Count; i++) //TODO: is there a better way to write this?  
-            {
-                Assert.Equal(expectedIsHeld[i], turn.Dice[i].IsHeld);
-            }
+            var diceIsHeldStatus = turn.Dice.Select(x => x.IsHeld);
             
-  
+            Assert.True(diceIsHeldStatus.SequenceEqual(expectedIsHeld));
+            
         }
         
         
@@ -278,12 +276,11 @@ namespace Yatzy.UnitTests.Application.SingleTurn
             
             //assert 
             var expectedValues = new List<int> {1, 6, 6, 4, 1};
+
+            var actualDiceValues = turn.Dice.Select(x => x.Value);
             
-            for (var i = 0; i < turn.Dice.Count; i++)
-            {
-                Assert.Equal(expectedValues[i], turn.Dice[i].Value );
-            }
-      
+            Assert.True(actualDiceValues.SequenceEqual(expectedValues));
+            
         }
         
         [Fact]
