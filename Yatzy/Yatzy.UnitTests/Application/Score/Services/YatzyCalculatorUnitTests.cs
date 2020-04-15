@@ -7,7 +7,7 @@ using Yatzy.Application.Score.Services.CategoryCalculator;
 
 using Yatzy.Application.Score.Models;
 
-namespace Yatzy.UnitTests
+namespace Yatzy.UnitTests.Application.Score.Services
 {
     public class YatzyCalculatorUnitTests
     {

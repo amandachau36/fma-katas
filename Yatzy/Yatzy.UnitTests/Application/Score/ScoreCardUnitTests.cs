@@ -9,7 +9,7 @@ using Yatzy.Application.Score;
 using Yatzy.Application.Score.Models;
 
 
-namespace Yatzy.UnitTests
+namespace Yatzy.UnitTests.Application.Score
 {
     public class ScoreCardUnitTests
     {

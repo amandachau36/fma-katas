@@ -7,7 +7,7 @@ using Yatzy.Client.Exceptions;
 using Yatzy.Client.InputProcessor;
 using Yatzy.Client.InputValidators;
 
-namespace Yatzy.UnitTests
+namespace Yatzy.UnitTests.Client
 {
     public class ConsoleInputProcessorUnitTests
     {

@@ -7,9 +7,10 @@ using Yatzy.Application;
 using Yatzy.Application.Dice.Models;
 using Yatzy.Application.Exceptions;
 using Yatzy.Application.Score.Models;
+using Yatzy.UnitTests.Application.Dice;
 
 
-namespace Yatzy.UnitTests
+namespace Yatzy.UnitTests.Application.SingleTurn
 {
     public class TurnUnitTests
     {
@@ -17,7 +18,7 @@ namespace Yatzy.UnitTests
         public void It_Should_ReturnFiveValues_When_DiceAreRolled()
         {
             //arrange
-            var mockRoller = new DiceUnitTests.MockRoller();
+            var mockRoller = new DiceUnitTests.MockRoller(); //TODO: fix thiss . . . . 
             mockRoller.Value = 3;
             var fiveMockDice = new List<Die>
             {

@@ -6,12 +6,12 @@ using Yatzy.Application.Score;
 using Yatzy.Application.Score.Services.CategoryCalculator;
 using Yatzy.Application.Score.Models;
 
-namespace Yatzy.UnitTests
+namespace Yatzy.UnitTests.Application.Score.Services
 {
-    public class PairsCalculatorUnitTests 
+    public class ThreeOfAKindCalculatorUnitTests
     {
         [Fact]
-        public void It_Should_Return_SumOfHighestPairs_When_GivenTwoPairs()
+        public void It_Should_Return_SumOfThreeDiceWithTheSameNumber_When_GivenThreeOfAKind()
         {
             //Arrange
             var mockRoller1 = new Mock<IRoller>();
@@ -27,7 +27,7 @@ namespace Yatzy.UnitTests
             mockRoller4.Setup(x => x.Roll()).Returns(4);
             
             var mockRoller5 = new Mock<IRoller>();
-            mockRoller5.Setup(x => x.Roll()).Returns(4);
+            mockRoller5.Setup(x => x.Roll()).Returns(5);
             
             var fiveMockDice = new List<Die>
             {
@@ -42,14 +42,14 @@ namespace Yatzy.UnitTests
             turn.RollDice();
 
             //Act
-            var pairsCalculator = CategoryCalculatorFactory.CreateCalculator(ScoreCategory.Pairs, turn.Dice);
+            var threeOfAKindCalculator = CategoryCalculatorFactory.CreateCalculator(ScoreCategory.ThreeOfAKind, turn.Dice);
 
             //Assert
-            Assert.Equal(8, pairsCalculator.Calculate());
+            Assert.Equal(9, threeOfAKindCalculator.Calculate());
         }
         
         [Fact]
-        public void It_Should_Return_SumOfPairs_When_FourOfAKindIsGiven()
+        public void It_Should_Return_SumOfThreeDiceWithTheSameNumber_When_GivenFourOfAKind()
         {
             //Arrange
             var mockRoller1 = new Mock<IRoller>();
@@ -65,8 +65,7 @@ namespace Yatzy.UnitTests
             mockRoller4.Setup(x => x.Roll()).Returns(3);
             
             var mockRoller5 = new Mock<IRoller>();
-            mockRoller5.Setup(x => x.Roll()).Returns(1);
-            
+            mockRoller5.Setup(x => x.Roll()).Returns(5);
             
             var fiveMockDice = new List<Die>
             {
@@ -81,27 +80,28 @@ namespace Yatzy.UnitTests
             turn.RollDice();
 
             //Act
-            var pairsCalculator = CategoryCalculatorFactory.CreateCalculator(ScoreCategory.Pairs, turn.Dice);
+            var threeOfAKindCalculator = CategoryCalculatorFactory.CreateCalculator(ScoreCategory.ThreeOfAKind, turn.Dice);
 
             //Assert
-            Assert.Equal(6, pairsCalculator.Calculate());
+            Assert.Equal(9, threeOfAKindCalculator.Calculate());
         }
+
         
         [Fact]
-        public void It_Should_Return_Zero_When_NotGivenTwoOfAKind()
+        public void It_Should_Return_SumOfZero_When_NotGivenThreeOfAKind()
         {
             //Arrange
             var mockRoller1 = new Mock<IRoller>();
-            mockRoller1.Setup(x => x.Roll()).Returns(1);
+            mockRoller1.Setup(x => x.Roll()).Returns(3);
             
             var mockRoller2 = new Mock<IRoller>();
-            mockRoller2.Setup(x => x.Roll()).Returns(2);
+            mockRoller2.Setup(x => x.Roll()).Returns(3);
             
             var mockRoller3 = new Mock<IRoller>();
-            mockRoller3.Setup(x => x.Roll()).Returns(3);
+            mockRoller3.Setup(x => x.Roll()).Returns(4);
             
             var mockRoller4 = new Mock<IRoller>();
-            mockRoller4.Setup(x => x.Roll()).Returns(4);
+            mockRoller4.Setup(x => x.Roll()).Returns(5);
             
             var mockRoller5 = new Mock<IRoller>();
             mockRoller5.Setup(x => x.Roll()).Returns(6);
@@ -119,11 +119,11 @@ namespace Yatzy.UnitTests
             turn.RollDice();
 
             //Act
-            var pairsCalculator = CategoryCalculatorFactory.CreateCalculator(ScoreCategory.Pairs, turn.Dice);
+            var threeOfAKindCalculator = CategoryCalculatorFactory.CreateCalculator(ScoreCategory.ThreeOfAKind, turn.Dice);
 
             //Assert
-            Assert.Equal(0, pairsCalculator.Calculate());
+            Assert.Equal(0, threeOfAKindCalculator.Calculate());
         }
-      
+        
     }
 }

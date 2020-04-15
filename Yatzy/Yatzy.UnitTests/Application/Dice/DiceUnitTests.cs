@@ -3,7 +3,7 @@ using Xunit;
 using Yatzy.Application;
 using Yatzy.Application.Dice.Models;
 
-namespace Yatzy.UnitTests  //TODO: put into directories (can mirror) 
+namespace Yatzy.UnitTests.Application.Dice
 {
     public class DiceUnitTests
     {
