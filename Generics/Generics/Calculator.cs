@@ -10,6 +10,10 @@ namespace Generics
             return object1.Equals(object2);  
         }
 
+        
+        //Likewise, there is a similar one in framework: https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.icomparer-1?view=netframework-4.8
+
+
         // public decimal Calculate()
         // {
         //     

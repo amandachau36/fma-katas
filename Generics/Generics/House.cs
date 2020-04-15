@@ -12,6 +12,12 @@ namespace Generics
         {
             return (GardenArea == property.GardenArea) && (HouseArea == property.HouseArea);
         }
+
+        
+        //There is an interface in .NET which does the same thing - and there is supported throughout the framework:
+
+        //https://docs.microsoft.com/en-us/dotnet/api/system.iequatable-1?view=netframework-4.8
+
     }
 }
 

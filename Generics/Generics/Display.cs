@@ -8,5 +8,10 @@ namespace Generics
         {
             Console.Write($"{message} {value}");
         }
+
+        
+        // Justin: I think it could - anything that supports .ToString() (which your custom types can override), or what can you do with the built-in types?
+        //https://docs.microsoft.com/en-us/dotnet/api/system.iformattable?view=netframework-4.8
+
     }
 }
