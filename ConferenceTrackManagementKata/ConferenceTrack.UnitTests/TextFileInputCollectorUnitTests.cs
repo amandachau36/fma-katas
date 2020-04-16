@@ -14,13 +14,13 @@ namespace ConferenceTrack.UnitTests
         public void It_Should_Return_AnArrayOfConferenceTalks_When_Given_TalksSeparatedByANewLine()
         {
             //arrange
+            var textFileInputCollector = new TextFileInputCollector();
 
-            var textFileInputCollector = new TextFileInputCollector(); //TODO: make this a relative path
-
-           // var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"./Input/OriginalTestInput.txt");
+            var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"./Input/OriginalTestInput.txt");
            
             //act
-            var talks = textFileInputCollector.Collect(@"/Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/OriginalTestInput.txt");
+            var talks = textFileInputCollector.Collect(path);
+          
 
             //assert
             var expectedTalks = new[]

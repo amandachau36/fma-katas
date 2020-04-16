@@ -17,4 +17,10 @@
       <ProjectReference Include="..\ConferenceTrack\ConferenceTrack.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="Input\OriginalTestInput.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

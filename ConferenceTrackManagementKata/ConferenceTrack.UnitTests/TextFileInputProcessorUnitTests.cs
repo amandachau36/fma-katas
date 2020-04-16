@@ -20,9 +20,31 @@ namespace ConferenceTrack.UnitTests
             //assert
             var expectedTalk = new Talk("Writing Fast Tests Against Enterprise Rails 60min", 60);
             
-            var processedTalkStr = JsonConvert.SerializeObject(processedTalk);
+            var processedTalkStr = JsonConvert.SerializeObject(processedTalk[0]);
             var expectedTalkStr = JsonConvert.SerializeObject(expectedTalk);
-
+            
+            Assert.Equal( expectedTalkStr, processedTalkStr);
+        
+        }
+        
+        [Fact]
+        public void It_Should_Return_ATalkObjectWithADurationOf5Min_Given_ALighteningTalk()
+        {
+            //arrange
+            var textFileInputProcessor = new TextFileInputProcessor();
+            var talk = new string[] {"Rails for Python Developers lightning"};
+            
+            //act
+            var processedTalk = textFileInputProcessor.Process(talk);
+            
+            //assert
+            var expectedTalk = new Talk("Rails for Python Developers lightning", 5);
+            
+            var processedTalkStr = JsonConvert.SerializeObject(processedTalk[0]);
+            var expectedTalkStr = JsonConvert.SerializeObject(expectedTalk);
+            
+            Assert.Equal( expectedTalkStr, processedTalkStr);
+        
         }
         
         // [Fact]
