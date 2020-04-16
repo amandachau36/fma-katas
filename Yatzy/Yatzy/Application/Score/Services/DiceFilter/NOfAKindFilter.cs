@@ -16,7 +16,7 @@ namespace Yatzy.Application.Score.Services.DiceFilter
             _nOfAKind = nOfKind;
         }
         
-        public IEnumerable<Die> Filter(IEnumerable<Die> dice)  
+        public IEnumerable<IDie> Filter(IEnumerable<IDie> dice)  
         {
             var groupByDiceValue =
                     from d in dice
@@ -25,9 +25,9 @@ namespace Yatzy.Application.Score.Services.DiceFilter
                     orderby g.Key descending
                     select g.Take(_nOfAKind);
             
-            if (_numberOfNofAKind == 1) return groupByDiceValue.FirstOrDefault() ?? Enumerable.Empty<Die>(); 
+            if (_numberOfNofAKind == 1) return groupByDiceValue.FirstOrDefault() ?? Enumerable.Empty<IDie>(); 
             
-             var filteredDice = new List<Die>();
+             var filteredDice = new List<IDie>();
 
              foreach (var group in groupByDiceValue)
              {
@@ -37,7 +37,7 @@ namespace Yatzy.Application.Score.Services.DiceFilter
            
              return IsPlacedOnTwoPairs(_numberOfNofAKind) && TwoPairsPresent(filteredDice) 
                  ? filteredDice 
-                 : Enumerable.Empty<Die>();
+                 : Enumerable.Empty<IDie>();
              
 
              // https://stackoverflow.com/questions/7325278/group-by-in-linq#7325306
@@ -48,7 +48,7 @@ namespace Yatzy.Application.Score.Services.DiceFilter
             return numberOfNOfAKind == 2 ;
         }
 
-        private static bool TwoPairsPresent(List<Die> filteredDice)
+        private static bool TwoPairsPresent(List<IDie> filteredDice)
         {
             return filteredDice.Count == 4;
         }

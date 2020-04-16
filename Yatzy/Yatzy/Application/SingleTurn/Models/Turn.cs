@@ -11,12 +11,12 @@ namespace Yatzy.Application.Score.Models
         //variables/constructors/properties
         public int RollCount { get; private set; }
 
-        public Turn(List<Die> dice)
+        public Turn(List<IDie> dice)
         {
             Dice = dice; 
         }
         
-        public List<Die> Dice { get; }
+        public List<IDie> Dice { get; }
 
         public void RollDice()
         {

@@ -6,7 +6,7 @@ namespace Yatzy.Application.Score.Services.AggregationStrategy
 {
     public class YatzyStrategy : IAggregationStrategy
     {
-        public int Aggregate(IEnumerable<Die> dice)
+        public int Aggregate(IEnumerable<IDie> dice)
         {
             return dice.Count() >= Constants.MaximumNumberOfDice ? 50 : 0;
         }

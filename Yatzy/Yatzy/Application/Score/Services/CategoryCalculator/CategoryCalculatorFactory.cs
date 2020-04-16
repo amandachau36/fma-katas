@@ -9,7 +9,7 @@ namespace Yatzy.Application.Score.Services.CategoryCalculator
     public static class CategoryCalculatorFactory  //public abstract class, with private constructor (sealed just can't inherit but can make a new instance)
     {
         
-        public static CategoryScoreCalculator CreateCalculator(ScoreCategory scoreCategory, List<Die> dice) =>
+        public static CategoryScoreCalculator CreateCalculator(ScoreCategory scoreCategory, List<IDie> dice) =>
             
             //functional inspired programming (F#)/decorative way of programming
             scoreCategory switch 
@@ -36,7 +36,7 @@ namespace Yatzy.Application.Score.Services.CategoryCalculator
 
         
         //Doesn't have to be static
-        private static CategoryScoreCalculator BuildYatzy(List<Die> dice)
+        private static CategoryScoreCalculator BuildYatzy(List<IDie> dice)
         {
             return new CategoryScoreCalculator(
                 dice,
@@ -45,7 +45,7 @@ namespace Yatzy.Application.Score.Services.CategoryCalculator
             );
         }
         
-        private static CategoryScoreCalculator BuildFourOfKind(List<Die> dice) 
+        private static CategoryScoreCalculator BuildFourOfKind(List<IDie> dice) 
         {
             return new CategoryScoreCalculator(
                 dice,
@@ -54,7 +54,7 @@ namespace Yatzy.Application.Score.Services.CategoryCalculator
             );
         }
 
-        private static CategoryScoreCalculator BuildThreeOfKind(List<Die> dice)
+        private static CategoryScoreCalculator BuildThreeOfKind(List<IDie> dice)
         {
             return new CategoryScoreCalculator(
                 dice,
@@ -63,7 +63,7 @@ namespace Yatzy.Application.Score.Services.CategoryCalculator
             );
         }
 
-        private static CategoryScoreCalculator BuildPairs(List<Die> dice)
+        private static CategoryScoreCalculator BuildPairs(List<IDie> dice)
         {
             return new CategoryScoreCalculator(
                 dice,
@@ -72,7 +72,7 @@ namespace Yatzy.Application.Score.Services.CategoryCalculator
             );
         }
 
-        private static CategoryScoreCalculator BuildTwoPairs(List<Die> dice)
+        private static CategoryScoreCalculator BuildTwoPairs(List<IDie> dice)
         {
             return new CategoryScoreCalculator(
                 dice,
@@ -81,7 +81,7 @@ namespace Yatzy.Application.Score.Services.CategoryCalculator
                 );
         }
         
-        private static CategoryScoreCalculator BuildChance(List<Die> dice)
+        private static CategoryScoreCalculator BuildChance(List<IDie> dice)
         {
             return new CategoryScoreCalculator(
                 dice,
@@ -90,7 +90,7 @@ namespace Yatzy.Application.Score.Services.CategoryCalculator
             );
         }
         
-        private static CategoryScoreCalculator BuildOnes(List<Die> dice)
+        private static CategoryScoreCalculator BuildOnes(List<IDie> dice)
         {
             return new CategoryScoreCalculator(
                 dice,
@@ -99,7 +99,7 @@ namespace Yatzy.Application.Score.Services.CategoryCalculator
             );
         }
         
-        private static CategoryScoreCalculator BuildTwos(List<Die> dice)
+        private static CategoryScoreCalculator BuildTwos(List<IDie> dice)
         {
             return new CategoryScoreCalculator(
                 dice,
@@ -108,7 +108,7 @@ namespace Yatzy.Application.Score.Services.CategoryCalculator
             );
         }
         
-        private static CategoryScoreCalculator BuildThrees(List<Die> dice)
+        private static CategoryScoreCalculator BuildThrees(List<IDie> dice)
         {
             return new CategoryScoreCalculator(
                 dice,
@@ -117,7 +117,7 @@ namespace Yatzy.Application.Score.Services.CategoryCalculator
             );
         }
         
-        private static CategoryScoreCalculator BuildFours(List<Die> dice)
+        private static CategoryScoreCalculator BuildFours(List<IDie> dice)
         {
             return new CategoryScoreCalculator(
                 dice,
@@ -126,7 +126,7 @@ namespace Yatzy.Application.Score.Services.CategoryCalculator
             );
         }
         
-        private static CategoryScoreCalculator BuildFives(List<Die> dice)
+        private static CategoryScoreCalculator BuildFives(List<IDie> dice)
         {
             return new CategoryScoreCalculator(
                 dice,
@@ -135,7 +135,7 @@ namespace Yatzy.Application.Score.Services.CategoryCalculator
             );
         }
         
-        private static CategoryScoreCalculator BuildSixes(List<Die> dice)
+        private static CategoryScoreCalculator BuildSixes(List<IDie> dice)
         {
             return new CategoryScoreCalculator(
                 dice,
@@ -144,7 +144,7 @@ namespace Yatzy.Application.Score.Services.CategoryCalculator
             );
         }
         
-        private static CategoryScoreCalculator BuildSmallStraights(List<Die> dice)
+        private static CategoryScoreCalculator BuildSmallStraights(List<IDie> dice)
         {
             return new CategoryScoreCalculator(
                 dice,
@@ -153,7 +153,7 @@ namespace Yatzy.Application.Score.Services.CategoryCalculator
             );
         }
         
-        private static CategoryScoreCalculator BuildLargeStraights(List<Die> dice)
+        private static CategoryScoreCalculator BuildLargeStraights(List<IDie> dice)
         {
             return new CategoryScoreCalculator(
                 dice,
@@ -162,7 +162,7 @@ namespace Yatzy.Application.Score.Services.CategoryCalculator
             );
         }
 
-        private static CategoryScoreCalculator BuildFullHouse(List<Die> dice)
+        private static CategoryScoreCalculator BuildFullHouse(List<IDie> dice)
         {
             return new CategoryScoreCalculator(
                 dice,

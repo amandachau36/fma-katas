@@ -5,6 +5,6 @@ namespace Yatzy.Application.Score.Services.DiceFilter
 {
     public interface IDiceFilter
     {
-        IEnumerable<Die> Filter(IEnumerable<Die> dice);
+        IEnumerable<IDie> Filter(IEnumerable<IDie> dice);
     }
 }

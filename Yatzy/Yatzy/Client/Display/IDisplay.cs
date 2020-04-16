@@ -7,7 +7,7 @@ namespace Yatzy.Client.Display
     public interface IDisplay
     {
         void Display(string message);
-        void Display(IEnumerable<Die> dice);
+        void Display(IEnumerable<IDie> dice);
         void Display(Dictionary<ScoreCategory, ScoreRecordForEachCategory> scoreCategories);
         void DisplayError(string error);
         void Display(int score);

@@ -23,7 +23,7 @@ namespace Yatzy.Client.Display
             Console.ResetColor();
         }
 
-        public void Display(IEnumerable<Die> dice)
+        public void Display(IEnumerable<IDie> dice)
         {
             var formattedDice = GetFormattedDiceList(dice);
             
@@ -67,7 +67,7 @@ namespace Yatzy.Client.Display
             Console.WriteLine(new string('-', 33));
         }
         
-        private static string GetFormattedDiceList(IEnumerable<Die> dice)
+        private static string GetFormattedDiceList(IEnumerable<IDie> dice)
         {
             return string.Join(", ", dice.Select(d => d.Value));
         }

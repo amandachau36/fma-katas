@@ -12,10 +12,8 @@ namespace Yatzy.UnitTests.Application.Dice
         public void It_Should_ReturnANumber_When_Rolled()
         {
             //arrange
-            var mockRoller = new MockRoller();
-            mockRoller.Value = 4;
-            var dice = new Die(mockRoller);
-            
+            var dice = new MockDie {Value = 4};
+
             //act
             dice.Roll();
 
@@ -27,15 +25,13 @@ namespace Yatzy.UnitTests.Application.Dice
         public void It_Should_ReturnANewValue_When_RolledAgain()
         {
             //arrange
-            var mockRoller = new MockRoller();
-            mockRoller.Value = 4;
-            var dice = new Die(mockRoller);
-            
+            var dice = new MockDie {Value = 4};
+            dice.Roll();
+            dice.Value = 2;
+
             //act
             dice.Roll();
-            mockRoller.Value = 2;
-            dice.Roll();
-
+        
             //assert
             Assert.Equal(2, dice.Value);
         }
@@ -44,25 +40,32 @@ namespace Yatzy.UnitTests.Application.Dice
          public void It_Should_ReturnANewValue_When_Rolled_MoqVersion()
          {
              //arrange
-             var mock = new Mock<IRoller>();
-             mock.Setup(x => x.Roll()).Returns(4);
-             var dice = new Die(mock.Object);
-             dice.Roll();
+             var mockDie = new Mock<IDie>();
+             mockDie.Setup(x => x.Value).Returns(4);
+             mockDie.Object.Roll();
              
              //act
-             mock.Setup(x => x.Roll()).Returns(2);
-             dice.Roll();
+             mockDie.Setup(x => x.Value).Returns(2);
+             mockDie.Object.Roll();
         
              //assert
-             Assert.Equal(2, dice.Value);
+             Assert.Equal(2, mockDie.Object.Value);
          }
          
-        internal class MockRoller : IRoller //internal within the project
+
+
+        internal class MockDie : IDie
         {
             public int Value { get; set; }
-            public int Roll()
+            public bool IsHeld { get; set; }
+
+            public void Roll()
             {
-                return Value;
+            }
+
+            public void UpdateIsHeld(bool isHeld)
+            {
+                IsHeld = isHeld;
             }
         }
         

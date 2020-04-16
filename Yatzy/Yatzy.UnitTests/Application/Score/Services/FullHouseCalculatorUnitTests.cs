@@ -14,33 +14,17 @@ namespace Yatzy.UnitTests.Application.Score.Services
         public void It_Should_Return_SumOfAllDice_When_GivenFullHouse()
         {
             //Arrange
-            var mockRoller1 = new Mock<IRoller>();
-            mockRoller1.Setup(x => x.Roll()).Returns(1);
-            
-            var mockRoller2 = new Mock<IRoller>();
-            mockRoller2.Setup(x => x.Roll()).Returns(1);
-            
-            var mockRoller3 = new Mock<IRoller>();
-            mockRoller3.Setup(x => x.Roll()).Returns(2);
-            
-            var mockRoller4 = new Mock<IRoller>();
-            mockRoller4.Setup(x => x.Roll()).Returns(2);
-            
-            var mockRoller5 = new Mock<IRoller>();
-            mockRoller5.Setup(x => x.Roll()).Returns(2);
-            
-            var fiveMockDice = new List<Die>
+            var fiveMockDice = new List<IDie>
             {
-                new Die(mockRoller1.Object),
-                new Die(mockRoller2.Object),
-                new Die(mockRoller3.Object),
-                new Die(mockRoller4.Object),
-                new Die(mockRoller5.Object)
+                new EchoDie(1),
+                new EchoDie(1),
+                new EchoDie(2),
+                new EchoDie(2),
+                new EchoDie(2),
             };
             
             var turn = new Turn(fiveMockDice);
-            turn.RollDice();
- 
+            //turn.RollDice();
             
             //Act
             var fullHouseCalculator = CategoryCalculatorFactory.CreateCalculator(ScoreCategory.FullHouse, turn.Dice);
@@ -53,33 +37,17 @@ namespace Yatzy.UnitTests.Application.Score.Services
         public void It_Should_Return_Zero_When_GivenTwoPairs()
         {
             //Arrange
-            var mockRoller1 = new Mock<IRoller>();
-            mockRoller1.Setup(x => x.Roll()).Returns(2);
-            
-            var mockRoller2 = new Mock<IRoller>();
-            mockRoller2.Setup(x => x.Roll()).Returns(2);
-            
-            var mockRoller3 = new Mock<IRoller>();
-            mockRoller3.Setup(x => x.Roll()).Returns(3);
-            
-            var mockRoller4 = new Mock<IRoller>();
-            mockRoller4.Setup(x => x.Roll()).Returns(3);
-            
-            var mockRoller5 = new Mock<IRoller>();
-            mockRoller5.Setup(x => x.Roll()).Returns(4);
-            
-            
-            var fiveMockDice = new List<Die>
+            var fiveMockDice = new List<IDie>
             {
-                new Die(mockRoller1.Object),
-                new Die(mockRoller2.Object),
-                new Die(mockRoller3.Object),
-                new Die(mockRoller4.Object),
-                new Die(mockRoller5.Object)
+                new EchoDie(2),
+                new EchoDie(2),
+                new EchoDie(3),
+                new EchoDie(3),
+                new EchoDie(4),
             };
             
             var turn = new Turn(fiveMockDice);
-            turn.RollDice();
+            //turn.RollDice();
         
             
             //Act
@@ -93,32 +61,17 @@ namespace Yatzy.UnitTests.Application.Score.Services
         public void It_Should_Return_Zero_When_GivenFiveOfAKind()
         {
             //Arrange
-            var mockRoller1 = new Mock<IRoller>();
-            mockRoller1.Setup(x => x.Roll()).Returns(4);
-            
-            var mockRoller2 = new Mock<IRoller>();
-            mockRoller2.Setup(x => x.Roll()).Returns(4);
-            
-            var mockRoller3 = new Mock<IRoller>();
-            mockRoller3.Setup(x => x.Roll()).Returns(4);
-            
-            var mockRoller4 = new Mock<IRoller>();
-            mockRoller4.Setup(x => x.Roll()).Returns(4);
-            
-            var mockRoller5 = new Mock<IRoller>();
-            mockRoller5.Setup(x => x.Roll()).Returns(4);
-            
-            var fiveMockDice = new List<Die>
+            var fiveMockDice = new List<IDie>
             {
-                new Die(mockRoller1.Object),
-                new Die(mockRoller2.Object),
-                new Die(mockRoller3.Object),
-                new Die(mockRoller4.Object),
-                new Die(mockRoller5.Object)
+                new EchoDie(4),
+                new EchoDie(4),
+                new EchoDie(4),
+                new EchoDie(4),
+                new EchoDie(4),
             };
             
             var turn = new Turn(fiveMockDice);
-            turn.RollDice();
+            //turn.RollDice();
 
             
             //Act
@@ -132,28 +85,13 @@ namespace Yatzy.UnitTests.Application.Score.Services
         public void It_Should_Return_Zero_When_GivenFourOfAKind()
         {
             //Arrange
-            var mockRoller1 = new Mock<IRoller>();
-            mockRoller1.Setup(x => x.Roll()).Returns(4);
-            
-            var mockRoller2 = new Mock<IRoller>();
-            mockRoller2.Setup(x => x.Roll()).Returns(4);
-            
-            var mockRoller3 = new Mock<IRoller>();
-            mockRoller3.Setup(x => x.Roll()).Returns(4);
-            
-            var mockRoller4 = new Mock<IRoller>();
-            mockRoller4.Setup(x => x.Roll()).Returns(4);
-            
-            var mockRoller5 = new Mock<IRoller>();
-            mockRoller5.Setup(x => x.Roll()).Returns(1);
-            
-            var fiveMockDice = new List<Die>
+            var fiveMockDice = new List<IDie>
             {
-                new Die(mockRoller1.Object),
-                new Die(mockRoller2.Object),
-                new Die(mockRoller3.Object),
-                new Die(mockRoller4.Object),
-                new Die(mockRoller5.Object)
+                new EchoDie(4),
+                new EchoDie(4),
+                new EchoDie(4),
+                new EchoDie(4),
+                new EchoDie(1),
             };
             
             var turn = new Turn(fiveMockDice);

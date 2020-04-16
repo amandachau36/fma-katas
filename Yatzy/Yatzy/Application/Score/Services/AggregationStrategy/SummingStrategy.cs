@@ -6,7 +6,7 @@ namespace Yatzy.Application.Score.Services.AggregationStrategy
 {
     public class SummingStrategy : IAggregationStrategy
     {
-        public int Aggregate(IEnumerable<Die> dice)  
+        public int Aggregate(IEnumerable<IDie> dice)  
         {
             return dice.Sum(d => d.Value);
         }

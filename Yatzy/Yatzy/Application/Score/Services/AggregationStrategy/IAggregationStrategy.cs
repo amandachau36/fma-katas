@@ -6,6 +6,6 @@ namespace Yatzy.Application.Score.Services.AggregationStrategy
 {
     public interface IAggregationStrategy
     {
-        int Aggregate(IEnumerable<Die> dice); 
+        int Aggregate(IEnumerable<IDie> dice); 
     }
 }

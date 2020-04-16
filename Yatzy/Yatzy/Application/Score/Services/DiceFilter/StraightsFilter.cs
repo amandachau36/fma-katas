@@ -13,7 +13,7 @@ namespace Yatzy.Application.Score.Services.DiceFilter
             _straightsNumbers = straightsNumbers;
         }
 
-        public IEnumerable<Die> Filter(IEnumerable<Die> dice)
+        public IEnumerable<IDie> Filter(IEnumerable<IDie> dice)
         {
             var diceList = dice.ToList(); //Need to do convert IEnumerable to List to allocate it to separate memory 
             var diceByAscendingOrder =
@@ -21,7 +21,7 @@ namespace Yatzy.Application.Score.Services.DiceFilter
                 orderby d.Value 
                 select d.Value;
             
-            return diceByAscendingOrder.SequenceEqual(_straightsNumbers) ? diceList : Enumerable.Empty<Die>();
+            return diceByAscendingOrder.SequenceEqual(_straightsNumbers) ? diceList : Enumerable.Empty<IDie>();
         }
     }
 }

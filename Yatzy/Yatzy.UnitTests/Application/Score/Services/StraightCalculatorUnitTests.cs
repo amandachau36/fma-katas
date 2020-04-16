@@ -14,32 +14,17 @@ namespace Yatzy.UnitTests.Application.Score.Services
         public void It_Should_Return_SumOfAllDice_When_GivenASmallStraight()
         {
             //Arrange
-            var mockRoller1 = new Mock<IRoller>();
-            mockRoller1.Setup(x => x.Roll()).Returns(1);
-            
-            var mockRoller2 = new Mock<IRoller>();
-            mockRoller2.Setup(x => x.Roll()).Returns(2);
-            
-            var mockRoller3 = new Mock<IRoller>();
-            mockRoller3.Setup(x => x.Roll()).Returns(3);
-            
-            var mockRoller4 = new Mock<IRoller>();
-            mockRoller4.Setup(x => x.Roll()).Returns(4);
-            
-            var mockRoller5 = new Mock<IRoller>();
-            mockRoller5.Setup(x => x.Roll()).Returns(5);
-            
-            var fiveMockDice = new List<Die>
+            var fiveMockDice = new List<IDie>
             {
-                new Die(mockRoller1.Object),
-                new Die(mockRoller2.Object),
-                new Die(mockRoller3.Object),
-                new Die(mockRoller4.Object),
-                new Die(mockRoller5.Object)
+                new EchoDie(1),
+                new EchoDie(2),
+                new EchoDie(3),
+                new EchoDie(4),
+                new EchoDie(5),
             };
             
             var turn = new Turn(fiveMockDice);
-            turn.RollDice();
+            //turn.RollDice();
 
             //Act
             var smallStraightsCalculator = CategoryCalculatorFactory.CreateCalculator(ScoreCategory.SmallStraights, turn.Dice);
@@ -52,33 +37,17 @@ namespace Yatzy.UnitTests.Application.Score.Services
         public void It_Should_Return_SumOfAllDice_When_GivenALargeStraight()
         {
             //Arrange
-            var mockRoller1 = new Mock<IRoller>();
-            mockRoller1.Setup(x => x.Roll()).Returns(2);
-            
-            var mockRoller2 = new Mock<IRoller>();
-            mockRoller2.Setup(x => x.Roll()).Returns(3);
-            
-            var mockRoller3 = new Mock<IRoller>();
-            mockRoller3.Setup(x => x.Roll()).Returns(4);
-            
-            var mockRoller4 = new Mock<IRoller>();
-            mockRoller4.Setup(x => x.Roll()).Returns(5);
-            
-            var mockRoller5 = new Mock<IRoller>();
-            mockRoller5.Setup(x => x.Roll()).Returns(6);
-            
-            
-            var fiveMockDice = new List<Die>
+            var fiveMockDice = new List<IDie>
             {
-                new Die(mockRoller1.Object),
-                new Die(mockRoller2.Object),
-                new Die(mockRoller3.Object),
-                new Die(mockRoller4.Object),
-                new Die(mockRoller5.Object)
+                new EchoDie(2),
+                new EchoDie(3),
+                new EchoDie(4),
+                new EchoDie(5),
+                new EchoDie(6),
             };
             
             var turn = new Turn(fiveMockDice);
-            turn.RollDice();
+            //turn.RollDice();
 
             //Act
             var largeStraightsCalculator = CategoryCalculatorFactory.CreateCalculator(ScoreCategory.LargeStraights, turn.Dice);
@@ -88,35 +57,20 @@ namespace Yatzy.UnitTests.Application.Score.Services
         }
         
         [Fact]
-        public void It_Should_Return_Zero_When_NotGivenAStraight()
+        public void It_Should_Return_Zero_When_NotGivenALargeStraight()
         {
             //Arrange
-            var mockRoller1 = new Mock<IRoller>();
-            mockRoller1.Setup(x => x.Roll()).Returns(1);
-            
-            var mockRoller2 = new Mock<IRoller>();
-            mockRoller2.Setup(x => x.Roll()).Returns(2);
-            
-            var mockRoller3 = new Mock<IRoller>();
-            mockRoller3.Setup(x => x.Roll()).Returns(3);
-            
-            var mockRoller4 = new Mock<IRoller>();
-            mockRoller4.Setup(x => x.Roll()).Returns(4);
-            
-            var mockRoller5 = new Mock<IRoller>();
-            mockRoller5.Setup(x => x.Roll()).Returns(5);
-            
-            var fiveMockDice = new List<Die>
+            var fiveMockDice = new List<IDie>
             {
-                new Die(mockRoller1.Object),
-                new Die(mockRoller2.Object),
-                new Die(mockRoller3.Object),
-                new Die(mockRoller4.Object),
-                new Die(mockRoller5.Object)
+                new EchoDie(1),
+                new EchoDie(2),
+                new EchoDie(3),
+                new EchoDie(4),
+                new EchoDie(5),
             };
             
             var turn = new Turn(fiveMockDice);
-            turn.RollDice();
+            //turn.RollDice();
 
             //Act
             var largeStraightsCalculator = CategoryCalculatorFactory.CreateCalculator(ScoreCategory.LargeStraights, turn.Dice);

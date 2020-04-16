@@ -32,7 +32,7 @@ namespace Yatzy.Application.Score
             };
         
         
-        public void UpdateScoreCard(ScoreCategory scoreCategory, List<Die> diceHeld)
+        public void UpdateScoreCard(ScoreCategory scoreCategory, List<IDie> diceHeld)
         {
             if(!ScoreCategories[scoreCategory].IsAvailable)
                     throw new ScoreCategoryAlreadyTakenException(scoreCategory);
@@ -43,7 +43,7 @@ namespace Yatzy.Application.Score
             UpdateTotalScore(scoreForTurn);
         }
 
-        public void PreviewScoreCard(List<Die> diceHeld)
+        public void PreviewScoreCard(List<IDie> diceHeld)
         {
             foreach (var (key, value) in ScoreCategories)
             {
@@ -65,7 +65,7 @@ namespace Yatzy.Application.Score
         }
 
 
-        private int GetScoreForCategory(ScoreCategory scoreCategory, List<Die> diceHeld)
+        private int GetScoreForCategory(ScoreCategory scoreCategory, List<IDie> diceHeld)
         {
             var categoryCalculator = CategoryCalculatorFactory.CreateCalculator(scoreCategory, diceHeld);
             return categoryCalculator.Calculate();

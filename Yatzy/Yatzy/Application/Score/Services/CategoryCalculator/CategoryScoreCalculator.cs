@@ -7,11 +7,11 @@ namespace Yatzy.Application.Score.Services.CategoryCalculator
 {
     public class CategoryScoreCalculator 
     {
-        private readonly List<Die> _dice;
+        private readonly List<IDie> _dice;
         private readonly IDiceFilter _diceFilter;
         private readonly IAggregationStrategy _aggregationStrategy;
 
-        public CategoryScoreCalculator(List<Die> dice, IDiceFilter diceFilter, IAggregationStrategy aggregationStrategy) // dependency injection
+        public CategoryScoreCalculator(List<IDie> dice, IDiceFilter diceFilter, IAggregationStrategy aggregationStrategy) // dependency injection
         {
             _dice = dice;
             _diceFilter = diceFilter;

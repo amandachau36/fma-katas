@@ -1,7 +1,7 @@
-namespace Yatzy
-{
-    public interface IRoller
-    {
-        int Roll();
-    }
-}
+// namespace Yatzy
+// {
+//     public interface IRoller
+//     {
+//         int Roll();
+//     }
+// }

@@ -13,7 +13,7 @@ namespace Yatzy.Application.Score.Services.DiceFilter
             _number = number;
         }
         
-        public IEnumerable<Die> Filter(IEnumerable<Die> dice)
+        public IEnumerable<IDie> Filter(IEnumerable<IDie> dice)
         {
             var diceWithNumber = dice.Where(d => d.Value == _number);
             
