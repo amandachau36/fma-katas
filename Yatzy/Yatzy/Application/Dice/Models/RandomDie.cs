@@ -8,7 +8,7 @@ namespace Yatzy.Application.Dice.Models
         
         public bool IsHeld { get; private set;  }
 
-        public void Roll()
+        public void Roll()  //from a domain perspective a roller should have a die,
         {
             var random = new Random();
 
