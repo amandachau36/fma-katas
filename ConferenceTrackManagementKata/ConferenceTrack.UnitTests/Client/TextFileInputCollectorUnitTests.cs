@@ -6,7 +6,7 @@ using System.Reflection;
 using ConferenceTrack.Client;
 using Xunit;
 
-namespace ConferenceTrack.UnitTests
+namespace ConferenceTrack.UnitTests.Client
 {
     public class TextFileInputCollectorUnitTests
     {

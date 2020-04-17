@@ -11,8 +11,6 @@ namespace ConferenceTrack.Client
         {
             var processedTalks = ProcessTalks(talks).OrderByDescending(t => t.Duration);
 
-            //var groupByTalkDuration = processedTalks.GroupBy(t => t.Duration);
-
             return processedTalks.ToList();
 
         }
@@ -23,7 +21,7 @@ namespace ConferenceTrack.Client
             
             foreach (var talk in talks)
             {
-                var durationMatch = Regex.Match(talk, @"\d+");  //TODO: need to validate
+                var durationMatch = Regex.Match(talk, @"\d+");  
                 
                 if (durationMatch.Success)
                     processedTalks.Add(new Talk(talk, Int32.Parse(durationMatch.Value)));
@@ -32,7 +30,6 @@ namespace ConferenceTrack.Client
                 
                 if(lighteningMatch.Success)
                     processedTalks.Add(new Talk(talk, 5));
-                
             }
 
             return processedTalks;

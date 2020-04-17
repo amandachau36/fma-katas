@@ -21,6 +21,13 @@
       <None Update="Input\OriginalTestInput.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="TestInput\OriginalTestInput.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Business" />
     </ItemGroup>
 
 </Project>
