@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ConferenceTrack.Client
+namespace ConferenceTrack.Client.InputProcessor
 {
     public interface IInputProcessor
     {

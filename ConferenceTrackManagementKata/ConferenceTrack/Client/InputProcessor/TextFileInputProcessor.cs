@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace ConferenceTrack.Client
+namespace ConferenceTrack.Client.InputProcessor
 {
     public class TextFileInputProcessor : IInputProcessor
     {

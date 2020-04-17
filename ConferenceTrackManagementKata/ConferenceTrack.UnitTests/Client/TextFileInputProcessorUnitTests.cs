@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using ConferenceTrack.Client;
+using ConferenceTrack.Client.InputCollector;
+using ConferenceTrack.Client.InputProcessor;
 using Newtonsoft.Json;
 using Xunit;
 

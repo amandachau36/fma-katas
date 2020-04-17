@@ -1,4 +1,4 @@
-namespace ConferenceTrack.Client
+namespace ConferenceTrack.Client.InputCollector
 {
     public class TextFileInputCollector : IInputCollector
     {

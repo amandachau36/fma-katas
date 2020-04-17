@@ -1,9 +1,7 @@
 using System.Linq;
-using System;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using ConferenceTrack.Client;
+using ConferenceTrack.Client.InputCollector;
 using Xunit;
 
 namespace ConferenceTrack.UnitTests.Client
