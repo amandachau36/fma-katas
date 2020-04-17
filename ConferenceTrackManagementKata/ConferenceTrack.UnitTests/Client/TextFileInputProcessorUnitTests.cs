@@ -88,7 +88,6 @@ namespace ConferenceTrack.UnitTests.Client
                 new Talk("A World Without HackerNews 30min", 30),
                 new Talk("User Interface CSS in Rails Apps 30min", 30),
                 new Talk("Rails for Python Developers lightning", 5)
-
             };
             
             var processedTalkStr = JsonConvert.SerializeObject(processedTalks);
