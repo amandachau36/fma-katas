@@ -21,19 +21,23 @@ namespace ConferenceTrack.Client.InputProcessor
             
             foreach (var talk in talks)
             {
-                var durationMatch = Regex.Match(talk, @"\d+");  
+                //TODO: validate or throw exception if it contains neither or the session is tooo long 
                 
+                var durationMatch = Regex.Match(talk, @"\d+");
+
                 if (durationMatch.Success)
-                    processedTalks.Add(new Talk(talk, Int32.Parse(durationMatch.Value)));
+                    processedTalks.Add(new Talk(talk, Double.Parse(durationMatch.Value)));
 
                 var lighteningMatch = Regex.Match(talk, "lightning");
                 
                 if(lighteningMatch.Success)
                     processedTalks.Add(new Talk(talk, 5));
+               
             }
 
             return processedTalks;
         }
+        
         
     }
 }

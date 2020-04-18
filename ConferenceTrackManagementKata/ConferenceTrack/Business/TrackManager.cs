@@ -7,34 +7,36 @@ namespace ConferenceTrack.Business
     {
         private readonly List<Talk> _talks;
         
-        private readonly MorningSession _morningSession;
+        private readonly MorningSessionAllocator _morningSessionAllocator;
         
-        private readonly AfternoonSession _afternoonSession;
+        private readonly AfternoonSessionAllocator _afternoonSessionAllocator;
         public List<List<Talk>> MorningSessions { get; } = new List<List<Talk>>();
         public List<List<Talk>> AfternoonSessions { get; } = new List<List<Talk>>();
         public int NumberOfTracks { get;}
         
-        public TrackManager(int numberOfTracks, List<Talk> talks, MorningSession morningSession, AfternoonSession afternoonSession)
+        public TrackManager(int numberOfTracks, List<Talk> talks, MorningSessionAllocator morningSessionAllocator, AfternoonSessionAllocator afternoonSessionAllocator)
         {
             _talks = talks;
-            _morningSession = morningSession;
-            _afternoonSession = afternoonSession;
+            _morningSessionAllocator = morningSessionAllocator;
+            _afternoonSessionAllocator = afternoonSessionAllocator;
             NumberOfTracks = numberOfTracks;
             
         }
 
-        public void GenerateSessions()
+        public void GenerateAllSessions()
+        {
+            GenerateSessions(MorningSessions, _morningSessionAllocator);
+            
+            GenerateSessions(AfternoonSessions, _afternoonSessionAllocator);
+        }
+
+        private void GenerateSessions(List<List<Talk>> sessions, ISessionAllocator typeOfSessionAllocator)
         {
             for (var i = 0; i < NumberOfTracks; i++)
             {
-                MorningSessions.Add(_morningSession.AllocateTalks(_talks));
+                sessions.Add(typeOfSessionAllocator.AllocateTalks(_talks));
             }
-            
-            for (var i = 0; i < NumberOfTracks; i++)
-            {
-                AfternoonSessions.Add(_afternoonSession.AllocateTalks(_talks));
-            }
-            
+
         }
         
         

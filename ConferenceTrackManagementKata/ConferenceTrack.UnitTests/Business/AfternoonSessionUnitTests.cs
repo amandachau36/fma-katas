@@ -15,7 +15,7 @@ namespace ConferenceTrack.UnitTests.Business
         public void It_Should_Return_AListOfTalksThatFitIntoTheAfternoonSession_Given_AListOfTalks(List<Talk> availableTalks, List<string> expectedAllocatedTalks)
         {
             //arrange
-            var afternoonSession = new AfternoonSession(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0)); 
+            var afternoonSession = new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0)); 
             
         
             
@@ -65,7 +65,7 @@ namespace ConferenceTrack.UnitTests.Business
                 new Talk("Rails for Python Developers lightning", 5)
             };
             
-            var afternoonSession = new AfternoonSession(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0));
+            var afternoonSession = new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0));
             
             //act
             var talksAllocatedToAnAfternoonSession = afternoonSession.AllocateTalks(talks);

@@ -4,33 +4,35 @@ using ConferenceTrack.Client;
 
 namespace ConferenceTrack.Business
 {
-    public class MorningSession
+    public class MorningSessionAllocator : ISessionAllocator
     {
         public TimeSpan StartTime { get; }
-        public TimeSpan StopTime { get; }
         
-        private readonly TimeSpan _durationOfSession;
+        public TimeSpan MinEndTime { get; }
+        
+        public TimeSpan MaxEndTime { get; }
 
-        public MorningSession(TimeSpan startTime, TimeSpan stopTime)
+        private readonly TimeSpan _sessionDuration;
+
+        public MorningSessionAllocator(TimeSpan startTime, TimeSpan endTime)
         {
             StartTime = startTime;
-            StopTime = stopTime;
-            _durationOfSession = stopTime - startTime;
+            MinEndTime = endTime; //TODO: can this be simplified more 
+            MaxEndTime = endTime;
+            _sessionDuration = endTime - startTime;
         }
 
         public List<Talk> AllocateTalks(List<Talk> availableTalks)
         {
-            var totalDuration = 0;
+            var totalDuration = 0D;
 
             var allocatedTalks = new List<Talk>();
-            
-            //TODO: perhaps best to convert talk times to TimeSpan instead . . .
-            
+
             foreach (var talk in availableTalks)
             {
                 if (talk.IsAllocated) continue;
                 
-                if (totalDuration + talk.Duration > (int) _durationOfSession.TotalMinutes) continue;
+                if (totalDuration + talk.Duration > _sessionDuration.TotalMinutes) continue;
                 
                 allocatedTalks.Add(talk);
                 talk.UpdateIsAllocated(true);

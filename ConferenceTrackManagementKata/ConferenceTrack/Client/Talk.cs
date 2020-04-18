@@ -5,9 +5,10 @@ namespace ConferenceTrack.Client
     public class Talk
     {
         public string TalkTitle { get; }
-        public int Duration { get; }
+        public double Duration { get; }
         public bool IsAllocated { get; private set; }
-        public Talk( string talkTitle, int duration)
+
+        public Talk( string talkTitle, double duration)
         {
             TalkTitle = talkTitle;
             Duration = duration;

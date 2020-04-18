@@ -20,7 +20,7 @@ namespace ConferenceTrack.UnitTests.Business
         public void It_Should_Return_AListOfTalksThatFitIntoTheMorningSession_Given_AListOfTalks(List<Talk> availableTalks, List<string> expectedAllocatedTalks)
         {
             //arrange
-            var morningSession = new MorningSession(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0)); 
+            var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0)); 
             
             //act
             var talksAllocatedToAMorningSession = morningSession.AllocateTalks(availableTalks);
@@ -102,7 +102,7 @@ namespace ConferenceTrack.UnitTests.Business
                 new Talk("Rails for Python Developers lightning", 5)
             };
             
-            var morningSession = new MorningSession(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0)); 
+            var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0)); 
             
             //act
             var talksAllocatedToAMorningSession = morningSession.AllocateTalks(talks);
