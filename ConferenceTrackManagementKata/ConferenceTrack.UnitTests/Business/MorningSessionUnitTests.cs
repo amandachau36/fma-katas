@@ -21,10 +21,11 @@ namespace ConferenceTrack.UnitTests.Business
             var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0)); 
             
             //act
-            var talksAllocatedToAMorningSession = morningSession.AllocateTalks(availableTalks);
+            morningSession.AllocateTalks(availableTalks);
             
             //assert
-            Assert.Equal(expectedAllocatedTalks, talksAllocatedToAMorningSession.Select(x => x.TalkTitle));
+            Assert.Equal(expectedAllocatedTalks, morningSession.Sessions[0].Select(x => x.TalkTitle));
+            
         }
         
         public static IEnumerable<object[]> Data => new List<object[]>()
@@ -103,10 +104,10 @@ namespace ConferenceTrack.UnitTests.Business
             var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0)); 
             
             //act
-            var talksAllocatedToAMorningSession = morningSession.AllocateTalks(talks);
+            morningSession.AllocateTalks(talks);
             
             //assert
-            foreach (var talk in talksAllocatedToAMorningSession)
+            foreach (var talk in morningSession.Sessions[0])
             {
                 Assert.True(talk.IsAllocated);
             }
@@ -129,7 +130,7 @@ namespace ConferenceTrack.UnitTests.Business
             var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0)); 
             
             //act
-            var talksAllocatedToAMorningSession = morningSession.AllocateTalks(talks);
+            morningSession.AllocateTalks(talks);
             
             //assert
             var expectedTalkTimes = new List<TimeSpan>
@@ -140,7 +141,7 @@ namespace ConferenceTrack.UnitTests.Business
                 new TimeSpan(11, 45, 0),
             };
 
-            var actualTalkTimes = talksAllocatedToAMorningSession.Select(x => x.TalkTime);
+            var actualTalkTimes = morningSession.Sessions[0].Select(x => x.TalkTime);
             
             Assert.True(actualTalkTimes.SequenceEqual(expectedTalkTimes));
             

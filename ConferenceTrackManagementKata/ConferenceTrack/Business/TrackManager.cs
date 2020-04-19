@@ -6,45 +6,33 @@ namespace ConferenceTrack.Business
     public class TrackManager
     {
         private readonly List<Talk> _talks;
-        
-        private readonly MorningSessionAllocator _morningSessionAllocator;
-        
-        private readonly AfternoonSessionAllocator _afternoonSessionAllocator;
-        public List<List<Talk>> MorningSessions { get; } = new List<List<Talk>>();
-        public List<List<Talk>> AfternoonSessions { get; } = new List<List<Talk>>();
+        public ISessionAllocator MorningSessionAllocator { get;}
+        public ISessionAllocator AfternoonSessionAllocator { get;}
         public int NumberOfTracks { get;}
         
         public TrackManager(int numberOfTracks, List<Talk> talks, MorningSessionAllocator morningSessionAllocator, AfternoonSessionAllocator afternoonSessionAllocator)
         {
             _talks = talks;
-            _morningSessionAllocator = morningSessionAllocator;
-            _afternoonSessionAllocator = afternoonSessionAllocator;
+            MorningSessionAllocator = morningSessionAllocator;
+            AfternoonSessionAllocator = afternoonSessionAllocator;
             NumberOfTracks = numberOfTracks;
-            
         }
 
         public void GenerateAllSessions()
         {
-            GenerateSessions(MorningSessions, _morningSessionAllocator);
+            GenerateSessions(MorningSessionAllocator);
             
-            GenerateSessions(AfternoonSessions, _afternoonSessionAllocator);
+            GenerateSessions(AfternoonSessionAllocator);
         }
 
-        private void GenerateSessions(List<List<Talk>> sessions, ISessionAllocator sessionAllocator)
+        private void GenerateSessions(ISessionAllocator sessionAllocator)
         {
             for (var i = 0; i < NumberOfTracks; i++)
             {
-                sessions.Add(sessionAllocator.AllocateTalks(_talks));
+                sessionAllocator.AllocateTalks(_talks);
             }
 
         }
-        
-        
-    
-        
-        
-        
-        
-        
+
     }
 }

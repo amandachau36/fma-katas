@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using ConferenceTrack.Business;
 using ConferenceTrack.Client;
-using Newtonsoft.Json;
 using Xunit;
 
 namespace ConferenceTrack.UnitTests.Business
@@ -23,27 +22,9 @@ namespace ConferenceTrack.UnitTests.Business
              trackManager.GenerateAllSessions();
             
              //assert
-             var morningSessions  = trackManager.MorningSessions.Select(s => s.Select(t => t.TalkTitle).ToList()).ToList();
+             var morningSessions  = trackManager.MorningSessionAllocator.Sessions.Select(s => s.Select(t => t.TalkTitle).ToList()).ToList();
 
              Assert.Equal( expectedMorningSessions, morningSessions);
-        }
-        
-        [Theory]
-        [MemberData(nameof(Data2))]
-        public void It_Should_Return_AListOfTalksThatFitIntoTheAfternoonSession_Given_AListOfTalks(List<Talk> talks, List<List<string>> expectedAfternoonSessions)
-        {
-            //arrange
-            var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0)); 
-            var afternoonSession = new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0)); 
-            var trackManager = new TrackManager(2, talks, morningSession, afternoonSession);
-             
-            //act
-            trackManager.GenerateAllSessions();
-            
-            //assert
-            var afternoonSessions  = trackManager.AfternoonSessions.Select(s => s.Select(t => t.TalkTitle).ToList()).ToList();
-            
-            Assert.Equal( expectedAfternoonSessions, afternoonSessions);
         }
         
         public static IEnumerable<object[]> Data1 => new List<object[]>
@@ -86,6 +67,26 @@ namespace ConferenceTrack.UnitTests.Business
                 }
             }
         };
+        
+        [Theory]
+        [MemberData(nameof(Data2))]
+        public void It_Should_Return_AListOfTalksThatFitIntoTheAfternoonSession_Given_AListOfTalks(List<Talk> talks, List<List<string>> expectedAfternoonSessions)
+        {
+            //arrange
+            var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0)); 
+            var afternoonSession = new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0)); 
+            var trackManager = new TrackManager(2, talks, morningSession, afternoonSession);
+             
+            //act
+            trackManager.GenerateAllSessions();
+            
+            //assert
+            var afternoonSessions  = trackManager.AfternoonSessionAllocator.Sessions.Select(s => s.Select(t => t.TalkTitle).ToList()).ToList();
+            
+            Assert.Equal( expectedAfternoonSessions, afternoonSessions);
+        }
+        
+  
         
         public static IEnumerable<object[]> Data2 => new List<object[]>
         {

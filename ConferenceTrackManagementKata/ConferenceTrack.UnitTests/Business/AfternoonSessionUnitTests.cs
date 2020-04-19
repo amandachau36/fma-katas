@@ -21,10 +21,10 @@ namespace ConferenceTrack.UnitTests.Business
         
             
             //act
-            var talksAllocatedToAfternoonSession = afternoonSession.AllocateTalks(availableTalks);
+           afternoonSession.AllocateTalks(availableTalks);
             
             //assert
-            Assert.Equal(expectedAllocatedTalks, talksAllocatedToAfternoonSession.Select(x => x.TalkTitle));
+            Assert.Equal(expectedAllocatedTalks, afternoonSession.Sessions[0].Select(x => x.TalkTitle));
         }
         
         public static IEnumerable<object[]> Data => new List<object[]>()
@@ -69,10 +69,10 @@ namespace ConferenceTrack.UnitTests.Business
             var afternoonSession = new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0));
             
             //act
-            var talksAllocatedToAnAfternoonSession = afternoonSession.AllocateTalks(talks);
+           afternoonSession.AllocateTalks(talks);
             
             //assert
-            foreach (var talk in talksAllocatedToAnAfternoonSession)
+            foreach (var talk in afternoonSession.Sessions[0])
             {
                 Assert.True(talk.IsAllocated);
             }
@@ -94,7 +94,7 @@ namespace ConferenceTrack.UnitTests.Business
             var afternoonSession = new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0));
             
             //act
-            var talksAllocatedToAnAfternoonSession = afternoonSession.AllocateTalks(talks);
+            afternoonSession.AllocateTalks(talks);
             
             //assert
             var expectedTalkTimes = new List<TimeSpan>
@@ -105,7 +105,7 @@ namespace ConferenceTrack.UnitTests.Business
                 new TimeSpan(3, 45, 0),
             };
 
-            var actualTalkTimes = talksAllocatedToAnAfternoonSession.Select(x => x.TalkTime);
+            var actualTalkTimes = afternoonSession.Sessions[0].Select(x => x.TalkTime);
 
             Assert.True(actualTalkTimes.SequenceEqual(expectedTalkTimes));
 

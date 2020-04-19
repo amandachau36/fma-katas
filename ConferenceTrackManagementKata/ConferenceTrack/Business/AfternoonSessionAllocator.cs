@@ -9,6 +9,7 @@ namespace ConferenceTrack.Business
         public TimeSpan StartTime { get; }
         public TimeSpan MinEndTime { get; }
         public TimeSpan MaxEndTime { get; }
+        public List<List<Talk>> Sessions { get; } = new List<List<Talk>>();
 
         public AfternoonSessionAllocator(TimeSpan startTime, TimeSpan minEndTime, TimeSpan maxEndTime)
         {
@@ -17,9 +18,9 @@ namespace ConferenceTrack.Business
             MaxEndTime = maxEndTime;
         }
 
-        public List<Talk> AllocateTalks(List<Talk> availableTalks)
+        public void AllocateTalks(List<Talk> availableTalks)
         {
-            
+
             var time = StartTime;
 
             var allocatedTalks = new List<Talk>();
@@ -29,20 +30,20 @@ namespace ConferenceTrack.Business
                 if (talk.IsAllocated) continue;
 
                 var newTime = time.Add(TimeSpan.FromMinutes(talk.Duration));
-                
+
                 if (newTime > MaxEndTime) continue;
-                
+
                 allocatedTalks.Add(talk);
-                
+
                 talk.UpdateIsAllocated(true);
                 talk.SetTalkTime(time);
-                
+
                 time = time.Add(TimeSpan.FromMinutes(talk.Duration));
 
-                if (time >= MinEndTime) break;
+                if (time > MinEndTime) break;  //TODO: should this be >=
             }
-            
-            return allocatedTalks;
+
+            Sessions.Add(allocatedTalks);
         }
     }
 }

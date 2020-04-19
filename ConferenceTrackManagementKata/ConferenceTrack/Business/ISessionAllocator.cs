@@ -11,7 +11,9 @@ namespace ConferenceTrack.Business
         TimeSpan MinEndTime { get; }
         
         TimeSpan MaxEndTime { get; }
+        
+        public List<List<Talk>> Sessions { get; }
 
-        List<Talk> AllocateTalks(List<Talk> availableTalks);
+        void AllocateTalks(List<Talk> availableTalks);
     }
 }
