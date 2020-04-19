@@ -27,6 +27,8 @@ namespace ConferenceTrack.Business
         {
             var totalDuration = 0D;
 
+            var time = StartTime;
+
             var allocatedTalks = new List<Talk>();
 
             foreach (var talk in availableTalks)
@@ -38,6 +40,8 @@ namespace ConferenceTrack.Business
                 allocatedTalks.Add(talk);
                 talk.UpdateIsAllocated(true);
                 totalDuration += talk.Duration;
+                talk.SetTalkTime(time);
+                time = time.Add(TimeSpan.FromMinutes(talk.Duration));
 
                 if (totalDuration > _minSessionDuration.TotalMinutes) break;
             }

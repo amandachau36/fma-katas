@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ConferenceTrack.Business;
 using ConferenceTrack.Client;
+using Newtonsoft.Json;
 using Xunit;
 
 namespace ConferenceTrack.UnitTests.Business
@@ -76,6 +77,38 @@ namespace ConferenceTrack.UnitTests.Business
                 Assert.True(talk.IsAllocated);
             }
             
+        }
+        
+        [Fact]
+        public void It_Should_Return_CorrectTimesForTalks_When_Given_AListOfTalks()
+        {
+            //arrange
+            var talks = new List<Talk>
+            {
+                new Talk("Ruby on Rails: Why We Should Move On 60min", 60),
+                new Talk("Ruby on Rails Legacy App Maintenance 60min", 60),
+                new Talk("Overdoing it in Python 45min", 45),
+                new Talk("Ruby Errors from Mismatched Gem Versions 45min", 45),
+            };
+            
+            var afternoonSession = new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0));
+            
+            //act
+            var talksAllocatedToAnAfternoonSession = afternoonSession.AllocateTalks(talks);
+            
+            //assert
+            var expectedTalkTimes = new List<TimeSpan>
+            {
+                new TimeSpan(1, 0, 0),
+                new TimeSpan(2, 0, 0),
+                new TimeSpan(3, 0, 0),
+                new TimeSpan(3, 45, 0),
+            };
+
+            var actualTalkTimes = talksAllocatedToAnAfternoonSession.Select(x => x.TalkTime);
+
+            Assert.True(actualTalkTimes.SequenceEqual(expectedTalkTimes));
+
         }
     }
 }

@@ -30,11 +30,11 @@ namespace ConferenceTrack.Business
             GenerateSessions(AfternoonSessions, _afternoonSessionAllocator);
         }
 
-        private void GenerateSessions(List<List<Talk>> sessions, ISessionAllocator typeOfSessionAllocator)
+        private void GenerateSessions(List<List<Talk>> sessions, ISessionAllocator sessionAllocator)
         {
             for (var i = 0; i < NumberOfTracks; i++)
             {
-                sessions.Add(typeOfSessionAllocator.AllocateTalks(_talks));
+                sessions.Add(sessionAllocator.AllocateTalks(_talks));
             }
 
         }
