@@ -16,13 +16,13 @@ namespace ConferenceTrack.UnitTests.Business
             //arrange
              var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0)); 
              var afternoonSession = new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0)); 
-             var trackManager = new TrackManager(2, talks, new List<ISessionAllocator>{morningSession, afternoonSession});
+             var trackGenerator = new TrackGenerator(2,new List<ISessionAllocator>{morningSession, afternoonSession});
              
              //act
-             trackManager.GenerateAllSessions();
+             trackGenerator.GenerateAllSessions(talks);
             
              //assert
-             var morningSessions  = trackManager.SessionAllocators[0].Sessions.Select(s => s.Select(t => t.TalkTitle).ToList()).ToList();
+             var morningSessions  = trackGenerator.SessionAllocators[0].Sessions.Select(s => s.Select(t => t.TalkTitle).ToList()).ToList();
 
              Assert.Equal( expectedMorningSessions, morningSessions);
         }
@@ -77,13 +77,13 @@ namespace ConferenceTrack.UnitTests.Business
             //arrange
             var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0)); 
             var afternoonSession = new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0)); 
-            var trackManager = new TrackManager(2, talks, new List<ISessionAllocator>{morningSession, afternoonSession});
+            var trackGenerator = new TrackGenerator(2, new List<ISessionAllocator>{morningSession, afternoonSession});
              
             //act
-            trackManager.GenerateAllSessions();
+            trackGenerator.GenerateAllSessions(talks);
             
             //assert
-            var afternoonSessions  = trackManager.SessionAllocators[1].Sessions.Select(s => s.Select(t => t.TalkTitle).ToList()).ToList();
+            var afternoonSessions  = trackGenerator.SessionAllocators[1].Sessions.Select(s => s.Select(t => t.TalkTitle).ToList()).ToList();
             
             Assert.Equal( expectedAfternoonSessions, afternoonSessions);
         }

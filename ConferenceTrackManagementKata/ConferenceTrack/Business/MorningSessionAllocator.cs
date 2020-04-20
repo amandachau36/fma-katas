@@ -9,16 +9,13 @@ namespace ConferenceTrack.Business
         public TimeSpan StartTime { get; }
         public TimeSpan MinEndTime { get; }
         public TimeSpan MaxEndTime { get; }
-        
         public List<List<Talk>> Sessions { get; } = new List<List<Talk>>();  //TODO: session object with total time and list of talks? 
-        
         public MorningSessionAllocator(TimeSpan startTime, TimeSpan endTime)
         {
             StartTime = startTime;
             MinEndTime = endTime; //TODO: can this be simplified more 
             MaxEndTime = endTime;
         }
-
         public void AllocateTalksToSession(List<Talk> availableTalks)
         {
 

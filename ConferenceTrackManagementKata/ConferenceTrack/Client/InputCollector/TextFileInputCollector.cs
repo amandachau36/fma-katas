@@ -6,5 +6,6 @@ namespace ConferenceTrack.Client.InputCollector
         {
              return System.IO.File.ReadAllLines(path);
         }
+        
     }
 }
