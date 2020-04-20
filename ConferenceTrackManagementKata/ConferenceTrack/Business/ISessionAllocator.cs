@@ -14,6 +14,6 @@ namespace ConferenceTrack.Business
         
         public List<List<Talk>> Sessions { get; }
 
-        void AllocateTalks(List<Talk> availableTalks);
+        void AllocateTalksToSession(List<Talk> availableTalks);
     }
 }

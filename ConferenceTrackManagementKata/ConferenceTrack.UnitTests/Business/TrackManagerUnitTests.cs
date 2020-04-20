@@ -16,13 +16,13 @@ namespace ConferenceTrack.UnitTests.Business
             //arrange
              var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0)); 
              var afternoonSession = new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0)); 
-             var trackManager = new TrackManager(2, talks, morningSession, afternoonSession);
+             var trackManager = new TrackManager(2, talks, new List<ISessionAllocator>{morningSession, afternoonSession});
              
              //act
              trackManager.GenerateAllSessions();
             
              //assert
-             var morningSessions  = trackManager.MorningSessionAllocator.Sessions.Select(s => s.Select(t => t.TalkTitle).ToList()).ToList();
+             var morningSessions  = trackManager.SessionAllocators[0].Sessions.Select(s => s.Select(t => t.TalkTitle).ToList()).ToList();
 
              Assert.Equal( expectedMorningSessions, morningSessions);
         }
@@ -57,12 +57,14 @@ namespace ConferenceTrack.UnitTests.Business
                         "Writing Fast Tests Against Enterprise Rails 60min",
                         "Communicating Over Distance 60min",
                         "Rails Magic 60min",
+                        "Lunch"
                     },
                     new List<string> {
                         "Ruby on Rails: Why We Should Move On 60min",
                         "Ruby on Rails Legacy App Maintenance 60min",
                         "Overdoing it in Python 45min",
-                        "Rails for Python Developers lightning"
+                        "Rails for Python Developers lightning",
+                        "Lunch"
                     },
                 }
             }
@@ -75,13 +77,13 @@ namespace ConferenceTrack.UnitTests.Business
             //arrange
             var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0)); 
             var afternoonSession = new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0)); 
-            var trackManager = new TrackManager(2, talks, morningSession, afternoonSession);
+            var trackManager = new TrackManager(2, talks, new List<ISessionAllocator>{morningSession, afternoonSession});
              
             //act
             trackManager.GenerateAllSessions();
             
             //assert
-            var afternoonSessions  = trackManager.AfternoonSessionAllocator.Sessions.Select(s => s.Select(t => t.TalkTitle).ToList()).ToList();
+            var afternoonSessions  = trackManager.SessionAllocators[1].Sessions.Select(s => s.Select(t => t.TalkTitle).ToList()).ToList();
             
             Assert.Equal( expectedAfternoonSessions, afternoonSessions);
         }
@@ -119,7 +121,8 @@ namespace ConferenceTrack.UnitTests.Business
                         "Common Ruby Errors 45min",
                         "Accounting-Driven Development 45min",
                         "Pair Programming vs Noise 45min",
-                        "Clojure Ate Scala (on my project) 45min"
+                        "Clojure Ate Scala (on my project) 45min",
+                        "Networking Event"
                     },
                     new List<string> {
                         "Lua for the Masses 30min",
@@ -128,7 +131,8 @@ namespace ConferenceTrack.UnitTests.Business
                         "Programming in the Boondocks of Seattle 30min",
                         "Ruby vs. Clojure for Back-End Development 30min",
                         "A World Without HackerNews 30min",
-                        "User Interface CSS in Rails Apps 30min"
+                        "User Interface CSS in Rails Apps 30min",
+                        "Networking Event"
                     },
                 }
             },

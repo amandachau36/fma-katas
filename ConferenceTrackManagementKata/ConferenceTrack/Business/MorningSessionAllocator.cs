@@ -10,7 +10,7 @@ namespace ConferenceTrack.Business
         public TimeSpan MinEndTime { get; }
         public TimeSpan MaxEndTime { get; }
         
-        public List<List<Talk>> Sessions { get; } = new List<List<Talk>>();
+        public List<List<Talk>> Sessions { get; } = new List<List<Talk>>();  //TODO: session object with total time and list of talks? 
         
         public MorningSessionAllocator(TimeSpan startTime, TimeSpan endTime)
         {
@@ -19,12 +19,12 @@ namespace ConferenceTrack.Business
             MaxEndTime = endTime;
         }
 
-        public void AllocateTalks(List<Talk> availableTalks)
+        public void AllocateTalksToSession(List<Talk> availableTalks)
         {
 
             var time = StartTime;
 
-            var allocatedTalks = new List<Talk>();
+            var session = new List<Talk>();
 
             foreach (var talk in availableTalks)
             {
@@ -34,16 +34,34 @@ namespace ConferenceTrack.Business
                 
                 if (newTime > MaxEndTime ) continue;
                 
-                allocatedTalks.Add(talk);
-                
-                talk.UpdateIsAllocated(true);
-                
-                talk.SetTalkTime(time);
+                AddTalkToSession(session, talk, time);
                 
                 time = newTime;
+                
+                //TODO: think about breaking here when  time is > maxendtime
             }
             
-            Sessions.Add(allocatedTalks);
+            AddLunchToSession(session);
+            
+            Sessions.Add(session);
+        }
+
+        private void AddTalkToSession(List<Talk> session, Talk talk, TimeSpan time)
+        {
+            session.Add(talk);
+                
+            talk.UpdateIsAllocated(true);
+                
+            talk.SetTalkTime(time);
+        }
+        
+        private void AddLunchToSession(List<Talk> allocatedTalks)
+        {
+            var lunch = new Talk("Lunch", 60);
+            lunch.UpdateIsAllocated(true);
+            lunch.SetTalkTime(MaxEndTime);
+            
+            allocatedTalks.Add(lunch);
         }
     }
 }

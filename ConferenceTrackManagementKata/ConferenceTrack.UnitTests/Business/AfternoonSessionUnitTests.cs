@@ -21,7 +21,7 @@ namespace ConferenceTrack.UnitTests.Business
         
             
             //act
-           afternoonSession.AllocateTalks(availableTalks);
+           afternoonSession.AllocateTalksToSession(availableTalks);
             
             //assert
             Assert.Equal(expectedAllocatedTalks, afternoonSession.Sessions[0].Select(x => x.TalkTitle));
@@ -50,7 +50,8 @@ namespace ConferenceTrack.UnitTests.Business
                     "Common Ruby Errors 45min",
                     "Accounting-Driven Development 45min",
                     "Pair Programming vs Noise 45min",
-                    "Clojure Ate Scala (on my project) 45min"
+                    "Clojure Ate Scala (on my project) 45min",
+                    "Networking Event"
                 }
             },
             
@@ -69,7 +70,7 @@ namespace ConferenceTrack.UnitTests.Business
             var afternoonSession = new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0));
             
             //act
-           afternoonSession.AllocateTalks(talks);
+           afternoonSession.AllocateTalksToSession(talks);
             
             //assert
             foreach (var talk in afternoonSession.Sessions[0])
@@ -94,7 +95,7 @@ namespace ConferenceTrack.UnitTests.Business
             var afternoonSession = new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0));
             
             //act
-            afternoonSession.AllocateTalks(talks);
+            afternoonSession.AllocateTalksToSession(talks);
             
             //assert
             var expectedTalkTimes = new List<TimeSpan>
@@ -103,6 +104,7 @@ namespace ConferenceTrack.UnitTests.Business
                 new TimeSpan(2, 0, 0),
                 new TimeSpan(3, 0, 0),
                 new TimeSpan(3, 45, 0),
+                new TimeSpan(5, 0, 0)
             };
 
             var actualTalkTimes = afternoonSession.Sessions[0].Select(x => x.TalkTime);

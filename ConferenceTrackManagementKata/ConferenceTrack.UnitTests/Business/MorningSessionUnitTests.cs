@@ -21,7 +21,7 @@ namespace ConferenceTrack.UnitTests.Business
             var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0)); 
             
             //act
-            morningSession.AllocateTalks(availableTalks);
+            morningSession.AllocateTalksToSession(availableTalks);
             
             //assert
             Assert.Equal(expectedAllocatedTalks, morningSession.Sessions[0].Select(x => x.TalkTitle));
@@ -57,6 +57,7 @@ namespace ConferenceTrack.UnitTests.Business
                     "Writing Fast Tests Against Enterprise Rails 60min",
                     "Communicating Over Distance 60min",
                     "Rails Magic 60min",
+                    "Lunch"
                 }
             },
             
@@ -86,7 +87,8 @@ namespace ConferenceTrack.UnitTests.Business
                     "Ruby on Rails: Why We Should Move On 60min",
                     "Ruby on Rails Legacy App Maintenance 60min",
                     "Overdoing it in Python 45min",
-                    "Rails for Python Developers lightning"
+                    "Rails for Python Developers lightning",
+                    "Lunch"
                 }
             }
         };
@@ -104,7 +106,7 @@ namespace ConferenceTrack.UnitTests.Business
             var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0)); 
             
             //act
-            morningSession.AllocateTalks(talks);
+            morningSession.AllocateTalksToSession(talks);
             
             //assert
             foreach (var talk in morningSession.Sessions[0])
@@ -130,7 +132,7 @@ namespace ConferenceTrack.UnitTests.Business
             var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0)); 
             
             //act
-            morningSession.AllocateTalks(talks);
+            morningSession.AllocateTalksToSession(talks);
             
             //assert
             var expectedTalkTimes = new List<TimeSpan>
@@ -139,6 +141,8 @@ namespace ConferenceTrack.UnitTests.Business
                 new TimeSpan(10, 0, 0),
                 new TimeSpan(11, 0, 0),
                 new TimeSpan(11, 45, 0),
+                new TimeSpan(12, 0, 0),
+                
             };
 
             var actualTalkTimes = morningSession.Sessions[0].Select(x => x.TalkTime);

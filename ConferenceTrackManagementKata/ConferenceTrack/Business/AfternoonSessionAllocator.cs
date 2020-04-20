@@ -18,12 +18,12 @@ namespace ConferenceTrack.Business
             MaxEndTime = maxEndTime;
         }
 
-        public void AllocateTalks(List<Talk> availableTalks)
+        public void AllocateTalksToSession(List<Talk> availableTalks)
         {
 
             var time = StartTime;
 
-            var allocatedTalks = new List<Talk>();
+            var session = new List<Talk>();
 
             foreach (var talk in availableTalks)
             {
@@ -33,17 +33,36 @@ namespace ConferenceTrack.Business
 
                 if (newTime > MaxEndTime) continue;
 
-                allocatedTalks.Add(talk);
+                AddTalkToSession(session, talk, time);
 
-                talk.UpdateIsAllocated(true);
-                talk.SetTalkTime(time);
-
-                time = time.Add(TimeSpan.FromMinutes(talk.Duration));
+                time = newTime;
 
                 if (time > MinEndTime) break;  //TODO: should this be >=
             }
-
-            Sessions.Add(allocatedTalks);
+            
+            AddNetworkingEventToSession(session);
+                
+            Sessions.Add(session);
+        }
+        
+        private void AddTalkToSession(List<Talk> session, Talk talk, TimeSpan time)
+        {
+            session.Add(talk);
+            
+            talk.UpdateIsAllocated(true);
+                
+            talk.SetTalkTime(time);
+        }
+        
+        private void AddNetworkingEventToSession(List<Talk> allocatedTalks)
+        {
+            var networkingEvent = new Talk("Networking Event", 60);
+            
+            networkingEvent.UpdateIsAllocated(true);
+            
+            networkingEvent.SetTalkTime(MaxEndTime);
+            
+            allocatedTalks.Add(networkingEvent);
         }
     }
 }
