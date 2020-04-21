@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using ConferenceTrack.Client.InputValidator;
 using Xunit;
 
@@ -22,29 +24,33 @@ namespace ConferenceTrack.UnitTests.Client
 
         public static IEnumerable<object[]> Data => new List<object[]>()
         {
+            new object[] //TODO: why can it only see the last two? 
+            {
+                //"/Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/bin/Debug/netcoreapp3.1/Input/DoesNotExist.txt",
+                Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"./Input/DoesNotExist.txt"),
+                false
+            },
+            
             new object[]
             {
-                "/Users/amanda.chau/Desktop/payslip_01April2020.pdf",
+                //"/Users/amanda.chau/fma/fma-cats/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/bin/Debug/netcoreapp3.1/Input/OriginalTestInput.txt",
+                Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"./In/OriginalTestInput.txt"),
+                false
+            },
+            
+            new object[]
+            {
+                Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"./Input/test.pdf"),
+                //"/Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/test.pdf",
                 false
             },
 
-            new object[] //TODO: make paths relative
+            new object[]
             {
-                "/Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/bin/Debug/netcoreapp3.1/Input/OriginalTestInput.txt",
+                //"/Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/bin/Debug/netcoreapp3.1/Input/OriginalTestInput.txt",
+                Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"./Input/OriginalTestInput.txt"),
                 true
             },
-
-            new object[]
-            {
-                "/Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/bin/Debug/netcoreapp3.1/Input/DoesNotExist.txt",
-                false
-            },
-
-            new object[]
-            {
-                "/Users/amanda.chau/fma/fma-cats/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/bin/Debug/netcoreapp3.1/Input/OriginalTestInput.txt",
-                false
-            }
 
         };
     }
