@@ -29,6 +29,8 @@ namespace ConferenceTrack.Business
 
                 var newTime = time.Add(TimeSpan.FromMinutes(talk.Duration));
                 
+                //TODO: duration > session throw exception
+                
                 if (newTime > MaxEndTime ) continue;
                 
                 AddTalkToSession(session, talk, time);

@@ -7,7 +7,7 @@ namespace ConferenceTrack.Client.Display
 {
     public class ConsoleDisplay : IDisplay
     {
-        public void Display(List<Track> tracks)
+        public void Display(List<Track> tracks)  //TODO: test this but not through a unit test. Can use MOQ but better not use MOQ
         {
             for (var i = 0; i < tracks.Count; i++)
             {
@@ -15,7 +15,7 @@ namespace ConferenceTrack.Client.Display
                 
                 foreach (var talk in tracks[i].Talks)
                 {
-                    Console.WriteLine($"{talk.TalkTime.ToString(Constants.FormatTime)}  {talk.TalkTitle}");
+                    Console.WriteLine($"{talk.TalkTime.ToString(Constants.FormatTime)}  {talk.TalkTitle}"); // TODO: ? make this a string and test it. PrepareDisplay and WriteDisplay 
                 }
            
             }

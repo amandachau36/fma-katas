@@ -30,11 +30,9 @@ namespace ConferenceTrack.Client.InputProcessor
             
             foreach (var talk in talks)
             {
-                //TODO: validate or throw exception if it contains neither or the session is too long 
-
+                
                 if (!_validator.IsValid(talk))
                     throw new InvalidTalkException(talk); 
-                    
                 
                 var durationMatch = Regex.Match(talk, @"\d+");
 

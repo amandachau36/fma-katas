@@ -2,7 +2,9 @@ namespace ConferenceTrack.Client.InputCollector
 {
     public interface IInputCollector
     {
-        string[] Collect(string path); //TODO: does this make sense when it collects input in the console? 
+        string[] Collect(); 
+        
+        //Validate that file exists and path exists path.exist path.exist
 
     }
 }
