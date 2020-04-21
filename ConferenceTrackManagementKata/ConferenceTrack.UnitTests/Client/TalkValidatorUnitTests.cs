@@ -8,7 +8,7 @@ namespace ConferenceTrack.UnitTests.Client
     {
         [Theory]
         [MemberData(nameof(Data))]
-        public void It_Should_ValidateTalks(string talk, bool expectedIsValid)
+        public void It_Should_ValidateTalk(string talk, bool expectedIsValid)
         {
             //arrange
             var talkValidator = new TalkValidator();
