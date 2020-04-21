@@ -20,7 +20,7 @@ namespace ConferenceTrack.Client.Display
                 
                 foreach (var talk in tracks[i].Talks)
                 {
-                    Console.WriteLine( talk.TalkTime.ToString("hh':'mm") +  " " + talk.TalkTitle);
+                    Console.WriteLine($"{talk.TalkTime.ToString(Constants.FormatTime)}  {talk.TalkTitle}");
                 }
            
             }
@@ -29,7 +29,7 @@ namespace ConferenceTrack.Client.Display
         private void TrackHeader(int trackNumber)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("\nTrack " + trackNumber);
+            Console.WriteLine(Constants.Track + trackNumber);
             Console.ResetColor();
         }
         
