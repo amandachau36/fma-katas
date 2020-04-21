@@ -1,7 +1,7 @@
-using System;
-using System.Linq;
+using System.Collections.Generic;
 using ConferenceTrack.Business;
 using ConferenceTrack.Client.Display;
+using ConferenceTrack.Client.Exceptions;
 using ConferenceTrack.Client.InputCollector;
 using ConferenceTrack.Client.InputProcessor;
 
@@ -16,6 +16,12 @@ namespace ConferenceTrack.Client
         private readonly IInputProcessor _inputProcessor;
         
         private readonly TrackGenerator _trackGenerator;
+        
+        private bool _getTalksIsComplete;
+        
+        private List<Talk> _processedTalks = new List<Talk>();
+        
+        
 
         public ConferenceTrackManager(IDisplay display, IInputCollector inputCollector, IInputProcessor inputProcessor, TrackGenerator trackGenerator)
         {
@@ -28,18 +34,51 @@ namespace ConferenceTrack.Client
         public void ManageTracks()  
         { 
             _display.Display(Constants.Welcome);
-            
-            _display.Display(Constants.FilePathPrompt);
-            
-            var talks = _inputCollector.Collect(); //TODO: mock this 
 
-           var processedTalks = _inputProcessor.Process(talks);  //Can put this line and the line below it 
-
-           _trackGenerator.GenerateTracks(processedTalks);
+            GetTalks();
+            
+            // var talks = _inputCollector.Collect(); //TODO: mock this 
+            //
+            // var processedTalks  = _inputProcessor.Process(talks); //Can put this line and the line below it 
+            
+           _trackGenerator.GenerateTracks(_processedTalks);
 
            _display.Display(_trackGenerator.Tracks);  //TODO: Moq to mock the Display
            
         }
+
+        private void GetTalks()
+        {
+            while (!_getTalksIsComplete)
+            {
+                TryToGetTalks();
+            }
+        }
+
+        private void TryToGetTalks()
+        {
+            try
+            {
+                _display.Display(Constants.FilePathPrompt);
+            
+                var talks = _inputCollector.Collect(); //TODO: mock this 
+            
+                _processedTalks  = _inputProcessor.Process(talks); //Can put this line and the line below it 
+
+                _getTalksIsComplete = true;
+
+            }
+            catch (InvalidPathOrFileException e)
+            {
+                _display.DisplayError(e.Message);
+            }
+            catch (InvalidTalkException e)
+            {
+                _display.DisplayError(e.Message);
+            }
+        }
+        
+        
         
         
         

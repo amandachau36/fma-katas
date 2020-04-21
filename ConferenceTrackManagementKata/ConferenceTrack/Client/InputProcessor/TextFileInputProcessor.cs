@@ -11,9 +11,9 @@ namespace ConferenceTrack.Client.InputProcessor
     {
         private readonly IValidator _validator;
 
-        public TextFileInputProcessor(IValidator validator)
+        public TextFileInputProcessor(IValidator talkValidator)
         {
-            _validator = validator;
+            _validator = talkValidator;
         }
         
         public List<Talk> Process(string[] talks)

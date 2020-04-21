@@ -15,11 +15,11 @@ namespace ConferenceTrack.UnitTests.Client
 
             //act
             var isValid = pathValidator.IsValid(path);
-            
+
             //assert
-            Assert.Equal(expectedIsValid, isValid  );
+            Assert.Equal(expectedIsValid, isValid);
         }
-        
+
         public static IEnumerable<object[]> Data => new List<object[]>()
         {
             new object[]
@@ -27,24 +27,25 @@ namespace ConferenceTrack.UnitTests.Client
                 "/Users/amanda.chau/Desktop/payslip_01April2020.pdf",
                 false
             },
-            
+
             new object[] //TODO: make paths relative
             {
                 "/Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/bin/Debug/netcoreapp3.1/Input/OriginalTestInput.txt",
                 true
             },
-            
+
             new object[]
             {
                 "/Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/bin/Debug/netcoreapp3.1/Input/DoesNotExist.txt",
                 false
             },
-            
+
             new object[]
             {
                 "/Users/amanda.chau/fma/fma-cats/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/bin/Debug/netcoreapp3.1/Input/OriginalTestInput.txt",
                 false
             }
-            
+
         };
     }
+}

@@ -26,6 +26,13 @@ namespace ConferenceTrack.Client.Display
             }
         }
 
+        public void DisplayError(string error)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(error + "\nPlease try again");
+            Console.ResetColor();
+        }
+
         private void TrackHeader(int trackNumber)
         {
             Console.ForegroundColor = ConsoleColor.Blue;

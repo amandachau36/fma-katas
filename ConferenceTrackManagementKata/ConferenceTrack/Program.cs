@@ -20,7 +20,9 @@ namespace ConferenceTrack
             
             var talkValidator = new TalkValidator();
             
-            var conferenceTrackManager = new ConferenceTrackManager(new ConsoleDisplay(), new TextFileInputCollector(), new TextFileInputProcessor(talkValidator), trackGenerator );
+            var pathValidator = new PathValidator();
+            
+            var conferenceTrackManager = new ConferenceTrackManager(new ConsoleDisplay(), new TextFileInputCollector(pathValidator), new TextFileInputProcessor(talkValidator), trackGenerator );
             
             conferenceTrackManager.ManageTracks();
             
