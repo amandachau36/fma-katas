@@ -5,6 +5,7 @@ using ConferenceTrack.Client;
 using ConferenceTrack.Client.Display;
 using ConferenceTrack.Client.InputCollector;
 using ConferenceTrack.Client.InputProcessor;
+using ConferenceTrack.Client.InputValidator;
 
 namespace ConferenceTrack
 {
@@ -17,7 +18,9 @@ namespace ConferenceTrack
             
             var trackGenerator = new TrackGenerator(2, new List<ISessionAllocator>{morningSessionAllocator, afternoonSessionAllocator} );
             
-            var conferenceTrackManager = new ConferenceTrackManager(new ConsoleDisplay(), new TextFileInputCollector(), new TextFileInputProcessor(), trackGenerator );
+            var talkValidator = new TalkValidator();
+            
+            var conferenceTrackManager = new ConferenceTrackManager(new ConsoleDisplay(), new TextFileInputCollector(), new TextFileInputProcessor(talkValidator), trackGenerator );
             
             conferenceTrackManager.ManageTracks("/Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/bin/Debug/netcoreapp3.1/Input/OriginalTestInput.txt");
 

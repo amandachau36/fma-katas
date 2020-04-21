@@ -1,8 +1,5 @@
 using System.Collections.Generic;
-using ConferenceTrack.Client;
-using ConferenceTrack.Client.InputProcessor;
 using ConferenceTrack.Client.InputValidator;
-using Newtonsoft.Json;
 using Xunit;
 
 namespace ConferenceTrack.UnitTests.Client

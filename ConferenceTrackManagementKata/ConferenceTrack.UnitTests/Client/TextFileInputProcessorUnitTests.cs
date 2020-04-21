@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using ConferenceTrack.Client;
+using ConferenceTrack.Client.Exceptions;
 using ConferenceTrack.Client.InputCollector;
 using ConferenceTrack.Client.InputProcessor;
+using ConferenceTrack.Client.InputValidator;
 using Newtonsoft.Json;
 using Xunit;
 
@@ -16,7 +19,7 @@ namespace ConferenceTrack.UnitTests.Client
         public void It_Should_Return_ATalkObject_Given_AValidTalk()
         {
             //arrange
-            var textFileInputProcessor = new TextFileInputProcessor();
+            var textFileInputProcessor = new TextFileInputProcessor(new TalkValidator());
             var talk = new string[] {"Writing Fast Tests Against Enterprise Rails 60min"};
             
             //act
@@ -37,7 +40,7 @@ namespace ConferenceTrack.UnitTests.Client
         public void It_Should_Return_ATalkObjectWithADurationOf5Min_Given_ALighteningTalk()
         {
             //arrange
-            var textFileInputProcessor = new TextFileInputProcessor();
+            var textFileInputProcessor = new TextFileInputProcessor(new TalkValidator());
             var talk = new string[] {"Rails for Python Developers lightning"};
             
             //act
@@ -61,7 +64,7 @@ namespace ConferenceTrack.UnitTests.Client
             var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"./Input/OriginalTestInput.txt");
             var talks = textFileInputCollector.Collect(path);
             
-            var textFileInputProcessor = new TextFileInputProcessor();
+            var textFileInputProcessor = new TextFileInputProcessor(new TalkValidator());
             
             //act
             var processedTalks = textFileInputProcessor.Process(talks);
@@ -93,8 +96,42 @@ namespace ConferenceTrack.UnitTests.Client
             var processedTalkStr = JsonConvert.SerializeObject(processedTalks);
             var expectedTalkStr = JsonConvert.SerializeObject(expectedTalksOrderedByDuration);
             Assert.Equal( expectedTalkStr, processedTalkStr);
+        }
+        
+        
+        [Theory]
+        [MemberData(nameof(Data))]
+        public void It_Should_Throw_NotValidTalkException_Given_InvalidTalk(string[] talks, string exceptionMessage)
+        {
+            //arrange
+            var talkValidator = new TalkValidator(); 
+            var textFileInputProcessor = new TextFileInputProcessor(talkValidator);
+            
+            //act
+            Action actual = () => textFileInputProcessor.Process(talks);
+            
+            //assert
+            var exception = Assert.Throws<InvalidTalkException>(actual);
+            Assert.Equal( exceptionMessage, exception.Message);
         
         }
+        
+        public static IEnumerable<object[]> Data => new List<object[]>()
+        {
+            new object[]
+            {
+                new string[] {"Writing Fast Tests Against Enterprise Rails"},
+                "Not a valid talk: Writing Fast Tests Against Enterprise Rails. Must contain duration in minutes or be a lightning talk."
+            },
+
+            new object[]
+            {
+                new string[] {""},
+                "Not a valid talk: . Must contain duration in minutes or be a lightning talk."
+            },
+            
+        };
+        
 
     }
 }

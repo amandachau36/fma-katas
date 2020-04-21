@@ -2,11 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using ConferenceTrack.Client.Exceptions;
+using ConferenceTrack.Client.InputValidator;
 
 namespace ConferenceTrack.Client.InputProcessor
 {
     public class TextFileInputProcessor : IInputProcessor
     {
+        private readonly IValidator _validator;
+
+        public TextFileInputProcessor(IValidator validator)
+        {
+            _validator = validator;
+        }
+        
         public List<Talk> Process(string[] talks)
         {
             var processedTalks = ProcessTalks(talks).OrderByDescending(t => t.Duration);
@@ -22,6 +31,10 @@ namespace ConferenceTrack.Client.InputProcessor
             foreach (var talk in talks)
             {
                 //TODO: validate or throw exception if it contains neither or the session is too long 
+
+                if (!_validator.IsValid(talk))
+                    throw new InvalidTalkException(talk); 
+                    
                 
                 var durationMatch = Regex.Match(talk, @"\d+");
 
