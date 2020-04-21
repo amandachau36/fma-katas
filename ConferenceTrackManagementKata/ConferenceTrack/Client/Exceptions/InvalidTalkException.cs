@@ -11,7 +11,7 @@ namespace ConferenceTrack.Client.Exceptions
 
         private static string FormatMessage(string talk)
         {
-            return "Not a valid talk: " + talk + ". Must contain duration in minutes or be a lightning talk.";
+            return "Not a valid talk: " + talk + ". \nMust contain duration in minutes or be a lightning talk.";
         }
     }
 }
