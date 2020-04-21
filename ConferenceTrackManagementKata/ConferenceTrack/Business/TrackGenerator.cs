@@ -1,17 +1,15 @@
 using System.Collections.Generic;
+using System.Linq;
 using ConferenceTrack.Client;
 
 namespace ConferenceTrack.Business
 {
     public class TrackGenerator
     {
-        //private readonly List<Talk> _talks;
-
         public List<Talk> Talks { get; private set;}
         public List<ISessionAllocator> SessionAllocators { get; }
         public int NumberOfTracks { get;}
-        
-        public List<List<Talk>> Tracks { get; } = new List<List<Talk>>();
+        public List<Track> Tracks { get; } = new List<Track>();
 
         public TrackGenerator(int numberOfTracks, List<ISessionAllocator> sessionAllocators)
         {
@@ -35,10 +33,9 @@ namespace ConferenceTrack.Business
         {
             for (var i = 0; i < NumberOfTracks; i++)
             {
-                foreach (var allocator in SessionAllocators)
-                {
-                    Tracks.Add(allocator.Sessions[i]);
-                }   
+                var talksForTrack = SessionAllocators.SelectMany(allocator => allocator.Sessions[i]).ToList();
+
+                Tracks.Add(new Track(talksForTrack));
             }
         }
         

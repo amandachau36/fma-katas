@@ -34,32 +34,9 @@ namespace ConferenceTrack.Client
            _trackGenerator.GenerateAllSessions(processedTalks);
            
            _trackGenerator.GenerateTracks();
-
-           foreach (var track in _trackGenerator.Tracks)
-           {
-               foreach (var talk in track)
-               {
-                   Console.WriteLine( talk.TalkTime.ToString("hh':'mm") +  " " + talk.TalkTitle);
-               }
            
-           }
+           _display.Display(_trackGenerator.Tracks);
            
-           // foreach (var talk in _trackGenerator.SessionAllocators[0].Sessions.SelectMany(session => session))
-           // {
-           //     Console.WriteLine( talk.TalkTime.ToString("hh':'mm") +  " " + talk.TalkTitle);
-           // }
-           //
-           // foreach (var talk in _trackGenerator.SessionAllocators[1].Sessions.SelectMany(session => session))
-           // {
-           //     Console.WriteLine( talk.TalkTime.ToString("hh':'mm") +  " " + talk.TalkTitle);
-           // }
-           //
-           
-
-            
-         
-           
-
         }
         
         

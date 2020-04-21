@@ -60,5 +60,6 @@ namespace ConferenceTrack.Business
             
             allocatedTalks.Add(lunch);
         }
+        
     }
 }
