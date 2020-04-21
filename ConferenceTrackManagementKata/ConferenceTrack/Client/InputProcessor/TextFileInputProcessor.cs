@@ -21,7 +21,7 @@ namespace ConferenceTrack.Client.InputProcessor
             
             foreach (var talk in talks)
             {
-                //TODO: validate or throw exception if it contains neither or the session is tooo long 
+                //TODO: validate or throw exception if it contains neither or the session is too long 
                 
                 var durationMatch = Regex.Match(talk, @"\d+");
 

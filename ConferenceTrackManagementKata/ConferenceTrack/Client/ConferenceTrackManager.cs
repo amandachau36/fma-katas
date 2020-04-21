@@ -31,9 +31,7 @@ namespace ConferenceTrack.Client
 
            var processedTalks = _inputProcessor.Process(talks);
 
-           _trackGenerator.GenerateAllSessions(processedTalks);
-           
-           _trackGenerator.GenerateTracks();
+           _trackGenerator.GenerateTracks(processedTalks);
            
            _display.Display(_trackGenerator.Tracks);
            

@@ -14,18 +14,24 @@ namespace ConferenceTrack.Client.Display
 
         public void Display(List<Track> tracks)
         {
-            foreach (var track in tracks)
+            for (var i = 0; i < tracks.Count; i++)
             {
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("Track ");
-                Console.ResetColor();
+                TrackHeader(i+1);
                 
-                foreach (var talk in track.Talks)
+                foreach (var talk in tracks[i].Talks)
                 {
                     Console.WriteLine( talk.TalkTime.ToString("hh':'mm") +  " " + talk.TalkTitle);
                 }
            
             }
         }
+
+        private void TrackHeader(int trackNumber)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("\nTrack " + trackNumber);
+            Console.ResetColor();
+        }
+        
     }
 }
