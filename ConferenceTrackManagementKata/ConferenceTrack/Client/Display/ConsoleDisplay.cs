@@ -7,6 +7,11 @@ namespace ConferenceTrack.Client.Display
 {
     public class ConsoleDisplay : IDisplay
     {
+        public void Display(string message)
+        {
+            Console.WriteLine(message);
+        }
+
         public void Display(List<Track> tracks)  //TODO: test this but not through a unit test. Can use MOQ but better not use MOQ
         {
             for (var i = 0; i < tracks.Count; i++)

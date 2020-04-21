@@ -25,9 +25,13 @@ namespace ConferenceTrack.Client
             _trackGenerator = trackGenerator;
         }
         
-        public void ManageTracks(string path)  //TODO: get rid of pathhh . .. . .
-        {
-           var talks = _inputCollector.Collect(); //TODO: mock this 
+        public void ManageTracks()  
+        { 
+            _display.Display(Constants.Welcome);
+            
+            _display.Display(Constants.FilePathPrompt);
+            
+            var talks = _inputCollector.Collect(); //TODO: mock this 
 
            var processedTalks = _inputProcessor.Process(talks);  //Can put this line and the line below it 
 
