@@ -7,11 +7,6 @@ namespace ConferenceTrack.Client.Display
 {
     public class ConsoleDisplay : IDisplay
     {
-        public void Display(string message)
-        {
-            Console.WriteLine(message);
-        }
-
         public void Display(List<Track> tracks)
         {
             for (var i = 0; i < tracks.Count; i++)
