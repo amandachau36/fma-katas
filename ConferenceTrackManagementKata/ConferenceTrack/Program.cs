@@ -25,16 +25,15 @@ namespace ConferenceTrack
             var consoleDisplay = new ConsoleDisplay(); //TODO: this feeels wrong
             
             var conferenceTrackManager = new ConferenceTrackManager(consoleDisplay, new TextFileInputCollector(pathValidator, consoleDisplay), new TextFileInputProcessor(talkValidator), trackGenerator );
+
+            var processedTalks = conferenceTrackManager.GetTalks();
             
-            
-            // TODO: another method for collecting the talks.  ManageTracks should take an array of tracks
-            conferenceTrackManager.ManageTracks();
+            conferenceTrackManager.ManageTracks(processedTalks);
             
             ////Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/OriginalTestInput.txt
             
             ///Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/InvalidTestInput.txt
-
-            //Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
+            
 
 
         }

@@ -29,4 +29,4 @@ namespace ConferenceTrack.Client.InputCollector
     }
 }
 
-//TODO: Don't need to test as part of the unit test because there's no logic would be just testing the dotnet framework
+//Don't need to test Console.ReadLine as part of the unit test because there's no logic would be just testing the dotnet framework
