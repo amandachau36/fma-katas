@@ -37,7 +37,7 @@ namespace ConferenceTrack.Client
 
             GetTalks();
 
-            _trackGenerator.GenerateTracks(_processedTalks);
+            _trackGenerator.GenerateTracks(_processedTalks); // TODO: return tracks instead of field 
 
            _display.Display(_trackGenerator.Tracks);  //TODO: Moq to mock the Display
            
@@ -73,9 +73,6 @@ namespace ConferenceTrack.Client
                 _display.DisplayError(e.Message);
             }
         }
-        
-        
-        
         
         
         

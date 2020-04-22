@@ -58,11 +58,11 @@ namespace ConferenceTrack.UnitTests.Client
         
         [Theory]
         [MemberData(nameof(Data))]
-        public void It_Should_Throw_InvalidPathOrFileException_When_Given_AnInvalidPath(string relativePath, string exceptionMessage)
+        public void It_Should_Throw_InvalidPathOrFileException_When_Given_AnInvalidPath(string path, string exceptionMessage)
         {
             //arrange
             var mockDisplay = new Mock<IDisplay>();
-            mockDisplay.Setup(x => x.ReadDisplay()).Returns(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), relativePath));
+            mockDisplay.Setup(x => x.ReadDisplay()).Returns(path);
 
             var textFileInputCollector = new TextFileInputCollector(new PathValidator(), mockDisplay.Object);
 
@@ -78,20 +78,20 @@ namespace ConferenceTrack.UnitTests.Client
         {
             new object[]
             {
-                @"./Input/DoesNotExist.txt",
-                $"Not a valid path or file: {Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"/Input/DoesNotExist.txt")}. \nOnly .txt files are valid"
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Input", "DoesNotExist.txt"),
+                $"Not a valid path or file: {Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Input", "DoesNotExist.txt")}. \nOnly .txt files are valid"
             },
 
             new object[]
             {
-                @"./In/OriginalTestInput.txt",
-                $"Not a valid path or file: {Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"/In/OriginalTestInput.txt")}. \nOnly .txt files are valid"
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "In", "OriginalTestInput.txt"),
+                $"Not a valid path or file: {Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "In", "OriginalTestInput.txt")}. \nOnly .txt files are valid"
             },
             
             new object[]
             {
-                @"./Input/test.pdf",
-                $"Not a valid path or file: {Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"/Input/test.pdf")}. \nOnly .txt files are valid"
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Input", "test.pdf"),
+                $"Not a valid path or file: {Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Input", "test.pdf")}. \nOnly .txt files are valid"
             }
             
         };
