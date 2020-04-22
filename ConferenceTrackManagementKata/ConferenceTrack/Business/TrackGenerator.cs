@@ -9,7 +9,7 @@ namespace ConferenceTrack.Business
         public List<Talk> Talks { get; private set;}
         public List<ISessionAllocator> SessionAllocators { get; }
         public int NumberOfTracks { get;}
-        public List<Track> Tracks { get; } = new List<Track>();
+        //public List<Track> Tracks { get; } = new List<Track>();
         
         public TrackGenerator(int numberOfTracks, List<ISessionAllocator> sessionAllocators)
         {
@@ -17,21 +17,26 @@ namespace ConferenceTrack.Business
             SessionAllocators = sessionAllocators;
         }
 
-        public void GenerateTracks(List<Talk> talks)
+        public List<Track> GenerateTracks(List<Talk> talks)
         {
             GenerateAllSessions(talks);
             
-            GenerateTracksFromSessions();
+            return GenerateTracksFromSessions();
+            
         }
 
-        private void GenerateTracksFromSessions()
+        private List<Track> GenerateTracksFromSessions()
         {
+            var tracks = new List<Track>();   
+            
             for (var i = 0; i < NumberOfTracks; i++)
             {
                 var talksForTrack = SessionAllocators.SelectMany(allocator => allocator.Sessions[i]).ToList();
 
-                Tracks.Add(new Track(talksForTrack));
+                tracks.Add(new Track(talksForTrack));
             }
+
+            return tracks;
         }
         
         private void GenerateAllSessions(List<Talk> talks)

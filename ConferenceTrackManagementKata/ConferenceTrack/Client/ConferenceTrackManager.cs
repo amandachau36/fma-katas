@@ -25,16 +25,21 @@ namespace ConferenceTrack.Client
             _inputProcessor = inputProcessor;
             _trackGenerator = trackGenerator;
         }
-        
-        
-        public void ManageTracks(List<Talk> processedTalks)  
+
+        public void ManageTracks()
         {
-            _trackGenerator.GenerateTracks(processedTalks); // TODO: return tracks instead of field 
-
-           _display.Display(_trackGenerator.Tracks);  //TODO: Moq to mock the Display
-           
+            var talks = GetTalks();
+            
+            var tracks = GenerateTracks(talks); 
+            
+            _display.Display(tracks);  //TODO: Moq to mock the Display
         }
-
+        
+        public List<Track> GenerateTracks(List<Talk> processedTalks)  
+        {
+          return _trackGenerator.GenerateTracks(processedTalks); 
+        }
+        
         public List<Talk> GetTalks()
         {
             _display.Display(Constants.Welcome);
@@ -75,8 +80,6 @@ namespace ConferenceTrack.Client
                 return Enumerable.Empty<Talk>();
             }
         }
-        
-        
         
     }
 }

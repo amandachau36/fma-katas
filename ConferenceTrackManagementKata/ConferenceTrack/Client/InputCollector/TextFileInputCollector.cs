@@ -23,9 +23,7 @@ namespace ConferenceTrack.Client.InputCollector
                 throw new InvalidPathOrFileException(path);
 
             return System.IO.File.ReadAllLines(path);
-
         }
-        
     }
 }
 

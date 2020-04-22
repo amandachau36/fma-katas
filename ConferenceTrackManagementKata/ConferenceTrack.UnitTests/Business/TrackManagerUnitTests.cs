@@ -162,10 +162,10 @@ namespace ConferenceTrack.UnitTests.Business
             var trackGenerator = new TrackGenerator(2, new List<ISessionAllocator> {morningSession, afternoonSession});
 
             //act
-            trackGenerator.GenerateTracks(talks);
+            var tracks = trackGenerator.GenerateTracks(talks);
 
             //assert
-            var actualFirstTrack = trackGenerator.Tracks[0].Talks.Select(t => t.TalkTitle).ToList();
+            var actualFirstTrack = tracks[0].Talks.Select(t => t.TalkTitle).ToList();
 
             Assert.Equal(expectedFirstTrack, actualFirstTrack);
         }

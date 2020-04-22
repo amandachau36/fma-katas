@@ -25,10 +25,8 @@ namespace ConferenceTrack
             var consoleDisplay = new ConsoleDisplay(); //TODO: this feeels wrong
             
             var conferenceTrackManager = new ConferenceTrackManager(consoleDisplay, new TextFileInputCollector(pathValidator, consoleDisplay), new TextFileInputProcessor(talkValidator), trackGenerator );
-
-            var processedTalks = conferenceTrackManager.GetTalks();
             
-            conferenceTrackManager.ManageTracks(processedTalks);
+            conferenceTrackManager.ManageTracks();
             
             ////Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/OriginalTestInput.txt
             
