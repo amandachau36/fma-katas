@@ -36,12 +36,8 @@ namespace ConferenceTrack.Client
             _display.Display(Constants.Welcome);
 
             GetTalks();
-            
-            // var talks = _inputCollector.Collect(); //TODO: mock this 
-            //
-            // var processedTalks  = _inputProcessor.Process(talks); //Can put this line and the line below it 
-            
-           _trackGenerator.GenerateTracks(_processedTalks);
+
+            _trackGenerator.GenerateTracks(_processedTalks);
 
            _display.Display(_trackGenerator.Tracks);  //TODO: Moq to mock the Display
            

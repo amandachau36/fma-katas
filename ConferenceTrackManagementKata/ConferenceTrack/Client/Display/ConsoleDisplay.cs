@@ -33,6 +33,11 @@ namespace ConferenceTrack.Client.Display
             Console.ResetColor();
         }
 
+        public string ReadDisplay()
+        {
+            return Console.ReadLine();
+        }
+
         private void TrackHeader(int trackNumber)
         {
             Console.ForegroundColor = ConsoleColor.Blue;

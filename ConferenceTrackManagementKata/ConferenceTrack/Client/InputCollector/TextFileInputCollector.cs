@@ -1,4 +1,5 @@
 using System;
+using ConferenceTrack.Client.Display;
 using ConferenceTrack.Client.Exceptions;
 using ConferenceTrack.Client.InputValidator;
 
@@ -7,14 +8,16 @@ namespace ConferenceTrack.Client.InputCollector
     public class TextFileInputCollector : IInputCollector
     {
         private readonly IValidator _validator;
+        private readonly IDisplay _display;
 
-        public TextFileInputCollector(IValidator pathValidator)
+        public TextFileInputCollector(IValidator pathValidator, IDisplay display)
         {
             _validator = pathValidator;
+            _display = display;
         }
         public string[] Collect()
         {
-            var path = Console.ReadLine();
+            var path = _display.ReadDisplay();
 
             if (!_validator.IsValid(path))
                 throw new InvalidPathOrFileException(path);

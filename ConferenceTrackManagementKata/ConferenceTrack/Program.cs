@@ -22,14 +22,18 @@ namespace ConferenceTrack
             
             var pathValidator = new PathValidator();
             
-            var conferenceTrackManager = new ConferenceTrackManager(new ConsoleDisplay(), new TextFileInputCollector(pathValidator), new TextFileInputProcessor(talkValidator), trackGenerator );
+            var consoleDisplay = new ConsoleDisplay(); //TODO: this feeels wrong
             
-            conferenceTrackManager.ManageTracks();
+            var conferenceTrackManager = new ConferenceTrackManager(consoleDisplay, new TextFileInputCollector(pathValidator, consoleDisplay), new TextFileInputProcessor(talkValidator), trackGenerator );
+            
+            //conferenceTrackManager.ManageTracks();
             
             ////Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/OriginalTestInput.txt
             
             ///Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/InvalidTestInput.txt
-         
+
+            Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
+
 
         }
     }

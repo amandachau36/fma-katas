@@ -11,5 +11,7 @@ namespace ConferenceTrack.Client.Display
 
         void DisplayError(string error);
 
+        string ReadDisplay(); 
+
     }
 }
