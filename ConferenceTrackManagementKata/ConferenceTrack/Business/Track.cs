@@ -6,10 +6,11 @@ namespace ConferenceTrack.Business
     public class Track
     {
         public List<Talk> Talks { get;}
-
-        public Track(List<Talk> talks)
+        public string TrackTitle { get; }
+        public Track(List<Talk> talks, string trackTitle)
         {
             Talks = talks;
+            TrackTitle = trackTitle;
         }
         
     }

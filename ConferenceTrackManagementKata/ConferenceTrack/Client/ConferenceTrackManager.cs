@@ -32,9 +32,16 @@ namespace ConferenceTrack.Client
             
             var tracks = GenerateTracks(talks); 
             
-            _display.Display(tracks);  //TODO: Moq to mock the Display
+            DisplayTracks(tracks);  //TODO: Moq to mock the Display
         }
-        
+
+        public void DisplayTracks(List<Track> tracks)
+        {
+            var preparedTracks = _display.PrepareDisplay(tracks); 
+            
+            _display.WriteDisplay(preparedTracks);
+        }
+
         public List<Track> GenerateTracks(List<Talk> processedTalks)  
         {
           return _trackGenerator.GenerateTracks(processedTalks); 

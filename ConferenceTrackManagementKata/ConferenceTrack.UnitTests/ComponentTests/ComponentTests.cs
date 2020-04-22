@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using ConferenceTrack.Business;
 using ConferenceTrack.Client;
 using ConferenceTrack.Client.Display;
@@ -23,7 +24,7 @@ namespace ConferenceTrack.UnitTests.ComponentTests
              
             var talkValidator = new TalkValidator();
              
-            var consoleDisplay = new ConsoleDipslayStub();
+            var consoleDisplay = new ConsoleDisplayStub();
              
              
             var conferenceTrackManager = new ConferenceTrackManager(consoleDisplay, new TextFileInputCollector(pathValidator, consoleDisplay), new TextFileInputProcessor(talkValidator), trackGenerator );
@@ -37,7 +38,7 @@ namespace ConferenceTrack.UnitTests.ComponentTests
             //acceptance tests
         }
         
-        public class ConsoleDipslayStub : IDisplay  //Can also do with moq 
+        public class ConsoleDisplayStub : IDisplay  //Can also do with moq 
         {
             public List<string> Messages = new List<string>();
             public void Display(string message)
@@ -45,9 +46,22 @@ namespace ConferenceTrack.UnitTests.ComponentTests
                 Messages.Add(message);
             }
 
-            public void Display(List<Track> tracks)
+            public List<Track> PrepareDisplay(List<Track> tracks)
             {
                 throw new NotImplementedException();
+            }
+
+            public void WriteDisplay(List<Track> tracks)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Display(List<Track> tracks)
+            {
+                foreach (var track in tracks)
+                {
+                    
+                }
             }
 
             public void DisplayError(string error)
@@ -57,7 +71,7 @@ namespace ConferenceTrack.UnitTests.ComponentTests
 
             public string ReadDisplay()
             {
-                throw new NotImplementedException();
+                return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Input", "OriginalTestInput.txt");
             }
         }
     }

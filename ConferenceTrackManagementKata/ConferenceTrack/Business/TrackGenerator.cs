@@ -33,7 +33,9 @@ namespace ConferenceTrack.Business
             {
                 var talksForTrack = SessionAllocators.SelectMany(allocator => allocator.Sessions[i]).ToList();
 
-                tracks.Add(new Track(talksForTrack));
+                var trackTitle = $"Track {i + 1}";
+
+                tracks.Add(new Track(talksForTrack, trackTitle));
             }
 
             return tracks;

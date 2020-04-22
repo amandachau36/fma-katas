@@ -12,18 +12,27 @@ namespace ConferenceTrack.Client.Display
             Console.WriteLine(message);
         }
 
-        public void Display(List<Track> tracks)  //TODO: test this but not through a unit test. Can use MOQ but better not use MOQ
+        public void WriteDisplay(List<Track> tracks)  //TODO: test this but not through a unit test. Can use MOQ but better not use MOQ
         {
-            for (var i = 0; i < tracks.Count; i++)
+            foreach (var t in tracks)
             {
-                TrackHeader(i+1);
+                TrackHeader(t.TrackTitle);
                 
-                foreach (var talk in tracks[i].Talks)
+                foreach (var talk in t.Talks)
                 {
-                    Console.WriteLine($"{talk.TalkTime.ToString(Constants.FormatTime)}  {talk.TalkTitle}"); // TODO: ? make this a string and test it. PrepareDisplay and WriteDisplay 
+                    Console.WriteLine(talk.ScheduledTalk); 
                 }
-           
             }
+        }
+
+        public List<Track> PrepareDisplay(List<Track> tracks)
+        {
+            foreach (var talk in tracks.SelectMany(t => t.Talks))
+            {
+                talk.SetScheduledTalk($"{talk.TalkTime.ToString(Constants.FormatTime)}  {talk.TalkTitle}");
+            }
+
+            return tracks;
         }
 
         public void DisplayError(string error)
@@ -38,10 +47,10 @@ namespace ConferenceTrack.Client.Display
             return Console.ReadLine();
         }
 
-        private void TrackHeader(int trackNumber)
+        private void TrackHeader(string trackTitle)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine(Constants.Track + trackNumber);
+            Console.WriteLine(trackTitle);
             Console.ResetColor();
         }
         
