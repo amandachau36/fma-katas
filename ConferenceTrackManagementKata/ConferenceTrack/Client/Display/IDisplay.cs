@@ -13,8 +13,7 @@ namespace ConferenceTrack.Client.Display
         void WriteDisplay(List<Track> tracks);
 
         void DisplayError(string error);
-
-        string ReadDisplay(); 
+        
 
     }
 }

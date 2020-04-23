@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using ConferenceTrack.Business;
 using ConferenceTrack.Business.SessionAllocator;
 using ConferenceTrack.Business.Tracks;
 using ConferenceTrack.Client;
 using ConferenceTrack.Client.Display;
 using ConferenceTrack.Client.InputCollector;
 using ConferenceTrack.Client.InputProcessor;
+using ConferenceTrack.Client.InputProvider;
 using ConferenceTrack.Client.InputValidator;
 
 namespace ConferenceTrack
@@ -23,10 +23,8 @@ namespace ConferenceTrack
             var talkValidator = new TalkValidator();
             
             var pathValidator = new PathValidator();
-            
-            var consoleDisplay = new ConsoleDisplay(); //TODO: this feeels wrong
-            
-            var conferenceTrackManager = new ConferenceTrackManager(consoleDisplay, new TextFileInputCollector(pathValidator, consoleDisplay), new TextFileInputProcessor(talkValidator), trackGenerator );
+
+            var conferenceTrackManager = new ConferenceTrackManager(new ConsoleDisplay(), new ConsoleInputCollector(), new TextFileInputProvider(pathValidator), new TextFileInputProcessor(talkValidator), trackGenerator );
             
             conferenceTrackManager.ManageTracks();
             

@@ -6,13 +6,14 @@ using System.Reflection;
 using ConferenceTrack.Client.Display;
 using ConferenceTrack.Client.Exceptions;
 using ConferenceTrack.Client.InputCollector;
+using ConferenceTrack.Client.InputProvider;
 using ConferenceTrack.Client.InputValidator;
 using Moq;
 using Xunit;
 
 namespace ConferenceTrack.UnitTests.Client
 {
-    public class TextFileInputCollectorUnitTests
+    public class TextFileInputProviderUnitTests
     {
         
         [Theory]
@@ -20,13 +21,11 @@ namespace ConferenceTrack.UnitTests.Client
         public void It_Should_Throw_InvalidPathOrFileException_When_Given_AnInvalidPath(string path, string exceptionMessage)
         {
             //arrange
-            var mockDisplay = new Mock<IDisplay>();
-            mockDisplay.Setup(x => x.ReadDisplay()).Returns(path);
-
-            var textFileInputCollector = new TextFileInputCollector(new PathValidator(), mockDisplay.Object);
+            var textFileInputProvider = new TextFileInputProvider(new PathValidator());
+            
 
             //act
-            Action actual = () => textFileInputCollector.Collect();
+            Action actual = () => textFileInputProvider.ProvideInput(path);
             
             //assert
             var exception = Assert.Throws<InvalidPathOrFileException>(actual);

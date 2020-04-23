@@ -42,11 +42,7 @@ namespace ConferenceTrack.Client.Display
             Console.WriteLine(error + "\nPlease try again");
             Console.ResetColor();
         }
-
-        public string ReadDisplay()
-        {
-            return Console.ReadLine();
-        }
+        
 
         private void TrackHeader(string trackTitle)
         {

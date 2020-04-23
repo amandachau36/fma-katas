@@ -9,7 +9,9 @@ using ConferenceTrack.Client;
 using ConferenceTrack.Client.Display;
 using ConferenceTrack.Client.InputCollector;
 using ConferenceTrack.Client.InputProcessor;
+using ConferenceTrack.Client.InputProvider;
 using ConferenceTrack.Client.InputValidator;
+using Moq;
 using Xunit;
 
 namespace ConferenceTrack.UnitTests.ComponentTests
@@ -28,9 +30,12 @@ namespace ConferenceTrack.UnitTests.ComponentTests
             var talkValidator = new TalkValidator();
              
             var consoleDisplay = new ConsoleDisplayStub();
-             
-             
-            var conferenceTrackManager = new ConferenceTrackManager(consoleDisplay, new TextFileInputCollector(pathValidator, consoleDisplay), new TextFileInputProcessor(talkValidator), trackGenerator );
+            
+            var consoleCollector = new Mock<IInputCollector>();
+            consoleCollector.Setup(x => x.Collect()).Returns(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                "Input", "OriginalTestInput.txt"));
+            
+            var conferenceTrackManager = new ConferenceTrackManager(consoleDisplay, consoleCollector.Object, new TextFileInputProvider(pathValidator),  new TextFileInputProcessor(talkValidator), trackGenerator);
             //Act
              
             conferenceTrackManager.ManageTracks();
@@ -70,10 +75,9 @@ namespace ConferenceTrack.UnitTests.ComponentTests
             Assert.True(consoleDisplay.Messages.SequenceEqual(expectedMessages)); 
             
         }
-
-  
         
-        public class ConsoleDisplayStub : IDisplay  //Can also do with moq 
+        
+        private class ConsoleDisplayStub : IDisplay  //Can also do with moq 
         {
             public List<string> Messages = new List<string>();
             public void Display(string message)
@@ -107,13 +111,7 @@ namespace ConferenceTrack.UnitTests.ComponentTests
             public void DisplayError(string error)
             {
             }
-
-            public string ReadDisplay()
-            {
-                return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Input", "OriginalTestInput.txt");
-            }
             
-      
         }
     }
     
