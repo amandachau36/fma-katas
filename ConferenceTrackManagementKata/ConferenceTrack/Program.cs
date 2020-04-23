@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using ConferenceTrack.Business;
+using ConferenceTrack.Business.SessionAllocator;
+using ConferenceTrack.Business.Tracks;
 using ConferenceTrack.Client;
 using ConferenceTrack.Client.Display;
 using ConferenceTrack.Client.InputCollector;

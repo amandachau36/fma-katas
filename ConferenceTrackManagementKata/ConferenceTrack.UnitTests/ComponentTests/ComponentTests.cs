@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using ConferenceTrack.Business;
+using ConferenceTrack.Business.SessionAllocator;
+using ConferenceTrack.Business.Tracks;
 using ConferenceTrack.Client;
 using ConferenceTrack.Client.Display;
 using ConferenceTrack.Client.InputCollector;
@@ -15,7 +17,7 @@ namespace ConferenceTrack.UnitTests.ComponentTests
     public class ComponentTest1
     {
         [Fact]
-        public void It_Should_Test_Most_Of_This_Kata()
+        public void It_Should_DisplayTracks_When_Given_AValidTextFile()
         {
             //Arrange
             // TODO: time as config
@@ -68,6 +70,8 @@ namespace ConferenceTrack.UnitTests.ComponentTests
             Assert.True(consoleDisplay.Messages.SequenceEqual(expectedMessages)); 
             
         }
+
+  
         
         public class ConsoleDisplayStub : IDisplay  //Can also do with moq 
         {
@@ -99,11 +103,9 @@ namespace ConferenceTrack.UnitTests.ComponentTests
                     }
                 }
             }
-            
 
             public void DisplayError(string error)
             {
-                throw new NotImplementedException();
             }
 
             public string ReadDisplay()

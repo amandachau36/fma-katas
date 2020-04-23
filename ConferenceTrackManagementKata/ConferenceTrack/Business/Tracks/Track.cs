@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using ConferenceTrack.Client;
 
-namespace ConferenceTrack.Business
+namespace ConferenceTrack.Business.Tracks
 {
     public class Track
     {

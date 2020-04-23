@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using ConferenceTrack.Business;
+using ConferenceTrack.Business.SessionAllocator;
 using ConferenceTrack.Client;
 
 using Xunit;

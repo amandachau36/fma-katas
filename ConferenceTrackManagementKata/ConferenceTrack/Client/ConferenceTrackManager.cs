@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using ConferenceTrack.Business;
+using ConferenceTrack.Business.Tracks;
 using ConferenceTrack.Client.Display;
 using ConferenceTrack.Client.Exceptions;
 using ConferenceTrack.Client.InputCollector;
@@ -32,22 +33,22 @@ namespace ConferenceTrack.Client
             
             var tracks = GenerateTracks(talks); 
             
-            DisplayTracks(tracks);  //TODO: Moq to mock the Display
+            DisplayTracks(tracks);  //it's possible to mock the display using Moq 
         }
 
-        public void DisplayTracks(List<Track> tracks)
+        private void DisplayTracks(List<Track> tracks)
         {
             var preparedTracks = _display.PrepareDisplay(tracks); 
             
             _display.WriteDisplay(preparedTracks);
         }
 
-        public List<Track> GenerateTracks(List<Talk> processedTalks)  
+        private List<Track> GenerateTracks(List<Talk> processedTalks)  
         {
           return _trackGenerator.GenerateTracks(processedTalks); 
         }
         
-        public List<Talk> GetTalks()
+        private List<Talk> GetTalks()
         {
             _display.Display(Constants.Welcome);
             
@@ -67,7 +68,7 @@ namespace ConferenceTrack.Client
             {
                 _display.Display(Constants.FilePathPrompt);
             
-                var talks = _inputCollector.Collect(); //TODO: mock this 
+                var talks = _inputCollector.Collect(); 
 
                 var processedTalks = _inputProcessor.Process(talks); //Can put this line and the line below it 
                 

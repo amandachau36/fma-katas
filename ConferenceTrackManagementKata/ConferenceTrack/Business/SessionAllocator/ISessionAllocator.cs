@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using ConferenceTrack.Client;
 
-namespace ConferenceTrack.Business
+namespace ConferenceTrack.Business.SessionAllocator
 {
     public interface ISessionAllocator
     {

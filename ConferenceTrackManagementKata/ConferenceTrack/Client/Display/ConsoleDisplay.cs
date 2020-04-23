@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ConferenceTrack.Business;
+using ConferenceTrack.Business.Tracks;
 
 namespace ConferenceTrack.Client.Display
 {
@@ -12,7 +13,7 @@ namespace ConferenceTrack.Client.Display
             Console.WriteLine(message);
         }
 
-        public void WriteDisplay(List<Track> tracks)  //TODO: test this but not through a unit test. Can use MOQ but better not use MOQ
+        public void WriteDisplay(List<Track> tracks)   //can test this using MOQ but it's better not use MOQ
         {
             foreach (var t in tracks)
             {

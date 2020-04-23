@@ -2,22 +2,20 @@ using System;
 using System.Collections.Generic;
 using ConferenceTrack.Client;
 
-namespace ConferenceTrack.Business
+namespace ConferenceTrack.Business.SessionAllocator
 {
-    public class AfternoonSessionAllocator : ISessionAllocator
+    public class MorningSessionAllocator : ISessionAllocator
     {
         public TimeSpan StartTime { get; }
         public TimeSpan MinEndTime { get; }
         public TimeSpan MaxEndTime { get; }
-        public List<List<Talk>> Sessions { get; } = new List<List<Talk>>();
-
-        public AfternoonSessionAllocator(TimeSpan startTime, TimeSpan minEndTime, TimeSpan maxEndTime)
+        public List<List<Talk>> Sessions { get; } = new List<List<Talk>>();  //TODO: session object with total time and list of talks? 
+        public MorningSessionAllocator(TimeSpan startTime, TimeSpan endTime)
         {
             StartTime = startTime;
-            MinEndTime = minEndTime;
-            MaxEndTime = maxEndTime;
+            MinEndTime = endTime; //TODO: can this be simplified more 
+            MaxEndTime = endTime;
         }
-
         public void AllocateTalksToSession(List<Talk> availableTalks)
         {
 
@@ -30,39 +28,40 @@ namespace ConferenceTrack.Business
                 if (talk.IsAllocated) continue;
 
                 var newTime = time.Add(TimeSpan.FromMinutes(talk.Duration));
-
-                if (newTime > MaxEndTime) continue;
-
+                
+                //TODO: duration > session throw exception
+                
+                if (newTime > MaxEndTime ) continue;
+                
                 AddTalkToSession(session, talk, time);
-
+                
                 time = newTime;
-
-                if (time > MinEndTime) break;  //TODO: should this be >=
+                
+                //TODO: think about breaking here when  time is > maxendtime
             }
             
-            AddNetworkingEventToSession(session);
-                
+            AddLunchToSession(session);
+            
             Sessions.Add(session);
         }
-        
+
         private void AddTalkToSession(List<Talk> session, Talk talk, TimeSpan time)
         {
             session.Add(talk);
-            
+                
             talk.UpdateIsAllocated(true);
                 
             talk.SetTalkTime(time);
         }
         
-        private void AddNetworkingEventToSession(List<Talk> allocatedTalks)
+        private void AddLunchToSession(List<Talk> allocatedTalks)
         {
-            var networkingEvent = new Talk("Networking Event", 60);
+            var lunch = new Talk("Lunch", 60);
+            lunch.UpdateIsAllocated(true);
+            lunch.SetTalkTime(MaxEndTime);
             
-            networkingEvent.UpdateIsAllocated(true);
-            
-            networkingEvent.SetTalkTime(MaxEndTime);
-            
-            allocatedTalks.Add(networkingEvent);
+            allocatedTalks.Add(lunch);
         }
+        
     }
 }

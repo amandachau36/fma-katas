@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ConferenceTrack.Business;
+using ConferenceTrack.Business.SessionAllocator;
+using ConferenceTrack.Business.Tracks;
 using ConferenceTrack.Client;
 using Xunit;
 

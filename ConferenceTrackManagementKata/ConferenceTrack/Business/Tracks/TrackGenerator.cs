@@ -1,15 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
+using ConferenceTrack.Business.SessionAllocator;
 using ConferenceTrack.Client;
 
-namespace ConferenceTrack.Business
+namespace ConferenceTrack.Business.Tracks
 {
     public class TrackGenerator
     {
         public List<Talk> Talks { get; private set;}
         public List<ISessionAllocator> SessionAllocators { get; }
         public int NumberOfTracks { get;}
-        //public List<Track> Tracks { get; } = new List<Track>();
+        
         
         public TrackGenerator(int numberOfTracks, List<ISessionAllocator> sessionAllocators)
         {
