@@ -37,7 +37,8 @@ namespace ConferenceTrack.Business.SessionAllocator
                 
                 time = newTime;
                 
-                //TODO: think about breaking here when  time is > maxendtime
+                if (time > MinEndTime) break; 
+             
             }
             
             AddLunchToSession(session);
