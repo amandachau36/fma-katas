@@ -19,7 +19,7 @@ namespace ConferenceTrack.UnitTests.ComponentTests
     public class ComponentTest1
     {
         [Fact]
-        public void It_Should_DisplayTracks_When_Given_AValidTextFile()
+        public void It_Should_DisplayErrorsAndTracks_WhenGivenInValidFilesThenAValidOne()
         {
             //Arrange
             // TODO: time as config
@@ -32,10 +32,13 @@ namespace ConferenceTrack.UnitTests.ComponentTests
             var consoleDisplay = new ConsoleDisplayStub();
             
             var consoleCollector = new Mock<IInputCollector>();
-            consoleCollector.Setup(x => x.Collect()).Returns(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
-                "Input", "OriginalTestInput.txt"));
-            
+            consoleCollector.SetupSequence(x => x.Collect())
+                .Returns(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "In", "OriginalTestInput.txt"))
+                .Returns(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Input", "InvalidTestInput.txt"))
+                .Returns(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Input", "OriginalTestInput.txt"));
+
             var conferenceTrackManager = new ConferenceTrackManager(consoleDisplay, consoleCollector.Object, new TextFileInputProvider(pathValidator),  new TextFileInputProcessor(talkValidator), trackGenerator);
+            
             //Act
              
             conferenceTrackManager.ManageTracks();
@@ -44,6 +47,10 @@ namespace ConferenceTrack.UnitTests.ComponentTests
             var expectedMessages = new List<string>
             {
                 Constants.Welcome,
+                Constants.FilePathPrompt,
+                $"Not a valid path or file: {Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "In", "OriginalTestInput.txt")}. \nOnly .txt files are valid",
+                Constants.FilePathPrompt,
+                "Not a valid talk: A World Without HackerNews. \nMust contain duration in minutes or be a lightning talk.",
                 Constants.FilePathPrompt,
                 "Track 1",
                 "09:00  Writing Fast Tests Against Enterprise Rails 60min",
@@ -71,8 +78,12 @@ namespace ConferenceTrack.UnitTests.ComponentTests
                 "04:00  User Interface CSS in Rails Apps 30min",
                 "05:00  Networking Event"
             };
-          
-            Assert.True(consoleDisplay.Messages.SequenceEqual(expectedMessages)); 
+
+            for (var i = 0; i < consoleDisplay.Messages.Count; i++)
+            {
+                Assert.Equal(expectedMessages[i], consoleDisplay.Messages[i]);
+            }
+            //Assert.True(consoleDisplay.Messages.SequenceEqual(expectedMessages)); 
             
         }
         
@@ -103,13 +114,14 @@ namespace ConferenceTrack.UnitTests.ComponentTests
                 
                     foreach (var talk in t.Talks)
                     {
-                        Messages.Add(talk.ScheduledTalk); 
+                        Messages.Add(talk.FormattedTitleAndTime); 
                     }
                 }
             }
 
             public void DisplayError(string error)
             {
+                Messages.Add(error);
             }
             
         }

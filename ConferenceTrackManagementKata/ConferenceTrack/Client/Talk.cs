@@ -10,7 +10,7 @@ namespace ConferenceTrack.Client
         public bool IsAllocated { get; private set; }
         public TimeSpan TalkTime { get; private set; }
 
-        public string ScheduledTalk { get; private set; }
+        public string FormattedTitleAndTime { get; private set; }
 
         public Talk( string talkTitle, double duration)
         {
@@ -19,7 +19,7 @@ namespace ConferenceTrack.Client
             IsAllocated = false;
         }
 
-        public void UpdateIsAllocated(bool isAllocated)
+        public void SetIsAllocated(bool isAllocated)
         {
             IsAllocated = isAllocated;
         }
@@ -31,7 +31,7 @@ namespace ConferenceTrack.Client
 
         public void SetScheduledTalk(string scheduledTalk)
         {
-            ScheduledTalk = scheduledTalk;
+            FormattedTitleAndTime = scheduledTalk;
         }
         
     }

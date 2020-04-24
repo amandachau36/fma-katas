@@ -49,7 +49,7 @@ namespace ConferenceTrack.Business.SessionAllocator
         {
             session.Add(talk);
             
-            talk.UpdateIsAllocated(true);
+            talk.SetIsAllocated(true);
                 
             talk.SetTalkTime(time);
         }
@@ -58,7 +58,7 @@ namespace ConferenceTrack.Business.SessionAllocator
         {
             var networkingEvent = new Talk("Networking Event", 60);
             
-            networkingEvent.UpdateIsAllocated(true);
+            networkingEvent.SetIsAllocated(true);
             
             networkingEvent.SetTalkTime(MaxEndTime);
             

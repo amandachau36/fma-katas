@@ -5,10 +5,9 @@ namespace ConferenceTrack.Client
         public const string Welcome = "\nWelcome to the ConferenceTrackManager";
 
         public const string FilePathPrompt = "\nPlease enter the path for your text file: ";
-        
-        public const string Track = "\n Track ";
-        
-        public const string FormatTime = "hh':'mm";
-        
+
+        public const string FormatTime = "hh:mm tt";
+        //"hh':'mm";
+
     }
 }

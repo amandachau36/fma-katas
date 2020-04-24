@@ -32,6 +32,14 @@ namespace ConferenceTrack
             
             ///Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/InvalidTestInput.txt
             
+            
+            //
+            // TimeSpan timespan = new TimeSpan(15,00,00);
+            // DateTime time = DateTime.Today.Add(timespan);
+            // string displayTime = time.ToString("hh:mm tt");
+            //
+            // Console.WriteLine(displayTime);
+
 
 
         }

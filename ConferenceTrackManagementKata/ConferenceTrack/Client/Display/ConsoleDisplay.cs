@@ -21,7 +21,7 @@ namespace ConferenceTrack.Client.Display
                 
                 foreach (var talk in t.Talks)
                 {
-                    Console.WriteLine(talk.ScheduledTalk); 
+                    Console.WriteLine(talk.FormattedTitleAndTime); 
                 }
             }
         }
@@ -30,6 +30,7 @@ namespace ConferenceTrack.Client.Display
         {
             foreach (var talk in tracks.SelectMany(t => t.Talks))
             {
+                
                 talk.SetScheduledTalk($"{talk.TalkTime.ToString(Constants.FormatTime)}  {talk.TalkTitle}");
             }
 
@@ -50,6 +51,13 @@ namespace ConferenceTrack.Client.Display
             Console.WriteLine(trackTitle);
             Console.ResetColor();
         }
+
+        // private string formatTime(TimeSpan time)
+        // {
+        //     var dateTime = DateTime.Today.Add(time);
+        //     return time.ToString("hh:mm tt");
+        // }
+            
         
     }
 }

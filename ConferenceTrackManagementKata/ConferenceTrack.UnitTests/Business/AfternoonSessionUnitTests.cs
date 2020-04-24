@@ -19,7 +19,6 @@ namespace ConferenceTrack.UnitTests.Business
             //arrange
             var afternoonSession = new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0)); 
             
-        
             
             //act
            afternoonSession.AllocateTalksToSession(availableTalks);

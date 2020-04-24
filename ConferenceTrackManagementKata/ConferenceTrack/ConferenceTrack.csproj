@@ -5,4 +5,8 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="PlantUml.Net" Version="1.2.48" />
+    </ItemGroup>
+
 </Project>

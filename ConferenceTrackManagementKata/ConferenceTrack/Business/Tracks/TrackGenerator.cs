@@ -7,14 +7,15 @@ namespace ConferenceTrack.Business.Tracks
 {
     public class TrackGenerator
     {
-        public List<Talk> Talks { get; private set;}
-        public List<ISessionAllocator> SessionAllocators { get; }
-        public int NumberOfTracks { get;}
+        private List<Talk> _talks;
+        public List<ISessionAllocator> SessionAllocators { get; } //TODO: can make this private
+        
+        private readonly int _numberOfTracks;
         
         
         public TrackGenerator(int numberOfTracks, List<ISessionAllocator> sessionAllocators)
         {
-            NumberOfTracks = numberOfTracks;
+            _numberOfTracks = numberOfTracks;
             SessionAllocators = sessionAllocators;
         }
 
@@ -30,7 +31,7 @@ namespace ConferenceTrack.Business.Tracks
         {
             var tracks = new List<Track>();   
             
-            for (var i = 0; i < NumberOfTracks; i++)
+            for (var i = 0; i < _numberOfTracks; i++)
             {
                 var talksForTrack = SessionAllocators.SelectMany(allocator => allocator.Sessions[i]).ToList();
 
@@ -44,9 +45,9 @@ namespace ConferenceTrack.Business.Tracks
         
         private void GenerateAllSessions(List<Talk> talks)
         {
-            Talks = talks;
+            _talks = talks;
             
-            foreach (var sessionAllocator in SessionAllocators)
+            foreach (var sessionAllocator in SessionAllocators) //TODO; should this return something
             {
                 GenerateSessions(sessionAllocator);
             }
@@ -55,9 +56,9 @@ namespace ConferenceTrack.Business.Tracks
 
         private void GenerateSessions(ISessionAllocator sessionAllocator)
         {
-            for (var i = 0; i < NumberOfTracks; i++)
+            for (var i = 0; i < _numberOfTracks; i++)
             {
-                sessionAllocator.AllocateTalksToSession(Talks);
+                sessionAllocator.AllocateTalksToSession(_talks);
             }
         } 
         

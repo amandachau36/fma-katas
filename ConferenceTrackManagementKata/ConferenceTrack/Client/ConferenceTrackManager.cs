@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using ConferenceTrack.Business;
 using ConferenceTrack.Business.Tracks;
 using ConferenceTrack.Client.Display;
 using ConferenceTrack.Client.Exceptions;
@@ -76,7 +75,7 @@ namespace ConferenceTrack.Client
 
                 var talks = _inputProvider.ProvideInput(input);
 
-                var processedTalks = _inputProcessor.Process(talks); //Can put this line and the line below it 
+                var processedTalks = _inputProcessor.Process(talks); 
                 
                 return processedTalks;
 
