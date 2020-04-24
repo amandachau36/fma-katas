@@ -19,7 +19,7 @@ namespace ConferenceTrack.Business.SessionAllocator
         public void AllocateTalksToSession(List<Talk> availableTalks)
         {
 
-            var time = StartTime;
+            var time = StartTime;  //TODO: take out all custom logic
 
             var session = new List<Talk>();
 
@@ -57,7 +57,9 @@ namespace ConferenceTrack.Business.SessionAllocator
         private void AddLunchToSession(List<Talk> allocatedTalks)
         {
             var lunch = new Talk("Lunch", 60);
+            
             lunch.SetIsAllocated(true);
+            
             lunch.SetTalkTime(MaxEndTime);
             
             allocatedTalks.Add(lunch);

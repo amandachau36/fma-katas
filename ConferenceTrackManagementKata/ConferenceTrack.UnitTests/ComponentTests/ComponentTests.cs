@@ -23,7 +23,18 @@ namespace ConferenceTrack.UnitTests.ComponentTests
         {
             //Arrange
             // TODO: time as config
-            var trackGenerator = new TrackGenerator(2,new List<ISessionAllocator>{new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0,0 ) ), new AfternoonSessionAllocator(new TimeSpan(13, 0, 0), new TimeSpan(16, 0, 0), new TimeSpan(17, 0,0 )  )});
+            var trackGenerator = new TrackGenerator(
+                2,
+                new List<ISessionAllocator>
+                {
+                    new MorningSessionAllocator(
+                        new TimeSpan(9, 0, 0),  //TODO: Abstract smallest parts or can create variables with the TimeSpan 
+                        new TimeSpan(12, 0,0 ) ), //TODO: Enum
+                    new AfternoonSessionAllocator(
+                        new TimeSpan(13, 0, 0), 
+                        new TimeSpan(16, 0, 0), 
+                        new TimeSpan(17, 0,0 )  )
+                });
              
             var pathValidator = new PathValidator();
              

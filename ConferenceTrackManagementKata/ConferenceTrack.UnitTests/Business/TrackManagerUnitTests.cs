@@ -21,17 +21,17 @@ namespace ConferenceTrack.UnitTests.Business
             var afternoonSession =
                 new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0));
             var trackGenerator = new TrackGenerator(2, new List<ISessionAllocator> {morningSession, afternoonSession});
-
+        
             //act
             trackGenerator.GenerateTracks(talks);
-
+        
             //assert
             var morningSessions = trackGenerator.SessionAllocators[0].Sessions
                 .Select(s => s.Select(t => t.TalkTitle).ToList()).ToList();
-
+        
             Assert.Equal(expectedMorningSessions, morningSessions);
         }
-
+        
         public static IEnumerable<object[]> Data1 => new List<object[]>
         {
             new object[]
