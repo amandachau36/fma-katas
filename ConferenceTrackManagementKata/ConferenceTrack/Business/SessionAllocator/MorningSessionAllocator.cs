@@ -7,7 +7,7 @@ namespace ConferenceTrack.Business.SessionAllocator
     public class MorningSessionAllocator : ISessionAllocator
     {
         public TimeSpan StartTime { get; }
-        public TimeSpan MinEndTime { get; }  //TODO: 24 time date time 
+        public TimeSpan MinEndTime { get; } 
         public TimeSpan MaxEndTime { get; }
         public List<List<Talk>> Sessions { get; } = new List<List<Talk>>();  //TODO: session object with total time and list of talks? 
         public MorningSessionAllocator(TimeSpan startTime, TimeSpan endTime)

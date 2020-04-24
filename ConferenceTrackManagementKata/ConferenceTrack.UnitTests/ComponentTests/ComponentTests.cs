@@ -23,7 +23,7 @@ namespace ConferenceTrack.UnitTests.ComponentTests
         {
             //Arrange
             // TODO: time as config
-            var trackGenerator = new TrackGenerator(2,new List<ISessionAllocator>{new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0,0 ) ), new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0,0 )  )});
+            var trackGenerator = new TrackGenerator(2,new List<ISessionAllocator>{new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0,0 ) ), new AfternoonSessionAllocator(new TimeSpan(13, 0, 0), new TimeSpan(16, 0, 0), new TimeSpan(17, 0,0 )  )});
              
             var pathValidator = new PathValidator();
              
@@ -53,30 +53,30 @@ namespace ConferenceTrack.UnitTests.ComponentTests
                 "Not a valid talk: A World Without HackerNews. \nMust contain duration in minutes or be a lightning talk.",
                 Constants.FilePathPrompt,
                 "Track 1",
-                "09:00  Writing Fast Tests Against Enterprise Rails 60min",
-                "10:00  Communicating Over Distance 60min",
-                "11:00  Rails Magic 60min",
-                "12:00  Lunch",
-                "01:00  Ruby Errors from Mismatched Gem Versions 45min",
-                "01:45  Common Ruby Errors 45min",
-                "02:30  Accounting-Driven Development 45min",
-                "03:15  Pair Programming vs Noise 45min",
-                "04:00  Clojure Ate Scala (on my project) 45min",
-                "05:00  Networking Event",
+                "09:00 AM  Writing Fast Tests Against Enterprise Rails 60min",
+                "10:00 AM  Communicating Over Distance 60min",
+                "11:00 AM  Rails Magic 60min",
+                "12:00 PM  Lunch",
+                "01:00 PM  Ruby Errors from Mismatched Gem Versions 45min",
+                "01:45 PM  Common Ruby Errors 45min",
+                "02:30 PM  Accounting-Driven Development 45min",
+                "03:15 PM  Pair Programming vs Noise 45min",
+                "04:00 PM  Clojure Ate Scala (on my project) 45min",
+                "05:00 PM  Networking Event",
                 "Track 2",
-                "09:00  Ruby on Rails: Why We Should Move On 60min",
-                "10:00  Ruby on Rails Legacy App Maintenance 60min",
-                "11:00  Overdoing it in Python 45min",
-                "11:45  Rails for Python Developers lightning",
-                "12:00  Lunch",
-                "01:00  Lua for the Masses 30min",
-                "01:30  Woah 30min",
-                "02:00  Sit Down and Write 30min",
-                "02:30  Programming in the Boondocks of Seattle 30min",
-                "03:00  Ruby vs. Clojure for Back-End Development 30min",
-                "03:30  A World Without HackerNews 30min",
-                "04:00  User Interface CSS in Rails Apps 30min",
-                "05:00  Networking Event"
+                "09:00 AM  Ruby on Rails: Why We Should Move On 60min",
+                "10:00 AM  Ruby on Rails Legacy App Maintenance 60min",
+                "11:00 AM  Overdoing it in Python 45min",
+                "11:45 AM  Rails for Python Developers lightning",
+                "12:00 PM  Lunch",
+                "01:00 PM  Lua for the Masses 30min",
+                "01:30 PM  Woah 30min",
+                "02:00 PM  Sit Down and Write 30min",
+                "02:30 PM  Programming in the Boondocks of Seattle 30min",
+                "03:00 PM  Ruby vs. Clojure for Back-End Development 30min",
+                "03:30 PM  A World Without HackerNews 30min",
+                "04:00 PM  User Interface CSS in Rails Apps 30min",
+                "05:00 PM  Networking Event"
             };
 
             for (var i = 0; i < consoleDisplay.Messages.Count; i++)
@@ -84,6 +84,8 @@ namespace ConferenceTrack.UnitTests.ComponentTests
                 Assert.Equal(expectedMessages[i], consoleDisplay.Messages[i]);
             }
             //Assert.True(consoleDisplay.Messages.SequenceEqual(expectedMessages)); 
+            
+            
             
         }
         
@@ -100,7 +102,7 @@ namespace ConferenceTrack.UnitTests.ComponentTests
             {
                 foreach (var talk in tracks.SelectMany(t => t.Talks))
                 {
-                    talk.SetScheduledTalk($"{talk.TalkTime.ToString(Constants.FormatTime)}  {talk.TalkTitle}");
+                    talk.SetScheduledTalk($"{FormatTime(talk.TalkTime)}  {talk.TalkTitle}");
                 }
 
                 return tracks;
@@ -122,6 +124,13 @@ namespace ConferenceTrack.UnitTests.ComponentTests
             public void DisplayError(string error)
             {
                 Messages.Add(error);
+            }
+            
+            private string FormatTime(TimeSpan time)
+            {
+                var dateTime = DateTime.Today.Add(time);
+            
+                return dateTime.ToString("hh:mm tt");
             }
             
         }

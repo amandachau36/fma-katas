@@ -31,7 +31,7 @@ namespace ConferenceTrack.Client.Display
             foreach (var talk in tracks.SelectMany(t => t.Talks))
             {
                 
-                talk.SetScheduledTalk($"{talk.TalkTime.ToString(Constants.FormatTime)}  {talk.TalkTitle}");
+                talk.SetScheduledTalk($"{FormatTime(talk.TalkTime)}  {talk.TalkTitle}");
             }
 
             return tracks;
@@ -40,7 +40,9 @@ namespace ConferenceTrack.Client.Display
         public void DisplayError(string error)
         {
             Console.ForegroundColor = ConsoleColor.Red;
+            
             Console.WriteLine(error + "\nPlease try again");
+            
             Console.ResetColor();
         }
         
@@ -48,16 +50,18 @@ namespace ConferenceTrack.Client.Display
         private void TrackHeader(string trackTitle)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
+            
             Console.WriteLine(trackTitle);
+            
             Console.ResetColor();
         }
 
-        // private string formatTime(TimeSpan time)
-        // {
-        //     var dateTime = DateTime.Today.Add(time);
-        //     return time.ToString("hh:mm tt");
-        // }
+        private string FormatTime(TimeSpan time)
+        {
+            var dateTime = DateTime.Today.Add(time);
             
+            return dateTime.ToString("hh:mm tt");
+        }
         
     }
 }
