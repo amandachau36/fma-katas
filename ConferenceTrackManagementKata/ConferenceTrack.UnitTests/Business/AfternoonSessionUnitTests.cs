@@ -17,7 +17,7 @@ namespace ConferenceTrack.UnitTests.Business
         public void It_Should_Return_AListOfTalksThatFitIntoTheAfternoonSession_Given_AListOfTalks(List<Block> availableTalks, List<string> expectedAllocatedTalks)
         {
             //arrange
-            var afternoonSession = new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0)); 
+            var afternoonSession = new MorningSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60)); 
             
             
             //act
@@ -67,7 +67,7 @@ namespace ConferenceTrack.UnitTests.Business
                 new Block("Rails for Python Developers lightning", 5)
             };
             
-            var afternoonSession = new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0));
+            var afternoonSession = new MorningSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
             
             //act
            afternoonSession.AllocateTalksToSession(talks);
@@ -92,7 +92,7 @@ namespace ConferenceTrack.UnitTests.Business
                 new Block("Ruby Errors from Mismatched Gem Versions 45min", 45),
             };
             
-            var afternoonSession = new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0));
+            var afternoonSession = new MorningSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
             
             //act
             afternoonSession.AllocateTalksToSession(talks);

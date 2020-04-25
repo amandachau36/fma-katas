@@ -11,6 +11,7 @@ namespace ConferenceTrack.Business.SessionAllocator
         public TimeSpan MinEndTime { get; } 
         public TimeSpan MaxEndTime { get; }
         public List<List<Block>> Sessions { get; } = new List<List<Block>>();  //TODO: session object with total time and list of talks? 
+        
         public MorningSessionAllocator(TimeSpan startTime, TimeSpan endTime, Block breakEvent)
         {
             _breakEvent = breakEvent;
@@ -18,6 +19,16 @@ namespace ConferenceTrack.Business.SessionAllocator
             MinEndTime = endTime;  
             MaxEndTime = endTime;
         }
+        
+        public MorningSessionAllocator(TimeSpan startTime, TimeSpan minEndTime, TimeSpan maxEndTime, Block breakEvent)
+        {
+            _breakEvent = breakEvent;
+            StartTime = startTime;
+            MinEndTime = minEndTime;
+            MaxEndTime = maxEndTime;
+        }
+        
+        
         public void AllocateTalksToSession(List<Block> availableTalks)
         {
 

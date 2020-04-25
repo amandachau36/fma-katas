@@ -19,7 +19,7 @@ namespace ConferenceTrack.UnitTests.Business
             //arrange
             var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0), new Block("Lunch", 60));
             var afternoonSession =
-                new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0));
+                new MorningSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
             var trackGenerator = new TrackGenerator(2, new List<ISessionAllocator> {morningSession, afternoonSession});
         
             //act
@@ -87,7 +87,7 @@ namespace ConferenceTrack.UnitTests.Business
             //arrange
             var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0), new Block("Lunch", 60));
             var afternoonSession =
-                new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0));
+                new MorningSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
             var trackGenerator = new TrackGenerator(2, new List<ISessionAllocator> {morningSession, afternoonSession});
 
             //act
@@ -160,7 +160,7 @@ namespace ConferenceTrack.UnitTests.Business
             //arrange
             var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0), new Block("Lunch", 60));
             var afternoonSession =
-                new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0));
+                new MorningSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
             var trackGenerator = new TrackGenerator(2, new List<ISessionAllocator> {morningSession, afternoonSession});
 
             //act
