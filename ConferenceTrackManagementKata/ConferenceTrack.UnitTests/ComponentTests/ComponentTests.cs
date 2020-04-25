@@ -29,7 +29,7 @@ namespace ConferenceTrack.UnitTests.ComponentTests
                     new SessionAllocator(
                         new TimeSpan(9, 0, 0),  //TODO: Abstract smallest parts or can create variables with the TimeSpan 
                         new TimeSpan(12, 0,0 ),
-                        new Block("Lunch", 60)), //TODO: Enum
+                        new Block("Lunch", 60)), 
                     new SessionAllocator(
                         new TimeSpan(13, 0, 0), 
                         new TimeSpan(16, 0, 0), 

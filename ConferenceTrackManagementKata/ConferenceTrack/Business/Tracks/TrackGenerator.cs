@@ -7,7 +7,7 @@ namespace ConferenceTrack.Business.Tracks
 {
     public class TrackGenerator
     {
-        public List<SessionAllocator> SessionAllocators { get; } //TODO: can make this private
+        public List<SessionAllocator> SessionAllocators { get; } 
         
         private readonly int _numberOfTracks;
 

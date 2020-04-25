@@ -35,7 +35,7 @@ namespace ConferenceTrack.Business.Sessions
         public void AllocateTalksToSession(List<Block> availableTalks)
         {
 
-            var time = _startTime;  //TODO: take out all custom logic
+            var time = _startTime;  
 
             var session = new List<Block>();
 
