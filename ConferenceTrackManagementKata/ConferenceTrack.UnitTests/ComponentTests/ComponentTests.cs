@@ -113,7 +113,7 @@ namespace ConferenceTrack.UnitTests.ComponentTests
             {
                 foreach (var talk in tracks.SelectMany(t => t.Talks))
                 {
-                    talk.SetScheduledTalk($"{FormatTime(talk.TalkTime)}  {talk.TalkTitle}");
+                    talk.SetFormattedBlockNameAndTimeSlot($"{FormatTime(talk.TimeSlot)}  {talk.BlockName}");
                 }
 
                 return tracks;
@@ -127,7 +127,7 @@ namespace ConferenceTrack.UnitTests.ComponentTests
                 
                     foreach (var talk in t.Talks)
                     {
-                        Messages.Add(talk.FormattedTitleAndTime); 
+                        Messages.Add(talk.FormattedBlockNameAndTimeSlot); 
                     }
                 }
             }

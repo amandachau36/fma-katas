@@ -5,9 +5,9 @@ namespace ConferenceTrack.Business.Tracks
 {
     public class Track
     {
-        public List<Talk> Talks { get;}
+        public List<Block> Talks { get;}
         public string TrackTitle { get; }
-        public Track(List<Talk> talks, string trackTitle)
+        public Track(List<Block> talks, string trackTitle)
         {
             Talks = talks;
             TrackTitle = trackTitle;

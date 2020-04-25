@@ -9,7 +9,7 @@ namespace ConferenceTrack.Business.SessionAllocator
         public TimeSpan StartTime { get; }
         public TimeSpan MinEndTime { get; }
         public TimeSpan MaxEndTime { get; }
-        public List<List<Talk>> Sessions { get; } = new List<List<Talk>>();
+        public List<List<Block>> Sessions { get; } = new List<List<Block>>();
 
         public AfternoonSessionAllocator(TimeSpan startTime, TimeSpan minEndTime, TimeSpan maxEndTime)
         {
@@ -18,18 +18,18 @@ namespace ConferenceTrack.Business.SessionAllocator
             MaxEndTime = maxEndTime;
         }
 
-        public void AllocateTalksToSession(List<Talk> availableTalks)
+        public void AllocateTalksToSession(List<Block> availableTalks)
         {
 
             var time = StartTime;
 
-            var session = new List<Talk>();
+            var session = new List<Block>();
 
             foreach (var talk in availableTalks)
             {
                 if (talk.IsAllocated) continue;
 
-                var newTime = time.Add(TimeSpan.FromMinutes(talk.Duration));
+                var newTime = time.Add(TimeSpan.FromMinutes(talk.BlockDuration));
 
                 if (newTime > MaxEndTime) continue;
 
@@ -45,22 +45,22 @@ namespace ConferenceTrack.Business.SessionAllocator
             Sessions.Add(session);
         }
         
-        private void AddTalkToSession(List<Talk> session, Talk talk, TimeSpan time)
+        private void AddTalkToSession(List<Block> session, Block block, TimeSpan time)
         {
-            session.Add(talk);
+            session.Add(block);
             
-            talk.SetIsAllocated(true);
+            block.SetIsAllocated(true);
                 
-            talk.SetTalkTime(time);
+            block.SetTimeSlot(time);
         }
         
-        private void AddNetworkingEventToSession(List<Talk> allocatedTalks)
+        private void AddNetworkingEventToSession(List<Block> allocatedTalks)
         {
-            var networkingEvent = new Talk("Networking Event", 60);
+            var networkingEvent = new Block("Networking Event", 60);
             
             networkingEvent.SetIsAllocated(true);
             
-            networkingEvent.SetTalkTime(MaxEndTime);
+            networkingEvent.SetTimeSlot(MaxEndTime);
             
             allocatedTalks.Add(networkingEvent);
         }

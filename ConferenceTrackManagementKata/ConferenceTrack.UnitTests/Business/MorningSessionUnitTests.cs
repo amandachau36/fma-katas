@@ -16,7 +16,7 @@ namespace ConferenceTrack.UnitTests.Business
         [Theory]
         [MemberData(nameof(Data))]
         
-        public void It_Should_Return_AListOfTalksThatFitIntoTheMorningSession_Given_AListOfTalks(List<Talk> availableTalks, List<string> expectedAllocatedTalks)
+        public void It_Should_Return_AListOfTalksThatFitIntoTheMorningSession_Given_AListOfTalks(List<Block> availableTalks, List<string> expectedAllocatedTalks)
         {
             //arrange
             var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0)); 
@@ -25,7 +25,7 @@ namespace ConferenceTrack.UnitTests.Business
             morningSession.AllocateTalksToSession(availableTalks);
             
             //assert
-            Assert.Equal(expectedAllocatedTalks, morningSession.Sessions[0].Select(x => x.TalkTitle));
+            Assert.Equal(expectedAllocatedTalks, morningSession.Sessions[0].Select(x => x.BlockName));
             
         }
         
@@ -33,26 +33,26 @@ namespace ConferenceTrack.UnitTests.Business
         {
             new object[]
             {
-                new List<Talk> {
-                    new Talk("Writing Fast Tests Against Enterprise Rails 60min", 60),
-                    new Talk("Communicating Over Distance 60min", 60),
-                    new Talk("Rails Magic 60min", 60),
-                    new Talk("Ruby on Rails: Why We Should Move On 60min", 60),
-                    new Talk("Ruby on Rails Legacy App Maintenance 60min", 60),
-                    new Talk("Overdoing it in Python 45min", 45),
-                    new Talk("Ruby Errors from Mismatched Gem Versions 45min", 45),
-                    new Talk("Common Ruby Errors 45min", 45),
-                    new Talk("Accounting-Driven Development 45min", 45),
-                    new Talk("Pair Programming vs Noise 45min", 45),
-                    new Talk("Clojure Ate Scala (on my project) 45min", 45),
-                    new Talk("Lua for the Masses 30min", 30),
-                    new Talk("Woah 30min", 30),
-                    new Talk("Sit Down and Write 30min", 30),
-                    new Talk("Programming in the Boondocks of Seattle 30min", 30),
-                    new Talk("Ruby vs. Clojure for Back-End Development 30min", 30),
-                    new Talk("A World Without HackerNews 30min", 30),
-                    new Talk("User Interface CSS in Rails Apps 30min", 30),
-                    new Talk("Rails for Python Developers lightning", 5)
+                new List<Block> {
+                    new Block("Writing Fast Tests Against Enterprise Rails 60min", 60),
+                    new Block("Communicating Over Distance 60min", 60),
+                    new Block("Rails Magic 60min", 60),
+                    new Block("Ruby on Rails: Why We Should Move On 60min", 60),
+                    new Block("Ruby on Rails Legacy App Maintenance 60min", 60),
+                    new Block("Overdoing it in Python 45min", 45),
+                    new Block("Ruby Errors from Mismatched Gem Versions 45min", 45),
+                    new Block("Common Ruby Errors 45min", 45),
+                    new Block("Accounting-Driven Development 45min", 45),
+                    new Block("Pair Programming vs Noise 45min", 45),
+                    new Block("Clojure Ate Scala (on my project) 45min", 45),
+                    new Block("Lua for the Masses 30min", 30),
+                    new Block("Woah 30min", 30),
+                    new Block("Sit Down and Write 30min", 30),
+                    new Block("Programming in the Boondocks of Seattle 30min", 30),
+                    new Block("Ruby vs. Clojure for Back-End Development 30min", 30),
+                    new Block("A World Without HackerNews 30min", 30),
+                    new Block("User Interface CSS in Rails Apps 30min", 30),
+                    new Block("Rails for Python Developers lightning", 5)
                 },
                 new List<string> {
                     "Writing Fast Tests Against Enterprise Rails 60min",
@@ -64,24 +64,24 @@ namespace ConferenceTrack.UnitTests.Business
             
             new object[]
             {
-                new List<Talk>
+                new List<Block>
                 {
-                    new Talk("Ruby on Rails: Why We Should Move On 60min", 60),
-                    new Talk("Ruby on Rails Legacy App Maintenance 60min", 60),
-                    new Talk("Overdoing it in Python 45min", 45),
-                    new Talk("Ruby Errors from Mismatched Gem Versions 45min", 45),
-                    new Talk("Common Ruby Errors 45min", 45),
-                    new Talk("Accounting-Driven Development 45min", 45),
-                    new Talk("Pair Programming vs Noise 45min", 45),
-                    new Talk("Clojure Ate Scala (on my project) 45min", 45),
-                    new Talk("Lua for the Masses 30min", 30),
-                    new Talk("Woah 30min", 30),
-                    new Talk("Sit Down and Write 30min", 30),
-                    new Talk("Programming in the Boondocks of Seattle 30min", 30),
-                    new Talk("Ruby vs. Clojure for Back-End Development 30min", 30),
-                    new Talk("A World Without HackerNews 30min", 30),
-                    new Talk("User Interface CSS in Rails Apps 30min", 30),
-                    new Talk("Rails for Python Developers lightning", 5)
+                    new Block("Ruby on Rails: Why We Should Move On 60min", 60),
+                    new Block("Ruby on Rails Legacy App Maintenance 60min", 60),
+                    new Block("Overdoing it in Python 45min", 45),
+                    new Block("Ruby Errors from Mismatched Gem Versions 45min", 45),
+                    new Block("Common Ruby Errors 45min", 45),
+                    new Block("Accounting-Driven Development 45min", 45),
+                    new Block("Pair Programming vs Noise 45min", 45),
+                    new Block("Clojure Ate Scala (on my project) 45min", 45),
+                    new Block("Lua for the Masses 30min", 30),
+                    new Block("Woah 30min", 30),
+                    new Block("Sit Down and Write 30min", 30),
+                    new Block("Programming in the Boondocks of Seattle 30min", 30),
+                    new Block("Ruby vs. Clojure for Back-End Development 30min", 30),
+                    new Block("A World Without HackerNews 30min", 30),
+                    new Block("User Interface CSS in Rails Apps 30min", 30),
+                    new Block("Rails for Python Developers lightning", 5)
                 },
                 new List<string>
                 {
@@ -98,10 +98,10 @@ namespace ConferenceTrack.UnitTests.Business
         public void It_Should_Update_IsAllocated_ToTrue_AfterAllocatingATalk()
         {
             //arrange
-            var talks = new List<Talk>
+            var talks = new List<Block>
             {
-                new Talk("Ruby on Rails: Why We Should Move On 60min", 60),
-                new Talk("Rails for Python Developers lightning", 5)
+                new Block("Ruby on Rails: Why We Should Move On 60min", 60),
+                new Block("Rails for Python Developers lightning", 5)
             };
             
             var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0)); 
@@ -121,13 +121,13 @@ namespace ConferenceTrack.UnitTests.Business
         public void It_Should_Return_CorrectTimesForTalks_When_Given_AListOfTalks()
         {
             //arrange
-            var talks = new List<Talk>
+            var talks = new List<Block>
             {
-                new Talk("Ruby on Rails: Why We Should Move On 60min", 60),
-                new Talk("Ruby on Rails Legacy App Maintenance 60min", 60),
-                new Talk("Overdoing it in Python 45min", 45),
-                new Talk("Ruby Errors from Mismatched Gem Versions 45min", 45),
-                new Talk("Rails for Python Developers lightning", 5)
+                new Block("Ruby on Rails: Why We Should Move On 60min", 60),
+                new Block("Ruby on Rails Legacy App Maintenance 60min", 60),
+                new Block("Overdoing it in Python 45min", 45),
+                new Block("Ruby Errors from Mismatched Gem Versions 45min", 45),
+                new Block("Rails for Python Developers lightning", 5)
             };
             
             var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0)); 
@@ -146,7 +146,7 @@ namespace ConferenceTrack.UnitTests.Business
                 
             };
 
-            var actualTalkTimes = morningSession.Sessions[0].Select(x => x.TalkTime);
+            var actualTalkTimes = morningSession.Sessions[0].Select(x => x.TimeSlot);
             
             Assert.True(actualTalkTimes.SequenceEqual(expectedTalkTimes));
             

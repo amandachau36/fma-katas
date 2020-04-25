@@ -4,6 +4,6 @@ namespace ConferenceTrack.Client.InputProcessor
 {
     public interface IInputProcessor
     {
-        List<Talk> Process(string[] talks);
+        List<Block> Process(string[] talks);
     }
 }

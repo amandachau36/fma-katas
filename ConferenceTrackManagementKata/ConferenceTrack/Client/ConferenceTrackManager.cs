@@ -46,16 +46,16 @@ namespace ConferenceTrack.Client
             _display.WriteDisplay(preparedTracks);
         }
 
-        private List<Track> GenerateTracks(List<Talk> processedTalks)  
+        private List<Track> GenerateTracks(List<Block> processedTalks)  
         {
           return _trackGenerator.GenerateTracks(processedTalks); 
         }
         
-        private List<Talk> GetTalks()
+        private List<Block> GetTalks()
         {
             _display.Display(Constants.Welcome);
             
-            var processedTalks = new List<Talk>();
+            var processedTalks = new List<Block>();
             
             while (!processedTalks.Any())
             {
@@ -65,7 +65,7 @@ namespace ConferenceTrack.Client
             return processedTalks;
         }
 
-        private IEnumerable<Talk> TryToGetTalks()
+        private IEnumerable<Block> TryToGetTalks()
         {
             try
             {
@@ -84,13 +84,13 @@ namespace ConferenceTrack.Client
             {
                 _display.DisplayError(e.Message);
                 
-                return Enumerable.Empty<Talk>();
+                return Enumerable.Empty<Block>();
             }
             catch (InvalidTalkException e)
             {
                 _display.DisplayError(e.Message);
                 
-                return Enumerable.Empty<Talk>();
+                return Enumerable.Empty<Block>();
             }
         }
         

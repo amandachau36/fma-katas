@@ -14,7 +14,7 @@ namespace ConferenceTrack.UnitTests.Business
         [Theory]
         [MemberData(nameof(Data))]
         
-        public void It_Should_Return_AListOfTalksThatFitIntoTheAfternoonSession_Given_AListOfTalks(List<Talk> availableTalks, List<string> expectedAllocatedTalks)
+        public void It_Should_Return_AListOfTalksThatFitIntoTheAfternoonSession_Given_AListOfTalks(List<Block> availableTalks, List<string> expectedAllocatedTalks)
         {
             //arrange
             var afternoonSession = new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0)); 
@@ -24,26 +24,26 @@ namespace ConferenceTrack.UnitTests.Business
            afternoonSession.AllocateTalksToSession(availableTalks);
             
             //assert
-            Assert.Equal(expectedAllocatedTalks, afternoonSession.Sessions[0].Select(x => x.TalkTitle));
+            Assert.Equal(expectedAllocatedTalks, afternoonSession.Sessions[0].Select(x => x.BlockName));
         }
         
         public static IEnumerable<object[]> Data => new List<object[]>()
         {
             new object[]
             {
-                new List<Talk> {
-                    new Talk("Ruby Errors from Mismatched Gem Versions 45min", 45),
-                    new Talk("Common Ruby Errors 45min", 45),
-                    new Talk("Accounting-Driven Development 45min", 45),
-                    new Talk("Pair Programming vs Noise 45min", 45),
-                    new Talk("Clojure Ate Scala (on my project) 45min", 45),
-                    new Talk("Lua for the Masses 30min", 30),
-                    new Talk("Woah 30min", 30),
-                    new Talk("Sit Down and Write 30min", 30),
-                    new Talk("Programming in the Boondocks of Seattle 30min", 30),
-                    new Talk("Ruby vs. Clojure for Back-End Development 30min", 30),
-                    new Talk("A World Without HackerNews 30min", 30),
-                    new Talk("User Interface CSS in Rails Apps 30min", 30),
+                new List<Block> {
+                    new Block("Ruby Errors from Mismatched Gem Versions 45min", 45),
+                    new Block("Common Ruby Errors 45min", 45),
+                    new Block("Accounting-Driven Development 45min", 45),
+                    new Block("Pair Programming vs Noise 45min", 45),
+                    new Block("Clojure Ate Scala (on my project) 45min", 45),
+                    new Block("Lua for the Masses 30min", 30),
+                    new Block("Woah 30min", 30),
+                    new Block("Sit Down and Write 30min", 30),
+                    new Block("Programming in the Boondocks of Seattle 30min", 30),
+                    new Block("Ruby vs. Clojure for Back-End Development 30min", 30),
+                    new Block("A World Without HackerNews 30min", 30),
+                    new Block("User Interface CSS in Rails Apps 30min", 30),
                 },
                 new List<string> {
                     "Ruby Errors from Mismatched Gem Versions 45min",
@@ -61,10 +61,10 @@ namespace ConferenceTrack.UnitTests.Business
         public void It_Should_Update_IsAllocated_ToTrue_AfterAllocatingATalk()
         {
             //arrange
-            var talks = new List<Talk>
+            var talks = new List<Block>
             {
-                new Talk("Ruby on Rails: Why We Should Move On 60min", 60),
-                new Talk("Rails for Python Developers lightning", 5)
+                new Block("Ruby on Rails: Why We Should Move On 60min", 60),
+                new Block("Rails for Python Developers lightning", 5)
             };
             
             var afternoonSession = new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0));
@@ -84,12 +84,12 @@ namespace ConferenceTrack.UnitTests.Business
         public void It_Should_Return_CorrectTimesForTalks_When_Given_AListOfTalks()
         {
             //arrange
-            var talks = new List<Talk>
+            var talks = new List<Block>
             {
-                new Talk("Ruby on Rails: Why We Should Move On 60min", 60),
-                new Talk("Ruby on Rails Legacy App Maintenance 60min", 60),
-                new Talk("Overdoing it in Python 45min", 45),
-                new Talk("Ruby Errors from Mismatched Gem Versions 45min", 45),
+                new Block("Ruby on Rails: Why We Should Move On 60min", 60),
+                new Block("Ruby on Rails Legacy App Maintenance 60min", 60),
+                new Block("Overdoing it in Python 45min", 45),
+                new Block("Ruby Errors from Mismatched Gem Versions 45min", 45),
             };
             
             var afternoonSession = new AfternoonSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0));
@@ -107,7 +107,7 @@ namespace ConferenceTrack.UnitTests.Business
                 new TimeSpan(5, 0, 0)
             };
 
-            var actualTalkTimes = afternoonSession.Sessions[0].Select(x => x.TalkTime);
+            var actualTalkTimes = afternoonSession.Sessions[0].Select(x => x.TimeSlot);
 
             Assert.True(actualTalkTimes.SequenceEqual(expectedTalkTimes));
 

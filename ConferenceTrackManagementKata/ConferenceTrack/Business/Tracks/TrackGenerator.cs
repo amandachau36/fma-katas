@@ -18,7 +18,7 @@ namespace ConferenceTrack.Business.Tracks
             SessionAllocators = sessionAllocators;
         }
 
-        public List<Track> GenerateTracks(List<Talk> talks)
+        public List<Track> GenerateTracks(List<Block> talks)
         {
             GenerateAllSessions(talks);
             
@@ -42,7 +42,7 @@ namespace ConferenceTrack.Business.Tracks
             return tracks;
         }
         
-        private void GenerateAllSessions(List<Talk> talks)
+        private void GenerateAllSessions(List<Block> talks)
         {
 
             foreach (var sessionAllocator in SessionAllocators) 
@@ -52,7 +52,7 @@ namespace ConferenceTrack.Business.Tracks
             
         }
 
-        private void GenerateSessions(ISessionAllocator sessionAllocator, List<Talk> talks)
+        private void GenerateSessions(ISessionAllocator sessionAllocator, List<Block> talks)
         {
             for (var i = 0; i < _numberOfTracks; i++)
             {

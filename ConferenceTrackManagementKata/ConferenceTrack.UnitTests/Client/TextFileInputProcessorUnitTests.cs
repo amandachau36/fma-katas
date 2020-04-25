@@ -26,7 +26,7 @@ namespace ConferenceTrack.UnitTests.Client
             var processedTalk = textFileInputProcessor.Process(talk);
             
             //assert
-            var expectedTalk = new Talk("Writing Fast Tests Against Enterprise Rails 60min", 60);
+            var expectedTalk = new Block("Writing Fast Tests Against Enterprise Rails 60min", 60);
             
             var processedTalkStr = JsonConvert.SerializeObject(processedTalk[0]);
             var expectedTalkStr = JsonConvert.SerializeObject(expectedTalk);
@@ -47,7 +47,7 @@ namespace ConferenceTrack.UnitTests.Client
             var processedTalk = textFileInputProcessor.Process(talk);
             
             //assert
-            var expectedTalk = new Talk("Rails for Python Developers lightning", 5);
+            var expectedTalk = new Block("Rails for Python Developers lightning", 5);
             
             var processedTalkStr = JsonConvert.SerializeObject(processedTalk[0]);
             var expectedTalkStr = JsonConvert.SerializeObject(expectedTalk);
@@ -91,27 +91,27 @@ namespace ConferenceTrack.UnitTests.Client
             var processedTalks = textFileInputProcessor.Process(talks);
             
             //assert
-            var expectedTalksOrderedByDuration = new List<Talk>
+            var expectedTalksOrderedByDuration = new List<Block>
             {
-                new Talk("Writing Fast Tests Against Enterprise Rails 60min", 60),
-                new Talk("Communicating Over Distance 60min", 60),
-                new Talk("Rails Magic 60min", 60),
-                new Talk("Ruby on Rails: Why We Should Move On 60min", 60),
-                new Talk("Ruby on Rails Legacy App Maintenance 60min", 60),
-                new Talk("Overdoing it in Python 45min", 45),
-                new Talk("Ruby Errors from Mismatched Gem Versions 45min", 45),
-                new Talk("Common Ruby Errors 45min", 45),
-                new Talk("Accounting-Driven Development 45min", 45),
-                new Talk("Pair Programming vs Noise 45min", 45),
-                new Talk("Clojure Ate Scala (on my project) 45min", 45),
-                new Talk("Lua for the Masses 30min", 30),
-                new Talk("Woah 30min", 30),
-                new Talk("Sit Down and Write 30min", 30),
-                new Talk("Programming in the Boondocks of Seattle 30min", 30),
-                new Talk("Ruby vs. Clojure for Back-End Development 30min", 30),
-                new Talk("A World Without HackerNews 30min", 30),
-                new Talk("User Interface CSS in Rails Apps 30min", 30),
-                new Talk("Rails for Python Developers lightning", 5)
+                new Block("Writing Fast Tests Against Enterprise Rails 60min", 60),
+                new Block("Communicating Over Distance 60min", 60),
+                new Block("Rails Magic 60min", 60),
+                new Block("Ruby on Rails: Why We Should Move On 60min", 60),
+                new Block("Ruby on Rails Legacy App Maintenance 60min", 60),
+                new Block("Overdoing it in Python 45min", 45),
+                new Block("Ruby Errors from Mismatched Gem Versions 45min", 45),
+                new Block("Common Ruby Errors 45min", 45),
+                new Block("Accounting-Driven Development 45min", 45),
+                new Block("Pair Programming vs Noise 45min", 45),
+                new Block("Clojure Ate Scala (on my project) 45min", 45),
+                new Block("Lua for the Masses 30min", 30),
+                new Block("Woah 30min", 30),
+                new Block("Sit Down and Write 30min", 30),
+                new Block("Programming in the Boondocks of Seattle 30min", 30),
+                new Block("Ruby vs. Clojure for Back-End Development 30min", 30),
+                new Block("A World Without HackerNews 30min", 30),
+                new Block("User Interface CSS in Rails Apps 30min", 30),
+                new Block("Rails for Python Developers lightning", 5)
             };
             
             var processedTalkStr = JsonConvert.SerializeObject(processedTalks);

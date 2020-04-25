@@ -16,17 +16,17 @@ namespace ConferenceTrack.Client.InputProcessor
             _validator = talkValidator;
         }
         
-        public List<Talk> Process(string[] talks)
+        public List<Block> Process(string[] talks)
         {
-            var processedTalks = ProcessTalks(talks).OrderByDescending(t => t.Duration);
+            var processedTalks = ProcessTalks(talks).OrderByDescending(t => t.BlockDuration);
 
             return processedTalks.ToList();
 
         }
 
-        private List<Talk> ProcessTalks(string[] talks)
+        private List<Block> ProcessTalks(string[] talks)
         {
-            var processedTalks = new List<Talk>();
+            var processedTalks = new List<Block>();
             
             foreach (var talk in talks)
             {
@@ -37,12 +37,12 @@ namespace ConferenceTrack.Client.InputProcessor
                 var durationMatch = Regex.Match(talk, @"\d+");
 
                 if (durationMatch.Success)
-                    processedTalks.Add(new Talk(talk, Double.Parse(durationMatch.Value)));
+                    processedTalks.Add(new Block(talk, Double.Parse(durationMatch.Value)));
 
                 var lighteningMatch = Regex.Match(talk, "lightning");
                 
                 if(lighteningMatch.Success)
-                    processedTalks.Add(new Talk(talk, 5));
+                    processedTalks.Add(new Block(talk, 5));
                
             }
 

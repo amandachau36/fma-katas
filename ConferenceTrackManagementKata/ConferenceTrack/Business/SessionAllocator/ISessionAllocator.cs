@@ -12,8 +12,8 @@ namespace ConferenceTrack.Business.SessionAllocator
         
         TimeSpan MaxEndTime { get; }
         
-        public List<List<Talk>> Sessions { get; }
+        public List<List<Block>> Sessions { get; }
 
-        void AllocateTalksToSession(List<Talk> availableTalks);
+        void AllocateTalksToSession(List<Block> availableTalks);
     }
 }

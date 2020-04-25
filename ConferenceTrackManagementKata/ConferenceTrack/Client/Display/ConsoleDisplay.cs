@@ -21,7 +21,7 @@ namespace ConferenceTrack.Client.Display
                 
                 foreach (var talk in t.Talks)
                 {
-                    Console.WriteLine(talk.FormattedTitleAndTime); 
+                    Console.WriteLine(talk.FormattedBlockNameAndTimeSlot); 
                 }
             }
         }
@@ -31,7 +31,7 @@ namespace ConferenceTrack.Client.Display
             foreach (var talk in tracks.SelectMany(t => t.Talks))
             {
                 
-                talk.SetScheduledTalk($"{FormatTime(talk.TalkTime)}  {talk.TalkTitle}");
+                talk.SetFormattedBlockNameAndTimeSlot($"{FormatTime(talk.TimeSlot)}  {talk.BlockName}");
             }
 
             return tracks;
