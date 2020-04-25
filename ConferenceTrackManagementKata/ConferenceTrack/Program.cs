@@ -15,7 +15,7 @@ namespace ConferenceTrack
     {
         static void Main(string[] args)
         {
-            var morningSessionAllocator =  new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0) );
+            var morningSessionAllocator =  new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0), new Block("Lunch", 60) );
             var afternoonSessionAllocator = new AfternoonSessionAllocator(new TimeSpan(13, 0, 0), new TimeSpan(16, 0,0), new TimeSpan(17, 0, 0)  );
             
             var trackGenerator = new TrackGenerator(2, new List<ISessionAllocator>{morningSessionAllocator, afternoonSessionAllocator} );
@@ -28,21 +28,12 @@ namespace ConferenceTrack
             
             conferenceTrackManager.ManageTracks();
             
-            //
             
            // /Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/OriginalTestInput.txt
             
             ///Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/InvalidTestInput.txt
             
             
-            //
-            // TimeSpan timespan = new TimeSpan(15,00,00);
-            // DateTime time = DateTime.Today.Add(timespan);
-            // string displayTime = time.ToString("hh:mm tt");
-            //
-            // Console.WriteLine(displayTime);
-
-
 
         }
     }

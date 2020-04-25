@@ -6,14 +6,16 @@ namespace ConferenceTrack.Business.SessionAllocator
 {
     public class MorningSessionAllocator : ISessionAllocator
     {
+        private readonly Block _breakEvent;
         public TimeSpan StartTime { get; }
         public TimeSpan MinEndTime { get; } 
         public TimeSpan MaxEndTime { get; }
         public List<List<Block>> Sessions { get; } = new List<List<Block>>();  //TODO: session object with total time and list of talks? 
-        public MorningSessionAllocator(TimeSpan startTime, TimeSpan endTime)
+        public MorningSessionAllocator(TimeSpan startTime, TimeSpan endTime, Block breakEvent)
         {
+            _breakEvent = breakEvent;
             StartTime = startTime;
-            MinEndTime = endTime; //TODO: can this be simplified more 
+            MinEndTime = endTime;  
             MaxEndTime = endTime;
         }
         public void AllocateTalksToSession(List<Block> availableTalks)
@@ -32,8 +34,10 @@ namespace ConferenceTrack.Business.SessionAllocator
                 //TODO: duration > session throw exception
                 
                 if (newTime > MaxEndTime ) continue;
+
+                session.Add(talk);
                 
-                AddTalkToSession(session, talk, time);
+                UpdateBlock(talk, time);
                 
                 time = newTime;
                 
@@ -41,30 +45,21 @@ namespace ConferenceTrack.Business.SessionAllocator
              
             }
             
-            AddLunchToSession(session);
+            session.Add(_breakEvent);
             
+            UpdateBlock(_breakEvent, MaxEndTime);
+
             Sessions.Add(session);
         }
 
-        private void AddTalkToSession(List<Block> session, Block block, TimeSpan time)
+        private void UpdateBlock(Block block, TimeSpan time)
         {
-            session.Add(block);
-                
+            
             block.SetIsAllocated(true);
                 
             block.SetTimeSlot(time);
         }
         
-        private void AddLunchToSession(List<Block> allocatedTalks)
-        {
-            var lunch = new Block("Lunch", 60);
-            
-            lunch.SetIsAllocated(true);
-            
-            lunch.SetTimeSlot(MaxEndTime);
-            
-            allocatedTalks.Add(lunch);
-        }
         
     }
 }

@@ -29,7 +29,8 @@ namespace ConferenceTrack.UnitTests.ComponentTests
                 {
                     new MorningSessionAllocator(
                         new TimeSpan(9, 0, 0),  //TODO: Abstract smallest parts or can create variables with the TimeSpan 
-                        new TimeSpan(12, 0,0 ) ), //TODO: Enum
+                        new TimeSpan(12, 0,0 ),
+                        new Block("Lunch", 60)), //TODO: Enum
                     new AfternoonSessionAllocator(
                         new TimeSpan(13, 0, 0), 
                         new TimeSpan(16, 0, 0), 
