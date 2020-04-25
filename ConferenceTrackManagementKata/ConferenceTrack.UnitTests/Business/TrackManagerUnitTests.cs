@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ConferenceTrack.Business;
-using ConferenceTrack.Business.SessionAllocator;
+using ConferenceTrack.Business.Sessions;
 using ConferenceTrack.Business.Tracks;
 using ConferenceTrack.Client;
 using Xunit;
@@ -17,10 +16,10 @@ namespace ConferenceTrack.UnitTests.Business
             List<List<string>> expectedMorningSessions)
         {
             //arrange
-            var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0), new Block("Lunch", 60));
+            var morningSession = new SessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0), new Block("Lunch", 60));
             var afternoonSession =
-                new MorningSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
-            var trackGenerator = new TrackGenerator(2, new List<ISessionAllocator> {morningSession, afternoonSession});
+                new SessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
+            var trackGenerator = new TrackGenerator(2, new List<SessionAllocator> {morningSession, afternoonSession});
         
             //act
             trackGenerator.GenerateTracks(talks);
@@ -85,10 +84,10 @@ namespace ConferenceTrack.UnitTests.Business
             List<List<string>> expectedAfternoonSessions)
         {
             //arrange
-            var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0), new Block("Lunch", 60));
+            var morningSession = new SessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0), new Block("Lunch", 60));
             var afternoonSession =
-                new MorningSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
-            var trackGenerator = new TrackGenerator(2, new List<ISessionAllocator> {morningSession, afternoonSession});
+                new SessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
+            var trackGenerator = new TrackGenerator(2, new List<SessionAllocator> {morningSession, afternoonSession});
 
             //act
             trackGenerator.GenerateTracks(talks);
@@ -158,10 +157,10 @@ namespace ConferenceTrack.UnitTests.Business
         public void It_Should_Return_ValidTracks_Given_AListOfTalks(List<Block> talks, List<string> expectedFirstTrack)
         {
             //arrange
-            var morningSession = new MorningSessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0), new Block("Lunch", 60));
+            var morningSession = new SessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0), new Block("Lunch", 60));
             var afternoonSession =
-                new MorningSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
-            var trackGenerator = new TrackGenerator(2, new List<ISessionAllocator> {morningSession, afternoonSession});
+                new SessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
+            var trackGenerator = new TrackGenerator(2, new List<SessionAllocator> {morningSession, afternoonSession});
 
             //act
             var tracks = trackGenerator.GenerateTracks(talks);

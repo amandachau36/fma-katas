@@ -2,8 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using ConferenceTrack.Business;
-using ConferenceTrack.Business.SessionAllocator;
+using ConferenceTrack.Business.Sessions;
 using ConferenceTrack.Business.Tracks;
 using ConferenceTrack.Client;
 using ConferenceTrack.Client.Display;
@@ -25,13 +24,13 @@ namespace ConferenceTrack.UnitTests.ComponentTests
             // TODO: time as config
             var trackGenerator = new TrackGenerator(
                 2,
-                new List<ISessionAllocator>
+                new List<SessionAllocator>
                 {
-                    new MorningSessionAllocator(
+                    new SessionAllocator(
                         new TimeSpan(9, 0, 0),  //TODO: Abstract smallest parts or can create variables with the TimeSpan 
                         new TimeSpan(12, 0,0 ),
                         new Block("Lunch", 60)), //TODO: Enum
-                    new MorningSessionAllocator(
+                    new SessionAllocator(
                         new TimeSpan(13, 0, 0), 
                         new TimeSpan(16, 0, 0), 
                         new TimeSpan(17, 0,0 ),

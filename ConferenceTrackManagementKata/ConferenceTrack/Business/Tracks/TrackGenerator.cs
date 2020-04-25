@@ -1,18 +1,18 @@
 using System.Collections.Generic;
 using System.Linq;
-using ConferenceTrack.Business.SessionAllocator;
+using ConferenceTrack.Business.Sessions;
 using ConferenceTrack.Client;
 
 namespace ConferenceTrack.Business.Tracks
 {
     public class TrackGenerator
     {
-        public List<ISessionAllocator> SessionAllocators { get; } //TODO: can make this private
+        public List<SessionAllocator> SessionAllocators { get; } //TODO: can make this private
         
         private readonly int _numberOfTracks;
         
         
-        public TrackGenerator(int numberOfTracks, List<ISessionAllocator> sessionAllocators)
+        public TrackGenerator(int numberOfTracks, List<SessionAllocator> sessionAllocators)
         {
             _numberOfTracks = numberOfTracks;
             SessionAllocators = sessionAllocators;
@@ -52,7 +52,7 @@ namespace ConferenceTrack.Business.Tracks
             
         }
 
-        private void GenerateSessions(ISessionAllocator sessionAllocator, List<Block> talks)
+        private void GenerateSessions(SessionAllocator sessionAllocator, List<Block> talks)
         {
             for (var i = 0; i < _numberOfTracks; i++)
             {

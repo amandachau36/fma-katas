@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using ConferenceTrack.Client;
 
-namespace ConferenceTrack.Business.SessionAllocator
+namespace ConferenceTrack.Business.Sessions
 {
-    public class MorningSessionAllocator : ISessionAllocator
+    public class SessionAllocator
     {
         private readonly Block _breakEvent;
         public TimeSpan StartTime { get; }
@@ -12,7 +12,7 @@ namespace ConferenceTrack.Business.SessionAllocator
         public TimeSpan MaxEndTime { get; }
         public List<List<Block>> Sessions { get; } = new List<List<Block>>();  //TODO: session object with total time and list of talks? 
         
-        public MorningSessionAllocator(TimeSpan startTime, TimeSpan endTime, Block breakEvent)
+        public SessionAllocator(TimeSpan startTime, TimeSpan endTime, Block breakEvent)
         {
             _breakEvent = breakEvent;
             StartTime = startTime;
@@ -20,7 +20,7 @@ namespace ConferenceTrack.Business.SessionAllocator
             MaxEndTime = endTime;
         }
         
-        public MorningSessionAllocator(TimeSpan startTime, TimeSpan minEndTime, TimeSpan maxEndTime, Block breakEvent)
+        public SessionAllocator(TimeSpan startTime, TimeSpan minEndTime, TimeSpan maxEndTime, Block breakEvent)
         {
             _breakEvent = breakEvent;
             StartTime = startTime;

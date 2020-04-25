@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ConferenceTrack.Business;
-using ConferenceTrack.Business.SessionAllocator;
+using ConferenceTrack.Business.Sessions;
 using ConferenceTrack.Client;
-using Newtonsoft.Json;
 using Xunit;
 
 namespace ConferenceTrack.UnitTests.Business
@@ -17,7 +15,7 @@ namespace ConferenceTrack.UnitTests.Business
         public void It_Should_Return_AListOfTalksThatFitIntoTheAfternoonSession_Given_AListOfTalks(List<Block> availableTalks, List<string> expectedAllocatedTalks)
         {
             //arrange
-            var afternoonSession = new MorningSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60)); 
+            var afternoonSession = new SessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60)); 
             
             
             //act
@@ -67,7 +65,7 @@ namespace ConferenceTrack.UnitTests.Business
                 new Block("Rails for Python Developers lightning", 5)
             };
             
-            var afternoonSession = new MorningSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
+            var afternoonSession = new SessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
             
             //act
            afternoonSession.AllocateTalksToSession(talks);
@@ -92,7 +90,7 @@ namespace ConferenceTrack.UnitTests.Business
                 new Block("Ruby Errors from Mismatched Gem Versions 45min", 45),
             };
             
-            var afternoonSession = new MorningSessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
+            var afternoonSession = new SessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
             
             //act
             afternoonSession.AllocateTalksToSession(talks);
