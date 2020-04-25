@@ -166,7 +166,7 @@ namespace ConferenceTrack.UnitTests.Business
             var tracks = trackGenerator.GenerateTracks(talks);
 
             //assert
-            var actualFirstTrack = tracks[0].Talks.Select(t => t.BlockName).ToList();
+            var actualFirstTrack = tracks[0].Blocks.Select(t => t.BlockName).ToList();
 
             Assert.Equal(expectedFirstTrack, actualFirstTrack);
         }

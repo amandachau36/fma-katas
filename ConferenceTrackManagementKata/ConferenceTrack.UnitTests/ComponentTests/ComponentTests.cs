@@ -112,7 +112,7 @@ namespace ConferenceTrack.UnitTests.ComponentTests
 
             public List<Track> PrepareDisplay(List<Track> tracks)
             {
-                foreach (var talk in tracks.SelectMany(t => t.Talks))
+                foreach (var talk in tracks.SelectMany(t => t.Blocks))
                 {
                     talk.SetFormattedBlockNameAndTimeSlot($"{FormatTime(talk.TimeSlot)}  {talk.BlockName}");
                 }
@@ -126,7 +126,7 @@ namespace ConferenceTrack.UnitTests.ComponentTests
                 {
                     Messages.Add(t.TrackTitle);
                 
-                    foreach (var talk in t.Talks)
+                    foreach (var talk in t.Blocks)
                     {
                         Messages.Add(talk.FormattedBlockNameAndTimeSlot); 
                     }

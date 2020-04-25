@@ -10,8 +10,7 @@ namespace ConferenceTrack.Business.Tracks
         public List<SessionAllocator> SessionAllocators { get; } //TODO: can make this private
         
         private readonly int _numberOfTracks;
-        
-        
+
         public TrackGenerator(int numberOfTracks, List<SessionAllocator> sessionAllocators)
         {
             _numberOfTracks = numberOfTracks;
@@ -32,11 +31,11 @@ namespace ConferenceTrack.Business.Tracks
             
             for (var i = 0; i < _numberOfTracks; i++)
             {
-                var talksForTrack = SessionAllocators.SelectMany(allocator => allocator.Sessions[i]).ToList();
+                var blocksForTrack = SessionAllocators.SelectMany(allocator => allocator.Sessions[i]).ToList();
 
                 var trackTitle = $"Track {i + 1}";
 
-                tracks.Add(new Track(talksForTrack, trackTitle));
+                tracks.Add(new Track(blocksForTrack, trackTitle));
             }
 
             return tracks;

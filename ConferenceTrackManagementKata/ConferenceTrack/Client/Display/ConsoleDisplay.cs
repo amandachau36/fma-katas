@@ -19,7 +19,7 @@ namespace ConferenceTrack.Client.Display
             {
                 TrackHeader(t.TrackTitle);
                 
-                foreach (var talk in t.Talks)
+                foreach (var talk in t.Blocks)
                 {
                     Console.WriteLine(talk.FormattedBlockNameAndTimeSlot); 
                 }
@@ -28,7 +28,7 @@ namespace ConferenceTrack.Client.Display
 
         public List<Track> PrepareDisplay(List<Track> tracks)
         {
-            foreach (var talk in tracks.SelectMany(t => t.Talks))
+            foreach (var talk in tracks.SelectMany(t => t.Blocks))
             {
                 
                 talk.SetFormattedBlockNameAndTimeSlot($"{FormatTime(talk.TimeSlot)}  {talk.BlockName}");
