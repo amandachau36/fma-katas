@@ -212,6 +212,58 @@ namespace ConferenceTrack.UnitTests.Business
                     "Networking Event"
                 }
             }
+        };
+        
+        [Theory]
+        [MemberData(nameof(Data4))] //TODO: only use Theory when necessary
+        public void It_Should_Allocate_All_Talks_Given_AListOfTalks(List<Block> talks)
+        {
+            //arrange
+            var morningSession = new SessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0), new Block("Lunch", 60));
+            var afternoonSession =
+                new SessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
+            var trackGenerator = new TrackGenerator(2, new List<SessionAllocator> {morningSession, afternoonSession});
+
+            //act
+            var tracks = trackGenerator.GenerateTracks(talks);
+
+            //assert
+
+            foreach (var block in tracks.SelectMany(track => track.Blocks))
+            {
+                Assert.True(block.IsAllocated);
+            }
+            
+        }
+
+
+        public static IEnumerable<object[]> Data4 => new List<object[]>
+        {
+            new object[]
+            {
+                new List<Block>
+                {
+                    new Block("Writing Fast Tests Against Enterprise Rails 60min", 60),
+                    new Block("Communicating Over Distance 60min", 60),
+                    new Block("Rails Magic 60min", 60),
+                    new Block("Ruby on Rails: Why We Should Move On 60min", 60),
+                    new Block("Ruby on Rails Legacy App Maintenance 60min", 60),
+                    new Block("Overdoing it in Python 45min", 45),
+                    new Block("Ruby Errors from Mismatched Gem Versions 45min", 45),
+                    new Block("Common Ruby Errors 45min", 45),
+                    new Block("Accounting-Driven Development 45min", 45),
+                    new Block("Pair Programming vs Noise 45min", 45),
+                    new Block("Clojure Ate Scala (on my project) 45min", 45),
+                    new Block("Lua for the Masses 30min", 30),
+                    new Block("Woah 30min", 30),
+                    new Block("Sit Down and Write 30min", 30),
+                    new Block("Programming in the Boondocks of Seattle 30min", 30),
+                    new Block("Ruby vs. Clojure for Back-End Development 30min", 30),
+                    new Block("A World Without HackerNews 30min", 30),
+                    new Block("User Interface CSS in Rails Apps 30min", 30),
+                    new Block("Rails for Python Developers lightning", 5)
+                }
+            }
 
         };
     }
