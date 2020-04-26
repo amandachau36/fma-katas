@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ConferenceTrack.Business.Config;
 using ConferenceTrack.Business.Sessions;
 using ConferenceTrack.Business.Tracks;
 using ConferenceTrack.Client;
@@ -219,9 +220,8 @@ namespace ConferenceTrack.UnitTests.Business
         public void It_Should_Allocate_All_Talks_Given_AListOfTalks(List<Block> talks)
         {
             //arrange
-            var morningSession = new SessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0), new Block("Lunch", 60));
-            var afternoonSession =
-                new SessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
+            var morningSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("morningSession.json")); 
+            var afternoonSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"));
             var trackGenerator = new TrackGenerator(2, new List<SessionAllocator> {morningSession, afternoonSession});
 
             //act

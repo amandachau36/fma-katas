@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ConferenceTrack.Business.Config;
 using ConferenceTrack.Business.Sessions;
 using ConferenceTrack.Client;
 using Xunit;
@@ -15,9 +16,9 @@ namespace ConferenceTrack.UnitTests.Business
         public void It_Should_Return_AListOfTalksThatFitIntoTheAfternoonSession_Given_AListOfTalks(List<Block> availableTalks, List<string> expectedAllocatedTalks)
         {
             //arrange
-            var afternoonSession = new SessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60)); 
-            
-            
+            var afternoonSession =
+                new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"));
+                
             //act
            afternoonSession.AllocateTalksToSession(availableTalks);
             
@@ -65,7 +66,8 @@ namespace ConferenceTrack.UnitTests.Business
                 new Block("Rails for Python Developers lightning", 5)
             };
             
-            var afternoonSession = new SessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
+            var afternoonSession =
+                new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"));
             
             //act
            afternoonSession.AllocateTalksToSession(talks);
@@ -90,7 +92,8 @@ namespace ConferenceTrack.UnitTests.Business
                 new Block("Ruby Errors from Mismatched Gem Versions 45min", 45),
             };
             
-            var afternoonSession = new SessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
+            var afternoonSession =
+                new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"));
             
             //act
             afternoonSession.AllocateTalksToSession(talks);
@@ -98,15 +101,15 @@ namespace ConferenceTrack.UnitTests.Business
             //assert
             var expectedTalkTimes = new List<TimeSpan>
             {
-                new TimeSpan(1, 0, 0),
-                new TimeSpan(2, 0, 0),
-                new TimeSpan(3, 0, 0),
-                new TimeSpan(3, 45, 0),
-                new TimeSpan(5, 0, 0)
+                new TimeSpan(13, 0, 0),
+                new TimeSpan(14, 0, 0),
+                new TimeSpan(15, 0, 0),
+                new TimeSpan(15, 45, 0),
+                new TimeSpan(17, 0, 0)
             };
 
-            var actualTalkTimes = afternoonSession.Sessions[0].Select(x => x.TimeSlot);
-
+            var actualTalkTimes = afternoonSession.Sessions[0].Select(x => x.TimeSlot).ToList();
+            
             Assert.True(actualTalkTimes.SequenceEqual(expectedTalkTimes));
 
         }

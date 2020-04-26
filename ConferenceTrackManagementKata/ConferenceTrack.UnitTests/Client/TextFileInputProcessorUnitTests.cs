@@ -141,13 +141,13 @@ namespace ConferenceTrack.UnitTests.Client
         {
             new object[]
             {
-                new string[] {"Writing Fast Tests Against Enterprise Rails"},
+                new [] {"Writing Fast Tests Against Enterprise Rails"},
                 "Not a valid talk: Writing Fast Tests Against Enterprise Rails. \nMust contain duration in minutes or be a lightning talk."
             },
 
             new object[]
             {
-                new string[] {""},
+                new [] {""},
                 "Not a valid talk: . \nMust contain duration in minutes or be a lightning talk."
             },
             

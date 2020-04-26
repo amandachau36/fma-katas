@@ -16,21 +16,31 @@ namespace ConferenceTrack
     {
         static void Main(string[] args)
         {
-            var morningSessionConfig = ConfigurationLoader.LoadSessionConfiguration("morningSession.json");
 
-            var afternoonSessionConfig = ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json");
+            var morningSessionAllocator = new SessionAllocator(
+                ConfigurationLoader.LoadSessionConfiguration("morningSession.json"));
             
-            var morningSessionAllocator = new SessionAllocator(morningSessionConfig);
-            
-            var afternoonSessionAllocator = new SessionAllocator(afternoonSessionConfig);
+            var afternoonSessionAllocator = new SessionAllocator(
+                ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"));
 
-            var trackGenerator = new TrackGenerator(2, new List<SessionAllocator>{morningSessionAllocator, afternoonSessionAllocator} );
+            var trackGenerator = new TrackGenerator(
+                2, 
+                new List<SessionAllocator> 
+                {
+                    morningSessionAllocator, 
+                    afternoonSessionAllocator
+                } );
             
             var talkValidator = new TalkValidator();
             
             var pathValidator = new PathValidator();
 
-            var conferenceTrackManager = new ConferenceTrackManager(new ConsoleDisplay(), new ConsoleInputCollector(), new TextFileInputProvider(pathValidator), new TextFileInputProcessor(talkValidator), trackGenerator );
+            var conferenceTrackManager = new ConferenceTrackManager(
+                new ConsoleDisplay(), 
+                new ConsoleInputCollector(), 
+                new TextFileInputProvider(pathValidator), 
+                new TextFileInputProcessor(talkValidator), 
+                trackGenerator );
             
             conferenceTrackManager.ManageTracks();
             
@@ -38,7 +48,7 @@ namespace ConferenceTrack
            // /Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/OriginalTestInput.txt
             
             ///Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/InvalidTestInput.txt
-            ///
+     
             
         }
     }

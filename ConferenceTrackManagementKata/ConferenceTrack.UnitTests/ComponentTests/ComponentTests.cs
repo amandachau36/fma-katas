@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using ConferenceTrack.Business.Config;
 using ConferenceTrack.Business.Sessions;
 using ConferenceTrack.Business.Tracks;
 using ConferenceTrack.Client;
@@ -21,20 +22,14 @@ namespace ConferenceTrack.UnitTests.ComponentTests
         public void It_Should_DisplayErrorsAndTracks_WhenGivenInValidFilesThenAValidOne()
         {
             //Arrange
-            // TODO: time as config
             var trackGenerator = new TrackGenerator(
                 2,
                 new List<SessionAllocator>
                 {
                     new SessionAllocator(
-                        new TimeSpan(9, 0, 0),  //TODO: Abstract smallest parts or can create variables with the TimeSpan 
-                        new TimeSpan(12, 0,0 ),
-                        new Block("Lunch", 60)), 
+                        ConfigurationLoader.LoadSessionConfiguration("morningSession.json")),
                     new SessionAllocator(
-                        new TimeSpan(13, 0, 0), 
-                        new TimeSpan(16, 0, 0), 
-                        new TimeSpan(17, 0,0 ),
-                        new Block("Networking Event", 60))
+                        ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"))
                 });
              
             var pathValidator = new PathValidator();
@@ -96,7 +91,6 @@ namespace ConferenceTrack.UnitTests.ComponentTests
                 Assert.Equal(expectedMessages[i], consoleDisplay.Messages[i]);
             }
             //Assert.True(consoleDisplay.Messages.SequenceEqual(expectedMessages)); 
-            
             
             
         }
