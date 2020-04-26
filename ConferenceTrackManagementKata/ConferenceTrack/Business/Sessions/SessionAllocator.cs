@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ConferenceTrack.Business.Config;
 using ConferenceTrack.Client;
 
 namespace ConferenceTrack.Business.Sessions
@@ -25,10 +26,18 @@ namespace ConferenceTrack.Business.Sessions
         
         public SessionAllocator(TimeSpan startTime, TimeSpan minEndTime, TimeSpan maxEndTime, Block breakEvent)
         {
-            _breakEvent = breakEvent;
             _startTime = startTime;
             _minEndTime = minEndTime;
             _maxEndTime = maxEndTime;
+            _breakEvent = breakEvent;
+        }
+
+        public SessionAllocator(SessionConfiguration sessionConfiguration)
+        {
+            _breakEvent = sessionConfiguration.BreakEvent;
+            _startTime = sessionConfiguration.StartTime;
+            _minEndTime = sessionConfiguration.MinEndTime;
+            _maxEndTime = sessionConfiguration.MaxEndTime;
         }
         
         

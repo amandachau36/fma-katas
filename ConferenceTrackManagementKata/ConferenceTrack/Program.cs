@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ConferenceTrack.Business.Config;
 using ConferenceTrack.Business.Sessions;
 using ConferenceTrack.Business.Tracks;
 using ConferenceTrack.Client;
@@ -15,9 +16,14 @@ namespace ConferenceTrack
     {
         static void Main(string[] args)
         {
-            var morningSessionAllocator =  new SessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0), new Block("Lunch", 60) );
-            var afternoonSessionAllocator = new SessionAllocator(new TimeSpan(13, 0, 0), new TimeSpan(16, 0,0), new TimeSpan(17, 0, 0), new Block("Networking Event", 60)  );
+            var morningSessionConfig = ConfigurationLoader.LoadSessionConfiguration("morningSession.json");
+
+            var afternoonSessionConfig = ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json");
             
+            var morningSessionAllocator = new SessionAllocator(morningSessionConfig);
+            
+            var afternoonSessionAllocator = new SessionAllocator(afternoonSessionConfig);
+
             var trackGenerator = new TrackGenerator(2, new List<SessionAllocator>{morningSessionAllocator, afternoonSessionAllocator} );
             
             var talkValidator = new TalkValidator();
@@ -32,9 +38,8 @@ namespace ConferenceTrack
            // /Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/OriginalTestInput.txt
             
             ///Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/InvalidTestInput.txt
+            ///
             
-            
-
         }
     }
 }

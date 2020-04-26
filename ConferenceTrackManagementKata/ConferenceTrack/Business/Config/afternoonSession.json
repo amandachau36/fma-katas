@@ -1,0 +1,7 @@
+{
+  "Start Time" : "13:00",
+  "Minimum End Time" : "16:00",
+  "Maximum End Time" : "17:00",
+  "Break Event Name": "Networking Event",
+  "Break Event Duration": 60
+}
