@@ -17,9 +17,8 @@ namespace ConferenceTrack.UnitTests.Business
             List<List<string>> expectedMorningSessions)
         {
             //arrange
-            var morningSession = new SessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0), new Block("Lunch", 60));
-            var afternoonSession =
-                new SessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
+            var morningSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("morningSession.json")); 
+            var afternoonSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"));
             var trackGenerator = new TrackGenerator(2, new List<SessionAllocator> {morningSession, afternoonSession});
         
             //act
@@ -85,9 +84,8 @@ namespace ConferenceTrack.UnitTests.Business
             List<List<string>> expectedAfternoonSessions)
         {
             //arrange
-            var morningSession = new SessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0), new Block("Lunch", 60));
-            var afternoonSession =
-                new SessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
+            var morningSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("morningSession.json")); 
+            var afternoonSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"));
             var trackGenerator = new TrackGenerator(2, new List<SessionAllocator> {morningSession, afternoonSession});
 
             //act
@@ -158,9 +156,8 @@ namespace ConferenceTrack.UnitTests.Business
         public void It_Should_Return_ValidTracks_Given_AListOfTalks(List<Block> talks, List<string> expectedFirstTrack)
         {
             //arrange
-            var morningSession = new SessionAllocator(new TimeSpan(9, 0, 0), new TimeSpan(12, 0, 0), new Block("Lunch", 60));
-            var afternoonSession =
-                new SessionAllocator(new TimeSpan(1, 0, 0), new TimeSpan(4, 0, 0), new TimeSpan(5, 0, 0), new Block("Networking Event", 60));
+            var morningSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("morningSession.json")); 
+            var afternoonSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"));
             var trackGenerator = new TrackGenerator(2, new List<SessionAllocator> {morningSession, afternoonSession});
 
             //act

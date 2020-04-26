@@ -16,22 +16,6 @@ namespace ConferenceTrack.Business.Sessions
         private readonly TimeSpan _maxEndTime;
         public List<List<Block>> Sessions { get; } = new List<List<Block>>();  //TODO: session object with total time and list of talks? 
         
-        public SessionAllocator(TimeSpan startTime, TimeSpan endTime, Block breakEvent)
-        {
-            _breakEvent = breakEvent;
-            _startTime = startTime;
-            _minEndTime = endTime;  
-            _maxEndTime = endTime;
-        }
-        
-        public SessionAllocator(TimeSpan startTime, TimeSpan minEndTime, TimeSpan maxEndTime, Block breakEvent)
-        {
-            _startTime = startTime;
-            _minEndTime = minEndTime;
-            _maxEndTime = maxEndTime;
-            _breakEvent = breakEvent;
-        }
-
         public SessionAllocator(SessionConfiguration sessionConfiguration)
         {
             _breakEvent = sessionConfiguration.BreakEvent;
