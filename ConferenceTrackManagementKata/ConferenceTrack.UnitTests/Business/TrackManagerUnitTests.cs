@@ -5,6 +5,7 @@ using ConferenceTrack.Business.Blocks;
 using ConferenceTrack.Business.Config;
 using ConferenceTrack.Business.Sessions;
 using ConferenceTrack.Business.Tracks;
+using ConferenceTrack.Business.Validators;
 using ConferenceTrack.Client;
 using Xunit;
 
@@ -18,8 +19,8 @@ namespace ConferenceTrack.UnitTests.Business
             List<List<string>> expectedMorningSessions)
         {
             //arrange
-            var morningSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("morningSession.json")); 
-            var afternoonSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"));
+            var morningSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("morningSession.json"), new TalkDurationValidator()); 
+            var afternoonSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"), new TalkDurationValidator());
             var trackGenerator = new TrackGenerator(2, new List<SessionAllocator> {morningSession, afternoonSession});
         
             //act
@@ -85,8 +86,8 @@ namespace ConferenceTrack.UnitTests.Business
             List<List<string>> expectedAfternoonSessions)
         {
             //arrange
-            var morningSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("morningSession.json")); 
-            var afternoonSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"));
+            var morningSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("morningSession.json"), new TalkDurationValidator()); 
+            var afternoonSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"), new TalkDurationValidator());
             var trackGenerator = new TrackGenerator(2, new List<SessionAllocator> {morningSession, afternoonSession});
 
             //act
@@ -157,8 +158,8 @@ namespace ConferenceTrack.UnitTests.Business
         public void It_Should_Return_ValidTracks_Given_AListOfTalks(List<Block> talks, List<string> expectedFirstTrack)
         {
             //arrange
-            var morningSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("morningSession.json")); 
-            var afternoonSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"));
+            var morningSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("morningSession.json"), new TalkDurationValidator()); 
+            var afternoonSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"), new TalkDurationValidator());
             var trackGenerator = new TrackGenerator(2, new List<SessionAllocator> {morningSession, afternoonSession});
 
             //act
@@ -218,8 +219,8 @@ namespace ConferenceTrack.UnitTests.Business
         public void It_Should_Allocate_All_Talks_Given_AListOfTalks(List<Block> talks)
         {
             //arrange
-            var morningSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("morningSession.json")); 
-            var afternoonSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"));
+            var morningSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("morningSession.json"), new TalkDurationValidator()); 
+            var afternoonSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"), new TalkDurationValidator());
             var trackGenerator = new TrackGenerator(2, new List<SessionAllocator> {morningSession, afternoonSession});
 
             //act

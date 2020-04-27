@@ -5,6 +5,7 @@ using System.Linq;
 using ConferenceTrack.Business.Config;
 using ConferenceTrack.Business.Sessions;
 using ConferenceTrack.Business.Tracks;
+using ConferenceTrack.Business.Validators;
 using ConferenceTrack.Client;
 using ConferenceTrack.Client.Display;
 using ConferenceTrack.Client.InputCollector;
@@ -27,9 +28,9 @@ namespace ConferenceTrack.UnitTests.ComponentTests
                 new List<SessionAllocator>
                 {
                     new SessionAllocator(
-                        ConfigurationLoader.LoadSessionConfiguration("morningSession.json")),
+                        ConfigurationLoader.LoadSessionConfiguration("morningSession.json"), new TalkDurationValidator()),
                     new SessionAllocator(
-                        ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"))
+                        ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"), new TalkDurationValidator())
                 });
              
             var pathValidator = new PathValidator();

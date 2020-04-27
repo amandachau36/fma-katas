@@ -4,6 +4,7 @@ using System.Linq;
 using ConferenceTrack.Business.Blocks;
 using ConferenceTrack.Business.Config;
 using ConferenceTrack.Business.Sessions;
+using ConferenceTrack.Business.Validators;
 using ConferenceTrack.Client;
 using Xunit;
 
@@ -18,7 +19,7 @@ namespace ConferenceTrack.UnitTests.Business
         {
             //arrange
             var afternoonSession =
-                new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"));
+                new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"), new TalkDurationValidator());
                 
             //act
            afternoonSession.AllocateTalksToSession(availableTalks);
@@ -68,7 +69,7 @@ namespace ConferenceTrack.UnitTests.Business
             };
             
             var afternoonSession =
-                new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"));
+                new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"), new TalkDurationValidator());
             
             //act
            afternoonSession.AllocateTalksToSession(talks);
@@ -94,7 +95,7 @@ namespace ConferenceTrack.UnitTests.Business
             };
             
             var afternoonSession =
-                new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"));
+                new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"), new TalkDurationValidator());
             
             //act
             afternoonSession.AllocateTalksToSession(talks);

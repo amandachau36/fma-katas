@@ -35,10 +35,10 @@ namespace ConferenceTrack.Client.InputProcessor
                 if (!_validator.IsValid(talk))
                     throw new InvalidTalkException(talk); 
                 
-                var durationMatch = Regex.Match(talk, @"\d+min");
+                var durationMatch = Regex.Match(talk, @"\d+(?=min)");
 
                 if (durationMatch.Success)
-                    processedTalks.Add(new Block(talk, Double.Parse(durationMatch.Value)));
+                    processedTalks.Add(new Block(talk, double.Parse(durationMatch.Value)));
 
                 var lighteningMatch = Regex.Match(talk, "lightning");
                 

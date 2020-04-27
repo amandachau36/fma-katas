@@ -4,6 +4,7 @@ using System.Linq;
 using ConferenceTrack.Business.Blocks;
 using ConferenceTrack.Business.Config;
 using ConferenceTrack.Business.Sessions;
+using ConferenceTrack.Business.Validators;
 using ConferenceTrack.Client;
 
 using Xunit;
@@ -18,7 +19,7 @@ namespace ConferenceTrack.UnitTests.Business
         public void It_Should_Return_AListOfTalksThatFitIntoTheMorningSession_Given_AListOfTalks(List<Block> availableTalks, List<string> expectedAllocatedTalks)
         {
             //arrange
-            var morningSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("morningSession.json")); 
+            var morningSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("morningSession.json"), new TalkDurationValidator()); 
             
             //act
             morningSession.AllocateTalksToSession(availableTalks);
@@ -103,7 +104,7 @@ namespace ConferenceTrack.UnitTests.Business
                 new Block("Rails for Python Developers lightning", 5)
             };
             
-            var morningSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("morningSession.json"));  
+            var morningSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("morningSession.json"), new TalkDurationValidator());  
             
             //act
             morningSession.AllocateTalksToSession(talks);
@@ -129,7 +130,7 @@ namespace ConferenceTrack.UnitTests.Business
                 new Block("Rails for Python Developers lightning", 5)
             };
             
-            var morningSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("morningSession.json"));  
+            var morningSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("morningSession.json"), new TalkDurationValidator());  
             
             //act
             morningSession.AllocateTalksToSession(talks);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ConferenceTrack.Business.Config;
 using ConferenceTrack.Business.Sessions;
 using ConferenceTrack.Business.Tracks;
+using ConferenceTrack.Business.Validators;
 using ConferenceTrack.Client;
 using ConferenceTrack.Client.Display;
 using ConferenceTrack.Client.InputCollector;
@@ -18,10 +19,12 @@ namespace ConferenceTrack
         {
 
             var morningSessionAllocator = new SessionAllocator(
-                ConfigurationLoader.LoadSessionConfiguration("morningSession.json"));
+                ConfigurationLoader.LoadSessionConfiguration("morningSession.json"),
+                new TalkDurationValidator());
             
             var afternoonSessionAllocator = new SessionAllocator(
-                ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"));
+                ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"),
+                new TalkDurationValidator());
 
             var trackGenerator = new TrackGenerator(
                 2, 
