@@ -28,7 +28,7 @@ namespace ConferenceTrack.Business.Sessions
         }
         
         
-        public void AllocateTalksToSession(List<Block> availableTalks)
+        public void AllocateTalksToSession(IEnumerable<Block> availableTalks)
         {
 
             var time = _startTime;  

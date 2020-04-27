@@ -53,17 +53,55 @@ namespace ConferenceTrack.Client
                 var talks = GetTalks();
 
                 if (_quit) return;
-            
-                var tracks = GenerateTracks(talks); 
-            
-                DisplayTracks(tracks);  
+
+                var tracks = _trackGenerator.GenerateTracks(talks);
+
+                DisplayTracks(tracks);
+            }
+            catch (InvalidPathOrFileException e)
+            {
+                _display.DisplayError(e.Message);
+            }
+            catch (InvalidTalkException e)
+            {
+                _display.DisplayError(e.Message);
             }
             catch (InvalidTalkDurationException e)
             {
                 _display.DisplayError(e.Message);
-                
             }
+
         }
+        
+        private IEnumerable<Block> GetTalks()
+        {
+            var processedTalks = new List<Block>();
+            
+            while (!processedTalks.Any())
+            {
+                _display.Display(Constants.FilePathPrompt);
+            
+                var input = _inputCollector.Collect();
+
+                if (UserIsQuittingApplication(input))
+                {
+                    _quit = true;  // TODO: Command Query separation?
+                    break;
+                }
+            
+                var talks = _inputProvider.ProvideInput(input);
+                
+                processedTalks = _inputProcessor.Process(talks); 
+            }
+
+            return processedTalks;
+        }
+
+        private bool UserIsQuittingApplication(string input)
+        {
+            return input != null && input.ToLower() == "q";
+        }
+
 
         private void DisplayTracks(List<Track> tracks)
         {
@@ -72,60 +110,6 @@ namespace ConferenceTrack.Client
             _display.WriteDisplay(preparedTracks);
             
             _quit = true;
-        }
-
-        private List<Track> GenerateTracks(List<Block> processedTalks)  
-        {
-          return _trackGenerator.GenerateTracks(processedTalks); 
-        }
-        
-        
-        private List<Block> GetTalks()
-        {
-            
-            var processedTalks = new List<Block>();
-            
-            while (!processedTalks.Any() && !_quit)
-            {
-                processedTalks = TryToGetTalks().ToList();
-            }
-
-            return processedTalks;
-        }
-
-        private IEnumerable<Block> TryToGetTalks()
-        {
-            try
-            {
-                _display.Display(Constants.FilePathPrompt);
-                
-                var input = _inputCollector.Collect();
-
-                if (input != null && input.ToLower() == "q")
-                {
-                    _quit = true;
-                    return Enumerable.Empty<Block>();
-                }
-                
-                var talks = _inputProvider.ProvideInput(input);
-
-                var processedTalks = _inputProcessor.Process(talks); 
-                
-                return processedTalks;
-
-            }
-            catch (InvalidPathOrFileException e)
-            {
-                _display.DisplayError(e.Message);
-                
-                return Enumerable.Empty<Block>();
-            }
-            catch (InvalidTalkException e)
-            {
-                _display.DisplayError(e.Message);
-                
-                return Enumerable.Empty<Block>();
-            }
         }
         
     }
