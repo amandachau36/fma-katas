@@ -50,7 +50,6 @@ namespace ConferenceTrack.UnitTests.ComponentTests
             var conferenceTrackManager = new ConferenceTrackManager(consoleDisplay, consoleCollector.Object, new TextFileInputProvider(pathValidator),  new TextFileInputProcessor(talkValidator), trackGenerator);
             
             //Act
-             
             conferenceTrackManager.ManageTracks();
              
             //Assert
@@ -97,6 +96,51 @@ namespace ConferenceTrack.UnitTests.ComponentTests
             }
             //Assert.True(consoleDisplay.Messages.SequenceEqual(expectedMessages)); 
             
+        }
+        
+        
+        [Fact]
+        public void It_Should_ExitTheApplication_When_UserInputIsQ()
+        {
+            //Arrange
+            var trackGenerator = new TrackGenerator(
+                2,
+                new List<SessionAllocator>
+                {
+                    new SessionAllocator(
+                        ConfigurationLoader.LoadSessionConfiguration("morningSession.json")),
+                    new SessionAllocator(
+                        ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"))
+                },
+                new TalkDurationValidator());
+             
+            var pathValidator = new PathValidator();
+             
+            var talkValidator = new TalkValidator();
+             
+            var consoleDisplay = new ConsoleDisplayStub();
+            
+            var consoleCollector = new Mock<IInputCollector>();
+            consoleCollector.SetupSequence(x => x.Collect())
+                .Returns("q");
+            
+            var conferenceTrackManager = new ConferenceTrackManager(consoleDisplay, consoleCollector.Object, new TextFileInputProvider(pathValidator),  new TextFileInputProcessor(talkValidator), trackGenerator);
+            
+            //Act
+            conferenceTrackManager.ManageTracks();
+             
+            //Assert
+            var expectedMessages = new List<string>
+            {
+                Constants.Welcome,
+                Constants.FilePathPrompt
+            };
+        
+            for (var i = 0; i < consoleDisplay.Messages.Count; i++)
+            {
+                Assert.Equal(expectedMessages[i], consoleDisplay.Messages[i]);
+            }
+            //Assert.True(consoleDisplay.Messages.SequenceEqual(expectedMessages)); 
             
         }
         
