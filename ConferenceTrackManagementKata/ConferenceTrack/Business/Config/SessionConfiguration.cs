@@ -1,5 +1,5 @@
 using System;
-using ConferenceTrack.Client;
+using ConferenceTrack.Business.Blocks;
 
 namespace ConferenceTrack.Business.Config
 {

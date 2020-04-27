@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ConferenceTrack.Business.Blocks;
 using ConferenceTrack.Client;
 
 namespace ConferenceTrack.Business.Tracks

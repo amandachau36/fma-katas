@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using ConferenceTrack.Business.Blocks;
 using ConferenceTrack.Business.Tracks;
 using ConferenceTrack.Client.Display;
 using ConferenceTrack.Client.Exceptions;

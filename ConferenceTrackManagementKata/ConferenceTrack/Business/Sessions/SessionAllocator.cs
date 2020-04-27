@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
+using ConferenceTrack.Business.Blocks;
 using ConferenceTrack.Business.Config;
-using ConferenceTrack.Client;
 
 namespace ConferenceTrack.Business.Sessions
 {

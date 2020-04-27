@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ConferenceTrack.Business.Blocks;
 using ConferenceTrack.Business.Config;
 using ConferenceTrack.Business.Sessions;
 using ConferenceTrack.Business.Tracks;

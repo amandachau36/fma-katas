@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using ConferenceTrack.Business.Blocks;
 using ConferenceTrack.Client;
 using ConferenceTrack.Client.Exceptions;
 using ConferenceTrack.Client.InputCollector;

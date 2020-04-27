@@ -11,7 +11,7 @@ namespace ConferenceTrack.Client.Exceptions
 
         private static string FormatMessage(string path)
         {
-            return "Not a valid path or file: " + path + ". \nOnly .txt files are valid";
+            return $"Not a valid path or file: {path}. \nOnly .txt files are valid";
         }
     }
 }

@@ -1,6 +1,6 @@
 using System;
 using System.IO;
-using ConferenceTrack.Client;
+using ConferenceTrack.Business.Blocks;
 using Microsoft.Extensions.Configuration;
 
 namespace ConferenceTrack.Business.Config

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using ConferenceTrack.Business.Blocks;
 using ConferenceTrack.Client.Exceptions;
 using ConferenceTrack.Client.InputValidator;
 
