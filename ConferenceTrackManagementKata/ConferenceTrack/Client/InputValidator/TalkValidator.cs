@@ -7,10 +7,12 @@ namespace ConferenceTrack.Client.InputValidator
     {
         public bool IsValid(string input)
         {
-            var durationMatch = Regex.Match(input, @"\d+");
+            var durationMatch = Regex.Match(input, @"\d+min");
 
             var lighteningMatch = Regex.Match(input, "lightning");
 
+            if (durationMatch.Success && lighteningMatch.Success) return false;
+            
             return durationMatch.Success || lighteningMatch.Success;
         }
     }

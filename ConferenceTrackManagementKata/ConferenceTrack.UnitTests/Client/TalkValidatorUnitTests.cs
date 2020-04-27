@@ -17,7 +17,7 @@ namespace ConferenceTrack.UnitTests.Client
             var isValid = talkValidator.IsValid(talk);
             
             //assert
-            Assert.Equal(isValid, expectedIsValid);
+            Assert.Equal(expectedIsValid, isValid) ;
         }
         
         public static IEnumerable<object[]> Data => new List<object[]>()
@@ -38,6 +38,18 @@ namespace ConferenceTrack.UnitTests.Client
             {
                 "Rails for Python Developers lightning",
                 true
+            },
+            
+            new object[]
+            {
+                "Rails for Python Developers lightning 30min",
+                false
+            },
+            
+            new object[]
+            {
+                "Python 101",
+                false
             },
             
             new object[]
