@@ -51,7 +51,7 @@ namespace ConferenceTrack.Client.Display
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             
-            Console.WriteLine(trackTitle);
+            Console.WriteLine($"\n{trackTitle}");
             
             Console.ResetColor();
         }

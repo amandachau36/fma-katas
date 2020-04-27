@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using ConferenceTrack.Business.Blocks;
@@ -23,6 +22,8 @@ namespace ConferenceTrack.Client
         private readonly IInputProcessor _inputProcessor;
         
         private readonly TrackGenerator _trackGenerator;
+
+        private bool _quit;
         
 
         public ConferenceTrackManager(IDisplay display, IInputCollector inputCollector, IInputProvider inputProvider, IInputProcessor inputProcessor, TrackGenerator trackGenerator)
@@ -38,7 +39,7 @@ namespace ConferenceTrack.Client
         {
             _display.Display(Constants.Welcome);
             
-            while (true)
+            while (!_quit)
             {
                 TryToManageTracks();
             }
@@ -50,6 +51,8 @@ namespace ConferenceTrack.Client
             try
             {
                 var talks = GetTalks();
+
+                if (_quit) return;
             
                 var tracks = GenerateTracks(talks); 
             
@@ -67,6 +70,8 @@ namespace ConferenceTrack.Client
             var preparedTracks = _display.PrepareDisplay(tracks); 
             
             _display.WriteDisplay(preparedTracks);
+            
+            _quit = true;
         }
 
         private List<Track> GenerateTracks(List<Block> processedTalks)  
@@ -80,7 +85,7 @@ namespace ConferenceTrack.Client
             
             var processedTalks = new List<Block>();
             
-            while (!processedTalks.Any())
+            while (!processedTalks.Any() && !_quit)
             {
                 processedTalks = TryToGetTalks().ToList();
             }
@@ -96,9 +101,12 @@ namespace ConferenceTrack.Client
                 
                 var input = _inputCollector.Collect();
 
-                if (input.ToLower() == "q")
-                    Environment.Exit(0);
-
+                if (input != null && input.ToLower() == "q")
+                {
+                    _quit = true;
+                    return Enumerable.Empty<Block>();
+                }
+                
                 var talks = _inputProvider.ProvideInput(input);
 
                 var processedTalks = _inputProcessor.Process(talks); 

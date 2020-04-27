@@ -19,12 +19,10 @@ namespace ConferenceTrack
         {
 
             var morningSessionAllocator = new SessionAllocator(
-                ConfigurationLoader.LoadSessionConfiguration("morningSession.json"),
-                new TalkDurationValidator());
+                ConfigurationLoader.LoadSessionConfiguration("morningSession.json"));
             
             var afternoonSessionAllocator = new SessionAllocator(
-                ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"),
-                new TalkDurationValidator());
+                ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"));
 
             var trackGenerator = new TrackGenerator(
                 2, 
@@ -32,7 +30,8 @@ namespace ConferenceTrack
                 {
                     morningSessionAllocator, 
                     afternoonSessionAllocator
-                } );
+                },
+                new TalkDurationValidator());
             
             var talkValidator = new TalkValidator();
             

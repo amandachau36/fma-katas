@@ -28,10 +28,11 @@ namespace ConferenceTrack.UnitTests.ComponentTests
                 new List<SessionAllocator>
                 {
                     new SessionAllocator(
-                        ConfigurationLoader.LoadSessionConfiguration("morningSession.json"), new TalkDurationValidator()),
+                        ConfigurationLoader.LoadSessionConfiguration("morningSession.json")),
                     new SessionAllocator(
-                        ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"), new TalkDurationValidator())
-                });
+                        ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"))
+                },
+                new TalkDurationValidator());
              
             var pathValidator = new PathValidator();
              
@@ -86,7 +87,7 @@ namespace ConferenceTrack.UnitTests.ComponentTests
                 "04:00 PM  User Interface CSS in Rails Apps 30min",
                 "05:00 PM  Networking Event"
             };
-
+        
             for (var i = 0; i < consoleDisplay.Messages.Count; i++)
             {
                 Assert.Equal(expectedMessages[i], consoleDisplay.Messages[i]);

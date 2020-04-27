@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using ConferenceTrack.Business.Blocks;
+using ConferenceTrack.Business.Exceptions;
 using ConferenceTrack.Business.Sessions;
+using ConferenceTrack.Business.Validators;
 using ConferenceTrack.Client;
 
 namespace ConferenceTrack.Business.Tracks
@@ -11,10 +13,15 @@ namespace ConferenceTrack.Business.Tracks
         public List<SessionAllocator> SessionAllocators { get; } 
         
         private readonly int _numberOfTracks;
+        
+        private readonly TalkDurationValidator _talkDurationValidator;
 
-        public TrackGenerator(int numberOfTracks, List<SessionAllocator> sessionAllocators)
+        public TrackGenerator(int numberOfTracks, List<SessionAllocator> sessionAllocators, TalkDurationValidator talkDurationValidator)
         {
             _numberOfTracks = numberOfTracks;
+            
+            _talkDurationValidator = talkDurationValidator;
+            
             SessionAllocators = sessionAllocators;
         }
 
@@ -44,7 +51,8 @@ namespace ConferenceTrack.Business.Tracks
         
         private void GenerateAllSessions(List<Block> talks)
         {
-
+            ThrowExceptionIfAnyTalkDurationsAreInvalid(talks);
+            
             foreach (var sessionAllocator in SessionAllocators) 
             {
                 GenerateSessions(sessionAllocator, talks);
@@ -52,13 +60,26 @@ namespace ConferenceTrack.Business.Tracks
             
         }
 
+        private void ThrowExceptionIfAnyTalkDurationsAreInvalid(List<Block> talks)
+        {
+            var maxSessionDuration = SessionAllocators.Max(x => x.MaxDuration).TotalMinutes;
+
+            foreach (var talk in talks.Where(talk => !_talkDurationValidator.IsValid(talk, maxSessionDuration)))
+            {
+                throw new InvalidTalkDurationException(talk);
+            }
+        }
+
         private void GenerateSessions(SessionAllocator sessionAllocator, List<Block> talks)
         {
             for (var i = 0; i < _numberOfTracks; i++)
             {
+                
                 sessionAllocator.AllocateTalksToSession(talks);
             }
-        } 
+        }
+        
+        
         
 
     }

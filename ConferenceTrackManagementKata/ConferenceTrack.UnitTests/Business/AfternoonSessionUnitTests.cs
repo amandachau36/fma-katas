@@ -19,7 +19,7 @@ namespace ConferenceTrack.UnitTests.Business
         {
             //arrange
             var afternoonSession =
-                new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"), new TalkDurationValidator());
+                new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"));
                 
             //act
            afternoonSession.AllocateTalksToSession(availableTalks);
@@ -69,7 +69,7 @@ namespace ConferenceTrack.UnitTests.Business
             };
             
             var afternoonSession =
-                new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"), new TalkDurationValidator());
+                new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"));
             
             //act
            afternoonSession.AllocateTalksToSession(talks);
@@ -95,7 +95,7 @@ namespace ConferenceTrack.UnitTests.Business
             };
             
             var afternoonSession =
-                new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"), new TalkDurationValidator());
+                new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("afternoonSession.json"));
             
             //act
             afternoonSession.AllocateTalksToSession(talks);
