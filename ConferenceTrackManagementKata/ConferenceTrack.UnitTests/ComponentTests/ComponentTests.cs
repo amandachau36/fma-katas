@@ -44,6 +44,7 @@ namespace ConferenceTrack.UnitTests.ComponentTests
             consoleCollector.SetupSequence(x => x.Collect())
                 .Returns(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "In", "OriginalTestInput.txt"))
                 .Returns(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Input", "InvalidTestInput.txt"))
+                .Returns(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Input", "InvalidTalkDuration.txt"))
                 .Returns(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Input", "OriginalTestInput.txt"));
 
             var conferenceTrackManager = new ConferenceTrackManager(consoleDisplay, consoleCollector.Object, new TextFileInputProvider(pathValidator),  new TextFileInputProcessor(talkValidator), trackGenerator);
@@ -60,6 +61,8 @@ namespace ConferenceTrack.UnitTests.ComponentTests
                 $"Not a valid path or file: {Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "In", "OriginalTestInput.txt")}. \nOnly .txt files are valid",
                 Constants.FilePathPrompt,
                 "Not a valid talk: A World Without HackerNews. \nMust contain duration in minutes or be a lightning talk.",
+                Constants.FilePathPrompt,
+                "Invalid talk duration: 445min.\nThe duration of talks must be shorter then the session duration",
                 Constants.FilePathPrompt,
                 "Track 1",
                 "09:00 AM  Writing Fast Tests Against Enterprise Rails 60min",
