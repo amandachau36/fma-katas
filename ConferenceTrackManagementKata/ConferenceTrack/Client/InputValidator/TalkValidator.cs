@@ -7,13 +7,14 @@ namespace ConferenceTrack.Client.InputValidator
     {
         public bool IsValid(string input)
         {
-            var durationMatch = Regex.Match(input, @"\d+min");
-
-            var lighteningMatch = Regex.Match(input, "lightning");
-
-            if (durationMatch.Success && lighteningMatch.Success) return false;
             
-            return durationMatch.Success || lighteningMatch.Success;
+            var isMinutesMatch = new Regex(@"\d+min").IsMatch(input);
+
+            var isLightningMatch = new Regex("lightning").IsMatch(input);
+            
+            if (isMinutesMatch && isLightningMatch) return false;
+            
+            return isMinutesMatch || isLightningMatch;
         }
     }
 }

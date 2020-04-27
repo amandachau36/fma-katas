@@ -9,11 +9,9 @@ namespace ConferenceTrack.Client.InputValidator
         {
             
             var regex = new Regex(@"\.txt$");
-
-            var match = regex.Match(input);
-
-            return File.Exists(input) && match.Success;
             
+            return File.Exists(input) && regex.IsMatch(input);
+
         }
     }
 }
