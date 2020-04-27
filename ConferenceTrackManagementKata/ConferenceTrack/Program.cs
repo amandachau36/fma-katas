@@ -47,10 +47,11 @@ namespace ConferenceTrack
             
             conferenceTrackManager.ManageTracks();
             
-            
            // /Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/OriginalTestInput.txt
             
             ///Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/InvalidTestInput.txt
+            ///
+            /// /Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/InvalidTalkDuration.txt
      
             
         }

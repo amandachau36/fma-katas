@@ -7,7 +7,6 @@ namespace ConferenceTrack.Client.InputValidator
     {
         public bool IsValid(string input)
         {
-            
             var isMinutesMatch = new Regex(@"\d+min").IsMatch(input);
 
             var isLightningMatch = new Regex("lightning").IsMatch(input);

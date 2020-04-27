@@ -7,11 +7,9 @@ namespace ConferenceTrack.Client.InputValidator
     {
         public bool IsValid(string input)
         {
-            
             var regex = new Regex(@"\.txt$");
             
             return File.Exists(input) && regex.IsMatch(input);
-
         }
     }
 }

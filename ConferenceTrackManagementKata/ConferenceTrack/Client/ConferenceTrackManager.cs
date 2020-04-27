@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using ConferenceTrack.Business.Blocks;
+using ConferenceTrack.Business.Exceptions;
 using ConferenceTrack.Business.Tracks;
 using ConferenceTrack.Client.Display;
 using ConferenceTrack.Client.Exceptions;
@@ -21,6 +23,7 @@ namespace ConferenceTrack.Client
         private readonly IInputProcessor _inputProcessor;
         
         private readonly TrackGenerator _trackGenerator;
+        
 
         public ConferenceTrackManager(IDisplay display, IInputCollector inputCollector, IInputProvider inputProvider, IInputProcessor inputProcessor, TrackGenerator trackGenerator)
         {
@@ -33,11 +36,30 @@ namespace ConferenceTrack.Client
 
         public void ManageTracks()
         {
-            var talks = GetTalks();
+            _display.Display(Constants.Welcome);
             
-            var tracks = GenerateTracks(talks); 
+            while (true)
+            {
+                TryToManageTracks();
+            }
+
+        }
+
+        private void TryToManageTracks()
+        {
+            try
+            {
+                var talks = GetTalks();
             
-            DisplayTracks(tracks);  //it's possible to mock the display using Moq 
+                var tracks = GenerateTracks(talks); 
+            
+                DisplayTracks(tracks);  
+            }
+            catch (InvalidTalkDurationException e)
+            {
+                _display.DisplayError(e.Message);
+                
+            }
         }
 
         private void DisplayTracks(List<Track> tracks)
@@ -52,9 +74,9 @@ namespace ConferenceTrack.Client
           return _trackGenerator.GenerateTracks(processedTalks); 
         }
         
+        
         private List<Block> GetTalks()
         {
-            _display.Display(Constants.Welcome);
             
             var processedTalks = new List<Block>();
             
@@ -71,8 +93,11 @@ namespace ConferenceTrack.Client
             try
             {
                 _display.Display(Constants.FilePathPrompt);
-            
+                
                 var input = _inputCollector.Collect();
+
+                if (input.ToLower() == "q")
+                    Environment.Exit(0);
 
                 var talks = _inputProvider.ProvideInput(input);
 
