@@ -215,8 +215,8 @@ namespace ConferenceTrack.UnitTests.Business
         };
         
         [Theory]
-        [MemberData(nameof(Data4))] //TODO: only use Theory when necessary
-        public void It_Should_Allocate_All_Talks_Given_AListOfTalks(List<Block> talks)
+        [MemberData(nameof(Data4))] 
+        public void It_Should_Indicate_AllocationStatusOfAllTalks(List<Block> talks)
         {
             //arrange
             var morningSession = new SessionAllocator(ConfigurationLoader.LoadSessionConfiguration("morningSession.json")); 
@@ -227,7 +227,6 @@ namespace ConferenceTrack.UnitTests.Business
             var tracks = trackGenerator.GenerateTracks(talks);
         
             //assert
-        
             foreach (var block in tracks.SelectMany(track => track.Blocks))
             {
                 Assert.True(block.IsAllocated);
@@ -265,6 +264,8 @@ namespace ConferenceTrack.UnitTests.Business
             }
         
         };
+        
+        
     }
 }
 
