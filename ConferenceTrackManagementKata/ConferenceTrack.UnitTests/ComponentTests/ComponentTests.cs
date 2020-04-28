@@ -45,7 +45,8 @@ namespace ConferenceTrack.UnitTests.ComponentTests
                 .Returns(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "In", "OriginalTestInput.txt"))
                 .Returns(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Input", "InvalidTestInput.txt"))
                 .Returns(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Input", "InvalidTalkDuration.txt"))
-                .Returns(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Input", "OriginalTestInput.txt"));
+                .Returns(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Input", "OriginalTestInput.txt"))
+                .Returns("1");
 
             var conferenceTrackManager = new ConferenceTrackManager(consoleDisplay, consoleCollector.Object, new TextFileInputProvider(pathValidator),  new TextFileInputProcessor(talkValidator), trackGenerator);
             
@@ -63,6 +64,7 @@ namespace ConferenceTrack.UnitTests.ComponentTests
                 Constants.FilePathPrompt,
                 "Invalid talk duration: 445min.\nThe duration of talks must be shorter then the session duration",
                 Constants.FilePathPrompt,
+                Constants.DisplayTypePrompt,
                 "Track 1",
                 "09:00 AM  Writing Fast Tests Against Enterprise Rails 60min",
                 "10:00 AM  Communicating Over Distance 60min",
