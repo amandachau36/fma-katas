@@ -73,7 +73,7 @@ namespace ConferenceTrack.Client
 
         }
         
-        private IEnumerable<Block> GetTalks()
+        private List<Block> GetTalks() //TODO: to change to list
         {
             var processedTalks = new List<Block>();
             

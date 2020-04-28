@@ -24,8 +24,11 @@ namespace ConferenceTrack.Business.Tracks
             SessionAllocators = sessionAllocators;
         }
 
-        public List<Track> GenerateTracks(IEnumerable<Block> talks)
+        
+        public List<Track> GenerateTracks(List<Block> talks)
         {
+            ValidateTalks(talks); 
+            
             GenerateAllSessions(talks);
             
             return GenerateTracksFromSessions();
@@ -48,9 +51,8 @@ namespace ConferenceTrack.Business.Tracks
             return tracks;
         }
         
-        private void GenerateAllSessions(IEnumerable<Block> talks)
+        private void GenerateAllSessions(List<Block> talks)
         {
-            ThrowExceptionIfAnyTalkDurationsAreInvalid(talks);
             
             foreach (var sessionAllocator in SessionAllocators) 
             {
@@ -59,7 +61,7 @@ namespace ConferenceTrack.Business.Tracks
             
         }
 
-        private void ThrowExceptionIfAnyTalkDurationsAreInvalid(IEnumerable<Block> talks)
+        private void ValidateTalks(List<Block> talks)
         {
             var maxSessionDuration = SessionAllocators.Max(x => x.MaxDuration).TotalMinutes;
 
@@ -69,8 +71,9 @@ namespace ConferenceTrack.Business.Tracks
             }
         }
 
-        private void GenerateSessions(SessionAllocator sessionAllocator, IEnumerable<Block> talks)
+        private void GenerateSessions(SessionAllocator sessionAllocator, List<Block> talks)
         {
+    
             for (var i = 0; i < _numberOfTracks; i++)
             {
                 
