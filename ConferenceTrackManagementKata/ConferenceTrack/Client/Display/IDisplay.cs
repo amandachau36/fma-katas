@@ -8,10 +8,6 @@ namespace ConferenceTrack.Client.Display
     {
         void Display(string message);
 
-        List<Track> PrepareDisplay(List<Track> tracks);
-
-        void WriteDisplay(List<Track> tracks);
-
         void DisplayError(string error);
         
 

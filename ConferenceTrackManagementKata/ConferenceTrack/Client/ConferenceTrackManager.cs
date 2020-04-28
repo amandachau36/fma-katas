@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using ConferenceTrack.Business.Blocks;
@@ -8,6 +9,7 @@ using ConferenceTrack.Client.Exceptions;
 using ConferenceTrack.Client.InputCollector;
 using ConferenceTrack.Client.InputProcessor;
 using ConferenceTrack.Client.InputProvider;
+using ConferenceTrack.Client.Output;
 
 namespace ConferenceTrack.Client
 {
@@ -56,7 +58,9 @@ namespace ConferenceTrack.Client
 
                 var tracks = _trackGenerator.GenerateTracks(talks);
 
-                DisplayTracks(tracks);
+                var outputDisplayType = GetOutputDisplayType();
+
+                DisplayTracks(outputDisplayType,tracks);
             }
             catch (InvalidPathOrFileException e)
             {
@@ -99,15 +103,41 @@ namespace ConferenceTrack.Client
 
         private bool UserIsQuittingApplication(string input)
         {
-            return input != null && input.ToLower() == "q";
+            return input != null && input.ToLower() == Constants.Quit;
         }
-
-
-        private void DisplayTracks(List<Track> tracks)
+        
+        private OutputDisplayType GetOutputDisplayType()
         {
-            var preparedTracks = _display.PrepareDisplay(tracks); 
+            OutputDisplayType outputDisplayType;
             
-            _display.WriteDisplay(preparedTracks);
+            while (true)
+            {
+                _display.Display(Constants.DisplayTypePrompt);
+                
+                var input = _inputCollector.Collect();
+                
+                var processedInput = int.Parse(input) - 1; //TODO:  refactor using  InputProcessor/providerCollector ete
+
+                if (!Enum.IsDefined(typeof(OutputDisplayType), processedInput)) continue;
+
+                outputDisplayType = (OutputDisplayType)processedInput;
+
+                break;
+            }
+
+            return outputDisplayType;
+
+        }
+        
+
+
+        private void DisplayTracks(OutputDisplayType outputDisplayType, List<Track> tracks)
+        {
+            var outputDisplay = OutputDisplayFactory.CreateOutputDisplay(outputDisplayType);
+            
+            var preparedTracks = outputDisplay.PrepareDisplay(tracks); 
+            
+            outputDisplay.WriteDisplay(preparedTracks);
             
             _quit = true;
         }

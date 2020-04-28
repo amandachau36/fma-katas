@@ -10,6 +10,7 @@ using ConferenceTrack.Client.InputCollector;
 using ConferenceTrack.Client.InputProcessor;
 using ConferenceTrack.Client.InputProvider;
 using ConferenceTrack.Client.InputValidator;
+using ConferenceTrack.Client.Output;
 
 namespace ConferenceTrack
 {
@@ -38,7 +39,7 @@ namespace ConferenceTrack
             var pathValidator = new PathValidator();
 
             var conferenceTrackManager = new ConferenceTrackManager(
-                new ConsoleDisplay(), 
+                new ConsoleDisplay(),
                 new ConsoleInputCollector(), 
                 new TextFileInputProvider(pathValidator), 
                 new TextFileInputProcessor(talkValidator), 
@@ -46,13 +47,13 @@ namespace ConferenceTrack
             
             conferenceTrackManager.ManageTracks();
             
-           // /Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/OriginalTestInput.txt
-            
+            // /Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/OriginalTestInput.txt
+
             ///Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/InvalidTestInput.txt
             ///
             /// /Users/amanda.chau/fma/fma-katas/ConferenceTrackManagementKata/ConferenceTrack.UnitTests/Input/InvalidTalkDuration.txt
-     
-            
+
+
         }
     }
 }
